@@ -1,0 +1,17 @@
+//
+//  InHeart-Doctors-Prefix.pch
+//  InHeart-Doctors
+//
+//  Created by 项小盆友 on 16/9/26.
+//  Copyright © 2016年 项小盆友. All rights reserved.
+//
+
+#ifndef InHeart_Doctors_Prefix_pch
+#define InHeart_Doctors_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UtilDefine.h"
+#import "CommonsDefines.h"
+
+#endif /* InHeart_Doctors_Prefix_pch */
