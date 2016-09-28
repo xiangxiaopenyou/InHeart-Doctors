@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "MainTabBarController.h"
+#import "UserInfo.h"
+
+#import <UIImage-Helpers.h>
+#import <IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +23,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
+    keyboardManager.enable = YES;
+    keyboardManager.enableAutoToolbar = NO;
+    keyboardManager.shouldResignOnTouchOutside = YES;
+    
+    [self checkUserState:nil];
+    [self initAppearance];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:kLoginSuccess object:nil];
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -46,6 +65,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+//登录状态变化
+- (void)checkUserState:(NSNotification *)notification {
+    if ([[UserInfo sharedUserInfo] isLogined]) {
+        MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        self.window.rootViewController = tabBarController;
+    } else {
+        LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        self.window.rootViewController = navigationController;
+    }
+}
+- (void)initAppearance {
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : TABBAR_TITLE_COLOR} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NAVIGATIONBAR_COLOR} forState:UIControlStateSelected];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                           NSFontAttributeName : kBoldSystemFont(18)}];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+}
+
+
 
 
 @end

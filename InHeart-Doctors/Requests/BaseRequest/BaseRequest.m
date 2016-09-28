@@ -11,6 +11,7 @@
 
 @implementation BaseRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
+    
 }
 
 - (void)cacheRequest:(NSString *)request method:(NSString *)method param:(NSDictionary *)param {

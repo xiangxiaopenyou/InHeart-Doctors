@@ -11,7 +11,13 @@
 
 #import "LoginContentCell.h"
 
+#import "UserModel.h"
+#import "UserInfo.h"
+#import "PersonalInfo.h"
+
 #import <Masonry.h>
+#import <SVProgressHUD.h>
+#import <GJCFUitils.h>
 
 @interface LoginViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *phoneTextField;
@@ -24,12 +30,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self resignFirstResponder];
+    [self resignTextField];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,9 +129,42 @@
 - (IBAction)forgetPasswordClick:(id)sender {
 }
 - (IBAction)loginClick:(id)sender {
+    if (!GJCFStringIsMobilePhone(self.phoneTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputCorrectPhoneNumberTip];
+        return;
+    }
+    if (XLIsNullObject(self.passwordTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputPasswordTip];
+        return;
+    }
+    [self resignTextField];
+    [SVProgressHUD show];
+    [UserModel userLogin:self.phoneTextField.text password:self.passwordTextField.text deviceCode:nil handler:^(id object, NSString *msg) {
+        if (object) {
+            [SVProgressHUD dismiss];
+            UserModel *userModel = [object copy];
+            NSInteger code = [msg integerValue];
+            userModel.code = @(code);
+            if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
+                PersonalInfo *tempInfo = [PersonalInfo new];
+                tempInfo.username = userModel.username;
+                tempInfo.password = self.passwordTextField.text;
+                if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                }
+            }
+//            if (code == 0 || code == -7) {
+//            } else if (code == -4) {
+//                
+//            } else if (code == -5) {
+//                
+//            } else {
+//                
+//            }
+        } else {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+    }];
+    
 }
-- (void)dismiss {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 @end

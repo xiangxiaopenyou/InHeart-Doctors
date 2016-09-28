@@ -9,14 +9,21 @@
 #import "Util.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "sys/utsname.h"
 
 @implementation Util
 + (CGFloat)appVersion {
     NSDictionary *dictionary = [[NSBundle mainBundle] infoDictionary];
     return [dictionary[@"CFBundleShortVersionString"] floatValue];
 }
-+ (CGFloat)currentSystemVersion {
-    return [[UIDevice currentDevice].systemVersion floatValue];
++ (NSString *)mobileModel {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    return deviceString;
+}
++ (NSString *)systemVersion {
+    return [NSString stringWithFormat:@"%@%@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion];
 }
 + (BOOL)cameraAvailable {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
@@ -74,5 +81,10 @@
     }
     return size;
 }
-
++ (BOOL)checkPassword:(NSString *)password {
+    NSString *pattern = @"(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,14}$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    BOOL isMatch = [predicate evaluateWithObject:password];
+    return isMatch;
+}
 @end

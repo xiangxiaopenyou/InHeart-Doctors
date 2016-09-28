@@ -12,17 +12,17 @@
 @interface Util : NSObject
 #pragma mark - System
 + (CGFloat)appVersion;
-+ (CGFloat)currentSystemVersion;
++ (NSString *)systemVersion;
++ (NSString *)mobileModel;
 + (BOOL)cameraAvailable;
 + (BOOL)canSendSMS;
 + (BOOL)canMakePhoneCall;
 + (BOOL)isAppCameraAccessAuthorized;
-//+ (BOOL)isAppPhotoLibraryAccessAuthorized;
 
-#pragma mark - Cache
 + (BOOL)isNullObject:(id)anObject;
 + (NSURL *)urlWithString:(NSString *)urlString;
 + (NSString *)numberString:(CGFloat)floatNumber;
 + (CGSize)sizeOfText:(NSString *)text width:(CGFloat)width font:(UIFont *)font;
++ (BOOL)checkPassword:(NSString *)password;
 
 @end

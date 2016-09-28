@@ -13,8 +13,8 @@
 #define SCREEN_WIDTH CGRectGetWidth(UIScreen.mainScreen.bounds)
 #define SCREEN_HEIGHT CGRectGetHeight(UIScreen.mainScreen.bounds)
 //推荐内容高度和宽度
-#define kCollectionCellItemWidth (SCREEN_WIDTH - 30.0) / 2.0
-#define kCollectionCellItemHeight kCollectionCellItemWidth / 2.0
+#define kCollectionCellItemWidth (SCREEN_WIDTH - 5) / 2.0
+#define kCollectionCellItemHeight kCollectionCellItemWidth * 30.0 / 37.0
 
 /**
  *  常用颜色
@@ -43,6 +43,10 @@
 
 
 #pragma mark - System
+
+#define XLAppVersion [Util appVersion]
+#define XLMobileModel [Util mobileModel]
+#define XLSystemVersion [Util systemVersion]
 /**
  *  照相机是否可用
  */
@@ -72,7 +76,7 @@
 /**
  *  判空
  */
-#define XLIsNullObject [Util isNullObject:object]
+#define XLIsNullObject(object) [Util isNullObject:object]
 
 
 
@@ -90,4 +94,9 @@
  *  计算文字大小
  */
 #define XLSizeOfText(aText, aWidth, aFont) [Util sizeOfText:aText width:aWidth font:aFont]
+
+/**
+ *验证密码格式
+ */
+#define XLCheckPassword(aString) [Util checkPassword:aString]
 

@@ -10,6 +10,10 @@
  *  用户相关
  */
 extern NSString * const USERID;
+extern NSString * const USERCODE;
+extern NSString * const USERREALNAME;
+extern NSString * const USERNAME;
+extern NSString * const KEYCHAINSERVICE;
 /**
  *  常用数值
  */
@@ -33,11 +37,25 @@ extern NSString * const kInputPassword;
 extern NSString * const kInputVerificationCode;
 extern NSString * const kInputPasswordAgain;
 extern NSString * const kUserAgreement;
+extern NSString * const kFetchVerificationCode;
+extern NSString * const kInputCorrectPhoneNumberTip;
+extern NSString * const kInputPasswordTip;
+extern NSString * const kPasswordFormatTip;
+extern NSString * const kDifferentPasswordTip;
+extern NSString * const kInputVerificationCodeTip;
+
+//NotificationName
+extern NSString * const kLoginSuccess;
 
 
 /**
  *  接口
  */
-extern NSString * const GOODS_LIST;
+extern NSString * const USER_LOGIN;
+extern NSString * const USER_REGISTER;
+extern NSString * const USER_AUTHENTICATION;
+extern NSString * const UPLOAD_AUTHENTICATION_IMAGE;
+extern NSString * const FETCH_VERIFICATION_CODE;
+
 
 

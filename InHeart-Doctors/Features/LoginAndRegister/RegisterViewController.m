@@ -9,9 +9,14 @@
 #import "RegisterViewController.h"
 
 #import "LoginContentCell.h"
+#import "RegisterPhoneCell.h"
 #import "XLHyperLinkButton.h"
 
+#import "UserModel.h"
+
 #import <Masonry.h>
+#import <GJCFUitils.h>
+#import <SVProgressHUD.h>
 
 @interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *footerView;
@@ -20,6 +25,10 @@
 @property (strong, nonatomic) UITextField *codeTextField;
 @property (strong, nonatomic) UITextField *passwordTextField;
 @property (strong, nonatomic) UITextField *validatePasswordTextField;
+@property (strong, nonatomic) UIButton *fetchCodeButton;
+
+@property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic) NSInteger countInt;
 
 
 @end
@@ -108,6 +117,16 @@
     }
     return _validatePasswordTextField;
 }
+- (UIButton *)fetchCodeButton {
+    if (!_fetchCodeButton) {
+        _fetchCodeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_fetchCodeButton setTitle:kFetchVerificationCode forState:UIControlStateNormal];
+        [_fetchCodeButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
+        _fetchCodeButton.titleLabel.font = kSystemFont(14);
+        [_fetchCodeButton addTarget:self action:@selector(fetchCodeClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _fetchCodeButton;
+}
 
 - (void)resignTextField {
     [self.passwordTextField resignFirstResponder];
@@ -131,21 +150,32 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"ContenCell";
-    LoginContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    static NSString *phoneCellIdentifier = @"PhoneCell";
     switch (indexPath.row) {
         case 0:{
+            RegisterPhoneCell *cell = [tableView dequeueReusableCellWithIdentifier:phoneCellIdentifier forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.iconImageView.image = [UIImage imageNamed:@"phone_number"];
             [cell.contentView addSubview:self.phoneNumberTextField];
             [self.phoneNumberTextField mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.leading.equalTo(cell.contentView.mas_leading).with.mas_offset(79);
                 make.top.equalTo(cell.contentView.mas_top).with.mas_offset(7);
-                make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-37);
+                make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-112);
                 make.height.mas_offset(30);
             }];
+            [cell.contentView addSubview:self.fetchCodeButton];
+            [self.fetchCodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-22);
+                make.top.equalTo(cell.contentView.mas_top);
+                make.height.mas_offset(44);
+                make.width.mas_offset(80);
+            }];
+            return cell;
         }
             break;
         case 1:{
+            LoginContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.iconImageView.image = [UIImage imageNamed:@"Identify_code"];
             [cell.contentView addSubview:self.codeTextField];
             [self.codeTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,10 +184,12 @@
                 make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-37);
                 make.height.mas_offset(30);
             }];
-
+            return cell;
         }
             break;
         case 2:{
+            LoginContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.iconImageView.image = [UIImage imageNamed:@"password"];
             [cell.contentView addSubview:self.passwordTextField];
             [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -166,9 +198,12 @@
                 make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-37);
                 make.height.mas_offset(30);
             }];
+            return cell;
         }
             break;
         case 3:{
+            LoginContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.iconImageView.image = [UIImage imageNamed:@"password"];
             [cell.contentView addSubview:self.validatePasswordTextField];
             [self.validatePasswordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,14 +212,14 @@
                 make.trailing.equalTo(cell.contentView.mas_trailing).with.mas_offset(-37);
                 make.height.mas_offset(30);
             }];
-
+            return cell;
         }
             break;
             
         default:
+            return nil;
             break;
     }
-    return cell;
 }
 
 
@@ -198,6 +233,64 @@
 }
 */
 - (IBAction)registerClick:(id)sender {
+    if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputCorrectPhoneNumberTip];
+        return;
+    }
+    if (XLIsNullObject(self.codeTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputVerificationCodeTip];
+        return;
+    }
+    if (XLIsNullObject(self.passwordTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputPasswordTip];
+        return;
+    }
+    if (!XLCheckPassword(self.passwordTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kPasswordFormatTip];
+        return;
+    }
+    if (![self.passwordTextField.text isEqualToString:self.validatePasswordTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:kDifferentPasswordTip];
+        return;
+    }
+    [SVProgressHUD show];
+    [UserModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
+        if (object) {
+            [SVProgressHUD dismiss];
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+    }];
+}
+- (void)fetchCodeClick {
+    if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
+        [SVProgressHUD showErrorWithStatus:kInputCorrectPhoneNumberTip];
+        return;
+    }
+    self.fetchCodeButton.enabled = NO;
+    self.countInt = 20;
+    [self.fetchCodeButton setTitle:[NSString stringWithFormat:@"%@", @(self.countInt)] forState:UIControlStateNormal];
+    [self.fetchCodeButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
+    }
+    [UserModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
+        
+    }];
+}
+- (void)countNumber {
+    if (self.countInt == 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.fetchCodeButton.enabled = YES;
+        [self.fetchCodeButton setTitle:kFetchVerificationCode forState:UIControlStateNormal];
+        [self.fetchCodeButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
+        
+    } else {
+        self.countInt -= 1;
+        [self.fetchCodeButton setTitle:[NSString stringWithFormat:@"%@", @(self.countInt)] forState:UIControlStateNormal];
+    }
 }
 
 @end

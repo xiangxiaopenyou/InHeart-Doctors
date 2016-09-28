@@ -8,6 +8,11 @@
 
 #import "CommonsDefines.h"
 NSString * const USERID = @"UserId";
+NSString * const USERCODE = @"UserCode";
+NSString * const USERREALNAME = @"Realname";
+NSString * const USERNAME = @"Username";
+NSString * const KEYCHAINSERVICE = @"com.midvision.vrdoctor";
+
 
 CGFloat const TABBARHEIGHT = 49.0;
 CGFloat const NAVIGATIONBARHEIGHT = 64.0;
@@ -26,3 +31,18 @@ NSString * const kInputPassword = @"请输入您的密码";
 NSString * const kInputVerificationCode = @"请输入验证码";
 NSString * const kInputPasswordAgain = @"请再次输入您的密码";
 NSString * const kUserAgreement = @"用户协议";
+NSString * const kFetchVerificationCode = @"获取验证码";
+NSString * const kInputCorrectPhoneNumberTip = @"请输入正确的手机号";
+NSString * const kInputPasswordTip = @"请输入密码";
+NSString * const kPasswordFormatTip = @"密码要求是6-16位数字、字母和符号任意两种的组合";
+NSString * const kDifferentPasswordTip = @"两次密码输入不一致";
+NSString * const kInputVerificationCodeTip = @"请输入收到的验证码";
+
+NSString * const kLoginSuccess = @"LoginSuccess";
+
+
+NSString * const USER_LOGIN = @"doctor/login";
+NSString * const USER_REGISTER = @"doctor/register";
+NSString * const USER_AUTHENTICATION = @"doctor/auth";
+NSString * const UPLOAD_AUTHENTICATION_IMAGE = @"doctor/authUpload";
+NSString * const FETCH_VERIFICATION_CODE = @"doctor/sendCode";

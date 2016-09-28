@@ -8,12 +8,11 @@
 
 #import "MainTabBarController.h"
 #import "ContentViewController.h"
-#import "ContentNavigationController.h"
 #import "InterrogationViewController.h"
 #import "PersonalCenterTableViewController.h"
 
 static CGFloat const kTipLabelHeight = 2.0;
-#define kTipLabelWidth SCREEN_WIDTH / 4.0
+#define kTipLabelWidth SCREEN_WIDTH / 3.0
 
 
 @interface MainTabBarController ()
@@ -73,55 +72,11 @@ static CGFloat const kTipLabelHeight = 2.0;
 }
 
 - (void)setupChildControllerWith:(UIViewController *)childViewController normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage title:(NSString *)title index:(NSInteger)index {
-//    switch (index) {
-//        case 0:{
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
-//            childViewController.title = title;
-//            childViewController.tabBarItem.image = normalImage;
-//            childViewController.tabBarItem.selectedImage = selectedImage;
-//            [self addChildViewController:navigationController];
-//        }
-//            break;
-//        case 1:{
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
-//            childViewController.title = title;
-//            childViewController.tabBarItem.image = normalImage;
-//            childViewController.tabBarItem.selectedImage = selectedImage;
-//            [self addChildViewController:navigationController];
-//        }
-//            break;
-//        case 2:{
-//            ContentNavigationController *navigationController = [[ContentNavigationController alloc] initWithRootViewController:childViewController];
-//            childViewController.title = title;
-//            childViewController.tabBarItem.image = normalImage;
-//            childViewController.tabBarItem.selectedImage = selectedImage;
-//            [self addChildViewController:navigationController];
-//        }
-//            break;
-//        case 3:{
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
-//            childViewController.title = title;
-//            childViewController.tabBarItem.image = normalImage;
-//            childViewController.tabBarItem.selectedImage = selectedImage;
-//            [self addChildViewController:navigationController];
-//        }
-//            
-//        default:
-//            break;
-//    }
-    if (index == 2) {
-        ContentNavigationController *navigationController = [[ContentNavigationController alloc] initWithRootViewController:childViewController];
-        childViewController.title = title;
-        childViewController.tabBarItem.image = normalImage;
-        childViewController.tabBarItem.selectedImage = selectedImage;
-        [self addChildViewController:navigationController];
-    } else {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
-        childViewController.title = title;
-        childViewController.tabBarItem.image = normalImage;
-        childViewController.tabBarItem.selectedImage = selectedImage;
-        [self addChildViewController:navigationController];
-    }
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
+    childViewController.title = title;
+    childViewController.tabBarItem.image = normalImage;
+    childViewController.tabBarItem.selectedImage = selectedImage;
+    [self addChildViewController:navigationController];
     
  
 }

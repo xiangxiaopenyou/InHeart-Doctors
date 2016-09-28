@@ -9,6 +9,7 @@
 #import "PersonalCenterTableViewController.h"
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
+#import "UserInfo.h"
 
 @interface PersonalCenterTableViewController ()
 
@@ -111,6 +112,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[UserInfo sharedUserInfo] removeUserInfo];
+    [[UserInfo sharedUserInfo] removePersonalInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {

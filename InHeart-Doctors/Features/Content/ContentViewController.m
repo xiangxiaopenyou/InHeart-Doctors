@@ -10,11 +10,9 @@
 #import "ContentCell.h"
 
 #import <UIImage-Helpers.h>
-#import <SDCycleScrollView.h>
 
-@interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate, UITextFieldDelegate>
+@interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *viewOfScrollBar;
 @property (weak, nonatomic) IBOutlet UIView *searchContentView;
 @property (strong, nonatomic) UIView *searchView;
 @property (strong, nonatomic) UITextField *searchTextField;
@@ -29,11 +27,6 @@
     
     [self addNavigationTitleView];
     self.tableView.tableFooterView = [UIView new];
-    [self initTableHeaderView];
-}
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self resetNavigationBar];
 }
 - (UIView *)searchView {
     if (!_searchView) {
@@ -65,40 +58,10 @@
 - (void)addNavigationTitleView {
     self.navigationItem.titleView = self.searchView;
 }
-/**
- *  TableHeaderView
- */
-- (void)initTableHeaderView {
-    NSArray *imageUrlArray = @[@"http://img1.3lian.com/img013/v4/57/d/4.jpg"
-                               , @"http://img1.3lian.com/img013/v4/57/d/7.jpg"
-                               , @"http://img1.3lian.com/img013/v4/57/d/6.jpg",
-                               @"http://img1.3lian.com/img013/v4/57/d/8.jpg",
-                               @"http://img1.3lian.com/img013/v4/57/d/2.jpg"
-                               ];
-    SDCycleScrollView *bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 198) imageURLStringsGroup:imageUrlArray];
-    bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-    bannerView.autoScrollTimeInterval = 10.0;
-    bannerView.contentMode = UIViewContentModeScaleAspectFill;
-    bannerView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
-    bannerView.clipsToBounds = YES;
-    bannerView.delegate = self;
-    [self.viewOfScrollBar addSubview:bannerView];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (void)resetNavigationBar {
-    CGFloat y = self.tableView.contentOffset.y;
-    if (y > 10 && y <= 30) {
-        CGFloat difference = (y - 10.0) / 20.0;
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kRGBColor(82, 184, 255, difference)] forBarMetrics:UIBarMetricsDefault];
-    } else if (y > 30) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forBarMetrics:UIBarMetricsDefault];
-    } else {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    }
 }
 
 #pragma mark - UITextField Delegate
@@ -113,19 +76,14 @@
 
 #pragma mark - UITableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 3.0 * (kCollectionCellItemHeight + 5.0);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
     return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.tableView) {
-        [self resetNavigationBar];
-    }
 }
 
 /*
@@ -140,10 +98,9 @@
 
 - (void)cancelSearchClick {
     [self.tabBarController.tabBar setHidden:NO];
-    self.navigationController.navigationBar.translucent = YES;
-    [self resetNavigationBar];
     self.searchContentView.hidden = YES;
     self.navigationItem.leftBarButtonItem = nil;
+    self.searchTextField.text = nil;
     [self.searchTextField resignFirstResponder];
 }
 
