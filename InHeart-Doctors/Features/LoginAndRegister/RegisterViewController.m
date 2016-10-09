@@ -13,6 +13,8 @@
 #import "XLHyperLinkButton.h"
 
 #import "UserModel.h"
+#import "PersonalInfo.h"
+#import "UserInfo.h"
 
 #import <Masonry.h>
 #import <GJCFUitils.h>
@@ -48,6 +50,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self resignTextField];
+    [self.timer invalidate];
+    self.timer = nil;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -256,7 +260,28 @@
     [SVProgressHUD show];
     [UserModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            [SVProgressHUD dismiss];
+            [SVProgressHUD showWithStatus:@"正在登录..."];
+            [UserModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text deviceCode:nil handler:^(id object, NSString *msg) {
+                if (object) {
+                    [SVProgressHUD dismiss];
+                    UserModel *userModel = [object copy];
+                    NSInteger code = [msg integerValue];
+                    userModel.code = @(code);
+                    if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
+                        PersonalInfo *tempInfo = [PersonalInfo new];
+                        tempInfo.username = userModel.username;
+                        tempInfo.password = self.passwordTextField.text;
+                        if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                        }
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [SVProgressHUD showErrorWithStatus:@"自动登录失败"];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    });
+                }
+            }];
             
         } else {
             [SVProgressHUD showErrorWithStatus:msg];

@@ -10,6 +10,17 @@
 #import "RequestCacher.h"
 
 @implementation BaseRequest
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.params = [[NSMutableDictionary alloc] init];
+        if ([[NSUserDefaults standardUserDefaults] stringForKey:USERID]) {
+            NSString *userId = [[NSUserDefaults standardUserDefaults] stringForKey:USERID];
+            [self.params setObject:userId forKey:@"uid"];
+        }
+    }
+    return self;
+}
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
     
 }

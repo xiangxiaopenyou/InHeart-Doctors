@@ -43,16 +43,14 @@
         return YES;
     }
 }
-//+ (BOOL)isAppPhotoLibraryAccessAuthorized {
-//    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
-//    if (authStatus != ALAuthorizationStatusAuthorized) {
-//        return authStatus == ALAuthorizationStatusNotDetermined;
-//        
-//    } else {
-//        
-//        return YES;
-//    }
-//}
++ (BOOL)isAppPhotoLibraryAccessAuthorized {
+    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+    if (authStatus != ALAuthorizationStatusAuthorized) {
+        return authStatus == ALAuthorizationStatusNotDetermined;
+    } else {
+        return YES;
+    }
+}
 
 + (BOOL)isNullObject:(id)anObject {
     if (!anObject || [anObject isEqual:@""] || [anObject isEqual:[NSNull null]] || [anObject isKindOfClass:[NSNull class]]) {

@@ -19,6 +19,7 @@ NSString * const BASEIMAGEURL = @"http://7xwgun.com1.z0.glb.clouddn.com";
         AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [requestSerializer setHTTPShouldHandleCookies:YES];
         AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
         NSMutableSet *types = [[serializer acceptableContentTypes] mutableCopy];
         [types addObjectsFromArray:@[@"text/plain", @"text/html"]];

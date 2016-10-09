@@ -1,14 +1,14 @@
 //
-//  ExpertNameCell.m
-//  InHeart
+//  AuthenticationInformationCell.m
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/9/22.
+//  Created by 项小盆友 on 16/9/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "ExpertNameCell.h"
+#import "AuthenticationInformationCell.h"
 
-@implementation ExpertNameCell
+@implementation AuthenticationInformationCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

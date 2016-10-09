@@ -17,6 +17,7 @@ typedef void (^RequestResultHandler)(id object, NSString *msg);
 @end
 
 @interface BaseRequest : NSObject<RequestProtocol>
+@property (strong, nonatomic) NSMutableDictionary *params;
 - (void)cacheRequest:(NSString *)request method:(NSString *)method param:(NSDictionary *)param;
 - (NSString *)handlerError:(NSError *)error;
 

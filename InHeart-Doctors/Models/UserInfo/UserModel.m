@@ -10,6 +10,8 @@
 #import "LoginRequest.h"
 #import "FetchVerificationCodeRequest.h"
 #import "RegisterRequest.h"
+#import "ExpertAuthenticationRequest.h"
+#import "UploadAuthenticationPictureRequest.h"
 
 
 @implementation UserModel
@@ -44,6 +46,27 @@
         request.username = username;
         request.password = password;
         request.captcha = verificationCode;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            !handler ?: handler(object, nil);
+        }
+    }];
+}
++ (void)userAuthentication:(NSString *)pictureId name:(NSString *)realname card:(NSString *)cardNumber handler:(RequestResultHandler)handler {
+    [[ExpertAuthenticationRequest new] request:^BOOL(ExpertAuthenticationRequest *request) {
+        request.pictureId = pictureId;
+        request.realname = realname;
+        request.cardNumber = cardNumber;
+        return YES;
+    } result:handler];
+}
++ (void)uploadAuthenticationPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler {
+    [[UploadAuthenticationPictureRequest new] request:^BOOL(UploadAuthenticationPictureRequest *request) {
+        request.fileName = fileName;
+        request.fileData = fileData;
         return YES;
     } result:^(id object, NSString *msg) {
         if (msg) {

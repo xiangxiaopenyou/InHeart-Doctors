@@ -12,6 +12,7 @@
  */
 #define SCREEN_WIDTH CGRectGetWidth(UIScreen.mainScreen.bounds)
 #define SCREEN_HEIGHT CGRectGetHeight(UIScreen.mainScreen.bounds)
+
 //推荐内容高度和宽度
 #define kCollectionCellItemWidth (SCREEN_WIDTH - 5) / 2.0
 #define kCollectionCellItemHeight kCollectionCellItemWidth * 30.0 / 37.0
@@ -67,10 +68,10 @@
  */
 #define XLIsAppCameraAccessAuthorized [Util isAppCameraAccessAuthorized]
 
-///**
-// *  是否有权限访问相册
-// */
-//#define XLIsAppPhotoLibraryAccessAuthorized [Util isAppPhotoLibraryAccessAuthorized]
+/**
+ *  是否有权限访问相册
+ */
+#define XLIsAppPhotoLibraryAccessAuthorized [Util isAppPhotoLibraryAccessAuthorized]
 
 #pragma mark - Cache
 /**

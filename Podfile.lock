@@ -36,7 +36,7 @@ PODS:
   - YUChineseSorting (1.0.2)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.0)
+  - AFNetworking
   - GJCFUitils
   - IQKeyboardManager
   - JSONModel

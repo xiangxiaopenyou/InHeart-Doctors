@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
+#import "AuthenticationViewController.h"
 #import "UserInfo.h"
 
 #import <UIImage-Helpers.h>
@@ -33,6 +34,8 @@
     [self initAppearance];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:kLoginSuccess object:nil];
+    
+    //PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
     
     [self.window makeKeyAndVisible];
     
@@ -68,14 +71,22 @@
 
 //登录状态变化
 - (void)checkUserState:(NSNotification *)notification {
-    if ([[UserInfo sharedUserInfo] isLogined]) {
-        MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
-        self.window.rootViewController = tabBarController;
-    } else {
-        LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        self.window.rootViewController = navigationController;
-    }
+//    if ([[UserInfo sharedUserInfo] isLogined]) {
+//        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
+//        if (userCode == 0 || userCode == -7) {
+            MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
+            self.window.rootViewController = tabBarController;
+//        } else if (userCode == -4) {
+//            AuthenticationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationView"];
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
+//            self.window.rootViewController = navigationController;
+//        }
+//        
+//    } else {
+//        LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+//        self.window.rootViewController = navigationController;
+//    }
 }
 - (void)initAppearance {
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : TABBAR_TITLE_COLOR} forState:UIControlStateNormal];

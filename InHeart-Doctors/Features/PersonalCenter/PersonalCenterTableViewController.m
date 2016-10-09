@@ -7,6 +7,7 @@
 //
 
 #import "PersonalCenterTableViewController.h"
+#import "EditInformationViewController.h"
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
 #import "UserInfo.h"
@@ -45,7 +46,7 @@
             number = 1;
             break;
         case 1:
-            number = 4;
+            number = 2;
             break;
         case 2:
             number = 2;
@@ -68,8 +69,8 @@
             break;
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            NSArray *tempIconArray = @[@"my_interrogation", @"my_doctors", @"my_collections", @"my_account"];
-            NSArray *tempTitleArray = @[kMyInterrogation, kMyDoctors, kMyCollections, kMyAccount];
+            NSArray *tempIconArray = @[@"my_interrogation", @"my_collections"];
+            NSArray *tempTitleArray = @[kMyInterrogation, kMyCollections];
             cell.imageView.image = [UIImage imageNamed:tempIconArray[indexPath.row]];
             cell.textLabel.font = kSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
@@ -88,8 +89,8 @@
             NSString *iconString;
             NSString *titleString;
             if (indexPath.row == 0) {
-                iconString = @"help_feedback";
-                titleString = kHelpAndFeedback;
+                iconString = @"interrogation_setting";
+                titleString = kInterrogationSetting;
             } else {
                 iconString = @"setting";
                 titleString = kPersonalSetting;
@@ -112,9 +113,12 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[UserInfo sharedUserInfo] removeUserInfo];
-    [[UserInfo sharedUserInfo] removePersonalInfo];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+//    [[UserInfo sharedUserInfo] removeUserInfo];
+//    [[UserInfo sharedUserInfo] removePersonalInfo];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+    EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
+    [self.navigationController pushViewController:editViewController animated:YES];
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {

@@ -18,6 +18,7 @@
 + (BOOL)canSendSMS;
 + (BOOL)canMakePhoneCall;
 + (BOOL)isAppCameraAccessAuthorized;
++ (BOOL)isAppPhotoLibraryAccessAuthorized;
 
 + (BOOL)isNullObject:(id)anObject;
 + (NSURL *)urlWithString:(NSString *)urlString;

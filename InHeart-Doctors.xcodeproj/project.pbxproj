@@ -25,12 +25,8 @@
 		3D6A8ED71D98C69600C405DA /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E971D98C69600C405DA /* Content.storyboard */; };
 		3D6A8ED91D98C69600C405DA /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E9C1D98C69600C405DA /* ContentViewController.m */; };
 		3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E9F1D98C69600C405DA /* ContentCell.m */; };
-		3D6A8EDB1D98C69600C405DA /* ExpertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA21D98C69600C405DA /* ExpertDetailViewController.m */; };
 		3D6A8EDC1D98C69600C405DA /* Interrogation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */; };
 		3D6A8EDD1D98C69600C405DA /* InterrogationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */; };
-		3D6A8EDE1D98C69600C405DA /* DoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA81D98C69600C405DA /* DoctorCell.m */; };
-		3D6A8EDF1D98C69600C405DA /* ExpertIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EAA1D98C69600C405DA /* ExpertIntroductionCell.m */; };
-		3D6A8EE01D98C69600C405DA /* ExpertNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EAC1D98C69600C405DA /* ExpertNameCell.m */; };
 		3D6A8EE11D98C69600C405DA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8EAE1D98C69600C405DA /* Login.storyboard */; };
 		3D6A8EE21D98C69600C405DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EB01D98C69600C405DA /* LoginViewController.m */; };
 		3D6A8EE31D98C69600C405DA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EB21D98C69600C405DA /* RegisterViewController.m */; };
@@ -47,11 +43,16 @@
 		3D6A8EEE1D98C69600C405DA /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8ED01D98C69600C405DA /* RequestManager.m */; };
 		3D6A8EF41D98FD4F00C405DA /* RegisterPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EF31D98FD4F00C405DA /* RegisterPhoneCell.m */; };
 		3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EFB1D9908E800C405DA /* UserInfo.m */; };
-		3D9EE9441D991C1F0048ED3C /* AuthenticationStepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EE9431D991C1F0048ED3C /* AuthenticationStepOneViewController.m */; };
-		3D9EE9471D991C350048ED3C /* AuthenticationStepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EE9461D991C350048ED3C /* AuthenticationStepTwoViewController.m */; };
+		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
+		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
+		3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD93E631DAA10A6008B190A /* EditInformationViewController.m */; };
+		3DEA69F41D9CED6700EA8236 /* AuthenticationInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */; };
+		3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */; };
 		3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */; };
 		3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */; };
 		3DEFA4BB1D9A47CC00876E56 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4BA1D9A47CC00876E56 /* UserModel.m */; };
+		3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */; };
+		3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */; };
 		AC7689E77F840F7C27DE370D /* libPods-InHeart-Doctors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5336DF3E39D18ED8BAA3BBD0 /* libPods-InHeart-Doctors.a */; };
 /* End PBXBuildFile section */
 
@@ -91,17 +92,9 @@
 		3D6A8E9C1D98C69600C405DA /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		3D6A8E9E1D98C69600C405DA /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
 		3D6A8E9F1D98C69600C405DA /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
-		3D6A8EA11D98C69600C405DA /* ExpertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertDetailViewController.h; sourceTree = "<group>"; };
-		3D6A8EA21D98C69600C405DA /* ExpertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertDetailViewController.m; sourceTree = "<group>"; };
 		3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interrogation.storyboard; sourceTree = "<group>"; };
 		3D6A8EA41D98C69600C405DA /* InterrogationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterrogationViewController.h; sourceTree = "<group>"; };
 		3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterrogationViewController.m; sourceTree = "<group>"; };
-		3D6A8EA71D98C69600C405DA /* DoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorCell.h; sourceTree = "<group>"; };
-		3D6A8EA81D98C69600C405DA /* DoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorCell.m; sourceTree = "<group>"; };
-		3D6A8EA91D98C69600C405DA /* ExpertIntroductionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertIntroductionCell.h; sourceTree = "<group>"; };
-		3D6A8EAA1D98C69600C405DA /* ExpertIntroductionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertIntroductionCell.m; sourceTree = "<group>"; };
-		3D6A8EAB1D98C69600C405DA /* ExpertNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertNameCell.h; sourceTree = "<group>"; };
-		3D6A8EAC1D98C69600C405DA /* ExpertNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertNameCell.m; sourceTree = "<group>"; };
 		3D6A8EAE1D98C69600C405DA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3D6A8EAF1D98C69600C405DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3D6A8EB01D98C69600C405DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -133,16 +126,26 @@
 		3D6A8EF31D98FD4F00C405DA /* RegisterPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPhoneCell.m; sourceTree = "<group>"; };
 		3D6A8EFA1D9908E800C405DA /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		3D6A8EFB1D9908E800C405DA /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
-		3D9EE9421D991C1F0048ED3C /* AuthenticationStepOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationStepOneViewController.h; sourceTree = "<group>"; };
-		3D9EE9431D991C1F0048ED3C /* AuthenticationStepOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationStepOneViewController.m; sourceTree = "<group>"; };
-		3D9EE9451D991C350048ED3C /* AuthenticationStepTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationStepTwoViewController.h; sourceTree = "<group>"; };
-		3D9EE9461D991C350048ED3C /* AuthenticationStepTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationStepTwoViewController.m; sourceTree = "<group>"; };
+		3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionsTableViewController.h; sourceTree = "<group>"; };
+		3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionsTableViewController.m; sourceTree = "<group>"; };
+		3DBDFD451DAA45E70065AA7A /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		3DBDFD461DAA45E70065AA7A /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		3DD93E621DAA10A6008B190A /* EditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationViewController.h; sourceTree = "<group>"; };
+		3DD93E631DAA10A6008B190A /* EditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationViewController.m; sourceTree = "<group>"; };
+		3DEA69F21D9CED6700EA8236 /* AuthenticationInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationCell.h; sourceTree = "<group>"; };
+		3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationCell.m; sourceTree = "<group>"; };
+		3DEA69F51D9CF1BE00EA8236 /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
+		3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		3DEFA4B21D9A1B0000876E56 /* ContentCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCollectionCell.h; sourceTree = "<group>"; };
 		3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCollectionCell.m; sourceTree = "<group>"; };
 		3DEFA4B61D9A3D9C00876E56 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		3DEFA4B91D9A47CC00876E56 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		3DEFA4BA1D9A47CC00876E56 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		3DFBD4231D9E04C400B93B03 /* ExpertAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertAuthenticationRequest.h; sourceTree = "<group>"; };
+		3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertAuthenticationRequest.m; sourceTree = "<group>"; };
+		3DFBD4261D9E45F100B93B03 /* UploadAuthenticationPictureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAuthenticationPictureRequest.h; sourceTree = "<group>"; };
+		3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAuthenticationPictureRequest.m; sourceTree = "<group>"; };
 		5336DF3E39D18ED8BAA3BBD0 /* libPods-InHeart-Doctors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InHeart-Doctors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9070B41DC81E52D1D9A0737B /* Pods-InHeart-Doctors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.release.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.release.xcconfig"; sourceTree = "<group>"; };
 		B18DA84244895FBEA33C12C4 /* Pods-InHeart-Doctors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.debug.xcconfig"; sourceTree = "<group>"; };
@@ -262,10 +265,10 @@
 		3D6A8E951D98C69600C405DA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3D6A8EB61D98C69600C405DA /* Main */,
 				3D6A8E961D98C69600C405DA /* Content */,
 				3D6A8EA01D98C69600C405DA /* Interrogation */,
 				3D6A8EAD1D98C69600C405DA /* LoginAndRegister */,
-				3D6A8EB61D98C69600C405DA /* Main */,
 				3D6A8EB91D98C69600C405DA /* PersonalCenter */,
 			);
 			path = Features;
@@ -297,8 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				3D6A8EA61D98C69600C405DA /* Views */,
-				3D6A8EA11D98C69600C405DA /* ExpertDetailViewController.h */,
-				3D6A8EA21D98C69600C405DA /* ExpertDetailViewController.m */,
 				3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */,
 				3D6A8EA41D98C69600C405DA /* InterrogationViewController.h */,
 				3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */,
@@ -309,12 +310,6 @@
 		3D6A8EA61D98C69600C405DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3D6A8EA71D98C69600C405DA /* DoctorCell.h */,
-				3D6A8EA81D98C69600C405DA /* DoctorCell.m */,
-				3D6A8EA91D98C69600C405DA /* ExpertIntroductionCell.h */,
-				3D6A8EAA1D98C69600C405DA /* ExpertIntroductionCell.m */,
-				3D6A8EAB1D98C69600C405DA /* ExpertNameCell.h */,
-				3D6A8EAC1D98C69600C405DA /* ExpertNameCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,10 +323,8 @@
 				3D6A8EB01D98C69600C405DA /* LoginViewController.m */,
 				3D6A8EB11D98C69600C405DA /* RegisterViewController.h */,
 				3D6A8EB21D98C69600C405DA /* RegisterViewController.m */,
-				3D9EE9421D991C1F0048ED3C /* AuthenticationStepOneViewController.h */,
-				3D9EE9431D991C1F0048ED3C /* AuthenticationStepOneViewController.m */,
-				3D9EE9451D991C350048ED3C /* AuthenticationStepTwoViewController.h */,
-				3D9EE9461D991C350048ED3C /* AuthenticationStepTwoViewController.m */,
+				3DEA69F51D9CF1BE00EA8236 /* AuthenticationViewController.h */,
+				3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -343,6 +336,8 @@
 				3D6A8EB51D98C69600C405DA /* LoginContentCell.m */,
 				3D6A8EF21D98FD4E00C405DA /* RegisterPhoneCell.h */,
 				3D6A8EF31D98FD4F00C405DA /* RegisterPhoneCell.m */,
+				3DEA69F21D9CED6700EA8236 /* AuthenticationInformationCell.h */,
+				3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,10 +355,14 @@
 		3D6A8EB91D98C69600C405DA /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				3D6A8EBD1D98C69600C405DA /* Views */,
 				3D6A8EBA1D98C69600C405DA /* Personal.storyboard */,
 				3D6A8EBB1D98C69600C405DA /* PersonalCenterTableViewController.h */,
 				3D6A8EBC1D98C69600C405DA /* PersonalCenterTableViewController.m */,
-				3D6A8EBD1D98C69600C405DA /* Views */,
+				3DD93E621DAA10A6008B190A /* EditInformationViewController.h */,
+				3DD93E631DAA10A6008B190A /* EditInformationViewController.m */,
+				3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */,
+				3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -375,6 +374,8 @@
 				3D6A8EBF1D98C69600C405DA /* CommonFunctionCell.m */,
 				3D6A8EC01D98C69600C405DA /* PersonalInformationCell.h */,
 				3D6A8EC11D98C69600C405DA /* PersonalInformationCell.m */,
+				3DBDFD451DAA45E70065AA7A /* CollectionCell.h */,
+				3DBDFD461DAA45E70065AA7A /* CollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +452,10 @@
 				3D3DCE501D9B51E20067870D /* FetchVerificationCodeRequest.m */,
 				3D3DCE521D9B70E60067870D /* RegisterRequest.h */,
 				3D3DCE531D9B70E60067870D /* RegisterRequest.m */,
+				3DFBD4231D9E04C400B93B03 /* ExpertAuthenticationRequest.h */,
+				3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */,
+				3DFBD4261D9E45F100B93B03 /* UploadAuthenticationPictureRequest.h */,
+				3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -591,43 +596,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
 				3D6A8EED1D98C69600C405DA /* RequestCacher.m in Sources */,
 				3D6A8EE41D98C69600C405DA /* LoginContentCell.m in Sources */,
 				3D6A8EEE1D98C69600C405DA /* RequestManager.m in Sources */,
 				3D6A8EEB1D98C69600C405DA /* DoctorModel.m in Sources */,
-				3D6A8EDF1D98C69600C405DA /* ExpertIntroductionCell.m in Sources */,
 				3D6A8EE91D98C69600C405DA /* PersonalInformationCell.m in Sources */,
 				3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */,
 				3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */,
-				3D6A8EE01D98C69600C405DA /* ExpertNameCell.m in Sources */,
 				3D6A8EE51D98C69600C405DA /* MainTabBarController.m in Sources */,
 				3D6A8E711D98B07700C405DA /* main.m in Sources */,
 				3D6A8ED61D98C69600C405DA /* XLHyperLinkButton.m in Sources */,
+				3DEA69F41D9CED6700EA8236 /* AuthenticationInformationCell.m in Sources */,
 				3D6A8EE21D98C69600C405DA /* LoginViewController.m in Sources */,
-				3D6A8EDB1D98C69600C405DA /* ExpertDetailViewController.m in Sources */,
 				3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */,
 				3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */,
 				3D1870D21D9BBEDA00B8B34B /* KeychainItemWrapper.m in Sources */,
-				3D9EE9441D991C1F0048ED3C /* AuthenticationStepOneViewController.m in Sources */,
 				3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */,
 				3D6A8EE81D98C69600C405DA /* CommonFunctionCell.m in Sources */,
+				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
 				3D6A8ED41D98C69600C405DA /* XLBlockAlertView.m in Sources */,
 				3D6A8ED91D98C69600C405DA /* ContentViewController.m in Sources */,
 				3D6A8EDD1D98C69600C405DA /* InterrogationViewController.m in Sources */,
 				3DEFA4BB1D9A47CC00876E56 /* UserModel.m in Sources */,
-				3D9EE9471D991C350048ED3C /* AuthenticationStepTwoViewController.m in Sources */,
+				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
 				3D6A8EE31D98C69600C405DA /* RegisterViewController.m in Sources */,
 				3D3DCE541D9B70E60067870D /* RegisterRequest.m in Sources */,
 				3D6A8EEA1D98C69600C405DA /* BaseModel.m in Sources */,
 				3D6A8EF41D98FD4F00C405DA /* RegisterPhoneCell.m in Sources */,
 				3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */,
+				3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */,
 				3D1870D51D9BC6F600B8B34B /* PersonalInfo.m in Sources */,
 				3D6A8EEC1D98C69600C405DA /* BaseRequest.m in Sources */,
-				3D6A8EDE1D98C69600C405DA /* DoctorCell.m in Sources */,
+				3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */,
 				3D6A8ED21D98C69600C405DA /* Util.m in Sources */,
 				3D6A8ED31D98C69600C405DA /* XLBlockActionSheet.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
+				3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */,
 				3D6A8EE71D98C69600C405DA /* PersonalCenterTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -739,7 +745,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -756,7 +762,7 @@
 				DEVELOPMENT_TEAM = TC6ARYK6RK;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.midvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -772,7 +778,7 @@
 				DEVELOPMENT_TEAM = TC6ARYK6RK;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.midvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";

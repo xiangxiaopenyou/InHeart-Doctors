@@ -1,14 +1,14 @@
 //
-//  ExpertIntroductionCell.m
-//  InHeart
+//  CollectionCell.m
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/9/22.
+//  Created by 项小盆友 on 16/10/9.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "ExpertIntroductionCell.h"
+#import "CollectionCell.h"
 
-@implementation ExpertIntroductionCell
+@implementation CollectionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
