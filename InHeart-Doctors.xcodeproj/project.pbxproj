@@ -43,6 +43,8 @@
 		3D6A8EEE1D98C69600C405DA /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8ED01D98C69600C405DA /* RequestManager.m */; };
 		3D6A8EF41D98FD4F00C405DA /* RegisterPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EF31D98FD4F00C405DA /* RegisterPhoneCell.m */; };
 		3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EFB1D9908E800C405DA /* UserInfo.m */; };
+		3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */; };
+		3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */; };
 		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
 		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
 		3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD93E631DAA10A6008B190A /* EditInformationViewController.m */; };
@@ -126,6 +128,10 @@
 		3D6A8EF31D98FD4F00C405DA /* RegisterPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPhoneCell.m; sourceTree = "<group>"; };
 		3D6A8EFA1D9908E800C405DA /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		3D6A8EFB1D9908E800C405DA /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		3D833D291DAB73DD003E970E /* WritePrescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritePrescriptionViewController.h; sourceTree = "<group>"; };
+		3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritePrescriptionViewController.m; sourceTree = "<group>"; };
+		3DA3D9E41DAB3F380088E665 /* InterrogationSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterrogationSettingViewController.h; sourceTree = "<group>"; };
+		3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterrogationSettingViewController.m; sourceTree = "<group>"; };
 		3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionsTableViewController.h; sourceTree = "<group>"; };
 		3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionsTableViewController.m; sourceTree = "<group>"; };
 		3DBDFD451DAA45E70065AA7A /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
@@ -303,6 +309,8 @@
 				3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */,
 				3D6A8EA41D98C69600C405DA /* InterrogationViewController.h */,
 				3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */,
+				3D833D291DAB73DD003E970E /* WritePrescriptionViewController.h */,
+				3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */,
 			);
 			path = Interrogation;
 			sourceTree = "<group>";
@@ -363,6 +371,8 @@
 				3DD93E631DAA10A6008B190A /* EditInformationViewController.m */,
 				3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */,
 				3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */,
+				3DA3D9E41DAB3F380088E665 /* InterrogationSettingViewController.h */,
+				3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -597,6 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */,
+				3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
 				3D6A8EED1D98C69600C405DA /* RequestCacher.m in Sources */,
 				3D6A8EE41D98C69600C405DA /* LoginContentCell.m in Sources */,
@@ -621,6 +632,7 @@
 				3D6A8EDD1D98C69600C405DA /* InterrogationViewController.m in Sources */,
 				3DEFA4BB1D9A47CC00876E56 /* UserModel.m in Sources */,
 				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
+				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
 				3D6A8EE31D98C69600C405DA /* RegisterViewController.m in Sources */,
 				3D3DCE541D9B70E60067870D /* RegisterRequest.m in Sources */,
 				3D6A8EEA1D98C69600C405DA /* BaseModel.m in Sources */,

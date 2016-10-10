@@ -8,6 +8,9 @@
 
 #import "PersonalCenterTableViewController.h"
 #import "EditInformationViewController.h"
+#import "MyCollectionsTableViewController.h"
+#import "InterrogationSettingViewController.h"
+
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
 #import "UserInfo.h"
@@ -116,8 +119,32 @@
 //    [[UserInfo sharedUserInfo] removeUserInfo];
 //    [[UserInfo sharedUserInfo] removePersonalInfo];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
-    EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
-    [self.navigationController pushViewController:editViewController animated:YES];
+    switch (indexPath.section) {
+        case 0:{
+            EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
+            [self.navigationController pushViewController:editViewController animated:YES];
+        }
+            break;
+        case 1:{
+            if (indexPath.row == 0) {
+                
+            } else {
+                MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
+                [self.navigationController pushViewController:collectionViewController animated:YES];
+            }
+        }
+            break;
+        case 2:{
+            if (indexPath.row == 0) {
+                InterrogationSettingViewController *interrogationSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InterrogationSetting"];
+                [self.navigationController pushViewController:interrogationSettingViewController animated:YES];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -52,5 +52,64 @@
             </objects>
             <point key="canvasLocation" x="344" y="330"/>
         </scene>
+        <!--写处方-->
+        <scene sceneID="6pn-6C-zay">
+            <objects>
+                <viewController storyboardIdentifier="WritePrescription" automaticallyAdjustsScrollViewInsets="NO" id="Szd-IS-HsT" customClass="WritePrescriptionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xkl-Rr-fTi"/>
+                        <viewControllerLayoutGuide type="bottom" id="7JE-5X-ORJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4oS-cm-6Co">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-8Q-E1f">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoctorsAdvice" id="DGY-oc-9fS">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DGY-oc-9fS" id="ZAo-FE-O71">
+                                            <frame key="frameInset" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrescriptionContent" id="vMj-Yc-xBC">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMj-Yc-xBC" id="iF4-Oh-lNf">
+                                            <frame key="frameInset" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsultingFees" id="LmD-Tp-X7u">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LmD-Tp-X7u" id="GqD-19-yb4">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ioc-8Q-E1f" secondAttribute="trailing" id="InC-u0-PcA"/>
+                            <constraint firstItem="7JE-5X-ORJ" firstAttribute="top" secondItem="ioc-8Q-E1f" secondAttribute="bottom" id="YNZ-xE-53Z"/>
+                            <constraint firstItem="ioc-8Q-E1f" firstAttribute="top" secondItem="xkl-Rr-fTi" secondAttribute="bottom" id="sQv-Dq-lQA"/>
+                            <constraint firstItem="ioc-8Q-E1f" firstAttribute="leading" secondItem="4oS-cm-6Co" secondAttribute="leading" id="wIa-6P-kK7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="写处方" id="r92-yZ-AJV">
+                        <barButtonItem key="rightBarButtonItem" title="确定" id="9lf-lq-59q"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q7r-e4-lJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="372"/>
+        </scene>
     </scenes>
 </document>
