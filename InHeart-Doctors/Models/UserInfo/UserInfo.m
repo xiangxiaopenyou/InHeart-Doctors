@@ -22,7 +22,7 @@
     return instance;
 }
 - (BOOL)isLogined {
-    if ([[NSUserDefaults standardUserDefaults] stringForKey:USERID]) {
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:USERTOKEN]) {
         return YES;
     } else {
         return NO;
@@ -35,8 +35,8 @@
     if (userModel.code) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.code forKey:USERCODE];
     }
-    if (userModel.uid) {
-        [[NSUserDefaults standardUserDefaults] setObject:userModel.uid forKey:USERID];
+    if (userModel.token) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.token forKey:USERTOKEN];
     }
     if (userModel.realname) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.realname forKey:USERREALNAME];
@@ -49,8 +49,8 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERCODE]) {
         model.code = [[NSUserDefaults standardUserDefaults] objectForKey:USERCODE];
     }
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERID]) {
-        model.uid = [[NSUserDefaults standardUserDefaults] objectForKey:USERID];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERTOKEN]) {
+        model.token = [[NSUserDefaults standardUserDefaults] objectForKey:USERTOKEN];
     }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERREALNAME]) {
         model.realname = [[NSUserDefaults standardUserDefaults] objectForKey:USERREALNAME];
@@ -59,7 +59,7 @@
 }
 - (void)removeUserInfo {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERCODE];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERTOKEN];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERREALNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

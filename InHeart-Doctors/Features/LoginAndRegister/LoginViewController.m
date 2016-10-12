@@ -139,7 +139,7 @@
     }
     [self resignTextField];
     [SVProgressHUD show];
-    [UserModel userLogin:self.phoneTextField.text password:self.passwordTextField.text deviceCode:nil handler:^(id object, NSString *msg) {
+    [UserModel userLogin:self.phoneTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             [SVProgressHUD dismiss];
             UserModel *userModel = [object copy];
@@ -153,14 +153,6 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                 }
             }
-//            if (code == 0 || code == -7) {
-//            } else if (code == -4) {
-//                
-//            } else if (code == -5) {
-//                
-//            } else {
-//                
-//            }
         } else {
             [SVProgressHUD showErrorWithStatus:msg];
         }

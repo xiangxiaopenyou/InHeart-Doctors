@@ -23,7 +23,7 @@
     return deviceString;
 }
 + (NSString *)systemVersion {
-    return [NSString stringWithFormat:@"%@%@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion];
+    return [NSString stringWithFormat:@"%@", [UIDevice currentDevice].systemVersion];
 }
 + (BOOL)cameraAvailable {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];

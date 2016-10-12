@@ -17,11 +17,12 @@
     NSMutableDictionary *param = [@{@"username" : self.username,
                                     @"password" : self.password,
                                     @"deviceId" : XLMobileModel,
-                                    @"deviceType" : XLSystemVersion} mutableCopy];
-    if (self.deviceCode) {
-        [param setObject:self.deviceCode forKey:@"deviceCode"];
-    }
-    [[RequestManager sharedInstance] POST:USER_LOGIN parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                                    @"appVersion" : @(XLAppVersion),
+                                    @"deviceSystem" : @"iOS",
+                                    @"deviceVersion" : XLSystemVersion,
+                                    @"appId" : @"AppStore",
+                                    @"channel" : @"AppStore"} mutableCopy];
+    [[RequestManager sharedInstance] POST:USER_LOGIN parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"code"] integerValue] == -1 || [responseObject[@"code"] integerValue] == -2 || [responseObject[@"code"] integerValue] == -3) {
             !resultHandler ?: resultHandler(nil, responseObject[@"message"]);
         } else {

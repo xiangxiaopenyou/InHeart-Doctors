@@ -14,9 +14,9 @@
     self = [super init];
     if (self) {
         self.params = [[NSMutableDictionary alloc] init];
-        if ([[NSUserDefaults standardUserDefaults] stringForKey:USERID]) {
-            NSString *userId = [[NSUserDefaults standardUserDefaults] stringForKey:USERID];
-            [self.params setObject:userId forKey:@"uid"];
+        if ([[NSUserDefaults standardUserDefaults] stringForKey:USERTOKEN]) {
+            NSString *userToken = [[NSUserDefaults standardUserDefaults] stringForKey:USERTOKEN];
+            [self.params setObject:userToken forKey:@"token"];
         }
     }
     return self;

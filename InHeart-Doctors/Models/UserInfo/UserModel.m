@@ -15,14 +15,10 @@
 
 
 @implementation UserModel
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"uid" : @"id"}];
-}
-+ (void)userLogin:(NSString *)username password:(NSString *)password deviceCode:(NSString *)deviceCode handler:(RequestResultHandler)handler {
++ (void)userLogin:(NSString *)username password:(NSString *)password handler:(RequestResultHandler)handler {
     [[LoginRequest new] request:^BOOL(LoginRequest *request) {
         request.username = username;
         request.password = password;
-        request.deviceCode = deviceCode;
         return YES;
     } result:^(id object, NSString *msg) {
         if (msg) {

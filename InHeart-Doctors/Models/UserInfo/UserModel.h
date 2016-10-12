@@ -9,12 +9,12 @@
 #import "BaseModel.h"
 
 @interface UserModel : BaseModel
-@property (copy, nonatomic) NSString *uid;
+@property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSString<Optional> *realname;
 @property (copy, nonatomic) NSString *username;
 @property (strong, nonatomic) NSNumber<Optional> *code;
 
-+ (void)userLogin:(NSString *)username password:(NSString *)password deviceCode:(NSString *)deviceCode handler:(RequestResultHandler)handler;
++ (void)userLogin:(NSString *)username password:(NSString *)password handler:(RequestResultHandler)handler;
 + (void)fetchCode:(NSString *)phoneNumber handler:(RequestResultHandler)handler;
 + (void)userRegister:(NSString *)username password:(NSString *)password code:(NSString *)verificationCode handler:(RequestResultHandler)handler;
 + (void)userAuthentication:(NSString *)pictureId name:(NSString *)realname card:(NSString *)cardNumber handler:(RequestResultHandler)handler;

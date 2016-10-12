@@ -14,11 +14,11 @@
         return;
     }
     
-    NSDictionary *param = @{@"isNumber" : self.cardNumber,
+    NSDictionary *param = @{@"idNumber" : self.cardNumber,
                             @"imageId" : self.pictureId,
                             @"realname" : self.realname};
     [self.params addEntriesFromDictionary:param];
-    [[RequestManager sharedInstance] POST:USER_AUTHENTICATION parameters:self.params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [[RequestManager sharedInstance] POST:USER_AUTHENTICATION parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject, nil);
         } else {

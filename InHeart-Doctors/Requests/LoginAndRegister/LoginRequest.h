@@ -11,6 +11,5 @@
 @interface LoginRequest : BaseRequest
 @property (copy, nonatomic) NSString *username;
 @property (copy, nonatomic) NSString *password;
-@property (copy, nonatomic) NSString *deviceCode;
 
 @end

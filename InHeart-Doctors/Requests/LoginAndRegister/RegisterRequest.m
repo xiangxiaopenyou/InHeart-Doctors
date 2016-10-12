@@ -16,7 +16,7 @@
     NSDictionary *param = @{@"username" : self.username,
                             @"password" : self.password,
                             @"captcha" : self.captcha};
-    [[RequestManager sharedInstance] POST:USER_REGISTER parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [[RequestManager sharedInstance] POST:USER_REGISTER parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject, nil);
         } else {

@@ -77,9 +77,9 @@
                 NSLog(@"request send failed %@", error.description);
             };
             if ([method isEqualToString:@"POST"]) {
-                [[RequestManager sharedInstance] POST:request parameters:param success:success failure:failure];
+                [[RequestManager sharedInstance] POST:request parameters:param progress:nil success:success failure:failure];
             } else if ([method isEqualToString:@"GET"]) {
-                [[RequestManager sharedInstance] GET:request parameters:param success:success failure:failure];
+                [[RequestManager sharedInstance] GET:request parameters:param progress:nil success:success failure:failure];
             }
         }
         _isReloading = NO;

@@ -10,7 +10,10 @@
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
 #import "AuthenticationViewController.h"
+#import "AuthenticationStepsViewController.h"
 #import "UserInfo.h"
+#import "PersonalInfo.h"
+#import "UserModel.h"
 
 #import <UIImage-Helpers.h>
 #import <IQKeyboardManager.h>
@@ -30,14 +33,10 @@
     keyboardManager.enableAutoToolbar = NO;
     keyboardManager.shouldResignOnTouchOutside = YES;
     
-    [self checkUserState:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:kLoginSuccess object:nil];
     [self initAppearance];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:kLoginSuccess object:nil];
-    
-    //PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
-    
-    [self.window makeKeyAndVisible];
+    [self judgeUserCodeState];
     
     return YES;
 }
@@ -62,31 +61,78 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[NSNotificationCenter defaultCenter] postNotificationName:kApplicationBecomeActive object:nil];
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+//用户状态判断
+- (void)judgeUserCodeState {
+    if ([[UserInfo sharedUserInfo] isLogined]) {
+        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
+        if (userCode == 0 || userCode == -7) {
+            MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
+            self.window.rootViewController = tabBarController;
+            [self.window makeKeyAndVisible];
+        } else {
+            UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BlankRootView"];
+            self.window.rootViewController = viewController;
+            [self.window makeKeyAndVisible];
+            PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
+            if (tempInfo.username && tempInfo.password) {
+                [UserModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
+                    if (object) {
+                        UserModel *userModel = [object copy];
+                        NSInteger code = [msg integerValue];
+                        userModel.code = @(code);
+                        if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
+                            PersonalInfo *tempInfo = [PersonalInfo new];
+                            tempInfo.username = userModel.username;
+                            tempInfo.password = tempInfo.password;
+                            if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
+                                [self checkUserState:nil];
+                            }
+                        }
+                    } else {
+                        [self checkUserState:nil];
+                    }
+                    
+                }];
+            } else {
+                [self checkUserState:nil];
+            }
+        }
+    } else {
+        [self checkUserState:nil];
+    }
+
+}
 
 //登录状态变化
 - (void)checkUserState:(NSNotification *)notification {
-//    if ([[UserInfo sharedUserInfo] isLogined]) {
-//        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
-//        if (userCode == 0 || userCode == -7) {
+    if ([[UserInfo sharedUserInfo] isLogined]) {
+        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
+        if (userCode == 0 || userCode == -7) {
             MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
             self.window.rootViewController = tabBarController;
-//        } else if (userCode == -4) {
-//            AuthenticationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationView"];
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
-//            self.window.rootViewController = navigationController;
-//        }
-//        
-//    } else {
-//        LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
-//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-//        self.window.rootViewController = navigationController;
-//    }
+        } else if (userCode == -4) {
+            AuthenticationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationView"];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
+            self.window.rootViewController = navigationController;
+        } else {
+            AuthenticationStepsViewController *stepsViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationSteps"];
+            stepsViewController.isRejected = userCode == -6 ? YES : NO;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stepsViewController];
+            self.window.rootViewController = navigationController;
+        }
+        
+    } else {
+        LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        self.window.rootViewController = navigationController;
+    }
 }
 - (void)initAppearance {
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : TABBAR_TITLE_COLOR} forState:UIControlStateNormal];

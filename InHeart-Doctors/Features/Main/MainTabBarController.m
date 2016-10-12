@@ -77,7 +77,6 @@ static CGFloat const kTipLabelHeight = 2.0;
     childViewController.tabBarItem.image = normalImage;
     childViewController.tabBarItem.selectedImage = selectedImage;
     [self addChildViewController:navigationController];
-    
  
 }
 - (void)changeTipLabelPosition:(CGFloat)positionX {

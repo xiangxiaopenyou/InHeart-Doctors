@@ -261,7 +261,7 @@
     [UserModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             [SVProgressHUD showWithStatus:@"正在登录..."];
-            [UserModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text deviceCode:nil handler:^(id object, NSString *msg) {
+            [UserModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
                 if (object) {
                     [SVProgressHUD dismiss];
                     UserModel *userModel = [object copy];

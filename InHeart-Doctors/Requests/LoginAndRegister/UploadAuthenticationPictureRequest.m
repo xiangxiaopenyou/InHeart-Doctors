@@ -13,9 +13,10 @@
     if (!paramsBlock(self)) {
         return;
     }
-    [[RequestManager sharedInstance] POST:UPLOAD_AUTHENTICATION_IMAGE parameters:self.params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpg"];
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [self.params setObject:self.fileName forKey:@"filename"];
+    [[UploadImageManager sharedInstance] POST:UPLOAD_AUTHENTICATION_IMAGE parameters:self.params  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpeg"];
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);
         } else {
@@ -25,6 +26,7 @@
         !resultHandler ?: resultHandler(nil, error.description);
     }];
 }
+
 
 
 @end

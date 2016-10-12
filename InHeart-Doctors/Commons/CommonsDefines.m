@@ -8,6 +8,7 @@
 
 #import "CommonsDefines.h"
 NSString * const USERID = @"UserId";
+NSString * const USERTOKEN = @"UserToken";
 NSString * const USERCODE = @"UserCode";
 NSString * const USERREALNAME = @"Realname";
 NSString * const USERNAME = @"Username";
@@ -48,12 +49,23 @@ NSString * const kAppCameraAccessNotAuthorized = @"请在“设置-隐私-相机
 NSString * const kAppPhotoLibraryAccessNotAuthorized = @"请在“设置-隐私-照片”选项中允许心景访问您的相册";
 NSString * const kPleaseUploadAuthenticationPicture = @"请先上传医生资格证照片";
 NSString * const kPleaseInputCorrectIDCardNumber = @"请输入正确的身份证号";
+NSString * const kKeepWaiting = @"等待认证";
+NSString * const kAuthenticationFail = @"认证失败";
+NSString * const kAuthenticationFailed = @"认证失败！";
+NSString * const kWaitingForAuthentication= @"已提交审核资料 请耐心等待！";
 
 NSString * const kLoginSuccess = @"LoginSuccess";
+NSString * const kApplicationBecomeActive = @"ApplicationBecomeActive";
 
+NSString * const BASEAPIURL = @"http://xj.dosnsoft.com:8000/api/v1/";
 
 NSString * const USER_LOGIN = @"doctor/login";
 NSString * const USER_REGISTER = @"doctor/register";
 NSString * const USER_AUTHENTICATION = @"doctor/auth";
 NSString * const UPLOAD_AUTHENTICATION_IMAGE = @"doctor/authUpload";
 NSString * const FETCH_VERIFICATION_CODE = @"doctor/sendCode";
+
+NSString * const FETCH_CONTENTS_LIST = @"doctor/content/search";
+NSString * const FETCH_CONTENTS_TYPES = @"doctor/content/type";
+NSString * const FETCH_DISEASES = @"doctor/content/disease";
+NSString * const FETCH_THERAPIES = @"doctor/content/therapy";

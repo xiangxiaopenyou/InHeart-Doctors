@@ -8,14 +8,22 @@
 
 #import "ContentViewController.h"
 #import "ContentCell.h"
+#import "SelectionView.h"
+
+#import "ContentModel.h"
 
 #import <UIImage-Helpers.h>
+#import <GJCFUitils.h>
 
 @interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *searchContentView;
+@property (strong, nonatomic) SelectionView *selectionView;
 @property (strong, nonatomic) UIView *searchView;
 @property (strong, nonatomic) UITextField *searchTextField;
+@property (copy, nonatomic) NSArray *contentTypesArray;
+@property (copy, nonatomic) NSArray *diseasesArray;
+@property (copy, nonatomic) NSArray *therapiesArray;
 
 @end
 
@@ -27,6 +35,19 @@
     
     [self addNavigationTitleView];
     self.tableView.tableFooterView = [UIView new];
+    
+    [self fetchTypes:XJContentsTypesContents];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.selectionView];
+    GJCFWeakSelf weakSelf = self;
+    self.selectionView.block = ^(id object) {
+        GJCFStrongSelf strongSelf = weakSelf;
+        [UIView animateWithDuration:0.3 animations:^{
+            strongSelf.selectionView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        }];
+    };
 }
 - (UIView *)searchView {
     if (!_searchView) {
@@ -57,6 +78,20 @@
 }
 - (void)addNavigationTitleView {
     self.navigationItem.titleView = self.searchView;
+}
+- (SelectionView *)selectionView {
+    if (!_selectionView) {
+        _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
+    }
+    return _selectionView;
+}
+
+- (void)fetchTypes:(XJContentsTypes)type {
+    [ContentModel fetchTypes:type handler:^(id object, NSString *msg) {
+        if (object) {
+            self.contentTypesArray = [object copy];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,6 +137,16 @@
     self.navigationItem.leftBarButtonItem = nil;
     self.searchTextField.text = nil;
     [self.searchTextField resignFirstResponder];
+}
+- (IBAction)diseaseSelectionClick:(id)sender {
+}
+- (IBAction)contentTypesSelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesContents array:self.contentTypesArray seletedItem:nil];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
+}
+- (IBAction)therapySelectionClick:(id)sender {
 }
 
 @end
