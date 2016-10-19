@@ -7,6 +7,7 @@
 //
 
 #import "AuthenticationStepsViewController.h"
+#import "AuthenticationViewController.h"
 #import "PersonalInfo.h"
 #import "UserInfo.h"
 #import "UserModel.h"
@@ -31,6 +32,7 @@
         self.reauthenticateButton.hidden = NO;
     } else {
         self.navigationItem.title = kKeepWaiting;
+        self.tipImageView.image = [UIImage imageNamed:@"submit_success"];
         self.tipLabel.text = kWaitingForAuthentication;
         self.reauthenticateButton.hidden = YES;
     }
@@ -54,7 +56,8 @@
 }
 */
 - (IBAction)reauthenticateClick:(id)sender {
-    
+    AuthenticationViewController *authenticationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthenticationView"];
+    [self.navigationController pushViewController:authenticationViewController animated:YES];
 }
 - (void)refreshAuthenticationState {
     PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];

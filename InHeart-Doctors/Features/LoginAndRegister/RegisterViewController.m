@@ -294,7 +294,7 @@
         return;
     }
     self.fetchCodeButton.enabled = NO;
-    self.countInt = 20;
+    self.countInt = 60;
     [self.fetchCodeButton setTitle:[NSString stringWithFormat:@"%@", @(self.countInt)] forState:UIControlStateNormal];
     [self.fetchCodeButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
     if (!self.timer) {

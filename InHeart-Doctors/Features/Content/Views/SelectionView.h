@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^hideBlock)(id object);
+typedef void (^hideBlock)(XJContentsTypes type, id object, NSIndexPath *selectedIndexPath);
 
 @interface SelectionView : UIView
 

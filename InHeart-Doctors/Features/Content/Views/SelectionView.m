@@ -15,7 +15,8 @@
 @property (strong, nonatomic) UIView *topView;
 @property (strong, nonatomic) UIButton *backgroundButton;
 @property (assign, nonatomic) XJContentsTypes type;
-@property (copy, nonatomic) NSArray *array;
+@property (strong, nonatomic) NSMutableArray *array;
+@property (strong, nonatomic) NSMutableArray *indexArray;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
@@ -24,9 +25,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.type = contentsType;
-        self.array = [contentArray copy];
-        self.selectedIndexPath = selectedIndex;
         [self addSubview:self.topView];
         [self.topView addSubview:self.titleLabel];
         [self addSubview:self.tableView];
@@ -36,7 +34,23 @@
 }
 - (void)refreshTableView:(XJContentsTypes)contentsType array:(NSArray *)contentArray seletedItem:(NSIndexPath *)selectedIndex {
     self.type = contentsType;
-    self.array = [contentArray copy];
+    NSMutableArray *tempMutableArray = [[NSMutableArray alloc] init];
+    NSMutableArray *tempIndexArray = [[NSMutableArray alloc] init];
+    if (contentsType == XJContentsTypesContents) {
+        tempMutableArray = [contentArray mutableCopy];
+        [tempMutableArray insertObject:kAllContents atIndex:0];
+    } else {
+        for (NSDictionary *tempDictionary in contentArray) {
+            NSArray *tempArray = [[ContentTypeModel class] setupWithArray:tempDictionary[@"array"]];
+            [tempMutableArray addObject:tempArray];
+            [tempIndexArray addObject:tempDictionary[@"letter"]];
+        }
+        NSString *tempString = contentsType ==  XJContentsTypesDiseases ? kAllDiseases : kAllTherapies;
+        [tempMutableArray insertObject:tempString atIndex:0];
+        [tempIndexArray insertObject:@"#" atIndex:0];
+    }
+    self.array = [tempMutableArray mutableCopy];
+    self.indexArray = [tempIndexArray mutableCopy];
     self.selectedIndexPath = selectedIndex;
     NSString *titleString;
     switch (contentsType) {
@@ -52,6 +66,7 @@
             break;
     }
     self.titleLabel.text = titleString;
+    
     [self.tableView reloadData];
 }
 - (UIView *)topView {
@@ -89,6 +104,18 @@
     }
     return _backgroundButton;
 }
+- (NSMutableArray *)indexArray {
+    if (!_indexArray) {
+        _indexArray = [[NSMutableArray alloc] init];
+    }
+    return _indexArray;
+}
+- (NSMutableArray *)array {
+    if (!_array) {
+        _array = [[NSMutableArray alloc] init];
+    }
+    return _array;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -98,24 +125,85 @@
 }
 */
 #pragma mark - UITableView Delegate DataSource
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.type == XJContentsTypesContents ? nil : self.indexArray;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.type == XJContentsTypesContents ? 1 : self.indexArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.array.count;
+    if (self.type == XJContentsTypesContents) {
+        return self.array.count;
+    } else {
+        if (section == 0) {
+            return 1;
+        } else {
+            return [self.array[section] count];
+        }
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     cell.textLabel.font = kSystemFont(13);
-    ContentTypeModel *tempModel = self.array[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
+    if (self.type == XJContentsTypesContents) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", self.array[indexPath.row]];
+        } else {
+            ContentTypeModel *tempModel = self.array[indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
+        }
+    } else {
+        if (indexPath.section == 0) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", self.array[indexPath.section]];
+        } else {
+            NSArray *tempArray = [self.array[indexPath.section] copy];
+            ContentTypeModel *tempModel = [tempArray[indexPath.row] copy];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
+        }
+    }
+    if (self.selectedIndexPath) {
+        if (indexPath == self.selectedIndexPath) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    id object;
+    if (self.type == XJContentsTypesContents) {
+        object = self.array[indexPath.row];
+    } else {
+        
+        if (indexPath.section == 0) {
+            object = [self.array[indexPath.section] copy];
+        } else {
+            NSArray *tempArray = [self.array[indexPath.section] copy];
+            object = tempArray[indexPath.row];
+        }
+    }
+    if (self.block) {
+        self.block(self.type, object, indexPath);
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.type == XJContentsTypesContents ? 0 : 21.0;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [UIView new];
+    headerView.backgroundColor = kRGBColor(240, 240, 240, 1.0);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 21)];
+    label.text = self.indexArray[section];
+    label.textColor = kHexRGBColorWithAlpha(0xAAAAAA, 1.0);
+    label.font = kSystemFont(12);
+    [headerView addSubview:label];
+    return headerView;
 }
 
 - (void)hideView {
     if (self.block) {
-        self.block(nil);
+        self.block(XJContentsTypesNone, nil, nil);
     }
 }
 

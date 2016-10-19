@@ -25,7 +25,7 @@
         <!--问诊-->
         <scene sceneID="03k-9Q-VIF">
             <objects>
-                <viewController storyboardIdentifier="InterrogationView" automaticallyAdjustsScrollViewInsets="NO" id="wRC-Wg-j6E" customClass="InterrogationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InterrogationView" automaticallyAdjustsScrollViewInsets="NO" id="wRC-Wg-j6E" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fhn-vU-3WG"/>
                         <viewControllerLayoutGuide type="bottom" id="9uJ-aE-Cmm"/>
@@ -71,7 +71,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DGY-oc-9fS" id="ZAo-FE-O71">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -79,7 +79,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMj-Yc-xBC" id="iF4-Oh-lNf">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7r-e4-lJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="372"/>
+            <point key="canvasLocation" x="1042" y="372"/>
         </scene>
     </scenes>
 </document>

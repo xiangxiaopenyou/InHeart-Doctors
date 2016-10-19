@@ -28,7 +28,6 @@
 		3D6A8ED91D98C69600C405DA /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E9C1D98C69600C405DA /* ContentViewController.m */; };
 		3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E9F1D98C69600C405DA /* ContentCell.m */; };
 		3D6A8EDC1D98C69600C405DA /* Interrogation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */; };
-		3D6A8EDD1D98C69600C405DA /* InterrogationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */; };
 		3D6A8EE11D98C69600C405DA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8EAE1D98C69600C405DA /* Login.storyboard */; };
 		3D6A8EE21D98C69600C405DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EB01D98C69600C405DA /* LoginViewController.m */; };
 		3D6A8EE31D98C69600C405DA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8EB21D98C69600C405DA /* RegisterViewController.m */; };
@@ -52,7 +51,18 @@
 		3D968D911DAE10BF005A1596 /* AuthenticationStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D901DAE10BF005A1596 /* AuthenticationStepsViewController.m */; };
 		3D968D941DAE22B1005A1596 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D931DAE22B1005A1596 /* SelectionView.m */; };
 		3D968D971DAE270D005A1596 /* ContentTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D961DAE270D005A1596 /* ContentTypeModel.m */; };
+		3D968D9A1DAF5674005A1596 /* FetchContentDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D991DAF5674005A1596 /* FetchContentDetailRequest.m */; };
+		3D968D9D1DB4651B005A1596 /* FindPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D9C1DB4651B005A1596 /* FindPasswordTableViewController.m */; };
+		3D968DA01DB468C3005A1596 /* FindPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D9F1DB468C3005A1596 /* FindPasswordRequest.m */; };
+		3D968DA61DB4A460005A1596 /* ContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */; };
+		3D968DAA1DB4B63A005A1596 /* UtoVRPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D968DA81DB4B63A005A1596 /* UtoVRPlayer.framework */; };
+		3D968DAB1DB4B63B005A1596 /* UtoVRPlayerResouces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D968DA91DB4B63A005A1596 /* UtoVRPlayerResouces.bundle */; };
+		3D968DAE1DB4B6F8005A1596 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DAD1DB4B6F8005A1596 /* DetailContentCell.m */; };
+		3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */; };
+		3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB31DB5C02B005A1596 /* SearchResultCell.m */; };
+		3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */; };
 		3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */; };
+		3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */; };
 		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
 		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
 		3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD93E631DAA10A6008B190A /* EditInformationViewController.m */; };
@@ -107,8 +117,6 @@
 		3D6A8E9E1D98C69600C405DA /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
 		3D6A8E9F1D98C69600C405DA /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
 		3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interrogation.storyboard; sourceTree = "<group>"; };
-		3D6A8EA41D98C69600C405DA /* InterrogationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterrogationViewController.h; sourceTree = "<group>"; };
-		3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterrogationViewController.m; sourceTree = "<group>"; };
 		3D6A8EAE1D98C69600C405DA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		3D6A8EAF1D98C69600C405DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3D6A8EB01D98C69600C405DA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -154,8 +162,28 @@
 		3D968D931DAE22B1005A1596 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionView.m; sourceTree = "<group>"; };
 		3D968D951DAE270D005A1596 /* ContentTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTypeModel.h; sourceTree = "<group>"; };
 		3D968D961DAE270D005A1596 /* ContentTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTypeModel.m; sourceTree = "<group>"; };
+		3D968D981DAF5674005A1596 /* FetchContentDetailRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchContentDetailRequest.h; sourceTree = "<group>"; };
+		3D968D991DAF5674005A1596 /* FetchContentDetailRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchContentDetailRequest.m; sourceTree = "<group>"; };
+		3D968D9B1DB4651B005A1596 /* FindPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordTableViewController.h; sourceTree = "<group>"; };
+		3D968D9C1DB4651B005A1596 /* FindPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordTableViewController.m; sourceTree = "<group>"; };
+		3D968D9E1DB468C3005A1596 /* FindPasswordRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordRequest.h; sourceTree = "<group>"; };
+		3D968D9F1DB468C3005A1596 /* FindPasswordRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordRequest.m; sourceTree = "<group>"; };
+		3D968DA41DB4A460005A1596 /* ContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDetailViewController.h; sourceTree = "<group>"; };
+		3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDetailViewController.m; sourceTree = "<group>"; };
+		3D968DA81DB4B63A005A1596 /* UtoVRPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UtoVRPlayer.framework; sourceTree = "<group>"; };
+		3D968DA91DB4B63A005A1596 /* UtoVRPlayerResouces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UtoVRPlayerResouces.bundle; sourceTree = "<group>"; };
+		3D968DAC1DB4B6F8005A1596 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
+		3D968DAD1DB4B6F8005A1596 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
+		3D968DAF1DB5BECD005A1596 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
+		3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
+		3D968DB21DB5C02B005A1596 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		3D968DB31DB5C02B005A1596 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		3D968DB51DB5EB4A005A1596 /* SystemSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingTableViewController.h; sourceTree = "<group>"; };
+		3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingTableViewController.m; sourceTree = "<group>"; };
 		3DA3D9E41DAB3F380088E665 /* InterrogationSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterrogationSettingViewController.h; sourceTree = "<group>"; };
 		3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterrogationSettingViewController.m; sourceTree = "<group>"; };
+		3DB02F7A1DB602450014EAE9 /* FetchCollectionsListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCollectionsListRequest.h; sourceTree = "<group>"; };
+		3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCollectionsListRequest.m; sourceTree = "<group>"; };
 		3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionsTableViewController.h; sourceTree = "<group>"; };
 		3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionsTableViewController.m; sourceTree = "<group>"; };
 		3DBDFD451DAA45E70065AA7A /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
@@ -186,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D968DAA1DB4B63A005A1596 /* UtoVRPlayer.framework in Frameworks */,
 				AC7689E77F840F7C27DE370D /* libPods-InHeart-Doctors.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +249,8 @@
 				3D1682E91DACB59E006E3317 /* FetchContentsListRequest.m */,
 				3D968D891DADDC8E005A1596 /* FetchTypsRequest.h */,
 				3D968D8A1DADDC8E005A1596 /* FetchTypsRequest.m */,
+				3D968D981DAF5674005A1596 /* FetchContentDetailRequest.h */,
+				3D968D991DAF5674005A1596 /* FetchContentDetailRequest.m */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -227,6 +258,7 @@
 		3D1870CE1D9BBEDA00B8B34B /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				3D968DA71DB4B63A005A1596 /* UtoVRPlayerSDK */,
 				3D1870CF1D9BBEDA00B8B34B /* KeyChain */,
 			);
 			path = ThirdLibs;
@@ -333,6 +365,10 @@
 				3D6A8E971D98C69600C405DA /* Content.storyboard */,
 				3D6A8E9B1D98C69600C405DA /* ContentViewController.h */,
 				3D6A8E9C1D98C69600C405DA /* ContentViewController.m */,
+				3D968DA41DB4A460005A1596 /* ContentDetailViewController.h */,
+				3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */,
+				3D968DAF1DB5BECD005A1596 /* SearchResultsTableViewController.h */,
+				3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -346,6 +382,10 @@
 				3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */,
 				3D968D921DAE22B1005A1596 /* SelectionView.h */,
 				3D968D931DAE22B1005A1596 /* SelectionView.m */,
+				3D968DAC1DB4B6F8005A1596 /* DetailContentCell.h */,
+				3D968DAD1DB4B6F8005A1596 /* DetailContentCell.m */,
+				3D968DB21DB5C02B005A1596 /* SearchResultCell.h */,
+				3D968DB31DB5C02B005A1596 /* SearchResultCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,8 +395,6 @@
 			children = (
 				3D6A8EA61D98C69600C405DA /* Views */,
 				3D6A8EA31D98C69600C405DA /* Interrogation.storyboard */,
-				3D6A8EA41D98C69600C405DA /* InterrogationViewController.h */,
-				3D6A8EA51D98C69600C405DA /* InterrogationViewController.m */,
 				3D833D291DAB73DD003E970E /* WritePrescriptionViewController.h */,
 				3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */,
 			);
@@ -383,6 +421,8 @@
 				3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */,
 				3D968D8F1DAE10BF005A1596 /* AuthenticationStepsViewController.h */,
 				3D968D901DAE10BF005A1596 /* AuthenticationStepsViewController.m */,
+				3D968D9B1DB4651B005A1596 /* FindPasswordTableViewController.h */,
+				3D968D9C1DB4651B005A1596 /* FindPasswordTableViewController.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -425,6 +465,8 @@
 				3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */,
 				3DA3D9E41DAB3F380088E665 /* InterrogationSettingViewController.h */,
 				3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */,
+				3D968DB51DB5EB4A005A1596 /* SystemSettingTableViewController.h */,
+				3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -476,6 +518,7 @@
 			children = (
 				3D1682E61DACB573006E3317 /* Contents */,
 				3DEFA4B51D9A3D8700876E56 /* LoginAndRegister */,
+				3DB02F791DB5FDD30014EAE9 /* Personal */,
 				3D6A8ECA1D98C69600C405DA /* BaseRequest */,
 			);
 			path = Requests;
@@ -509,6 +552,24 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		3D968DA71DB4B63A005A1596 /* UtoVRPlayerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3D968DA81DB4B63A005A1596 /* UtoVRPlayer.framework */,
+				3D968DA91DB4B63A005A1596 /* UtoVRPlayerResouces.bundle */,
+			);
+			path = UtoVRPlayerSDK;
+			sourceTree = "<group>";
+		};
+		3DB02F791DB5FDD30014EAE9 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				3DB02F7A1DB602450014EAE9 /* FetchCollectionsListRequest.h */,
+				3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
 		3DEFA4B51D9A3D8700876E56 /* LoginAndRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +583,8 @@
 				3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */,
 				3DFBD4261D9E45F100B93B03 /* UploadAuthenticationPictureRequest.h */,
 				3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */,
+				3D968D9E1DB468C3005A1596 /* FindPasswordRequest.h */,
+				3D968D9F1DB468C3005A1596 /* FindPasswordRequest.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -597,6 +660,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D968DAB1DB4B63B005A1596 /* UtoVRPlayerResouces.bundle in Resources */,
 				3D6A8ED71D98C69600C405DA /* Content.storyboard in Resources */,
 				3D6A8EDC1D98C69600C405DA /* Interrogation.storyboard in Resources */,
 				3D6A8EE11D98C69600C405DA /* Login.storyboard in Resources */,
@@ -666,11 +730,14 @@
 				3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */,
 				3D8004B21DAC972800E4FC37 /* BlankRootViewController.m in Sources */,
 				3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */,
+				3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
 				3D6A8EED1D98C69600C405DA /* RequestCacher.m in Sources */,
 				3D6A8EE41D98C69600C405DA /* LoginContentCell.m in Sources */,
+				3D968DAE1DB4B6F8005A1596 /* DetailContentCell.m in Sources */,
 				3D6A8EEE1D98C69600C405DA /* RequestManager.m in Sources */,
 				3D6A8EEB1D98C69600C405DA /* DoctorModel.m in Sources */,
+				3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */,
 				3D6A8EE91D98C69600C405DA /* PersonalInformationCell.m in Sources */,
 				3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */,
 				3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */,
@@ -680,9 +747,11 @@
 				3D6A8E711D98B07700C405DA /* main.m in Sources */,
 				3D1682EA1DACB59E006E3317 /* FetchContentsListRequest.m in Sources */,
 				3D6A8ED61D98C69600C405DA /* XLHyperLinkButton.m in Sources */,
+				3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */,
 				3DEA69F41D9CED6700EA8236 /* AuthenticationInformationCell.m in Sources */,
 				3D6A8EE21D98C69600C405DA /* LoginViewController.m in Sources */,
 				3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */,
+				3D968D9D1DB4651B005A1596 /* FindPasswordTableViewController.m in Sources */,
 				3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */,
 				3D1870D21D9BBEDA00B8B34B /* KeychainItemWrapper.m in Sources */,
 				3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */,
@@ -690,7 +759,7 @@
 				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
 				3D6A8ED41D98C69600C405DA /* XLBlockAlertView.m in Sources */,
 				3D6A8ED91D98C69600C405DA /* ContentViewController.m in Sources */,
-				3D6A8EDD1D98C69600C405DA /* InterrogationViewController.m in Sources */,
+				3D968D9A1DAF5674005A1596 /* FetchContentDetailRequest.m in Sources */,
 				3DEFA4BB1D9A47CC00876E56 /* UserModel.m in Sources */,
 				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
 				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
@@ -701,14 +770,17 @@
 				3D6A8EF41D98FD4F00C405DA /* RegisterPhoneCell.m in Sources */,
 				3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */,
 				3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */,
+				3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */,
 				3D1870D51D9BC6F600B8B34B /* PersonalInfo.m in Sources */,
 				3D6A8EEC1D98C69600C405DA /* BaseRequest.m in Sources */,
 				3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */,
 				3D968D8B1DADDC8E005A1596 /* FetchTypsRequest.m in Sources */,
 				3D6A8ED21D98C69600C405DA /* Util.m in Sources */,
+				3D968DA61DB4A460005A1596 /* ContentDetailViewController.m in Sources */,
 				3D6A8ED31D98C69600C405DA /* XLBlockActionSheet.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
 				3D968D971DAE270D005A1596 /* ContentTypeModel.m in Sources */,
+				3D968DA01DB468C3005A1596 /* FindPasswordRequest.m in Sources */,
 				3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */,
 				3D6A8EE71D98C69600C405DA /* PersonalCenterTableViewController.m in Sources */,
 			);
@@ -836,6 +908,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = TC6ARYK6RK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -852,6 +929,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = TC6ARYK6RK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

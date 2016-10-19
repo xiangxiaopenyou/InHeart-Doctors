@@ -7,23 +7,37 @@
 //
 
 #import "ContentViewController.h"
+#import "ContentDetailViewController.h"
 #import "ContentCell.h"
 #import "SelectionView.h"
 
 #import "ContentModel.h"
+#import "ContentTypeModel.h"
 
 #import <UIImage-Helpers.h>
 #import <GJCFUitils.h>
+#import <MJRefresh.h>
+#import <SVProgressHUD.h>
 
-@interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *searchContentView;
+@property (weak, nonatomic) IBOutlet UIButton *diseaseButton;
+@property (weak, nonatomic) IBOutlet UIButton *contentButton;
+@property (weak, nonatomic) IBOutlet UIButton *therapyButton;
 @property (strong, nonatomic) SelectionView *selectionView;
-@property (strong, nonatomic) UIView *searchView;
-@property (strong, nonatomic) UITextField *searchTextField;
 @property (copy, nonatomic) NSArray *contentTypesArray;
 @property (copy, nonatomic) NSArray *diseasesArray;
 @property (copy, nonatomic) NSArray *therapiesArray;
+@property (strong, nonatomic) NSIndexPath *selectedDiseaseItem;
+@property (strong, nonatomic) NSIndexPath *selectedContentTypeItem;
+@property (strong, nonatomic) NSIndexPath *selectedTherapyItem;
+@property (assign, nonatomic) NSInteger paging;
+@property (copy, nonatomic) NSString *selectedDiseaseId;
+@property (copy, nonatomic) NSString *selectedTherapyId;
+@property (copy, nonatomic) NSString *selectedTypeId;
+@property (copy, nonatomic) NSString *keyword;
+
+@property (strong, nonatomic) NSMutableArray *contentsResultsArray;
 
 @end
 
@@ -32,64 +46,147 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self addNavigationTitleView];
+    [self.tableView setMj_header:[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _paging = 1;
+        [self fetchContentsList];
+    }]];
+    [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self fetchContentsList];
+    }]];
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.mj_footer.hidden = YES;
     
     [self fetchTypes:XJContentsTypesContents];
+    [self fetchTypes:XJContentsTypesDiseases];
+    [self fetchTypes:XJContentsTypesTherapies];
+    
+    _paging = 1;
+    [self fetchContentsList];
+    
+    self.selectedDiseaseItem = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.selectedContentTypeItem = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.selectedTherapyItem = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication].keyWindow addSubview:self.selectionView];
     GJCFWeakSelf weakSelf = self;
-    self.selectionView.block = ^(id object) {
+    self.selectionView.block = ^(XJContentsTypes type, id object, NSIndexPath *selectedIndexPath) {
         GJCFStrongSelf strongSelf = weakSelf;
+        switch (type) {
+            case XJContentsTypesDiseases:{
+                strongSelf.selectedDiseaseItem = selectedIndexPath;
+                if (selectedIndexPath.section == 0) {
+                    [strongSelf.diseaseButton setTitle:[NSString stringWithFormat:@"%@", (NSString *)object] forState:UIControlStateNormal];
+                    strongSelf.diseaseButton.selected = NO;
+                    strongSelf.selectedDiseaseId = nil;
+                } else {
+                    ContentTypeModel *tempModel = [object copy];
+                    [strongSelf.diseaseButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
+                    strongSelf.diseaseButton.selected = YES;
+                    strongSelf.selectedDiseaseId = tempModel.typeId;
+                }
+            }
+                break;
+            case XJContentsTypesContents:{
+                strongSelf.selectedContentTypeItem = selectedIndexPath;
+                if (selectedIndexPath.row == 0) {
+                    [strongSelf.contentButton setTitle:[NSString stringWithFormat:@"%@", (NSString *)object] forState:UIControlStateNormal];
+                    strongSelf.contentButton.selected = NO;
+                    strongSelf.selectedTypeId = nil;
+                } else {
+                    ContentTypeModel *tempModel = [object copy];
+                    [strongSelf.contentButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
+                    strongSelf.contentButton.selected = YES;
+                    strongSelf.selectedTypeId = tempModel.typeId;
+                }
+            }
+                break;
+            case XJContentsTypesTherapies:{
+                strongSelf.selectedTherapyItem = selectedIndexPath;
+                if (selectedIndexPath.section == 0) {
+                    [strongSelf.therapyButton setTitle:[NSString stringWithFormat:@"%@", (NSString *)object] forState:UIControlStateNormal];
+                    strongSelf.therapyButton.selected = NO;
+                    strongSelf.selectedTherapyId = nil;
+                } else {
+                    ContentTypeModel *tempModel = [object copy];
+                    [strongSelf.therapyButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
+                    strongSelf.therapyButton.selected = YES;
+                    strongSelf.selectedTherapyId = tempModel.typeId;
+                }
+            }
+                break;
+            default:
+                break;
+        }
         [UIView animateWithDuration:0.3 animations:^{
             strongSelf.selectionView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         }];
+        ContentDetailViewController *detailViewController = [strongSelf.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
+        [strongSelf presentViewController:detailViewController animated:YES completion:nil];
+        
     };
 }
-- (UIView *)searchView {
-    if (!_searchView) {
-        _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 60, 30)];
-        _searchView.layer.masksToBounds = YES;
-        _searchView.layer.cornerRadius = 4.0;
-        _searchView.backgroundColor = kRGBColor(255, 255, 255, 0.5);
-        UIImageView *searchImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 6, 18, 18)];
-        searchImage.image = [UIImage imageNamed:@"content_search"];
-        [_searchView addSubview:searchImage];
-        [_searchView addSubview:self.searchTextField];
-        
-    }
-    return _searchView;
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.selectionView removeFromSuperview];
 }
-- (UITextField *)searchTextField {
-    if (!_searchTextField) {
-        _searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 0, SCREEN_WIDTH - 104, 30)];
-        _searchTextField.backgroundColor = [UIColor clearColor];
-        _searchTextField.placeholder = kSearchPlaceholder;
-        _searchTextField.font = kSystemFont(13);
-        _searchTextField.returnKeyType = UIReturnKeySearch;
-        _searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-        _searchTextField.delegate = self;
-    }
-    return _searchTextField;
-}
-- (void)addNavigationTitleView {
-    self.navigationItem.titleView = self.searchView;
-}
+
+#pragma mark - Setters & Getters
 - (SelectionView *)selectionView {
     if (!_selectionView) {
         _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
     }
     return _selectionView;
 }
+- (NSMutableArray *)contentsResultsArray {
+    if (!_contentsResultsArray) {
+        _contentsResultsArray = [[NSMutableArray alloc] init];
+    }
+    return _contentsResultsArray;
+}
 
+#pragma mark - Requests
+//获取类别
 - (void)fetchTypes:(XJContentsTypes)type {
     [ContentModel fetchTypes:type handler:^(id object, NSString *msg) {
         if (object) {
-            self.contentTypesArray = [object copy];
+            if (type == XJContentsTypesContents) {
+                self.contentTypesArray = [object copy];
+            } else if (type == XJContentsTypesDiseases) {
+                self.diseasesArray = [object copy];
+            } else {
+                self.therapiesArray = [object copy];
+            }
+        }
+    }];
+}
+//筛选请求
+- (void)fetchContentsList {
+    [SVProgressHUD show];
+    [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:_keyword handler:^(id object, NSString *msg) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        [SVProgressHUD dismiss];
+        if (object) {
+            NSArray *resultArray = [object copy];
+            if (_paging == 1) {
+                self.contentsResultsArray = [resultArray mutableCopy];
+            } else {
+                NSMutableArray *tempArray = [self.contentsResultsArray mutableCopy];
+                [tempArray addObjectsFromArray:resultArray];
+                self.contentsResultsArray = [tempArray mutableCopy];
+            }
+            [self.tableView reloadData];
+            if (resultArray.count < 10) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                self.tableView.mj_footer.hidden = YES;
+            } else {
+                _paging += 1;
+                self.tableView.mj_footer.hidden = NO;
+            }
+        } else {
+            [SVProgressHUD showErrorWithStatus:msg];
         }
     }];
 }
@@ -99,25 +196,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UITextField Delegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [self.tabBarController.tabBar setHidden:YES];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forBarMetrics:UIBarMetricsDefault];
-    self.searchContentView.hidden = NO;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelSearchClick)];
-    
-}
+//#pragma mark - UITextField Delegate
+//- (void)textFieldDidBeginEditing:(UITextField *)textField {
+//    [self.tabBarController.tabBar setHidden:YES];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(cancelSearchClick)];
+//    
+//}
 
 #pragma mark - UITableView Delegate DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 3.0 * (kCollectionCellItemHeight + 5.0);
+    if (self.contentsResultsArray.count == 0) {
+        return 0;
+    } else {
+        NSInteger interger = (self.contentsResultsArray.count - 1) / 2 + 1;
+        return interger * (kCollectionCellItemHeight + 5.0);
+    }
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
+    [cell setupContents:self.contentsResultsArray];
     return cell;
 }
 
@@ -131,22 +234,30 @@
 }
 */
 
-- (void)cancelSearchClick {
-    [self.tabBarController.tabBar setHidden:NO];
-    self.searchContentView.hidden = YES;
-    self.navigationItem.leftBarButtonItem = nil;
-    self.searchTextField.text = nil;
-    [self.searchTextField resignFirstResponder];
-}
+//- (void)cancelSearchClick {
+//    [self.tabBarController.tabBar setHidden:NO];
+//    self.searchContentView.hidden = YES;
+//    self.navigationItem.leftBarButtonItem = nil;
+//    self.searchTextField.text = nil;
+//    [self.searchTextField resignFirstResponder];
+//}
 - (IBAction)diseaseSelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesDiseases array:_diseasesArray seletedItem:self.selectedDiseaseItem];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
 }
 - (IBAction)contentTypesSelectionClick:(id)sender {
-    [self.selectionView refreshTableView:XJContentsTypesContents array:self.contentTypesArray seletedItem:nil];
+    [self.selectionView refreshTableView:XJContentsTypesContents array:self.contentTypesArray seletedItem:self.selectedContentTypeItem];
     [UIView animateWithDuration:0.3 animations:^{
         self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }];
 }
 - (IBAction)therapySelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesTherapies array:_therapiesArray seletedItem:self.selectedTherapyItem];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
 }
 
 @end

@@ -11,5 +11,6 @@
 @interface ContentTypeModel : BaseModel
 @property (copy, nonatomic) NSString *typeId;
 @property (copy, nonatomic) NSString *name;
+@property (strong, nonatomic) NSNumber<Optional> *status;
 
 @end

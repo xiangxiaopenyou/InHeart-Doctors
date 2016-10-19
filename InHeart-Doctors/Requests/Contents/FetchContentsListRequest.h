@@ -11,7 +11,7 @@
 @interface FetchContentsListRequest : BaseRequest
 @property (copy, nonatomic) NSString *diseaseId;
 @property (copy, nonatomic) NSString *therapyId;
-@property (strong, nonatomic) NSNumber *type;
+@property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSNumber *paging;
 @property (copy, nonatomic) NSString *keyword;
 

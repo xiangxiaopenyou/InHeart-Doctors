@@ -10,6 +10,6 @@
 
 @interface ContentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+- (void)setupContents:(NSArray *)contentsArray;
 
 @end

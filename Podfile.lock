@@ -28,7 +28,6 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.0.3)
   - UIImage-Helpers (0.0.3)
-  - YUChineseSorting (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking
@@ -42,7 +41,6 @@ DEPENDENCIES:
   - SDCycleScrollView
   - SVProgressHUD
   - UIImage-Helpers
-  - YUChineseSorting
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -57,6 +55,5 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UIImage-Helpers: 06b04a42bdd222844035602e87e936765c80f620
-  YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
 
 COCOAPODS: 0.39.0

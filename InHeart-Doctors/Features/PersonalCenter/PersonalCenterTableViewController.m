@@ -10,12 +10,17 @@
 #import "EditInformationViewController.h"
 #import "MyCollectionsTableViewController.h"
 #import "InterrogationSettingViewController.h"
+#import "SystemSettingTableViewController.h"
 
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
 #import "UserInfo.h"
+#import "UserModel.h"
+#import "PersonalInfo.h"
 
 @interface PersonalCenterTableViewController ()
+@property (strong, nonatomic) UserModel *userModel;
+@property (strong, nonatomic) PersonalInfo *personalModel;
 
 @end
 
@@ -29,6 +34,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.userModel = [[UserInfo sharedUserInfo] userInfo];
+    self.personalModel = [[UserInfo sharedUserInfo] personalInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,24 +75,19 @@
         case 0:{
             PersonalInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InformationCell" forIndexPath:indexPath];
             cell.imageView.image = [UIImage imageNamed:@"personal_avatar"];
-            cell.textLabel.text = @"项小盆友";
-            cell.detailTextLabel.text = @"13732254511";
+            cell.textLabel.text = self.userModel.realname ? [NSString stringWithFormat:@"%@", self.userModel.realname] : @"尚未登录";
+            cell.detailTextLabel.text = self.personalModel.username ? [NSString stringWithFormat:@"%@", self.personalModel.username] : nil;
             return cell;
         }
             break;
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            NSArray *tempIconArray = @[@"my_interrogation", @"my_collections"];
-            NSArray *tempTitleArray = @[kMyInterrogation, kMyCollections];
+            NSArray *tempIconArray = @[@"my_wallet", @"my_collections"];
+            NSArray *tempTitleArray = @[kMyWallet, kMyCollections];
             cell.imageView.image = [UIImage imageNamed:tempIconArray[indexPath.row]];
             cell.textLabel.font = kSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             cell.textLabel.text = tempTitleArray[indexPath.row];
-            if (indexPath.row == tempIconArray.count - 1) {
-                UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44.5, SCREEN_WIDTH, 0.5)];
-                line.backgroundColor = BREAK_LINE_COLOR;
-                [cell addSubview:line];
-            }
             
             return cell;
         }
@@ -100,11 +105,8 @@
             }
             cell.imageView.image = [UIImage imageNamed:iconString];
             cell.textLabel.text = titleString;
-            if (indexPath.row == 1) {
-                UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44.5, SCREEN_WIDTH, 0.5)];
-                line.backgroundColor = BREAK_LINE_COLOR;
-                [cell addSubview:line];
-            }
+            cell.textLabel.font = kSystemFont(15);
+            cell.textLabel.textColor = MAIN_TEXT_COLOR;
             return cell;
         }
             break;
@@ -138,6 +140,9 @@
             if (indexPath.row == 0) {
                 InterrogationSettingViewController *interrogationSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InterrogationSetting"];
                 [self.navigationController pushViewController:interrogationSettingViewController animated:YES];
+            } else {
+                SystemSettingTableViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SystemSetting"];
+                [self.navigationController pushViewController:settingViewController animated:YES];
             }
         }
             break;
@@ -157,9 +162,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10.0;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *headerLabel = [UILabel new];
-    return headerLabel;
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1;
 }
 
 

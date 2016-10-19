@@ -8,7 +8,6 @@
 
 #import "MainTabBarController.h"
 #import "ContentViewController.h"
-#import "InterrogationViewController.h"
 #import "PersonalCenterTableViewController.h"
 
 static CGFloat const kTipLabelHeight = 2.0;
@@ -46,7 +45,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
     
     //问诊
-    InterrogationViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
+    UIViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
     [self setupChildControllerWith:interrogationViewController normalImage:askUnSelectedImage selectedImage:askSelectedImage title:@"问诊" index:1];
     
     
@@ -54,6 +53,12 @@ static CGFloat const kTipLabelHeight = 2.0;
     PersonalCenterTableViewController *personalViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     [self setupChildControllerWith:personalViewController normalImage:personalUnSelectedImage selectedImage:personalSelectedImage title:@"个人中心" index:2];
 
+}
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 - (UILabel *)bottomTipLabel {
     if (!_bottomTipLabel) {

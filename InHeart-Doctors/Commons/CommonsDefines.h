@@ -27,15 +27,21 @@ extern CGFloat const NAVIGATIONBARHEIGHT;
 
 //内容
 extern NSString * const kSearchPlaceholder;
+extern NSString * const kAllDiseases;
+extern NSString * const kAllContents;
+extern NSString * const kAllTherapies;
 
 //个人中心
 extern NSString * const kMyInterrogation;
+extern NSString * const kMyWallet;
 extern NSString * const kMyDoctors;
 extern NSString * const kMyCollections;
 extern NSString * const kMyAccount;
 extern NSString * const kHelpAndFeedback;
 extern NSString * const kPersonalSetting;
 extern NSString * const kInterrogationSetting;
+extern NSString * const kClearCache;
+extern NSString * const kAboutUs;
 
 //登录注册
 extern NSString * const kInputPhoneNumber;
@@ -63,6 +69,8 @@ extern NSString * const kKeepWaiting;
 extern NSString * const kAuthenticationFail;
 extern NSString * const kAuthenticationFailed;
 extern NSString * const kWaitingForAuthentication;
+extern NSString * const kFindPassword;
+extern NSString * const kChangePassword;
 
 //NotificationName
 extern NSString * const kLoginSuccess;
@@ -79,12 +87,18 @@ extern NSString * const USER_REGISTER;
 extern NSString * const USER_AUTHENTICATION;
 extern NSString * const UPLOAD_AUTHENTICATION_IMAGE;
 extern NSString * const FETCH_VERIFICATION_CODE;
+extern NSString * const FIND_PASSWORD;
 
 //3.内容
 extern NSString * const FETCH_CONTENTS_LIST;
 extern NSString * const FETCH_CONTENTS_TYPES;
 extern NSString * const FETCH_DISEASES;
 extern NSString * const FETCH_THERAPIES;
+extern NSString * const FETCH_CONTENT_DETAIL;
+
+//4.个人中心
+extern NSString * const FETCH_COLLECTIONS_LIST;
+
 
 
 

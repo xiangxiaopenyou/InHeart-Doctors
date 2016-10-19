@@ -19,14 +19,20 @@ CGFloat const TABBARHEIGHT = 49.0;
 CGFloat const NAVIGATIONBARHEIGHT = 64.0;
 
 NSString * const kSearchPlaceholder = @"请输入你要搜索的内容";
+NSString * const kAllDiseases = @"全部病种";
+NSString * const kAllContents = @"全部内容";
+NSString * const kAllTherapies = @"全部疗法";
 
 NSString * const kMyInterrogation = @"我的问诊";
+NSString * const kMyWallet = @"我的钱包";
 NSString * const kMyDoctors = @"我的医生";
 NSString * const kMyCollections = @"我的收藏";
 NSString * const kMyAccount = @"我的账户";
 NSString * const kHelpAndFeedback = @"帮助与反馈";
 NSString * const kPersonalSetting = @"设置";
 NSString * const kInterrogationSetting = @"问诊设置";
+NSString * const kClearCache = @"清除缓存";
+NSString * const kAboutUs = @"关于";
 
 NSString * const kInputPhoneNumber = @"请输入您的手机号";
 NSString * const kInputPassword = @"请输入您的密码";
@@ -53,6 +59,8 @@ NSString * const kKeepWaiting = @"等待认证";
 NSString * const kAuthenticationFail = @"认证失败";
 NSString * const kAuthenticationFailed = @"认证失败！";
 NSString * const kWaitingForAuthentication= @"已提交审核资料 请耐心等待！";
+NSString * const kFindPassword = @"找回密码";
+NSString * const kChangePassword = @"修改密码";
 
 NSString * const kLoginSuccess = @"LoginSuccess";
 NSString * const kApplicationBecomeActive = @"ApplicationBecomeActive";
@@ -64,8 +72,12 @@ NSString * const USER_REGISTER = @"doctor/register";
 NSString * const USER_AUTHENTICATION = @"doctor/auth";
 NSString * const UPLOAD_AUTHENTICATION_IMAGE = @"doctor/authUpload";
 NSString * const FETCH_VERIFICATION_CODE = @"doctor/sendCode";
+NSString * const FIND_PASSWORD = @"doctor/modifyPassword";
 
 NSString * const FETCH_CONTENTS_LIST = @"doctor/content/search";
 NSString * const FETCH_CONTENTS_TYPES = @"doctor/content/type";
 NSString * const FETCH_DISEASES = @"doctor/content/disease";
 NSString * const FETCH_THERAPIES = @"doctor/content/therapy";
+NSString * const FETCH_CONTENT_DETAIL = @"doctor/content/info";
+
+NSString * const FETCH_COLLECTIONS_LIST = @"doctor/contentCollect/search";

@@ -166,6 +166,8 @@
             [UserModel userAuthentication:pictureId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
                 if (object) {
                     [SVProgressHUD dismiss];
+                    [[NSUserDefaults standardUserDefaults] setObject:@(-5) forKey:USERCODE];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                 } else {
                     [SVProgressHUD showWithStatus:msg];

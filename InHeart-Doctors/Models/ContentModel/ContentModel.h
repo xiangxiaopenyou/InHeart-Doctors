@@ -18,11 +18,17 @@
 @property (copy, nonatomic) NSString<Optional> *config_type;
 @property (copy, nonatomic) NSString *createdAt;
 @property (strong, nonatomic) NSNumber *isFree;
-@property (strong, nonatomic) NSNumber *price;
+@property (copy, nonatomic) NSString<Optional> *config_isFree;
+@property (strong, nonatomic) NSNumber *status;
+@property (copy, nonatomic) NSString<Optional> *config_status;
+@property (strong, nonatomic) NSNumber<Optional> *price;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString<Optional> *updator;
 @property (copy, nonatomic) NSString *coverPic;
+@property (copy, nonatomic) NSDictionary<Optional> *ext;
 
 + (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler;
++ (void)fetchContentsList:(NSNumber *)paging disease:(NSString *)diseaseId therapy:(NSString *)therapyId type:(NSString *)contentTypeId keyword:(NSString *)keyword handler:(RequestResultHandler)handler;
++ (void)fetchContentDetail:(NSString *)contentId handler:(RequestResultHandler)handler;
 
 @end

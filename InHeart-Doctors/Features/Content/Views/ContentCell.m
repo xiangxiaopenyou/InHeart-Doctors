@@ -10,14 +10,21 @@
 
 #import "ContentCollectionCell.h"
 
-#import <UIImageView+AFNetworking.h>
+#import "ContentModel.h"
+
+#import <UIImageView+WebCache.h>
 
 @interface ContentCell ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (copy, nonatomic) NSArray *array;
 
 @end
 
 @implementation ContentCell
-
+- (void)setupContents:(NSArray *)contentsArray {
+    self.array = [contentsArray copy];
+    [self.collectionView reloadData];
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -33,11 +40,14 @@
 
 #pragma mark - UICollectionView Delegate DataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return self.array.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"ContentCollectionCell";
     ContentCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    ContentModel *tempModel = [self.array[indexPath.row] copy];
+    [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:nil];
+    cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     return cell;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

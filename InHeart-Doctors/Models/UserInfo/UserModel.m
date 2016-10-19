@@ -12,6 +12,7 @@
 #import "RegisterRequest.h"
 #import "ExpertAuthenticationRequest.h"
 #import "UploadAuthenticationPictureRequest.h"
+#import "FindPasswordRequest.h"
 
 
 @implementation UserModel
@@ -63,6 +64,20 @@
     [[UploadAuthenticationPictureRequest new] request:^BOOL(UploadAuthenticationPictureRequest *request) {
         request.fileName = fileName;
         request.fileData = fileData;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            !handler ?: handler(object, nil);
+        }
+    }];
+}
++ (void)findPassword:(NSString *)username password:(NSString *)password code:(NSString *)verificationCode handler:(RequestResultHandler)handler {
+    [[FindPasswordRequest new] request:^BOOL(FindPasswordRequest *request) {
+        request.username = username;
+        request.password = password;
+        request.captcha = verificationCode;
         return YES;
     } result:^(id object, NSString *msg) {
         if (msg) {

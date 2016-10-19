@@ -75,11 +75,9 @@
         if (userCode == 0 || userCode == -7) {
             MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
             self.window.rootViewController = tabBarController;
-            [self.window makeKeyAndVisible];
         } else {
             UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BlankRootView"];
             self.window.rootViewController = viewController;
-            [self.window makeKeyAndVisible];
             PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
             if (tempInfo.username && tempInfo.password) {
                 [UserModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
@@ -107,6 +105,7 @@
     } else {
         [self checkUserState:nil];
     }
+     [self.window makeKeyAndVisible];
 
 }
 

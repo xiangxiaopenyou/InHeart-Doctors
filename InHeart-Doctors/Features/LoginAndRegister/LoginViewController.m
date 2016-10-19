@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "FindPasswordTableViewController.h"
 
 #import "LoginContentCell.h"
 
@@ -42,6 +43,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Getters
 - (UITextField *)phoneTextField {
     if (!_phoneTextField) {
         _phoneTextField = [[UITextField alloc] init];
@@ -127,6 +130,9 @@
     [self.navigationController pushViewController:registerViewController animated:YES];
 }
 - (IBAction)forgetPasswordClick:(id)sender {
+    FindPasswordTableViewController *findPasswordViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FindPassword"];
+    findPasswordViewController.isFindPassword = YES;
+    [self.navigationController pushViewController:findPasswordViewController animated:YES];
 }
 - (IBAction)loginClick:(id)sender {
     if (!GJCFStringIsMobilePhone(self.phoneTextField.text)) {
