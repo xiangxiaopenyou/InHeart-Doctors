@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString<Optional> *updator;
 @property (copy, nonatomic) NSString *coverPic;
 @property (copy, nonatomic) NSDictionary<Optional> *ext;
+@property (strong, nonatomic) NSNumber<Optional> *collected;
 
 + (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler;
 + (void)fetchContentsList:(NSNumber *)paging disease:(NSString *)diseaseId therapy:(NSString *)therapyId type:(NSString *)contentTypeId keyword:(NSString *)keyword handler:(RequestResultHandler)handler;

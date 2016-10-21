@@ -14,6 +14,7 @@
 
 #import <SVProgressHUD.h>
 #import <MJRefresh.h>
+#import <UIImageView+WebCache.h>
 
 
 @interface SearchResultsTableViewController ()<UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -39,9 +40,10 @@
     self.navigationItem.titleView = self.searchView;
     self.tableView.tableFooterView = [UIView new];
     [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        
+        [self searchRequest:self.searchTextField.text];
     }]];
     self.tableView.mj_footer.hidden = YES;
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -128,6 +130,7 @@
     if (XLIsNullObject(textField.text)) {
         [SVProgressHUD showErrorWithStatus:@"请先输入关键字"];
     } else {
+        _paging = 1;
         [self searchRequest:textField.text];
         [textField resignFirstResponder];
     }
@@ -144,7 +147,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"SearchResult";
     SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
+    ContentModel *tempModel = self.resultsArray[indexPath.row];
+    [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
+    cell.contentNameLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
+    cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", tempModel.createdAt];
     
     return cell;
 }

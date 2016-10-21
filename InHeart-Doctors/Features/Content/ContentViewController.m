@@ -122,8 +122,9 @@
         [UIView animateWithDuration:0.3 animations:^{
             strongSelf.selectionView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         }];
-        ContentDetailViewController *detailViewController = [strongSelf.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
-        [strongSelf presentViewController:detailViewController animated:YES completion:nil];
+        if (type != XJContentsTypesNone) {
+            [strongSelf fetchContentsList];
+        }
         
     };
 }
@@ -221,6 +222,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
     [cell setupContents:self.contentsResultsArray];
+    cell.block = ^(ContentModel *model){
+        ContentDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
+        detailViewController.contentModel = [model copy];
+        [self presentViewController:detailViewController animated:YES completion:nil];
+    };
     return cell;
 }
 

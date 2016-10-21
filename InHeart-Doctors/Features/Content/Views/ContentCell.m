@@ -46,7 +46,7 @@
     static NSString *identifier = @"ContentCollectionCell";
     ContentCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     ContentModel *tempModel = [self.array[indexPath.row] copy];
-    [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:nil];
+    [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
     cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     return cell;
 }
@@ -61,6 +61,13 @@
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 5.0;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    ContentModel *tempModel = [self.array[indexPath.row] copy];
+    if (self.block) {
+        self.block(tempModel);
+    }
 }
 
 @end

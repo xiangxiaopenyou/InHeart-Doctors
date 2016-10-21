@@ -7,6 +7,9 @@
 //
 
 #import "CommonsDefines.h"
+
+NSString * const EMChatKey = @"1109161016178876#xinjing";
+
 NSString * const USERID = @"UserId";
 NSString * const USERTOKEN = @"UserToken";
 NSString * const USERCODE = @"UserCode";

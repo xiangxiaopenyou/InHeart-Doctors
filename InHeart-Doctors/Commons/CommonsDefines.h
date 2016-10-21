@@ -12,6 +12,8 @@ typedef NS_ENUM(NSInteger, XJContentsTypes) {
     XJContentsTypesContents,
     XJContentsTypesTherapies
 };
+//key & secret
+extern NSString * const EMChatKey;
 
 //用户相关
 extern NSString * const USERID;

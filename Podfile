@@ -12,5 +12,6 @@ pod 'GJCFUitils'
 pod 'UIImage-Helpers'
 pod 'IQKeyboardManager'
 pod 'Hyphenate_CN'
+pod 'GTSDK'
 end 
 

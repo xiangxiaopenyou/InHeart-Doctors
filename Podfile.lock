@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - GJCFUitils (1.0)
+  - GTSDK (1.5.0)
   - Hyphenate_CN (3.1.5.1)
   - IQKeyboardManager (4.0.6)
   - JSONModel (1.7.0)
@@ -32,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - GJCFUitils
+  - GTSDK
   - Hyphenate_CN
   - IQKeyboardManager
   - JSONModel
@@ -45,6 +47,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   GJCFUitils: ad4f8373eb10edb94299594d348d1ee6f21dbe5e
+  GTSDK: 4380de452178d8ba2a67189f10c6743d0f9536b9
   Hyphenate_CN: 2db75216631051fb79550fe28d04927a560209a3
   IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
