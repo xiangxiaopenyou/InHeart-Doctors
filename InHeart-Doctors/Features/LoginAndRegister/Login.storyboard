@@ -371,10 +371,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GAP-nH-8oS">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="sKl-sF-HA8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="医生资格证照片上传" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3r-7p-sNy">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请上传医师资格证或心理咨询师证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3r-7p-sNy">
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -398,20 +398,39 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请上传职称资格证（可不传）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVL-ac-51P">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMR-Ak-rCn">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="Anz-g8-vYR"/>
+                                                <constraint firstAttribute="height" constant="80" id="zUw-go-P2n"/>
+                                            </constraints>
+                                            <state key="normal" image="add_picture"/>
+                                            <connections>
+                                                <action selector="authenticationPictureClick:" destination="HjS-qZ-ov7" eventType="touchUpInside" id="Se8-Uk-9oe"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="oeS-qS-JBk" secondAttribute="trailing" id="3wg-uf-msj"/>
                                         <constraint firstAttribute="bottom" secondItem="oeS-qS-JBk" secondAttribute="bottom" id="DYl-JE-fzf"/>
+                                        <constraint firstItem="yMR-Ak-rCn" firstAttribute="top" secondItem="OVL-ac-51P" secondAttribute="bottom" constant="15" id="III-ki-9wb"/>
+                                        <constraint firstItem="OVL-ac-51P" firstAttribute="leading" secondItem="sKl-sF-HA8" secondAttribute="leading" constant="15" id="IP6-Zc-cKv"/>
                                         <constraint firstItem="Ytu-aC-9An" firstAttribute="leading" secondItem="sKl-sF-HA8" secondAttribute="leading" constant="15" id="IWs-4X-kce"/>
                                         <constraint firstItem="J3r-7p-sNy" firstAttribute="top" secondItem="sKl-sF-HA8" secondAttribute="top" constant="15" id="JJZ-sw-HaM"/>
                                         <constraint firstItem="oeS-qS-JBk" firstAttribute="leading" secondItem="sKl-sF-HA8" secondAttribute="leading" id="KcO-CP-u1g"/>
-                                        <constraint firstItem="Ytu-aC-9An" firstAttribute="top" secondItem="J3r-7p-sNy" secondAttribute="bottom" constant="20" id="eiB-FD-YbA"/>
+                                        <constraint firstItem="OVL-ac-51P" firstAttribute="top" secondItem="Ytu-aC-9An" secondAttribute="bottom" constant="20" id="bf1-Eg-hLX"/>
+                                        <constraint firstItem="Ytu-aC-9An" firstAttribute="top" secondItem="J3r-7p-sNy" secondAttribute="bottom" constant="15" id="eiB-FD-YbA"/>
                                         <constraint firstItem="J3r-7p-sNy" firstAttribute="leading" secondItem="sKl-sF-HA8" secondAttribute="leading" constant="15" id="tP1-TL-gsH"/>
+                                        <constraint firstItem="yMR-Ak-rCn" firstAttribute="leading" secondItem="sKl-sF-HA8" secondAttribute="leading" constant="15" id="xad-VL-6kS"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="hbQ-0H-cTJ">
-                                    <rect key="frame" x="0.0" y="223" width="375" height="65"/>
+                                    <rect key="frame" x="0.0" y="345" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yI-JX-yFe">
@@ -442,7 +461,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AuthenticationInformation" rowHeight="45" id="Wn1-6V-WDI" customClass="AuthenticationInformationCell">
-                                        <rect key="frame" x="0.0" y="178" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wn1-6V-WDI" id="B4l-Sp-OCg">
                                             <frame key="frameInset" width="375" height="45"/>
@@ -494,11 +513,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="authenticationPictureButton" destination="Ytu-aC-9An" id="2Y2-qj-ahW"/>
+                        <outlet property="titlesButton" destination="yMR-Ak-rCn" id="s1S-sp-CPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyQ-XT-Szs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="259"/>
+            <point key="canvasLocation" x="1884" y="258.62068965517244"/>
         </scene>
         <!--Find Password Table View Controller-->
         <scene sceneID="Ewu-9v-UN7">

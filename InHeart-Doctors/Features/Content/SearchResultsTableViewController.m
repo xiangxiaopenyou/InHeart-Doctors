@@ -7,12 +7,12 @@
 //
 
 #import "SearchResultsTableViewController.h"
-
+#import "ContentDetailViewController.h"
+#import "DetailNavigationController.h"
 #import "SearchResultCell.h"
 
 #import "ContentModel.h"
 
-#import <SVProgressHUD.h>
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 
@@ -43,12 +43,9 @@
         [self searchRequest:self.searchTextField.text];
     }]];
     self.tableView.mj_footer.hidden = YES;
-    
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self.searchTextField becomeFirstResponder];
 }
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.searchTextField resignFirstResponder];
@@ -153,6 +150,15 @@
     cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", tempModel.createdAt];
     
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ContentModel *tempModel = [self.resultsArray[indexPath.row] copy];
+    ContentDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
+    detailViewController.contentModel = [tempModel copy];
+    DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.contentModel = [tempModel copy];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 

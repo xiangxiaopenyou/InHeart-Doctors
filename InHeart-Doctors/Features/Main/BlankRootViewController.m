@@ -7,7 +7,6 @@
 //
 
 #import "BlankRootViewController.h"
-#import <SVProgressHUD.h>
 
 @interface BlankRootViewController ()
 

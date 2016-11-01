@@ -12,7 +12,6 @@
 #import "UserModel.h"
 
 #import <GJCFUitils.h>
-#import <SVProgressHUD.h>
 #import <Masonry.h>
 
 @interface FindPasswordTableViewController ()<UITextFieldDelegate>

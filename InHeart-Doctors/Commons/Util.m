@@ -25,6 +25,9 @@
 + (NSString *)systemVersion {
     return [NSString stringWithFormat:@"%@", [UIDevice currentDevice].systemVersion];
 }
++ (NSString *)idfvString {
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
 + (BOOL)cameraAvailable {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
@@ -84,5 +87,37 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     BOOL isMatch = [predicate evaluateWithObject:password];
     return isMatch;
+}
++ (NSString *)convertTime:(CGFloat)second {
+    NSDate *d = [NSDate dateWithTimeIntervalSince1970:second];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if (second/3600 >= 1) {
+        [formatter setDateFormat:@"HH:mm:ss"];
+    } else {
+        [formatter setDateFormat:@"mm:ss"];
+    }
+    NSString *showtimeNew = [formatter stringFromDate:d];
+    return showtimeNew;
+}
++ (NSString *)toJSONDataSting:(NSArray *)theData{
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    if ([jsonData length] > 0 && error == nil){
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                     encoding:NSUTF8StringEncoding];
+        return jsonString;
+    } else {
+        return nil;
+    }
+//    NSMutableString *jsonString = [[NSMutableString alloc] init];
+//    for (NSString *item in theData) {
+//        [jsonString appendString:[NSString stringWithFormat:@"%@|", item]];
+//    }
+//    //[jsonString substringToIndex:jsonString.length - 1];
+//    [jsonString replaceCharactersInRange:NSMakeRange(jsonString.length - 1, 1) withString:@""];
+//    return jsonString;
 }
 @end

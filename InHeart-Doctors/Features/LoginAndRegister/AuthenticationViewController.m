@@ -16,15 +16,17 @@
 
 #import <Masonry.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <SVProgressHUD.h>
 #import <GJCFUitils.h>
 
 @interface AuthenticationViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *authenticationPictureButton;
+@property (weak, nonatomic) IBOutlet UIButton *titlesButton;
 @property (strong, nonatomic) UITextField *nameTextField;
 @property (strong, nonatomic) UITextField *idcardTextField;
 
 @property (strong, nonatomic) UIImage *selectedImage;
+@property (strong, nonatomic) UIImage *selectedTitlesImage;
+@property (assign, nonatomic) BOOL isTitles;
 
 
 @end
@@ -64,6 +66,7 @@
     return _idcardTextField;
 }
 
+#pragma mark - private methods
 - (void)presentImagePickerController:(UIImagePickerControllerSourceType)type {
     UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     pickerController.delegate = self;
@@ -72,13 +75,31 @@
     pickerController.allowsEditing = YES;
     [self presentViewController:pickerController animated:YES completion:nil];
 }
+- (void)submitAuthentication:(NSString *)imageId titlesImageId:(NSString *)titleImageId {
+    [UserModel userAuthentication:imageId titlesPictureId:titleImageId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
+        if (object) {
+            [SVProgressHUD dismiss];
+            [[NSUserDefaults standardUserDefaults] setObject:@(-5) forKey:USERCODE];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+        } else {
+            [SVProgressHUD showWithStatus:msg];
+        }
+    }];
+}
+
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *resultImage = [info objectForKey:UIImagePickerControllerEditedImage];
     if (resultImage) {
-        self.selectedImage = resultImage;
-        [self.authenticationPictureButton setImage:self.selectedImage forState:UIControlStateNormal];
+        if (_isTitles) {
+            self.selectedTitlesImage = resultImage;
+            [self.titlesButton setImage:self.selectedTitlesImage forState:UIControlStateNormal];
+        } else {
+            self.selectedImage = resultImage;
+            [self.authenticationPictureButton setImage:self.selectedImage forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -163,16 +184,21 @@
     [UserModel uploadAuthenticationPicture:tempName data:tempData handler:^(id object, NSString *msg) {
         if (object) {
             NSString *pictureId = object[@"imageId"];
-            [UserModel userAuthentication:pictureId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
-                if (object) {
-                    [SVProgressHUD dismiss];
-                    [[NSUserDefaults standardUserDefaults] setObject:@(-5) forKey:USERCODE];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
-                } else {
-                    [SVProgressHUD showWithStatus:msg];
-                }
-            }];
+            if (self.selectedTitlesImage) {
+                NSString *tempTitlesName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
+                NSData *tempTitlesData = UIImageJPEGRepresentation(self.selectedImage, 1.0);
+                [UserModel uploadTitlesPicture:tempTitlesName data:tempTitlesData handler:^(id object, NSString *msg) {
+                    if (object) {
+                        NSString *titlePictureId = object[@"imageId"];
+                        [self submitAuthentication:pictureId titlesImageId:titlePictureId];
+                    } else {
+                        [SVProgressHUD showWithStatus:@"职称图片上传失败"];
+                    }
+                }];
+            } else {
+                [self submitAuthentication:pictureId titlesImageId:nil];
+            }
+            
         } else {
             [SVProgressHUD showWithStatus:@"认证图片上传失败"];
         }
@@ -181,6 +207,12 @@
     
 }
 - (IBAction)authenticationPictureClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (button == self.authenticationPictureButton) {
+        _isTitles = NO;
+    } else {
+        _isTitles = YES;
+    }
     [[[XLBlockActionSheet alloc] initWithTitle:nil clickedBlock:^(NSInteger buttonIndex) {
         if (buttonIndex == 1) {
             //拍照

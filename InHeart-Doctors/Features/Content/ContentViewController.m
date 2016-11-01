@@ -7,6 +7,7 @@
 //
 
 #import "ContentViewController.h"
+#import "DetailNavigationController.h"
 #import "ContentDetailViewController.h"
 #import "ContentCell.h"
 #import "SelectionView.h"
@@ -17,7 +18,6 @@
 #import <UIImage-Helpers.h>
 #import <GJCFUitils.h>
 #import <MJRefresh.h>
-#import <SVProgressHUD.h>
 
 @interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -49,12 +49,23 @@
     [self.tableView setMj_header:[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _paging = 1;
         [self fetchContentsList];
+        if (self.diseasesArray.count == 0) {
+            [self fetchTypes:XJContentsTypesDiseases];
+        }
+        if (self.contentTypesArray.count == 0) {
+            [self fetchTypes:XJContentsTypesContents];
+        }
+        if (self.therapiesArray.count == 0) {
+            [self fetchTypes:XJContentsTypesTherapies];
+        }
     }]];
     [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self fetchContentsList];
     }]];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.mj_footer.hidden = YES;
+    
+    [SVProgressHUD show];
     
     [self fetchTypes:XJContentsTypesContents];
     [self fetchTypes:XJContentsTypesDiseases];
@@ -164,7 +175,6 @@
 }
 //筛选请求
 - (void)fetchContentsList {
-    [SVProgressHUD show];
     [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:_keyword handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
@@ -225,7 +235,9 @@
     cell.block = ^(ContentModel *model){
         ContentDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
         detailViewController.contentModel = [model copy];
-        [self presentViewController:detailViewController animated:YES completion:nil];
+        DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
+        navigationController.contentModel = [model copy];
+        [self presentViewController:navigationController animated:YES completion:nil];
     };
     return cell;
 }

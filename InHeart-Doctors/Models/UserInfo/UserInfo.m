@@ -10,7 +10,7 @@
 #import "UserModel.h"
 
 #import "PersonalInfo.h"
-#import "KeychainItemWrapper.h"
+#import <SAMKeychain.h>
 
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {
@@ -41,6 +41,9 @@
     if (userModel.realname) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.realname forKey:USERREALNAME];
     }
+    if (userModel.username) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.username forKey:USERNAME];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
@@ -55,35 +58,38 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERREALNAME]) {
         model.realname = [[NSUserDefaults standardUserDefaults] objectForKey:USERREALNAME];
     }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERNAME]) {
+        model.username = [[NSUserDefaults standardUserDefaults] objectForKey:USERNAME];
+    }
     return model;
 }
 - (void)removeUserInfo {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERCODE];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERTOKEN];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERREALNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (BOOL)savePersonalInfo:(PersonalInfo *)personalInfo {
     if (!personalInfo) {
         return NO;
     }
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserInfo" accessGroup:nil];
-    [keychain setObject:personalInfo.username forKey:(__bridge id)(kSecAttrAccount)];
-    [keychain setObject:personalInfo.password forKey:(__bridge id)(kSecValueData)];
+    [SAMKeychain setPassword:personalInfo.password forService:KEYCHAINSERVICE account:personalInfo.username error:nil];
     return YES;
 }
 - (PersonalInfo *)personalInfo {
     PersonalInfo *info = [PersonalInfo new];
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserInfo" accessGroup:nil];
-    NSString *username = [keychain objectForKey:(__bridge id)(kSecAttrAccount)];
-    NSString *password = [keychain objectForKey:(__bridge id)(kSecValueData)];
+    UserModel *tempModel = [self userInfo];
+    NSString *username = tempModel.username;
+    NSString *password = [SAMKeychain passwordForService:KEYCHAINSERVICE account:username];
     info.username = username;
     info.password = password;
     return info;
 }
 - (void)removePersonalInfo {
-    KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"UserInfo" accessGroup:nil];
-    [keychain resetKeychainItem];
+    UserModel *tempModel = [self userInfo];
+    NSString *username = tempModel.username;
+    [SAMKeychain deletePasswordForService:KEYCHAINSERVICE account:username error:nil];
 }
 
 @end

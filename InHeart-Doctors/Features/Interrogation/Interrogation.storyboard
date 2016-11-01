@@ -9,6 +9,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4Zh-vL-sey">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRM-hN-eIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="tui-6D-Ig0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xgT-Dc-qWF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -18,14 +19,14 @@
                         <segue destination="wRC-Wg-j6E" kind="relationship" relationship="rootViewController" id="hT6-6G-6th"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BRM-hN-eIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-385" y="342"/>
         </scene>
         <!--问诊-->
         <scene sceneID="03k-9Q-VIF">
             <objects>
-                <viewController storyboardIdentifier="InterrogationView" automaticallyAdjustsScrollViewInsets="NO" id="wRC-Wg-j6E" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ctq-bR-7vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="InterrogationView" automaticallyAdjustsScrollViewInsets="NO" id="wRC-Wg-j6E" customClass="InterrogationListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fhn-vU-3WG"/>
                         <viewControllerLayoutGuide type="bottom" id="9uJ-aE-Cmm"/>
@@ -33,22 +34,10 @@
                     <view key="view" contentMode="scaleToFill" id="far-l2-6x1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lap-F0-Mo5">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="lap-F0-Mo5" firstAttribute="leading" secondItem="far-l2-6x1" secondAttribute="leading" id="3Mu-qd-6wp"/>
-                            <constraint firstAttribute="trailing" secondItem="lap-F0-Mo5" secondAttribute="trailing" id="XE4-7b-wbe"/>
-                            <constraint firstItem="9uJ-aE-Cmm" firstAttribute="top" secondItem="lap-F0-Mo5" secondAttribute="bottom" id="f2f-qf-8QF"/>
-                            <constraint firstItem="lap-F0-Mo5" firstAttribute="top" secondItem="Fhn-vU-3WG" secondAttribute="bottom" id="tYc-c2-YsZ"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="问诊" id="qqC-VA-3Sp"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ctq-bR-7vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="344" y="330"/>
         </scene>

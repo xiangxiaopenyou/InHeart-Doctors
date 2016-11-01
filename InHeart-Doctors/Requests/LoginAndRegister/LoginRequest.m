@@ -20,7 +20,7 @@
                                     @"appVersion" : @(XLAppVersion),
                                     @"deviceSystem" : @"iOS",
                                     @"deviceVersion" : XLSystemVersion,
-                                    @"appId" : @"AppStore",
+                                    @"appId" : XLIDFVString,
                                     @"channel" : @"AppStore"} mutableCopy];
     [[RequestManager sharedInstance] POST:USER_LOGIN parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"code"] integerValue] == -1 || [responseObject[@"code"] integerValue] == -2 || [responseObject[@"code"] integerValue] == -3) {
@@ -29,7 +29,7 @@
             !resultHandler ?: resultHandler(responseObject,nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        !resultHandler ?: resultHandler(nil, error.description);
+        !resultHandler ?: resultHandler(nil, kNetworkError);
     }];
 }
 @end

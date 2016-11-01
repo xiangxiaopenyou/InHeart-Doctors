@@ -48,6 +48,7 @@
 #define XLAppVersion [Util appVersion]
 #define XLMobileModel [Util mobileModel]
 #define XLSystemVersion [Util systemVersion]
+#define XLIDFVString [Util idfvString]
 /**
  *  照相机是否可用
  */
@@ -100,4 +101,9 @@
  *验证密码格式
  */
 #define XLCheckPassword(aString) [Util checkPassword:aString]
+
+#define XLConvertTime(aFloat) [Util convertTime:aFloat]
+
+//转换为Json格式
+#define XLToJSONDataSting(aData) [Util toJSONDataSting:aData]
 

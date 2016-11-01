@@ -10,8 +10,10 @@
 
 #import "XLBlockAlertView.h"
 
+#import "UserModel.h"
+#import "UserInfo.h"
+
 #import <SDImageCache.h>
-#import <SVProgressHUD.h>
 
 @interface SystemSettingTableViewController ()
 
@@ -120,17 +122,34 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        if ([self folderSizeAtPath] >= 0.1) {
-            [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要清除缓存吗？" block:^(NSInteger buttonIndex) {
-                if (buttonIndex == 1) {
-                    [SVProgressHUD show];
-                    [self clearCache];
-                }
-            } cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil] show];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            if ([self folderSizeAtPath] >= 0.1) {
+                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要清除缓存吗？" block:^(NSInteger buttonIndex) {
+                    if (buttonIndex == 1) {
+                        [SVProgressHUD show];
+                        [self clearCache];
+                    }
+                } cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil] show];
+            }
+        } else {
         }
+    } else {
+        [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录吗？" block:^(NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [UserModel userLogout:^(id object, NSString *msg) {
+                    if (object) {
+                        [[UserInfo sharedUserInfo] removeUserInfo];
+                        [[UserInfo sharedUserInfo] removePersonalInfo];
+                        //[self.navigationController popToRootViewControllerAnimated:YES];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                    } else {
+                        [SVProgressHUD showErrorWithStatus:msg];
+                    }
+                }];
+            }
+        } cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil] show];
     }
-    
 }
 
 

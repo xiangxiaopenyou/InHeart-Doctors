@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *collectionButton;
 
+@property (copy, nonatomic) void (^collectBlock)();
+
 @end

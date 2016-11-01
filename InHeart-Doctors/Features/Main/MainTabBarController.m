@@ -8,6 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "ContentViewController.h"
+#import "InterrogationListViewController.h"
 #import "PersonalCenterTableViewController.h"
 
 static CGFloat const kTipLabelHeight = 2.0;
@@ -45,7 +46,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
     
     //问诊
-    UIViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
+    InterrogationListViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
     [self setupChildControllerWith:interrogationViewController normalImage:askUnSelectedImage selectedImage:askSelectedImage title:@"问诊" index:1];
     
     

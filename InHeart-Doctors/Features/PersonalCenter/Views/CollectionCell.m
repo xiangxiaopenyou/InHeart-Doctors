@@ -9,7 +9,7 @@
 #import "CollectionCell.h"
 @interface CollectionCell ()
 @property (strong, nonatomic) UIImageView *cancelImageView;
-@property (strong, nonatomic) UILabel *cancelLabel;
+//@property (strong, nonatomic) UILabel *cancelLabel;
 @end
 
 @implementation CollectionCell
@@ -30,7 +30,7 @@
         if([subView isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")]) {
             UIView *confirmView=(UIView *)[subView.subviews firstObject];
             //改背景颜色
-            confirmView.backgroundColor=[UIColor colorWithWhite:0.875 alpha:1.000];
+            confirmView.backgroundColor = MAIN_BACKGROUND_COLOR;
             for(UIView *sub in confirmView.subviews) {
                 
                 //修改字的大小、颜色，这个方法可以修改文字样式
@@ -60,18 +60,18 @@
                     UIView *deleteView = sub;
                     if (!_cancelImageView) {
                         _cancelImageView = [[UIImageView alloc] init];
-                        _cancelImageView.image = [UIImage imageNamed:@"close"];
-                        _cancelImageView.frame = CGRectMake(CGRectGetMaxX(sub.frame) - 52, -10, 30, 30);
+                        _cancelImageView.image = [UIImage imageNamed:@"delete_collect"];
+                        _cancelImageView.frame = CGRectMake(CGRectGetMaxX(sub.frame) - 47, 0, 25, 25);
                     }
                     [deleteView addSubview:_cancelImageView];
-                    if (!_cancelLabel) {
-                        _cancelLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(sub.frame) - 62, 24, 50, 18)];
-                        _cancelLabel.text = @"取消收藏";
-                        _cancelLabel.textColor = [UIColor whiteColor];
-                        _cancelLabel.font = kSystemFont(12);
-                        _cancelLabel.textAlignment = NSTextAlignmentCenter;
-                    }
-                    [deleteView addSubview:_cancelLabel];
+//                    if (!_cancelLabel) {
+//                        _cancelLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(sub.frame) - 62, 24, 50, 18)];
+//                        _cancelLabel.text = @"取消收藏";
+//                        _cancelLabel.textColor = [UIColor whiteColor];
+//                        _cancelLabel.font = kSystemFont(12);
+//                        _cancelLabel.textAlignment = NSTextAlignmentCenter;
+//                    }
+//                    [deleteView addSubview:_cancelLabel];
                 }
             }
             break;

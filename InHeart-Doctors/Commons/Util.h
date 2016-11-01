@@ -14,6 +14,7 @@
 + (CGFloat)appVersion;
 + (NSString *)systemVersion;
 + (NSString *)mobileModel;
++ (NSString *)idfvString;
 + (BOOL)cameraAvailable;
 + (BOOL)canSendSMS;
 + (BOOL)canMakePhoneCall;
@@ -25,5 +26,7 @@
 + (NSString *)numberString:(CGFloat)floatNumber;
 + (CGSize)sizeOfText:(NSString *)text width:(CGFloat)width font:(UIFont *)font;
 + (BOOL)checkPassword:(NSString *)password;
++ (NSString *)convertTime:(CGFloat)second; //秒转换为HH:mm:ss
++ (NSString *)toJSONDataSting:(NSArray *)theData;
 
 @end

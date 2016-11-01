@@ -7,11 +7,20 @@
 //
 
 #import "MyCollectionsTableViewController.h"
+#import "ContentDetailViewController.h"
+#import "DetailNavigationController.h"
 
 #import "CollectionCell.h"
 
+#import "DoctorModel.h"
+#import "ContentModel.h"
+
+#import <MJRefresh.h>
+#import <UIImageView+WebCache.h>
+
 @interface MyCollectionsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *collectionsArray;
+@property (assign, nonatomic) NSInteger paging;
 
 @end
 
@@ -20,7 +29,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
-    
+    [self.tableView setMj_header:[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _paging = 1;
+        [self fetchCollectionsList];
+    }]];
+    [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self fetchCollectionsList];
+    }]];
+    self.tableView.mj_footer.hidden = YES;
+    _paging = 1;
+    [self fetchCollectionsList];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,20 +50,58 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Requset
+- (void)fetchCollectionsList {
+    [SVProgressHUD show];
+    [DoctorModel fetchCollectionsList:@(_paging) handler:^(id object, NSString *msg) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        if (object) {
+            [SVProgressHUD dismiss];
+            NSArray *resultArray = [object copy];
+            if (_paging == 1) {
+                self.collectionsArray = [resultArray mutableCopy];
+            } else {
+                NSMutableArray *tempArray = [self.collectionsArray mutableCopy];
+                [tempArray addObjectsFromArray:resultArray];
+                self.collectionsArray = [tempArray mutableCopy];
+            }
+            [self.tableView reloadData];
+            if (resultArray.count < 10) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                self.tableView.mj_footer.hidden = YES;
+            } else {
+                _paging += 1;
+                self.tableView.mj_footer.hidden = NO;
+            }
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }
+    }];
+}
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return self.collectionsArray.count;
-    return 5;
+    return self.collectionsArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"CollectionCell";
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
+    ContentModel *tempModel = self.collectionsArray[indexPath.row];
+    [cell.coverImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
+    cell.collectionTitleLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@", tempModel.createdAt];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ContentModel *tempModel = [self.collectionsArray[indexPath.row] copy];
+    ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
+    detailViewController.contentModel = [tempModel copy];
+    DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
+    navigationController.contentModel = [tempModel copy];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 
@@ -60,7 +116,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        ContentModel *tempModel = self.collectionsArray[indexPath.row];
+        [ContentModel cancelCollectContent:tempModel.contentId handler:nil];
+        [self.collectionsArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        
     }
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

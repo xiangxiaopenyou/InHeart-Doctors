@@ -8,6 +8,7 @@
 
 #import "PersonalCenterTableViewController.h"
 #import "EditInformationViewController.h"
+#import "MyWalletViewController.h"
 #import "MyCollectionsTableViewController.h"
 #import "InterrogationSettingViewController.h"
 #import "SystemSettingTableViewController.h"
@@ -129,7 +130,8 @@
             break;
         case 1:{
             if (indexPath.row == 0) {
-                
+                MyWalletViewController *walletViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyWallet"];
+                [self.navigationController pushViewController:walletViewController animated:YES];
             } else {
                 MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
                 [self.navigationController pushViewController:collectionViewController animated:YES];

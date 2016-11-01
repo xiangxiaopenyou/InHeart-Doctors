@@ -18,6 +18,9 @@
                             @"imageId" : self.pictureId,
                             @"realname" : self.realname};
     [self.params addEntriesFromDictionary:param];
+    if (self.titlePictureId) {
+        [self.params setObject:self.titlePictureId forKey:@"TitleImageID"];
+    }
     [[RequestManager sharedInstance] POST:USER_AUTHENTICATION parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject, nil);
@@ -25,7 +28,7 @@
             !resultHandler ?: resultHandler(nil, responseObject[@"message"]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        !resultHandler ?: resultHandler(nil, error.description);
+        !resultHandler ?: resultHandler(nil, kNetworkError);
     }];
 }
 

@@ -23,6 +23,9 @@
 }
 
 - (IBAction)collectionClick:(id)sender {
+    if (self.collectBlock) {
+        self.collectBlock();
+    }
 }
 
 @end

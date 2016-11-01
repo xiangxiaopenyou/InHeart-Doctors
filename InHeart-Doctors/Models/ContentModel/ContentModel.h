@@ -26,10 +26,12 @@
 @property (copy, nonatomic) NSString<Optional> *updator;
 @property (copy, nonatomic) NSString *coverPic;
 @property (copy, nonatomic) NSDictionary<Optional> *ext;
-@property (strong, nonatomic) NSNumber<Optional> *collected;
+@property (strong, nonatomic) NSNumber<Optional> *isCollect;
 
 + (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler;
 + (void)fetchContentsList:(NSNumber *)paging disease:(NSString *)diseaseId therapy:(NSString *)therapyId type:(NSString *)contentTypeId keyword:(NSString *)keyword handler:(RequestResultHandler)handler;
 + (void)fetchContentDetail:(NSString *)contentId handler:(RequestResultHandler)handler;
++ (void)collectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
++ (void)cancelCollectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
 
 @end

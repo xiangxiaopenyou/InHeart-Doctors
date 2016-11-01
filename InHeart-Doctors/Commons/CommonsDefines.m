@@ -25,6 +25,8 @@ NSString * const kSearchPlaceholder = @"请输入你要搜索的内容";
 NSString * const kAllDiseases = @"全部病种";
 NSString * const kAllContents = @"全部内容";
 NSString * const kAllTherapies = @"全部疗法";
+NSString * const kVideoCanNotPlay = @"视频无法播放";
+NSString * const kNetworkError = @"网络错误";
 
 NSString * const kMyInterrogation = @"我的问诊";
 NSString * const kMyWallet = @"我的钱包";
@@ -36,6 +38,8 @@ NSString * const kPersonalSetting = @"设置";
 NSString * const kInterrogationSetting = @"问诊设置";
 NSString * const kClearCache = @"清除缓存";
 NSString * const kAboutUs = @"关于";
+NSString * const kMySpecialits = @"我的擅长";
+NSString * const kMyCity = @"我的城市";
 
 NSString * const kInputPhoneNumber = @"请输入您的手机号";
 NSString * const kInputPassword = @"请输入您的密码";
@@ -74,13 +78,24 @@ NSString * const USER_LOGIN = @"doctor/login";
 NSString * const USER_REGISTER = @"doctor/register";
 NSString * const USER_AUTHENTICATION = @"doctor/auth";
 NSString * const UPLOAD_AUTHENTICATION_IMAGE = @"doctor/authUpload";
+NSString * const UPLOAD_TITLES_IMAGE = @"doctor/authTitleUpload";
 NSString * const FETCH_VERIFICATION_CODE = @"doctor/sendCode";
 NSString * const FIND_PASSWORD = @"doctor/modifyPassword";
+NSString * const USER_LOGOUT = @"doctor/logout";
 
 NSString * const FETCH_CONTENTS_LIST = @"doctor/content/search";
 NSString * const FETCH_CONTENTS_TYPES = @"doctor/content/type";
 NSString * const FETCH_DISEASES = @"doctor/content/disease";
 NSString * const FETCH_THERAPIES = @"doctor/content/therapy";
 NSString * const FETCH_CONTENT_DETAIL = @"doctor/content/info";
+NSString * const COLLECT_CONTENT = @"doctor/content/collect";
+NSString * const CANCEL_COLLECT_CONTENT = @"doctor/content/cancelCollect";
 
 NSString * const FETCH_COLLECTIONS_LIST = @"doctor/contentCollect/search";
+NSString * const FETCH_PERSONAL_INFORMATION = @"doctor/getInfo";
+NSString * const FETCH_ACCOUNT_BALANCE = @"doctor/getBalance";
+NSString * const FETCH_BILL_LIST = @"doctor/getBills";
+NSString * const FETCH_CITIES_LIST = @"doctor/getRegion";
+NSString * const EDIT_INFORMATION = @"doctor/fillInfo";
+NSString * const UPLOAD_AVATAR = @"doctor/headPictureUpload";
+NSString * const FETCH_BILLS_LIST = @"doctor/getBills";

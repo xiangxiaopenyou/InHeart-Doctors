@@ -11,6 +11,8 @@
 #import "FetchTypsRequest.h"
 #import "FetchContentsListRequest.h"
 #import "FetchContentDetailRequest.h"
+#import "CollectRequest.h"
+#import "CancelCollectRequest.h"
 
 @implementation ContentModel
 + (JSONKeyMapper *)keyMapper {
@@ -66,4 +68,17 @@
         }
     }];
 }
++ (void)collectContent:(NSString *)contentId handler:(RequestResultHandler)handler {
+    [[CollectRequest new] request:^BOOL(CollectRequest *request) {
+        request.contentId = contentId;
+        return YES;
+    } result:handler];
+}
++ (void)cancelCollectContent:(NSString *)contentId handler:(RequestResultHandler)handler {
+    [[CancelCollectRequest new] request:^BOOL(CancelCollectRequest *request) {
+        request.contentId = contentId;
+        return YES;
+    } result:handler];
+}
 @end
+

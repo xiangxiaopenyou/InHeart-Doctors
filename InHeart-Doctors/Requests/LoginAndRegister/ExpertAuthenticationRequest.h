@@ -13,6 +13,7 @@
 @property (copy, nonatomic) NSString *cardNumber;
 @property (copy, nonatomic) NSString *realname;
 @property (copy, nonatomic) NSString *pictureId;
+@property (copy, nonatomic) NSString *titlePictureId;
 
 
 @end

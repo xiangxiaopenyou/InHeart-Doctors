@@ -12,7 +12,9 @@
 #import "RegisterRequest.h"
 #import "ExpertAuthenticationRequest.h"
 #import "UploadAuthenticationPictureRequest.h"
+#import "UploadTitlesPictureRequest.h"
 #import "FindPasswordRequest.h"
+#import "LogoutRequest.h"
 
 
 @implementation UserModel
@@ -52,16 +54,30 @@
         }
     }];
 }
-+ (void)userAuthentication:(NSString *)pictureId name:(NSString *)realname card:(NSString *)cardNumber handler:(RequestResultHandler)handler {
++ (void)userAuthentication:(NSString *)pictureId titlesPictureId:(NSString *)titlesPictureId name:(NSString *)realname card:(NSString *)cardNumber handler:(RequestResultHandler)handler {
     [[ExpertAuthenticationRequest new] request:^BOOL(ExpertAuthenticationRequest *request) {
         request.pictureId = pictureId;
         request.realname = realname;
         request.cardNumber = cardNumber;
+        request.titlePictureId = titlesPictureId;
         return YES;
     } result:handler];
 }
 + (void)uploadAuthenticationPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler {
     [[UploadAuthenticationPictureRequest new] request:^BOOL(UploadAuthenticationPictureRequest *request) {
+        request.fileName = fileName;
+        request.fileData = fileData;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            !handler ?: handler(object, nil);
+        }
+    }];
+}
++ (void)uploadTitlesPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler {
+    [[UploadTitlesPictureRequest new] request:^BOOL(UploadTitlesPictureRequest *request) {
         request.fileName = fileName;
         request.fileData = fileData;
         return YES;
@@ -86,5 +102,10 @@
             !handler ?: handler(object, nil);
         }
     }];
+}
++ (void)userLogout:(RequestResultHandler)handler {
+    [[LogoutRequest new] request:^BOOL(id request) {
+        return YES;
+    } result:handler];
 }
 @end

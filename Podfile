@@ -11,7 +11,8 @@ pod 'SDCycleScrollView'
 pod 'GJCFUitils'
 pod 'UIImage-Helpers'
 pod 'IQKeyboardManager'
-pod 'Hyphenate_CN'
 pod 'GTSDK'
+pod 'Hyphenate_CN'
+pod 'SAMKeychain'
 end 
 

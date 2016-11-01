@@ -18,7 +18,6 @@
 
 #import <Masonry.h>
 #import <GJCFUitils.h>
-#import <SVProgressHUD.h>
 
 @interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *footerView;

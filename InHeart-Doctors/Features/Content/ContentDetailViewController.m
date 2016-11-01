@@ -8,21 +8,28 @@
 
 #import "ContentDetailViewController.h"
 #import "DetailContentCell.h"
+#import "AudioPlayerView.h"
 
 #import "ContentModel.h"
+#import "ContentMediaModel.h"
 
 #import <UtoVRPlayer/UtoVRPlayer.h>
 #import <Masonry.h>
+#import <SDCycleScrollView.h>
+#import <GJCFUitils.h>
 
-@interface ContentDetailViewController ()<UVPlayerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ContentDetailViewController ()<UVPlayerDelegate, UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewOfPlayer;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintOfPlayer;
 
 @property (strong, nonatomic) UVPlayer *vrPlayer;
 @property (strong, nonatomic) UVPlayerItem  *vrPlayerItem;
+@property (strong, nonatomic) AudioPlayerView *audioPlayerView;
+@property (strong, nonatomic) SDCycleScrollView *cyclePicturesView;
 @property (strong, nonatomic) UIButton *startButton;
 @property (assign, nonatomic) CGFloat width;
+@property (strong, nonatomic) ContentMediaModel *mediaModel;
 
 @end
 
@@ -32,27 +39,67 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _width = SCREEN_WIDTH;
-    [self.viewOfPlayer addSubview:self.vrPlayer.playerView];
-    [self.vrPlayer setPortraitBackButtonTarget:self selector:@selector(backAction:)];
-    [self.vrPlayer appendItem:self.vrPlayerItem];
-    self.vrPlayer.gyroscopeEnabled = YES;
-    self.vrPlayer.duralScreenEnabled = YES;
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    if ([self.contentModel.type integerValue] == 1) {
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.viewOfPlayer addSubview:self.vrPlayer.playerView];
+        self.vrPlayer.gyroscopeEnabled = YES;
+        self.vrPlayer.duralScreenEnabled = YES;
+        [self.viewOfPlayer addSubview:self.startButton];
+        [_startButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.viewOfPlayer);
+            make.width.height.mas_offset(51);
+        }];
+        self.startButton.hidden = YES;
+    } else if ([self.contentModel.type integerValue] == 2) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+        _audioPlayerView = [[NSBundle mainBundle] loadNibNamed:@"AudioPlayerview" owner:nil options:nil][0];
+        [self.viewOfPlayer addSubview:_audioPlayerView];
+        [_audioPlayerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
+        }];
+    } else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
+        [self.viewOfPlayer addSubview:self.cyclePicturesView];
+        [self.cyclePicturesView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
+        }];
+//        NSArray *imageUrlArray = @[@"http://img1.3lian.com/img013/v4/57/d/4.jpg"
+//                                   , @"http://img1.3lian.com/img013/v4/57/d/7.jpg"
+//                                   , @"http://img1.3lian.com/img013/v4/57/d/6.jpg",
+//                                   @"http://img1.3lian.com/img013/v4/57/d/8.jpg",
+//                                   @"http://img1.3lian.com/img013/v4/57/d/2.jpg"
+//                                   ];
+//        self.cyclePicturesView.imageURLStringsGroup = [imageUrlArray copy];
+    }
+    [SVProgressHUD show];
+    [self fetchDetails:self.contentModel.contentId];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self.vrPlayer.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
-    }];
+    if ([self.contentModel.type integerValue] == 1) {
+        [self.vrPlayer.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
+        }];
+    }
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.vrPlayer pause];
 }
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.vrPlayer prepareToRelease];
+    if (self.vrPlayer) {
+        [self.vrPlayer prepareToRelease];
+    } if (self.audioPlayerView) {
+        [self.audioPlayerView removeFromSuperview];
+        self.audioPlayerView = nil;
+    }
 }
 
+//视频播放屏幕旋转处理
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     BOOL isLandscape = size.width == _width;
     CGFloat height;
@@ -72,15 +119,11 @@
     if (!_vrPlayer) {
         _vrPlayer = [[UVPlayer alloc] initWithConfiguration:nil];
         _vrPlayer.delegate = self;
+        [_vrPlayer setPortraitBackButtonTarget:self selector:@selector(backAction:)];
     }
     return _vrPlayer;
 }
-- (UVPlayerItem *)vrPlayerItem {
-    if (!_vrPlayerItem) {
-        _vrPlayerItem = [[UVPlayerItem alloc] initWithPath:@"http://cache.utovr.com/201508270529022474.mp4" type:UVPlayerItemTypeOnline];
-    }
-    return _vrPlayerItem;
-}
+//播放视频按钮
 - (UIButton *)startButton {
     if (!_startButton) {
         _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -90,14 +133,55 @@
     return _startButton;
     
 }
+//图片集轮播
+- (SDCycleScrollView *)cyclePicturesView {
+    if (!_cyclePicturesView) {
+        _cyclePicturesView = [[SDCycleScrollView alloc] init];
+        _cyclePicturesView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+        _cyclePicturesView.autoScrollTimeInterval = 15.0;
+        _cyclePicturesView.contentMode = UIViewContentModeScaleAspectFill;
+        _cyclePicturesView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+        _cyclePicturesView.placeholderImage = [UIImage imageNamed:@"default_image"];
+        _cyclePicturesView.clipsToBounds = YES;
+        _cyclePicturesView.delegate = self;
+    }
+    return _cyclePicturesView;
+}
 
+#pragma mark - Requests
 - (void)fetchDetails:(NSString *)contentId {
     [ContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
         if (object) {
+            [SVProgressHUD dismiss];
             self.contentModel = [object copy];
+            if (self.contentModel.ext) {
+                self.mediaModel = [[ContentMediaModel alloc] initWithDictionary:self.contentModel.ext error:nil];
+                [self loadPlayer];
+            }
             [self.tableView reloadData];
+        } else {
+            [SVProgressHUD  showErrorWithStatus:msg];
         }
     }];
+}
+
+#pragma mark - Private Methods
+- (void)loadPlayer {
+    if ([self.contentModel.type integerValue] == 1) {
+        if (self.mediaModel.content) {
+            _vrPlayerItem = [[UVPlayerItem alloc] initWithPath:self.mediaModel.content type:UVPlayerItemTypeOnline];
+            self.startButton.hidden = NO;
+        }
+    } else if ([self.contentModel.type integerValue] == 2) {
+        if (self.mediaModel.content) {
+            [_audioPlayerView setupContents:self.mediaModel.content imageUrl:self.contentModel.coverPic];
+        }
+    } else {
+        if (self.mediaModel.content) {
+            NSArray *tempArray = [self.mediaModel.content componentsSeparatedByString:@","];
+            self.cyclePicturesView.imageURLStringsGroup = [tempArray copy];
+        }
+    }
 }
 
 
@@ -107,18 +191,14 @@
 }
 #pragma mark - UVPlayerDelegate
 - (void)player:(UVPlayer *)player playingStatusDidChanged:(NSDictionary *)dict {
-//    float rate = [dict[@"rate"] floatValue];
-//    BOOL bufferFull = [dict[@"bufferFull"] boolValue];
-//    BOOL playing = rate != 0 && bufferFull;
-//    if (playing) {
-//        [self.startButton removeFromSuperview];
-//    } else {
-//        [self.viewOfPlayer addSubview:self.startButton];
-//        [_startButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(self.viewOfPlayer);
-//            make.width.height.mas_offset(51);
-//        }];
-//    }
+    float rate = [dict[@"rate"] floatValue];
+    BOOL avalibaleItem = [dict[@"avalibaleItem"] boolValue];
+    BOOL bufferFull = [dict[@"bufferFull"] boolValue];
+    if (rate == 1 || (!avalibaleItem && !bufferFull) ) {
+        self.startButton.hidden = YES;
+    } else {
+        self.startButton.hidden = NO;
+    }
 }
 #pragma mark - UITableView DataSource Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,6 +211,19 @@
     if (self.contentModel) {
         cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.name];
         cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.createdAt];
+        cell.collectionButton.selected = [self.contentModel.isCollect integerValue] == 0 ? NO : YES;
+        GJCFWeakObject(cell) weakCell = cell;
+        cell.collectBlock = ^(){
+            if ([self.contentModel.isCollect integerValue] == 0) {
+                self.contentModel.isCollect = @1;
+                weakCell.collectionButton.selected = YES;
+                [ContentModel collectContent:self.contentModel.contentId handler:nil];
+            } else {
+                self.contentModel.isCollect = @0;
+                weakCell.collectionButton.selected = NO;
+                [ContentModel cancelCollectContent:self.contentModel.contentId handler:nil];
+            }
+        };
     }
     return cell;
 }
@@ -148,7 +241,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)startPlay {
-    [self.vrPlayer play];
+    if (self.vrPlayer.currentItem) {
+        [self.vrPlayer play];
+    } else {
+        if (_vrPlayerItem) {
+            [self.vrPlayer appendItem:_vrPlayerItem];
+        } else {
+            [SVProgressHUD showErrorWithStatus:kVideoCanNotPlay];
+        }
+    }
+    self.startButton.hidden = YES;
 }
 
 @end
