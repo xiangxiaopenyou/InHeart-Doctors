@@ -21,6 +21,7 @@ extern NSString * const USERTOKEN;
 extern NSString * const USERCODE;
 extern NSString * const USERREALNAME;
 extern NSString * const USERNAME;
+extern NSString * const USERENCRYPTEDPASSWORD;
 extern NSString * const KEYCHAINSERVICE;
 
 //常用数值
@@ -35,6 +36,14 @@ extern NSString * const kAllTherapies;
 extern NSString * const kVideoCanNotPlay;
 extern NSString * const kNetworkError;
 
+//问诊
+extern NSString * const kCommonTip;
+extern NSString * const kCommonCancel;
+extern NSString * const kCommonEnsure;
+extern NSString * const kIsMakePhoneCall;
+extern NSString * const kPleaseInputPrescriptionWords;
+extern NSString * const kIsFree;
+
 //个人中心
 extern NSString * const kMyInterrogation;
 extern NSString * const kMyWallet;
@@ -48,6 +57,7 @@ extern NSString * const kClearCache;
 extern NSString * const kAboutUs;
 extern NSString * const kMySpecialits;
 extern NSString * const kMyCity;
+extern NSString * const kStopInterrogationTip;
 
 //登录注册
 extern NSString * const kInputPhoneNumber;
@@ -81,6 +91,8 @@ extern NSString * const kChangePassword;
 //NotificationName
 extern NSString * const kLoginSuccess;
 extern NSString * const kApplicationBecomeActive;
+extern NSString * const kSetupUnreadMessagesCount;
+extern NSString * const kConversationsDidChange;
 
 //接口
 //1.BaseURL
@@ -115,6 +127,13 @@ extern NSString * const FETCH_CITIES_LIST;
 extern NSString * const EDIT_INFORMATION;
 extern NSString * const UPLOAD_AVATAR;
 extern NSString * const FETCH_BILLS_LIST;
+extern NSString * const FETCH_COMMON_PRICE;
+extern NSString * const SET_COMMON_PRICE;
+extern NSString * const SET_INTERROGATION_STATE;
+
+//5.消息(问诊)
+extern NSString * const FETCH_USERS_NAME;
+extern NSString * const SEND_PRESCRIPTION;
 
 
 

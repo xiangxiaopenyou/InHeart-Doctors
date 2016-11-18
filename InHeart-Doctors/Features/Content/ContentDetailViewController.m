@@ -66,13 +66,6 @@
         [self.cyclePicturesView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
         }];
-//        NSArray *imageUrlArray = @[@"http://img1.3lian.com/img013/v4/57/d/4.jpg"
-//                                   , @"http://img1.3lian.com/img013/v4/57/d/7.jpg"
-//                                   , @"http://img1.3lian.com/img013/v4/57/d/6.jpg",
-//                                   @"http://img1.3lian.com/img013/v4/57/d/8.jpg",
-//                                   @"http://img1.3lian.com/img013/v4/57/d/2.jpg"
-//                                   ];
-//        self.cyclePicturesView.imageURLStringsGroup = [imageUrlArray copy];
     }
     [SVProgressHUD show];
     [self fetchDetails:self.contentModel.contentId];
@@ -160,7 +153,7 @@
             }
             [self.tableView reloadData];
         } else {
-            [SVProgressHUD  showErrorWithStatus:msg];
+            XLShowThenDismissHUD(NO, msg);
         }
     }];
 }
@@ -247,7 +240,7 @@
         if (_vrPlayerItem) {
             [self.vrPlayer appendItem:_vrPlayerItem];
         } else {
-            [SVProgressHUD showErrorWithStatus:kVideoCanNotPlay];
+            XLShowThenDismissHUD(NO, kVideoCanNotPlay);
         }
     }
     self.startButton.hidden = YES;

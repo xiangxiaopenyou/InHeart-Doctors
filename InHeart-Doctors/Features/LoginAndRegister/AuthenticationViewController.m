@@ -167,15 +167,15 @@
 */
 - (IBAction)submitClick:(id)sender {
     if (!self.selectedImage) {
-        [SVProgressHUD showErrorWithStatus:kPleaseUploadAuthenticationPicture];
+        XLShowThenDismissHUD(NO, kPleaseUploadAuthenticationPicture);
         return;
     }
     if (XLIsNullObject(self.nameTextField.text)) {
-        [SVProgressHUD showErrorWithStatus:kPleaseInputRealname];
+        XLShowThenDismissHUD(NO, kPleaseInputRealname);
         return;
     }
     if (!GJCFStringIsPersonCardNumber(self.idcardTextField.text)) {
-        [SVProgressHUD showErrorWithStatus:kPleaseInputCorrectIDCardNumber];
+        XLShowThenDismissHUD(NO, kPleaseInputCorrectIDCardNumber);
         return;
     }
     NSString *tempName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
@@ -192,7 +192,7 @@
                         NSString *titlePictureId = object[@"imageId"];
                         [self submitAuthentication:pictureId titlesImageId:titlePictureId];
                     } else {
-                        [SVProgressHUD showWithStatus:@"职称图片上传失败"];
+                        XLShowThenDismissHUD(NO, @"职称图片上传失败");
                     }
                 }];
             } else {
@@ -200,7 +200,7 @@
             }
             
         } else {
-            [SVProgressHUD showWithStatus:@"认证图片上传失败"];
+            XLShowThenDismissHUD(NO, @"认证图片上传失败");
         }
     }];
     

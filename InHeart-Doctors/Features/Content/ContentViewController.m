@@ -188,16 +188,18 @@
                 [tempArray addObjectsFromArray:resultArray];
                 self.contentsResultsArray = [tempArray mutableCopy];
             }
-            [self.tableView reloadData];
-            if (resultArray.count < 10) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                self.tableView.mj_footer.hidden = YES;
-            } else {
-                _paging += 1;
-                self.tableView.mj_footer.hidden = NO;
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+                if (resultArray.count < 10) {
+                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                    self.tableView.mj_footer.hidden = YES;
+                } else {
+                    _paging += 1;
+                    self.tableView.mj_footer.hidden = NO;
+                }
+            });
         } else {
-            [SVProgressHUD showErrorWithStatus:msg];
+            XLShowThenDismissHUD(NO, msg);
         }
     }];
 }

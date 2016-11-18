@@ -54,7 +54,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
 
 @synthesize statusButton = _statusButton;
 @synthesize bubbleView = _bubbleView;
-@synthesize hasRead = _hasRead;
+//@synthesize hasRead = _hasRead;
 @synthesize activity = _activity;
 
 + (void)initialize
@@ -129,14 +129,14 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     _avatarView.userInteractionEnabled = YES;
     [self.contentView addSubview:_avatarView];
     
-    _hasRead = [[UILabel alloc] init];
-    _hasRead.translatesAutoresizingMaskIntoConstraints = NO;
-    _hasRead.text = NSEaseLocalizedString(@"hasRead", @"Read");
-    _hasRead.textAlignment = NSTextAlignmentCenter;
-    _hasRead.font = [UIFont systemFontOfSize:12];
-    _hasRead.hidden = YES;
-    [_hasRead sizeToFit];
-    [self.contentView addSubview:_hasRead];
+//    _hasRead = [[UILabel alloc] init];
+//    _hasRead.translatesAutoresizingMaskIntoConstraints = NO;
+//    _hasRead.text = NSEaseLocalizedString(@"hasRead", @"Read");
+//    _hasRead.textAlignment = NSTextAlignmentCenter;
+//    _hasRead.font = [UIFont systemFontOfSize:12];
+//    _hasRead.hidden = YES;
+//    [_hasRead sizeToFit];
+//    [self.contentView addSubview:_hasRead];
     
     _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activity.translatesAutoresizingMaskIntoConstraints = NO;
@@ -234,8 +234,8 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.activity attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
     
     [self _updateHasReadWidthConstraint];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.statusButton attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.statusButton attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
 //    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.activity attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
 }
 
@@ -243,12 +243,12 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
 
 - (void)_updateHasReadWidthConstraint
 {
-    if (_hasRead) {
-        [self removeConstraint:self.hasReadWidthConstraint];
-        
-        self.hasReadWidthConstraint = [NSLayoutConstraint constraintWithItem:_hasRead attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:40];
-        [self addConstraint:self.hasReadWidthConstraint];
-    }
+//    if (_hasRead) {
+//        [self removeConstraint:self.hasReadWidthConstraint];
+//        
+//        self.hasReadWidthConstraint = [NSLayoutConstraint constraintWithItem:_hasRead attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:40];
+//        [self addConstraint:self.hasReadWidthConstraint];
+//    }
 }
 
 - (void)_updateStatusButtonWidthConstraint

@@ -36,7 +36,7 @@
                 self.balanceLabel.text = [NSString stringWithFormat:@"%.2f", self.balanceValue];
             }
         } else {
-            [SVProgressHUD showErrorWithStatus:msg];
+            XLShowThenDismissHUD(NO, msg);
         }
     }];
 }

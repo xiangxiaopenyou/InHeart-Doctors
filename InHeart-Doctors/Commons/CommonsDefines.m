@@ -15,6 +15,7 @@ NSString * const USERTOKEN = @"UserToken";
 NSString * const USERCODE = @"UserCode";
 NSString * const USERREALNAME = @"Realname";
 NSString * const USERNAME = @"Username";
+NSString * const USERENCRYPTEDPASSWORD = @"EncryptedPassword";
 NSString * const KEYCHAINSERVICE = @"com.midvision.vrdoctor";
 
 
@@ -28,6 +29,13 @@ NSString * const kAllTherapies = @"全部疗法";
 NSString * const kVideoCanNotPlay = @"视频无法播放";
 NSString * const kNetworkError = @"网络错误";
 
+NSString * const kCommonTip = @"提示";
+NSString * const kCommonCancel = @"取消";
+NSString * const kCommonEnsure = @"确定";
+NSString * const kIsMakePhoneCall = @"打电话给患者？";
+NSString * const kPleaseInputPrescriptionWords = @"请先写好医嘱哦~";
+NSString * const kIsFree = @"确定发送免费处方吗？";
+
 NSString * const kMyInterrogation = @"我的问诊";
 NSString * const kMyWallet = @"我的钱包";
 NSString * const kMyDoctors = @"我的医生";
@@ -40,6 +48,7 @@ NSString * const kClearCache = @"清除缓存";
 NSString * const kAboutUs = @"关于";
 NSString * const kMySpecialits = @"我的擅长";
 NSString * const kMyCity = @"我的城市";
+NSString * const kStopInterrogationTip = @"停止问诊患者将无法联系您";
 
 NSString * const kInputPhoneNumber = @"请输入您的手机号";
 NSString * const kInputPassword = @"请输入您的密码";
@@ -71,6 +80,8 @@ NSString * const kChangePassword = @"修改密码";
 
 NSString * const kLoginSuccess = @"LoginSuccess";
 NSString * const kApplicationBecomeActive = @"ApplicationBecomeActive";
+NSString * const kSetupUnreadMessagesCount = @"SetupUnreadMessagesCount";
+NSString * const kConversationsDidChange = @"ConversationsDidChange";
 
 NSString * const BASEAPIURL = @"http://xj.dosnsoft.com:8000/api/v1/";
 
@@ -99,3 +110,9 @@ NSString * const FETCH_CITIES_LIST = @"doctor/getRegion";
 NSString * const EDIT_INFORMATION = @"doctor/fillInfo";
 NSString * const UPLOAD_AVATAR = @"doctor/headPictureUpload";
 NSString * const FETCH_BILLS_LIST = @"doctor/getBills";
+NSString * const FETCH_COMMON_PRICE = @"doctor/getMinPrice";
+NSString * const SET_COMMON_PRICE = @"doctor/setMinPrice";
+NSString * const SET_INTERROGATION_STATE = @"doctor/setStatus";
+
+NSString * const FETCH_USERS_NAME = @"doctor/getUserIDAndName";
+NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";

@@ -170,7 +170,7 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.activity attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
     
     //hasRead
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
 }
 
 - (void)configureRecvLayoutConstraints
@@ -233,7 +233,7 @@
     _nameLabel.text = model.nickname;
     
     if (self.model.isSender) {
-        _hasRead.hidden = YES;
+//        _hasRead.hidden = YES;
         switch (self.model.messageStatus) {
             case EMMessageStatusDelivering:
             {
@@ -247,7 +247,7 @@
                 _statusButton.hidden = YES;
                 [_activity stopAnimating];
                 if (self.model.isMessageRead) {
-                    _hasRead.hidden = NO;
+//                    _hasRead.hidden = NO;
                 }
             }
                 break;

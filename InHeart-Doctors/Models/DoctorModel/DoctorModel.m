@@ -13,6 +13,9 @@
 #import "FetchAccountBalanceRequest.h"
 #import "EditInformationRequest.h"
 #import "UploadAvatarRequest.h"
+#import "FetchCommonPriceRequest.h"
+#import "SetCommonPriceRequest.h"
+#import "SetInterrogationStateRequest.h"
 
 @implementation DoctorModel
 + (void)fetchPersonalInformation:(RequestResultHandler)handler {
@@ -73,6 +76,29 @@
             !handler ?: handler(object, nil);
         }
     }];
+}
++ (void)fetchCommonPrice:(RequestResultHandler)handler {
+    [[FetchCommonPriceRequest new] request:^BOOL(id request) {
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            !handler ?: handler(object, nil);
+        }
+    }];
+}
++ (void)setCommonPrice:(NSNumber *)price handler:(RequestResultHandler)handler {
+    [[SetCommonPriceRequest new] request:^BOOL(SetCommonPriceRequest *request) {
+        request.price = price;
+        return YES;
+    } result:handler];
+}
++ (void)setDoctorState:(NSNumber *)state handler:(RequestResultHandler)handler {
+    [[SetInterrogationStateRequest new] request:^BOOL(SetInterrogationStateRequest *request) {
+        request.state = state;
+        return YES;
+    } result:handler];
 }
 
 @end

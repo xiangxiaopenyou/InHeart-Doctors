@@ -107,3 +107,17 @@
 //转换为Json格式
 #define XLToJSONDataSting(aData) [Util toJSONDataSting:aData]
 
+/**
+ *时间详细
+ */
+#define XLDetailTimeAgoString(aData) [Util detailTimeAgoString:aData]
+
+//提示
+#define XLShowThenDismissHUD(aSuccess, aMessage) [Util showThenDismissHud:aSuccess message:aMessage]
+
+//保存聊天消息
+#define XLSaveChatList(aArray) [Util saveChatLists:aArray]
+
+//获取聊天消息
+#define XLChatArray [Util chatArray]
+

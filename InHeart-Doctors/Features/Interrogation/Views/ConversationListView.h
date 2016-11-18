@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ConversationModel;
 
+typedef void (^selectedRowBlock)(ConversationModel *model);
 @interface ConversationListView : UIView
+@property (copy, nonatomic) selectedRowBlock block;
+
 - (void)fetchConversations;
 
 @end

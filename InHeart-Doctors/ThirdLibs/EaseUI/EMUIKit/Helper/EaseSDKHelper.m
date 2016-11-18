@@ -120,7 +120,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     EMOptions *options = [EMOptions optionsWithAppkey:appkey];
     options.apnsCertName = apnsCertName;
     options.isAutoAcceptGroupInvitation = NO;
-    if ([otherConfig objectForKey:kSDKConfigEnableConsoleLogger]) {
+    if ([[otherConfig objectForKey:kSDKConfigEnableConsoleLogger] boolValue]) {
         options.enableConsoleLog = YES;
     }
     

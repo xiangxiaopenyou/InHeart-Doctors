@@ -139,12 +139,19 @@
             if (buttonIndex == 1) {
                 [UserModel userLogout:^(id object, NSString *msg) {
                     if (object) {
-                        [[UserInfo sharedUserInfo] removeUserInfo];
-                        [[UserInfo sharedUserInfo] removePersonalInfo];
-                        //[self.navigationController popToRootViewControllerAnimated:YES];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                        [[EMClient sharedClient] logout:NO completion:^(EMError *aError) {
+                            if (!aError) {
+                                [[UserInfo sharedUserInfo] removeUserInfo];
+                                [[UserInfo sharedUserInfo] removePersonalInfo];
+                                //[self.navigationController popToRootViewControllerAnimated:YES];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                            } else {
+                                XLShowThenDismissHUD(NO, kNetworkError);
+                            }
+                        }];
+                        
                     } else {
-                        [SVProgressHUD showErrorWithStatus:msg];
+                        XLShowThenDismissHUD(NO, msg);
                     }
                 }];
             }
@@ -198,7 +205,7 @@
 */
 - (void)refreshTableView {
     [self.tableView reloadData];
-    [SVProgressHUD showSuccessWithStatus:@"清除成功"];
+    XLShowThenDismissHUD(YES, @"清除成功");
 }
 
 @end

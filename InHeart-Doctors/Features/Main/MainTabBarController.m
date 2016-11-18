@@ -11,11 +11,14 @@
 #import "InterrogationListViewController.h"
 #import "PersonalCenterTableViewController.h"
 
+#import "UserModel.h"
+#import "UserInfo.h"
+
 static CGFloat const kTipLabelHeight = 2.0;
 #define kTipLabelWidth SCREEN_WIDTH / 3.0
 
 
-@interface MainTabBarController ()
+@interface MainTabBarController ()<EMChatManagerDelegate>
 @property (strong, nonatomic) UILabel *bottomTipLabel;
 
 @end
@@ -53,8 +56,29 @@ static CGFloat const kTipLabelHeight = 2.0;
     //个人中心
     PersonalCenterTableViewController *personalViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     [self setupChildControllerWith:personalViewController normalImage:personalUnSelectedImage selectedImage:personalSelectedImage title:@"个人中心" index:2];
+    
+    //环信
+    if (![[EMClient sharedClient] isLoggedIn]) {
+        UserModel *user = [[UserInfo sharedUserInfo] userInfo];
+        [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
+            if (!aError) {
+                [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+                //[self setupUnreadMessagesCount];
+            } else {
+                XLShowThenDismissHUD(NO, kNetworkError);
+            }
+        }];
+    } else {
+        [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:kSetupUnreadMessagesCount object:nil];
 
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setupUnreadMessagesCount];
+}
+
 - (BOOL)shouldAutorotate {
     return NO;
 }
@@ -90,13 +114,42 @@ static CGFloat const kTipLabelHeight = 2.0;
         self.bottomTipLabel.frame = CGRectMake(positionX, 0, kTipLabelWidth, kTipLabelHeight);
     }];
 }
-
+- (void)showNotificationWithMessage:(EMMessage *)message {
+    //本地推送
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate date]; //触发通知的时间
+    notification.alertBody = NSEaseLocalizedString(@"receiveMessage", @"you have a new message");
+    //发送通知
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
 
 #pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     NSInteger index = [self.tabBar.items indexOfObject:item];
     CGFloat positionX = index * kTipLabelWidth;
     [self changeTipLabelPosition:positionX];
+}
+
+#pragma mark - EMChatManagerDelegate
+- (void)messagesDidReceive:(NSArray *)aMessages {
+    for (EMMessage *message in aMessages) {
+        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+        switch (state) {
+            case UIApplicationStateBackground:{
+                [self showNotificationWithMessage:message];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConversationsDidChange object:nil];
+    [self setupUnreadMessagesCount];
+}
+- (void)conversationListDidUpdate:(NSArray *)aConversationList {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConversationsDidChange object:nil];
+    [self setupUnreadMessagesCount];
 }
 
 /*
@@ -108,5 +161,16 @@ static CGFloat const kTipLabelHeight = 2.0;
     // Pass the selected object to the new view controller.
 }
 */
+- (void)setupUnreadMessagesCount {
+    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+    NSInteger unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+    }
+    UITabBarItem *item = self.tabBar.items[1];
+    item.badgeValue = unreadCount > 0 ? [NSString stringWithFormat:@"%@", @(unreadCount)] : nil;
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
+}
 
 @end

@@ -9,10 +9,12 @@
 #import "BaseModel.h"
 
 @interface UserModel : BaseModel
+@property (copy, nonatomic) NSString *userId;
 @property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSString<Optional> *realname;
 @property (copy, nonatomic) NSString *username;
 @property (strong, nonatomic) NSNumber<Optional> *code;
+@property (copy, nonatomic) NSString<Optional> *encryptPw;
 
 + (void)userLogin:(NSString *)username password:(NSString *)password handler:(RequestResultHandler)handler;
 + (void)fetchCode:(NSString *)phoneNumber handler:(RequestResultHandler)handler;

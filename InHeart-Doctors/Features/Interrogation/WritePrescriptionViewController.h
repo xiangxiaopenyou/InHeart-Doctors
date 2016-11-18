@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^sendBlock)(NSDictionary *informations);
+
+@class ConversationModel;
 
 @interface WritePrescriptionViewController : UIViewController
-
+@property (strong, nonatomic) ConversationModel *conversationModel;
+@property (copy, nonatomic) sendBlock block;
 @end

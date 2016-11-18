@@ -40,6 +40,7 @@
     [super viewWillAppear:animated];
     self.userModel = [[UserInfo sharedUserInfo] userInfo];
     self.personalModel = [[UserInfo sharedUserInfo] personalInfo];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,9 +120,6 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    [[UserInfo sharedUserInfo] removeUserInfo];
-//    [[UserInfo sharedUserInfo] removePersonalInfo];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
     switch (indexPath.section) {
         case 0:{
             EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];

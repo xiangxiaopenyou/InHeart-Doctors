@@ -32,6 +32,9 @@
     if (!userModel) {
         return NO;
     }
+    if (userModel.userId) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.userId forKey:USERID];
+    }
     if (userModel.code) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.code forKey:USERCODE];
     }
@@ -44,11 +47,17 @@
     if (userModel.username) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.username forKey:USERNAME];
     }
+    if (userModel.encryptPw) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.encryptPw forKey:USERENCRYPTEDPASSWORD];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 - (UserModel *)userInfo {
     UserModel *model = [UserModel new];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERID]) {
+        model.userId = [[NSUserDefaults standardUserDefaults] objectForKey:USERID];
+    }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERCODE]) {
         model.code = [[NSUserDefaults standardUserDefaults] objectForKey:USERCODE];
     }
@@ -61,20 +70,27 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERNAME]) {
         model.username = [[NSUserDefaults standardUserDefaults] objectForKey:USERNAME];
     }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD]) {
+        model.encryptPw = [[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD];
+    }
     return model;
 }
 - (void)removeUserInfo {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERID];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERCODE];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERTOKEN];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERREALNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERENCRYPTEDPASSWORD];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (BOOL)savePersonalInfo:(PersonalInfo *)personalInfo {
     if (!personalInfo) {
         return NO;
     }
-    [SAMKeychain setPassword:personalInfo.password forService:KEYCHAINSERVICE account:personalInfo.username error:nil];
+    if ([SAMKeychain setPassword:personalInfo.password forService:KEYCHAINSERVICE account:personalInfo.username error:nil]) {
+        return YES;
+    }
     return YES;
 }
 - (PersonalInfo *)personalInfo {

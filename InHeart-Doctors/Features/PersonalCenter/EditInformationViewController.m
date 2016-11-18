@@ -89,6 +89,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.specialitsView removeFromSuperview];
+    [self.cityView removeFromSuperview];
 }
 
 - (void)dealloc {
@@ -127,7 +128,12 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
             self.informationDictionary = [object mutableCopy];
             if (!XLIsNullObject(self.informationDictionary[@"region"])) {
                 self.selectedCityModel = [CityModel new];
-                self.selectedCityModel.code = self.informationDictionary[@"region"];
+                self.selectedCityModel.fullName = self.informationDictionary[@"region"];
+            }
+            if (!XLIsNullObject(self.informationDictionary[@"expertise"])) {
+                NSString *tempString = self.informationDictionary[@"expertise"];
+                NSArray *tempArray = [tempString componentsSeparatedByString:@"|"];
+                self.selectedSpecialitsArray = [tempArray copy];
             }
             [self reloadInformationData];
             [self fetchSpecialits];
@@ -225,10 +231,10 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier2 forIndexPath:indexPath];
         cell.textLabel.text = kMyCity;
         if (!XLIsNullObject(self.selectedCityModel)) {
-            if (!XLIsNullObject(self.selectedCityModel.name)) {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.selectedCityModel.name];
+            if (!XLIsNullObject(self.selectedCityModel.fullName)) {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.selectedCityModel.fullName];
             } else {
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.selectedCityModel.code];
+                cell.detailTextLabel.text = nil;
             }
             
         }
@@ -341,8 +347,8 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     if (self.selectedAvatarImage) {
         NSString *tempName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
         NSData *tempData = UIImageJPEGRepresentation(self.selectedAvatarImage, 1.0);
-        if (tempData.length > 500 * 1024) {
-            CGFloat rate = 500.0 * 1024.0 / tempData.length;
+        if (tempData.length > 300 * 1024) {
+            CGFloat rate = 300.0 * 1024.0 / tempData.length;
             tempData = UIImageJPEGRepresentation(self.selectedAvatarImage, rate);
         }
         [DoctorModel uploadAvatar:tempName data:tempData handler:^(id object, NSString *msg) {
@@ -352,7 +358,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
                 [self saveAvatar:tempData];
                 
             } else {
-                [SVProgressHUD showWithStatus:@"头像上传失败"];
+                XLShowThenDismissHUD(NO, @"头像上传失败");
                 return;
             }
         }];
@@ -368,10 +374,10 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     [DoctorModel informationEdit:uploadImageId signature:self.signatureTextField.text introduction:self.introductionTextView.text expertise:self.selectedSpecialitsArray city:self.selectedCityModel.code handler:^(id object, NSString *msg) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         if (object) {
-            [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+            XLShowThenDismissHUD(YES, @"保存成功");
             [self performSelector:@selector(popView) withObject:nil afterDelay:0.5];
         } else {
-            [SVProgressHUD showErrorWithStatus:msg];
+            XLShowThenDismissHUD(NO, msg);
         }
     }];
 }

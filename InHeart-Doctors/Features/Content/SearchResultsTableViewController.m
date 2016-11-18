@@ -116,7 +116,7 @@
                 self.tableView.mj_footer.hidden = NO;
             }
         } else {
-            [SVProgressHUD showErrorWithStatus:msg];
+            XLShowThenDismissHUD(NO, msg);
         }
     }];
 
@@ -125,7 +125,7 @@
 #pragma mark - UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (XLIsNullObject(textField.text)) {
-        [SVProgressHUD showErrorWithStatus:@"请先输入关键字"];
+        XLShowThenDismissHUD(NO, @"请先输入关键字");
     } else {
         _paging = 1;
         [self searchRequest:textField.text];

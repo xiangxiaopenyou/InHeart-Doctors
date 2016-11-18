@@ -37,7 +37,7 @@ typedef enum{
 @interface EaseMessageCell : UITableViewCell<IModelChatCell>
 {
     UIButton *_statusButton;
-    UILabel *_hasRead;
+//    UILabel *_hasRead;
     EaseBubbleView *_bubbleView;
     UIActivityIndicatorView *_activity;
 
@@ -55,7 +55,7 @@ typedef enum{
 
 @property (strong, nonatomic) UIButton *statusButton;
 
-@property (strong, nonatomic) UILabel *hasRead;
+//@property (strong, nonatomic) UILabel *hasRead;
 
 @property (strong, nonatomic) EaseBubbleView *bubbleView;
 

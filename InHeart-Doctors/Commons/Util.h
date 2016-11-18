@@ -28,5 +28,9 @@
 + (BOOL)checkPassword:(NSString *)password;
 + (NSString *)convertTime:(CGFloat)second; //秒转换为HH:mm:ss
 + (NSString *)toJSONDataSting:(NSArray *)theData;
++ (NSString *)detailTimeAgoString:(NSDate *)date;
++ (void)showThenDismissHud:(BOOL)success message:(NSString *)message;
++ (void)saveChatLists:(NSArray *)chatArray;
++ (NSArray *)chatArray;
 
 @end

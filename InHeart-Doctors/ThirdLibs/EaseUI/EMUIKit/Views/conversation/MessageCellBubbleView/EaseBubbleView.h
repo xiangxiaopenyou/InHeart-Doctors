@@ -43,6 +43,11 @@ extern NSString *const EaseMessageCellIdentifierRecvFile;
 
 @property (strong, nonatomic) UIImageView *backgroundImageView;
 
+//Prescription views
+@property (strong, nonatomic) UIImageView *prescriptionImageView;
+@property (strong, nonatomic) UILabel *prescriptionTitleLabel;
+@property (strong, nonatomic) UILabel *prescriptionStateLabel;
+
 //text views
 @property (strong, nonatomic) UILabel *textLabel;
 

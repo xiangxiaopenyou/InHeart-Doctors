@@ -9,6 +9,7 @@
 #import "Util.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <GJCFUitils.h>
 #import "sys/utsname.h"
 
 @implementation Util
@@ -119,5 +120,100 @@
 //    //[jsonString substringToIndex:jsonString.length - 1];
 //    [jsonString replaceCharactersInRange:NSMakeRange(jsonString.length - 1, 1) withString:@""];
 //    return jsonString;
+}
++ (NSString *)detailTimeAgoString:(NSDate *)date {
+    if (XLIsNullObject(date)) {
+        return nil;
+    }
+    long long timeNow = [date timeIntervalSince1970];
+    NSCalendar * calendar=[GJCFDateUitil sharedCalendar];
+    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitSecond | NSCalendarUnitWeekOfYear | NSCalendarUnitWeekday;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:date];
+    
+    NSInteger year=[component year];
+    NSInteger month=[component month];
+    NSInteger day=[component day];
+    
+    NSDate * today=[NSDate date];
+    component=[calendar components:unitFlags fromDate:today];
+    
+    NSInteger t_year=[component year];
+    
+    NSString*string=nil;
+    
+    long long now = [today timeIntervalSince1970];
+    
+    long long  distance= now - timeNow;
+    if (distance < 60 * 60 * 24) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm"];
+        string = [dateFormatter stringFromDate:date];
+    } else if (distance < 60 * 60 * 24 * 2) {
+        string = @"昨天";
+    } else if (distance < 60 * 60 * 24 * 7) {
+        string=[NSString stringWithFormat:@"%lld天前",distance/60/60/24];
+    } else if (year == t_year) {
+        string=[NSString stringWithFormat:@"%ld月%ld日",(long)month,(long)day];
+    } else {
+        string = [NSString stringWithFormat:@"%ld年%ld月%ld日",(long)year,(long)month,(long)day];
+    }
+    //    if(distance<60)
+    //        string=@"刚刚";
+    //    else if(distance<60*60)
+    //        string=[NSString stringWithFormat:@"%lld分钟前",distance/60];
+    //    else if(distance<60*60*24)
+    //        string=[NSString stringWithFormat:@"%lld小时前",distance/60/60];
+    //    else if(distance<60*60*24*7)
+    //        string=[NSString stringWithFormat:@"%lld天前",distance/60/60/24];
+    //    else if(year==t_year)
+    //        string=[NSString stringWithFormat:@"%ld月%ld日",(long)month,(long)day];
+    //    else
+    //        string=[NSString stringWithFormat:@"%ld年%ld月%ld日",(long)year,(long)month,(long)day];
+    
+    return string;
+}
++ (void)showThenDismissHud:(BOOL)success message:(NSString *)message {
+    if (success) {
+        [SVProgressHUD showSuccessWithStatus:message];
+    } else {
+        [SVProgressHUD showErrorWithStatus:message];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
+}
++ (void)saveChatLists:(NSArray *)chatArray {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathString = paths[0];
+    pathString = [pathString stringByAppendingPathComponent:@"chatlist.plist"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:pathString]) {
+        NSError *err;
+        [fileManager removeItemAtPath:pathString error:&err];
+        if ([chatArray writeToFile:pathString atomically:YES]){
+            NSLog(@"成功");
+        } else {
+            NSLog(@"失败");
+        }
+    } else {
+        if ([chatArray writeToFile:pathString atomically:YES]){
+            NSLog(@"成功");
+        } else {
+            NSLog(@"失败");
+        }
+    }
+    
+    
+}
++ (NSArray *)chatArray {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathString = paths[0];
+    pathString = [pathString stringByAppendingPathComponent:@"chatlist.plist"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:pathString]) {
+        //NSArray *tempArray = [NSArray arrayWithContentsOfFile:pathString];
+        return [NSArray arrayWithContentsOfFile:pathString];
+    }
+    return nil;
 }
 @end
