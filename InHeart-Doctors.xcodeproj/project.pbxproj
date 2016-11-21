@@ -132,7 +132,6 @@
 		3D6A8E711D98B07700C405DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E701D98B07700C405DA /* main.m */; };
 		3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E731D98B07700C405DA /* AppDelegate.m */; };
 		3D6A8E7A1D98B07700C405DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E781D98B07700C405DA /* Main.storyboard */; };
-		3D6A8E7C1D98B07700C405DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E7B1D98B07700C405DA /* Assets.xcassets */; };
 		3D6A8E7F1D98B07700C405DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E7D1D98B07700C405DA /* LaunchScreen.storyboard */; };
 		3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E881D98C69600C405DA /* CommonsDefines.m */; };
 		3D6A8ED21D98C69600C405DA /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E8A1D98C69600C405DA /* Util.m */; };
@@ -165,6 +164,7 @@
 		3D6C1BC31DD2F39C00FAC75E /* SetInterrogationStateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C1BC21DD2F39C00FAC75E /* SetInterrogationStateRequest.m */; };
 		3D8004B21DAC972800E4FC37 /* BlankRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8004B11DAC972800E4FC37 /* BlankRootViewController.m */; };
 		3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */; };
+		3D894B221DDEF65F004963C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E7B1D98B07700C405DA /* Assets.xcassets */; };
 		3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F1C901DC71C51000E3604 /* BillCell.m */; };
 		3D8F1C941DC720B3000E3604 /* BillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F1C931DC720B3000E3604 /* BillTableViewController.m */; };
 		3D8F1C971DC72151000E3604 /* FetchBillsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F1C961DC72151000E3604 /* FetchBillsRequest.m */; };
@@ -1690,9 +1690,9 @@
 				3D4326A01DBDB9C70043008D /* AudioPlayerview.xib in Resources */,
 				3D6A8EE11D98C69600C405DA /* Login.storyboard in Resources */,
 				3D6A8E7F1D98B07700C405DA /* LaunchScreen.storyboard in Resources */,
-				3D6A8E7C1D98B07700C405DA /* Assets.xcassets in Resources */,
 				3D6A8E7A1D98B07700C405DA /* Main.storyboard in Resources */,
 				3D6A8EE61D98C69600C405DA /* Personal.storyboard in Resources */,
+				3D894B221DDEF65F004963C7 /* Assets.xcassets in Resources */,
 				3D32CAB71DBA003200373C47 /* MWPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

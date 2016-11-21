@@ -86,6 +86,7 @@
     [super viewDidDisappear:animated];
     if (self.vrPlayer) {
         [self.vrPlayer prepareToRelease];
+        self.vrPlayer = nil;
     } if (self.audioPlayerView) {
         [self.audioPlayerView removeFromSuperview];
         self.audioPlayerView = nil;
