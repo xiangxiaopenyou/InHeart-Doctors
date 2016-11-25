@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, XJContentsTypes) {
 };
 //key & secret
 extern NSString * const EMChatKey;
+extern NSString * const APNSCertName;
 
 //用户相关
 extern NSString * const USERID;

@@ -9,6 +9,8 @@
 #import "CommonsDefines.h"
 
 NSString * const EMChatKey = @"1109161016178876#xinjing";
+NSString * const APNSCertName = @"InHeart-Doctor-Dev";
+//NSString * const APNSCertName = @"InHeart-Doctor-Dis";
 
 NSString * const USERID = @"UserId";
 NSString * const USERTOKEN = @"UserToken";

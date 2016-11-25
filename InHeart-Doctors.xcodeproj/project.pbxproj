@@ -1646,7 +1646,7 @@
 					3D6A8E6B1D98B07700C405DA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = TC6ARYK6RK;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2076,7 +2076,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "InHeart-Doctors/InHeart-Doctors.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = TC6ARYK6RK;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2091,10 +2091,10 @@
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.midvision.vrdoctor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ee87a8e-b294-4a3b-a95a-d062e2e985ed";
-				PROVISIONING_PROFILE_SPECIFIER = "InHeart-Doctors-Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2121,7 +2121,7 @@
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.midvision.vrdoctor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
