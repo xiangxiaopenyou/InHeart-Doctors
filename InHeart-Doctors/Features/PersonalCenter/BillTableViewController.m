@@ -72,7 +72,7 @@
                 self.tableView.mj_footer.hidden = NO;
             }
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLShowThenDismissHUD(NO, msg, self.view);
         }
     }];
 }

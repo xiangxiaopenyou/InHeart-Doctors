@@ -93,12 +93,12 @@
 
 #pragma mark - private methods
 - (void)searchRequest:(NSString *)keywordString {
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [ContentModel fetchContentsList:@(_paging) disease:nil therapy:nil type:nil keyword:keywordString handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
         if (object) {
+            XLDismissHUD(self.view, NO, YES, nil);
             NSArray *resultArray = [object copy];
             if (_paging == 1) {
                 self.resultsArray = [resultArray mutableCopy];
@@ -116,7 +116,7 @@
                 self.tableView.mj_footer.hidden = NO;
             }
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 
@@ -125,7 +125,7 @@
 #pragma mark - UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (XLIsNullObject(textField.text)) {
-        XLShowThenDismissHUD(NO, @"请先输入关键字");
+        XLShowThenDismissHUD(NO, @"请先输入关键字", self.view);
     } else {
         _paging = 1;
         [self searchRequest:textField.text];

@@ -70,7 +70,7 @@
         if (object) {
             [self resetState];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
             return;
         }
     }];
@@ -80,10 +80,10 @@
     [DoctorModel setDoctorState:stateNumber handler:^(id object, NSString *msg) {
         if (object) {
             [[UserInfo sharedUserInfo] saveUserInfo:_userModel];
-            [SVProgressHUD dismiss];
+            XLDismissHUD(self.view, NO, YES, nil);
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -139,7 +139,7 @@
     if ([_userModel.code integerValue] == -7) {
         [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kStopInterrogationTip block:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
-                [SVProgressHUD show];
+                XLShowHUDWithMessage(nil, self.view);
                 if ([self.feesTextField.text floatValue] != _commonPrice) {
                     [self resetPrice];
                 } else {
@@ -148,7 +148,7 @@
             }
         } cancelButtonTitle:kCommonCancel otherButtonTitles:kCommonEnsure, nil] show];
     } else {
-        [SVProgressHUD show];
+        XLShowHUDWithMessage(nil, self.view);
         if ([self.feesTextField.text floatValue] != _commonPrice) {
             [self resetPrice];
         } else {

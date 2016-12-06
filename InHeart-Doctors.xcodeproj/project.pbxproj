@@ -207,7 +207,7 @@
 		3DF08A0C1DDAA37800D64EA6 /* SendPrescriptionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF08A0B1DDAA37800D64EA6 /* SendPrescriptionRequest.m */; };
 		3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */; };
 		3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */; };
-		AC7689E77F840F7C27DE370D /* libPods-InHeart-Doctors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5336DF3E39D18ED8BAA3BBD0 /* libPods-InHeart-Doctors.a */; };
+		6239AAC654ABCF066E0A62F6 /* libPods-InHeart-Doctors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B579E0F31EFB7A2DB4EDDF84 /* libPods-InHeart-Doctors.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -469,7 +469,6 @@
 		3D4326C61DC19FA50043008D /* BillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillModel.m; sourceTree = "<group>"; };
 		3D4326C81DC1A05D0043008D /* FetchAccountBalanceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchAccountBalanceRequest.h; sourceTree = "<group>"; };
 		3D4326C91DC1A05D0043008D /* FetchAccountBalanceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchAccountBalanceRequest.m; sourceTree = "<group>"; };
-		3D54F3931DD1661100938F5D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3D54F3941DD1661100938F5D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3D64AC141DC1E13B00F46AA3 /* SelectSpecialitsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSpecialitsView.h; sourceTree = "<group>"; };
 		3D64AC151DC1E13B00F46AA3 /* SelectSpecialitsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSpecialitsView.m; sourceTree = "<group>"; };
@@ -634,9 +633,9 @@
 		3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertAuthenticationRequest.m; sourceTree = "<group>"; };
 		3DFBD4261D9E45F100B93B03 /* UploadAuthenticationPictureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAuthenticationPictureRequest.h; sourceTree = "<group>"; };
 		3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAuthenticationPictureRequest.m; sourceTree = "<group>"; };
-		5336DF3E39D18ED8BAA3BBD0 /* libPods-InHeart-Doctors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InHeart-Doctors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9070B41DC81E52D1D9A0737B /* Pods-InHeart-Doctors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.release.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.release.xcconfig"; sourceTree = "<group>"; };
-		B18DA84244895FBEA33C12C4 /* Pods-InHeart-Doctors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.debug.xcconfig"; sourceTree = "<group>"; };
+		85AC083C2F03A8F558B1E3AF /* Pods-InHeart-Doctors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.debug.xcconfig"; sourceTree = "<group>"; };
+		B579E0F31EFB7A2DB4EDDF84 /* libPods-InHeart-Doctors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InHeart-Doctors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD05A2BB9798CE439CB6941C /* Pods-InHeart-Doctors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InHeart-Doctors.release.xcconfig"; path = "Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -647,7 +646,7 @@
 				3D968DAA1DB4B63A005A1596 /* UtoVRPlayer.framework in Frameworks */,
 				3D32CA7A1DBA003200373C47 /* libopencore-amrnb.a in Frameworks */,
 				3D32CA7B1DBA003200373C47 /* libopencore-amrwb.a in Frameworks */,
-				AC7689E77F840F7C27DE370D /* libPods-InHeart-Doctors.a in Frameworks */,
+				6239AAC654ABCF066E0A62F6 /* libPods-InHeart-Doctors.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +667,7 @@
 				3DBA048F1DB9F47E00098ACF /* AudioToolbox.framework */,
 				3DBA048D1DB9F47200098ACF /* CoreMedia.framework */,
 				3D1D972D1D9BA3CD0089501B /* Security.framework */,
-				5336DF3E39D18ED8BAA3BBD0 /* libPods-InHeart-Doctors.a */,
+				B579E0F31EFB7A2DB4EDDF84 /* libPods-InHeart-Doctors.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1202,8 +1201,8 @@
 			children = (
 				3D6A8E6E1D98B07700C405DA /* InHeart-Doctors */,
 				3D6A8E6D1D98B07700C405DA /* Products */,
-				C9158CF58EA9AF1BA4288F19 /* Pods */,
 				3BCFE1BEC2FDFC6A8FD78589 /* Frameworks */,
+				983FCBE0C30063A2BF232D70 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1602,11 +1601,11 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
-		C9158CF58EA9AF1BA4288F19 /* Pods */ = {
+		983FCBE0C30063A2BF232D70 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B18DA84244895FBEA33C12C4 /* Pods-InHeart-Doctors.debug.xcconfig */,
-				9070B41DC81E52D1D9A0737B /* Pods-InHeart-Doctors.release.xcconfig */,
+				85AC083C2F03A8F558B1E3AF /* Pods-InHeart-Doctors.debug.xcconfig */,
+				DD05A2BB9798CE439CB6941C /* Pods-InHeart-Doctors.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1618,12 +1617,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D6A8E831D98B07700C405DA /* Build configuration list for PBXNativeTarget "InHeart-Doctors" */;
 			buildPhases = (
-				1FCDC06EF754BB56A5C6FFDA /* Check Pods Manifest.lock */,
+				23DEB6D7011E1BC46881120C /* [CP] Check Pods Manifest.lock */,
 				3D6A8E681D98B07700C405DA /* Sources */,
 				3D6A8E691D98B07700C405DA /* Frameworks */,
 				3D6A8E6A1D98B07700C405DA /* Resources */,
-				E08E6943B3BAA9553CFE3E6A /* Embed Pods Frameworks */,
-				4B6B02B44BF1D7F796BB4CC6 /* Copy Pods Resources */,
+				B0A449D53ED042E93097B6E8 /* [CP] Embed Pods Frameworks */,
+				3CB32DECE3A998C87C465A3A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1700,29 +1699,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1FCDC06EF754BB56A5C6FFDA /* Check Pods Manifest.lock */ = {
+		23DEB6D7011E1BC46881120C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4B6B02B44BF1D7F796BB4CC6 /* Copy Pods Resources */ = {
+		3CB32DECE3A998C87C465A3A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1730,14 +1729,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InHeart-Doctors/Pods-InHeart-Doctors-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E08E6943B3BAA9553CFE3E6A /* Embed Pods Frameworks */ = {
+		B0A449D53ED042E93097B6E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1947,7 +1946,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				3D6A8E791D98B07700C405DA /* Base */,
-				3D54F3931DD1661100938F5D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			path = ../..;
@@ -2070,7 +2068,7 @@
 		};
 		3D6A8E841D98B07700C405DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B18DA84244895FBEA33C12C4 /* Pods-InHeart-Doctors.debug.xcconfig */;
+			baseConfigurationReference = 85AC083C2F03A8F558B1E3AF /* Pods-InHeart-Doctors.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2095,12 +2093,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		3D6A8E851D98B07700C405DA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9070B41DC81E52D1D9A0737B /* Pods-InHeart-Doctors.release.xcconfig */;
+			baseConfigurationReference = DD05A2BB9798CE439CB6941C /* Pods-InHeart-Doctors.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2125,6 +2124,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

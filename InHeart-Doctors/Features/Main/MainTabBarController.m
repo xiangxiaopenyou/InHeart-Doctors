@@ -65,7 +65,7 @@ static CGFloat const kTipLabelHeight = 2.0;
                 [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
                 //[self setupUnreadMessagesCount];
             } else {
-                XLShowThenDismissHUD(NO, kNetworkError);
+                XLShowThenDismissHUD(NO, kNetworkError, self.view);
             }
         }];
     } else {

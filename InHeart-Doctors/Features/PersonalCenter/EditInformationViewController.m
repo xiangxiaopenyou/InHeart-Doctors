@@ -279,7 +279,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
         if (buttonIndex == 1) {
             //拍照
             if (!XLIsCameraAvailable) {
-                [SVProgressHUD showInfoWithStatus:kCameraNotAvailable];
+                XLShowThenDismissHUD(NO, kCameraNotAvailable, self.view);
                 return;
             }
             if (!XLIsAppCameraAccessAuthorized) {
@@ -307,7 +307,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
     if (!position) {
         if (toBeString.length > MAX_SIGNATURE_LENGTH) {
-            [SVProgressHUD showInfoWithStatus:@"签名不要超过30字哦~"];
+            XLShowThenDismissHUD(NO, @"签名不要超过30字哦~", self.view);
             NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:MAX_SIGNATURE_LENGTH];
             if (rangeIndex.length == 1) {
                 textField.text = [toBeString substringToIndex:MAX_SIGNATURE_LENGTH];
@@ -328,7 +328,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
     if (!position) {
         if (toBeString.length > MAX_INTRODUCTION_LENGTH) {
-            [SVProgressHUD showInfoWithStatus:@"介绍不要超过300字哦~"];
+            XLShowThenDismissHUD(NO, @"介绍不要超过300字哦~", self.view);
             NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:MAX_INTRODUCTION_LENGTH];
             if (rangeIndex.length == 1) {
                 textView.text = [toBeString substringToIndex:MAX_INTRODUCTION_LENGTH];
@@ -343,7 +343,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 - (IBAction)saveClick:(id)sender {
     [self hideKeyboard];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     if (self.selectedAvatarImage) {
         NSString *tempName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
         NSData *tempData = UIImageJPEGRepresentation(self.selectedAvatarImage, 1.0);
@@ -356,9 +356,8 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
                 NSString *imageId = object[@"imageUrl"];
                 [self submitInformations:imageId];
                 [self saveAvatar:tempData];
-                
             } else {
-                XLShowThenDismissHUD(NO, @"头像上传失败");
+                XLDismissHUD(self.view, YES, NO, @"头像上传失败");
                 return;
             }
         }];
@@ -374,10 +373,10 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     [DoctorModel informationEdit:uploadImageId signature:self.signatureTextField.text introduction:self.introductionTextView.text expertise:self.selectedSpecialitsArray city:self.selectedCityModel.code handler:^(id object, NSString *msg) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         if (object) {
-            XLShowThenDismissHUD(YES, @"保存成功");
+            XLDismissHUD(self.view, YES, YES, @"保存成功");
             [self performSelector:@selector(popView) withObject:nil afterDelay:0.5];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }

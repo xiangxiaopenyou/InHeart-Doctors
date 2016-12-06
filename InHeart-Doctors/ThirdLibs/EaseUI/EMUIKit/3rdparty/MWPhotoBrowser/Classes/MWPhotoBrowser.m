@@ -16,6 +16,12 @@
 #define PADDING                  10
 #define ACTION_SHEET_OLD_ACTIONS 2000
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
+#define supportedInterfaceOrientationsReturnType NSUInteger
+#else
+#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
+#endif
+
 @implementation MWPhotoBrowser
 
 #pragma mark - Init
@@ -162,7 +168,7 @@
 	[self.view addSubview:_pagingScrollView];
 	
     // Toolbar
-    _toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:self.interfaceOrientation]];
+    _toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:[[UIApplication sharedApplication] statusBarOrientation]]];
     _toolbar.tintColor = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7") ? [UIColor whiteColor] : nil;
     if ([_toolbar respondsToSelector:@selector(setBarTintColor:)]) {
         _toolbar.barTintColor = nil;
@@ -564,8 +570,11 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
+//- (NSUInteger)supportedInterfaceOrientations {
+//    return UIInterfaceOrientationMaskAll;
+//}
+- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -1454,7 +1463,7 @@
     id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
     if ([self numberOfPhotos] && [photo underlyingImage]) {
         UIImageWriteToSavedPhotosAlbum([photo underlyingImage], self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
-        XLShowThenDismissHUD(YES, @"已保存到相册");
+        XLShowThenDismissHUD(YES, @"已保存到相册", self.view);
     }
 //    if (_actionsSheet) {
 //        

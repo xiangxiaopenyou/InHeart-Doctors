@@ -78,12 +78,12 @@
 - (void)submitAuthentication:(NSString *)imageId titlesImageId:(NSString *)titleImageId {
     [UserModel userAuthentication:imageId titlesPictureId:titleImageId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            [SVProgressHUD dismiss];
+            XLDismissHUD(self.view, NO, YES, nil);
             [[NSUserDefaults standardUserDefaults] setObject:@(-5) forKey:USERCODE];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
         } else {
-            [SVProgressHUD showWithStatus:msg];
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -167,20 +167,20 @@
 */
 - (IBAction)submitClick:(id)sender {
     if (!self.selectedImage) {
-        XLShowThenDismissHUD(NO, kPleaseUploadAuthenticationPicture);
+        XLShowThenDismissHUD(NO, kPleaseUploadAuthenticationPicture, self.view);
         return;
     }
     if (XLIsNullObject(self.nameTextField.text)) {
-        XLShowThenDismissHUD(NO, kPleaseInputRealname);
+        XLShowThenDismissHUD(NO, kPleaseInputRealname, self.view);
         return;
     }
     if (!GJCFStringIsPersonCardNumber(self.idcardTextField.text)) {
-        XLShowThenDismissHUD(NO, kPleaseInputCorrectIDCardNumber);
+        XLShowThenDismissHUD(NO, kPleaseInputCorrectIDCardNumber, self.view);
         return;
     }
     NSString *tempName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
     NSData *tempData = UIImageJPEGRepresentation(self.selectedImage, 1.0);
-    [SVProgressHUD showWithStatus:@"正在提交信息..."];
+    XLShowHUDWithMessage(@"正在提交信息...", self.view);
     [UserModel uploadAuthenticationPicture:tempName data:tempData handler:^(id object, NSString *msg) {
         if (object) {
             NSString *pictureId = object[@"imageId"];
@@ -192,7 +192,7 @@
                         NSString *titlePictureId = object[@"imageId"];
                         [self submitAuthentication:pictureId titlesImageId:titlePictureId];
                     } else {
-                        XLShowThenDismissHUD(NO, @"职称图片上传失败");
+                        XLDismissHUD(self.view, YES, NO, @"职称图片上传失败");
                     }
                 }];
             } else {
@@ -200,7 +200,7 @@
             }
             
         } else {
-            XLShowThenDismissHUD(NO, @"认证图片上传失败");
+            XLDismissHUD(self.view, YES, NO, @"认证图片上传失败");
         }
     }];
     
@@ -217,7 +217,7 @@
         if (buttonIndex == 1) {
             //拍照
             if (!XLIsCameraAvailable) {
-                [SVProgressHUD showInfoWithStatus:kCameraNotAvailable];
+                [MBProgressHUD showMessag:kCameraNotAvailable toView:self.view];
                 return;
             }
             if (!XLIsAppCameraAccessAuthorized) {

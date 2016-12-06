@@ -113,11 +113,10 @@
 #define XLDetailTimeAgoString(aData) [Util detailTimeAgoString:aData]
 
 //提示
-#define XLShowThenDismissHUD(aSuccess, aMessage) [Util showThenDismissHud:aSuccess message:aMessage]
+#define XLShowHUDWithMessage(aMessage, aView) [Util showHUDWithMessage:aMessage view:aView]
 
-//保存聊天消息
-#define XLSaveChatList(aArray) [Util saveChatLists:aArray]
+#define XLDismissHUD(aView, aShow, aSuccess, aMessage) [Util dismissHUD:aView showTip:aShow success:aSuccess message:aMessage]
 
-//获取聊天消息
-#define XLChatArray [Util chatArray]
+#define XLShowThenDismissHUD(aSuccess, aMessage, aView) [Util showThenDismissHud:aSuccess message:aMessage view:aView]
+
 

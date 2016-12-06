@@ -56,7 +56,6 @@
 }
 //注册deviceToken失败
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
-    XLShowThenDismissHUD(NO, kNetworkError);
 }
 //收到通知消息
 //- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

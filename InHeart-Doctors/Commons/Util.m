@@ -172,48 +172,24 @@
     
     return string;
 }
-+ (void)showThenDismissHud:(BOOL)success message:(NSString *)message {
++ (void)showHUDWithMessage:(NSString *)message view:(UIView *)view {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.square = YES;
+    if (message) {
+        hud.labelText = message;
+    }
+}
++ (void)dismissHUD:(UIView *)view showTip:(BOOL)isShow success:(BOOL)isSuccess message:(NSString *)message {
+    [MBProgressHUD hideHUDForView:view animated:YES];
+    if (isShow) {
+        [self showThenDismissHud:isSuccess message:message view:view];
+    }
+}
++ (void)showThenDismissHud:(BOOL)success message:(NSString *)message view:(UIView *)view {
     if (success) {
-        [SVProgressHUD showSuccessWithStatus:message];
+        [MBProgressHUD showSuccess:message toView:view];
     } else {
-        [SVProgressHUD showErrorWithStatus:message];
+        [MBProgressHUD showError:message toView:view];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-    });
-}
-+ (void)saveChatLists:(NSArray *)chatArray {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *pathString = paths[0];
-    pathString = [pathString stringByAppendingPathComponent:@"chatlist.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:pathString]) {
-        NSError *err;
-        [fileManager removeItemAtPath:pathString error:&err];
-        if ([chatArray writeToFile:pathString atomically:YES]){
-            NSLog(@"成功");
-        } else {
-            NSLog(@"失败");
-        }
-    } else {
-        if ([chatArray writeToFile:pathString atomically:YES]){
-            NSLog(@"成功");
-        } else {
-            NSLog(@"失败");
-        }
-    }
-    
-    
-}
-+ (NSArray *)chatArray {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *pathString = paths[0];
-    pathString = [pathString stringByAppendingPathComponent:@"chatlist.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:pathString]) {
-        //NSArray *tempArray = [NSArray arrayWithContentsOfFile:pathString];
-        return [NSArray arrayWithContentsOfFile:pathString];
-    }
-    return nil;
 }
 @end

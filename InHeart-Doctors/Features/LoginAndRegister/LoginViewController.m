@@ -134,15 +134,15 @@
 }
 - (IBAction)loginClick:(id)sender {
     if (!GJCFStringIsMobilePhone(self.phoneTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip);
+        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
         return;
     }
     if (XLIsNullObject(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputPasswordTip);
+        XLShowThenDismissHUD(NO, kInputPasswordTip, self.view);
         return;
     }
     [self resignTextField];
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [UserModel userLogin:self.phoneTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             UserModel *userModel = [object copy];
@@ -153,18 +153,18 @@
                 tempInfo.username = userModel.username;
                 tempInfo.password = self.passwordTextField.text;
                 if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                    [SVProgressHUD dismiss];
+                    XLDismissHUD(self.view, NO, YES, nil);
                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                     [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
                 } else {
-                    [SVProgressHUD showErrorWithStatus:@"登录出现问题，请重试"];
+                    XLDismissHUD(self.view, YES, NO, @"登录出现问题，请重试");
                 }
             } else {
-                XLShowThenDismissHUD(NO, @"登录出现问题，请重试");
+                XLDismissHUD(self.view, YES, NO, @"登录出现问题，请重试");
             }
             
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
     

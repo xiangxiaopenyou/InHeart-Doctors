@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
 }
 
 - (void)didReceiveMemoryWarning {

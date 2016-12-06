@@ -67,7 +67,7 @@
             make.leading.trailing.top.bottom.equalTo(self.viewOfPlayer);
         }];
     }
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [self fetchDetails:self.contentModel.contentId];
 }
 - (void)viewDidLayoutSubviews {
@@ -78,6 +78,12 @@
         }];
     }
     
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self.contentModel.type integerValue] == 3) {
+        [self.cyclePicturesView adjustWhenControllerViewWillAppera];
+    }
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -146,15 +152,17 @@
 - (void)fetchDetails:(NSString *)contentId {
     [ContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
         if (object) {
-            [SVProgressHUD dismiss];
+            XLDismissHUD(self.view, NO, YES, nil);
             self.contentModel = [object copy];
             if (self.contentModel.ext) {
                 self.mediaModel = [[ContentMediaModel alloc] initWithDictionary:self.contentModel.ext error:nil];
-                [self loadPlayer];
+                GJCFAsyncMainQueue(^{
+                    [self loadPlayer];
+                });
             }
             [self.tableView reloadData];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -241,7 +249,7 @@
         if (_vrPlayerItem) {
             [self.vrPlayer appendItem:_vrPlayerItem];
         } else {
-            XLShowThenDismissHUD(NO, kVideoCanNotPlay);
+            XLShowThenDismissHUD(NO, kVideoCanNotPlay, self.view);
         }
     }
     self.startButton.hidden = YES;

@@ -263,7 +263,7 @@
 */
 - (void)fetchCodeClick {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip);
+        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
         return;
     }
     self.fetchCodeButton.enabled = NO;
@@ -292,32 +292,32 @@
 }
 - (IBAction)submitClick:(id)sender {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip);
+        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
         return;
     }
     if (XLIsNullObject(self.codeTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputVerificationCodeTip);
+        XLShowThenDismissHUD(NO, kInputVerificationCodeTip, self.view);
         return;
     }
     if (XLIsNullObject(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputPasswordTip);
+        XLShowThenDismissHUD(NO, kInputPasswordTip, self.view);
         return;
     }
     if (!XLCheckPassword(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kPasswordFormatTip);
+        XLShowThenDismissHUD(NO, kPasswordFormatTip, self.view);
         return;
     }
     if (![self.passwordTextField.text isEqualToString:self.validatePasswordTextField.text]) {
-        XLShowThenDismissHUD(NO, kDifferentPasswordTip);
+        XLShowThenDismissHUD(NO, kDifferentPasswordTip, self.view);
         return;
     }
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [UserModel findPassword:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            XLShowThenDismissHUD(YES, @"成功");
+            XLDismissHUD(self.view, YES, YES, @"成功");
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }

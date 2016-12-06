@@ -73,7 +73,7 @@
     }];
 }
 - (void)sendPrescription {
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     self.navigationItem.rightBarButtonItem.enabled = NO;
     self.navigationItem.leftBarButtonItem.enabled = NO;
     NSString *contentsString = nil;
@@ -97,7 +97,7 @@
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.navigationItem.leftBarButtonItem.enabled = YES;
         if (object && object[@"prescriptionId"]) {
-            XLShowThenDismissHUD(YES, @"发送成功");
+            XLDismissHUD(self.view, YES, YES, @"发送成功");
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
             NSString *prescriptionId = object[@"prescriptionId"];
             [dictionary setObject:prescriptionId forKey:@"prescriptionId"];
@@ -112,7 +112,7 @@
             }
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -182,8 +182,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)submitAction:(id)sender {
+    [self hideKeyboard];
     if (XLIsNullObject(self.adviceTextView.text)) {
-        XLShowThenDismissHUD(NO, kPleaseInputPrescriptionWords);
+        XLShowThenDismissHUD(NO, kPleaseInputPrescriptionWords, self.view);
         return;
     }
     if ([self.feesTextField.text floatValue] == 0) {

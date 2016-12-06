@@ -29,8 +29,8 @@
 + (NSString *)convertTime:(CGFloat)second; //秒转换为HH:mm:ss
 + (NSString *)toJSONDataSting:(NSArray *)theData;
 + (NSString *)detailTimeAgoString:(NSDate *)date;
-+ (void)showThenDismissHud:(BOOL)success message:(NSString *)message;
-+ (void)saveChatLists:(NSArray *)chatArray;
-+ (NSArray *)chatArray;
++ (void)showHUDWithMessage:(NSString *)message view:(UIView *)view;
++ (void)dismissHUD:(UIView *)view showTip:(BOOL)isShow success:(BOOL)isSuccess message:(NSString *)message;
++ (void)showThenDismissHud:(BOOL)success message:(NSString *)message view:(UIView *)view;
 
 @end

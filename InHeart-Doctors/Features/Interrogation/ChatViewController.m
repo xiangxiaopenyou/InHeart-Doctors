@@ -125,7 +125,7 @@
                 self.model.realname = userModel.realname;
                 [self presentWritePrescription];
             } else {
-                XLShowThenDismissHUD(NO, kNetworkError);
+                XLShowThenDismissHUD(NO, kNetworkError, self.view);
             }
         }];
     }

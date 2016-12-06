@@ -36,7 +36,7 @@
                 self.balanceLabel.text = [NSString stringWithFormat:@"%.2f", self.balanceValue];
             }
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLShowThenDismissHUD(NO, msg, self.view);
         }
     }];
 }

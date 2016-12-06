@@ -50,7 +50,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.mj_footer.hidden = YES;
     
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     
     [self fetchTypes:XJContentsTypesContents];
     [self fetchTypes:XJContentsTypesDiseases];
@@ -223,8 +223,8 @@
     [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:nil handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
         if (object) {
+            XLDismissHUD(self.view, NO, YES, nil);
             NSArray *resultArray = [object copy];
             if (_paging == 1) {
                 self.contentsResultsArray = [resultArray mutableCopy];
@@ -242,7 +242,7 @@
                 self.tableView.mj_footer.hidden = NO;
             }
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -265,7 +265,7 @@
     [cell setupContents:self.contentsResultsArray];
     cell.block = ^(ContentModel *model){
         if ([self isSelectedContent:model]) {
-            XLShowThenDismissHUD(NO, @"你已经选择了该内容");
+            XLShowThenDismissHUD(NO, @"你已经选择了该内容", self.view);
         } else {
             [self.contentsArray addObject:model];
             dispatch_async(dispatch_get_main_queue(), ^{

@@ -52,12 +52,12 @@
 }
 #pragma mark - Requset
 - (void)fetchCollectionsList {
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [DoctorModel fetchCollectionsList:@(_paging) handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (object) {
-            [SVProgressHUD dismiss];
+            XLDismissHUD(self.view, NO, YES, nil);
             NSArray *resultArray = [object copy];
             if (_paging == 1) {
                 self.collectionsArray = [resultArray mutableCopy];
@@ -76,7 +76,7 @@
             }
             
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }

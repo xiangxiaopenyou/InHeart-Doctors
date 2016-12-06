@@ -65,7 +65,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.tableView.mj_footer.hidden = YES;
     
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     
     [self fetchTypes:XJContentsTypesContents];
     [self fetchTypes:XJContentsTypesDiseases];
@@ -178,8 +178,8 @@
     [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:_keyword handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
         if (object) {
+            XLDismissHUD(self.view, NO, YES, nil);
             NSArray *resultArray = [object copy];
             if (_paging == 1) {
                 self.contentsResultsArray = [resultArray mutableCopy];
@@ -199,7 +199,7 @@
                 }
             });
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, YES, msg);
         }
     }];
 }

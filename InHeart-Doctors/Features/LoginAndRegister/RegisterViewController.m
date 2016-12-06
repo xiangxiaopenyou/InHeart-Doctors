@@ -237,29 +237,29 @@
 */
 - (IBAction)registerClick:(id)sender {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip);
+        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
         return;
     }
     if (XLIsNullObject(self.codeTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputVerificationCodeTip);
+        XLShowThenDismissHUD(NO, kInputVerificationCodeTip, self.view);
         return;
     }
     if (XLIsNullObject(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputPasswordTip);
+        XLShowThenDismissHUD(NO, kInputPasswordTip, self.view);
         return;
     }
     if (!XLCheckPassword(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kPasswordFormatTip);
+        XLShowThenDismissHUD(NO, kPasswordFormatTip, self.view);
         return;
     }
     if (![self.passwordTextField.text isEqualToString:self.validatePasswordTextField.text]) {
-        XLShowThenDismissHUD(NO, kDifferentPasswordTip);
+        XLShowThenDismissHUD(NO, kDifferentPasswordTip, self.view);
         return;
     }
-    [SVProgressHUD show];
+    XLShowHUDWithMessage(nil, self.view);
     [UserModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            [SVProgressHUD showWithStatus:@"正在登录..."];
+            XLShowHUDWithMessage(@"正在登陆...", self.view);
             [UserModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
                 if (object) {
                     UserModel *userModel = [object copy];
@@ -270,33 +270,33 @@
                         tempInfo.username = userModel.username;
                         tempInfo.password = self.passwordTextField.text;
                         if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                            [SVProgressHUD dismiss];
+                            XLDismissHUD(self.view, NO, YES, nil);
                             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                             [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
                         } else {
-                            XLShowThenDismissHUD(NO, @"自动登录失败");
+                            XLDismissHUD(self.view, YES, NO, @"自动登录失败");
                             [self.navigationController popViewControllerAnimated:YES];
                         }
                     } else {
-                        XLShowThenDismissHUD(NO, @"自动登录失败");
+                        XLDismissHUD(self.view, YES, NO, @"自动登录失败");
                         [self.navigationController popViewControllerAnimated:YES];
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        XLShowThenDismissHUD(NO, @"自动登录失败");
+                        XLDismissHUD(self.view, YES, NO, @"自动登录失败");
                         [self.navigationController popViewControllerAnimated:YES];
                     });
                 }
             }];
             
         } else {
-            XLShowThenDismissHUD(NO, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
 - (void)fetchCodeClick {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip);
+        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
         return;
     }
     self.fetchCodeButton.enabled = NO;
