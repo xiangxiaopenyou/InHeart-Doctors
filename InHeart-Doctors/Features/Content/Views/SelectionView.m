@@ -7,7 +7,7 @@
 //
 
 #import "SelectionView.h"
-#import "ContentTypeModel.h"
+#import "ContentsTypeModel.h"
 
 @interface SelectionView ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -41,7 +41,7 @@
         [tempMutableArray insertObject:kAllContents atIndex:0];
     } else {
         for (NSDictionary *tempDictionary in contentArray) {
-            NSArray *tempArray = [[ContentTypeModel class] setupWithArray:tempDictionary[@"array"]];
+            NSArray *tempArray = [ContentsTypeModel setupWithArray:tempDictionary[@"array"]];
             [tempMutableArray addObject:tempArray];
             [tempIndexArray addObject:tempDictionary[@"letter"]];
         }
@@ -150,7 +150,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = [NSString stringWithFormat:@"%@", self.array[indexPath.row]];
         } else {
-            ContentTypeModel *tempModel = self.array[indexPath.row];
+            ContentsTypeModel *tempModel = self.array[indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
         }
     } else {
@@ -158,7 +158,7 @@
             cell.textLabel.text = [NSString stringWithFormat:@"%@", self.array[indexPath.section]];
         } else {
             NSArray *tempArray = [self.array[indexPath.section] copy];
-            ContentTypeModel *tempModel = [tempArray[indexPath.row] copy];
+            ContentsTypeModel *tempModel = tempArray[indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
         }
     }

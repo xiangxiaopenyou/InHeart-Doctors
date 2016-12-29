@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ContentModel;
+@class SingleContentModel;
 
-typedef void (^selectedBlock)(ContentModel *model);
+typedef void (^selectedBlock)(SingleContentModel *model);
 
 @interface ContentCell : UITableViewCell
 

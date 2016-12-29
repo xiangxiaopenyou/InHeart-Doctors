@@ -13,7 +13,7 @@
 #import "CollectionCell.h"
 
 #import "DoctorModel.h"
-#import "ContentModel.h"
+#import "SingleContentModel.h"
 
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"CollectionCell";
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    ContentModel *tempModel = self.collectionsArray[indexPath.row];
+    SingleContentModel *tempModel = self.collectionsArray[indexPath.row];
     [cell.coverImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
     cell.collectionTitleLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     cell.timeLabel.text = [NSString stringWithFormat:@"%@", tempModel.createdAt];
@@ -96,7 +96,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ContentModel *tempModel = [self.collectionsArray[indexPath.row] copy];
+    SingleContentModel *tempModel = [self.collectionsArray[indexPath.row] copy];
     ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
     detailViewController.contentModel = [tempModel copy];
     DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
@@ -116,8 +116,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        ContentModel *tempModel = self.collectionsArray[indexPath.row];
-        [ContentModel cancelCollectContent:tempModel.contentId handler:nil];
+        SingleContentModel *tempModel = self.collectionsArray[indexPath.row];
+        [SingleContentModel cancelCollectContent:tempModel.contentId handler:nil];
         [self.collectionsArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         

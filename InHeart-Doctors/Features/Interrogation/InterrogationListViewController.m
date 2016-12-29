@@ -27,8 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.title = @"收取中...";
-    //[self performSelector:@selector(fetchingStateChange) withObject:nil afterDelay:1.7];
     [self.view addSubview:self.conversationsView];
     [self.conversationsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.top.bottom.equalTo(self.view);
@@ -40,8 +38,6 @@
             ChatViewController *chatViewController = [[ChatViewController alloc] initWithConversationChatter:model.conversation.conversationId conversationType:EMConversationTypeChat];
             chatViewController.hidesBottomBarWhenPushed = YES;
             chatViewController.model = model;
-            //chatViewController.title = model.conversation.conversationId;
-            //chatViewController.chatter = model.conversation.conversationId;
             [strongSelf.navigationController pushViewController:chatViewController animated:YES];
         }
     };
@@ -87,9 +83,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-//- (void)fetchingStateChange {
-//    self.title = @"问诊";
-//}
 - (void)conversationsDidChange {
     [self.conversationsView fetchConversations];
 }

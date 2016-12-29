@@ -119,4 +119,7 @@
 
 #define XLShowThenDismissHUD(aSuccess, aMessage, aView) [Util showThenDismissHud:aSuccess message:aMessage view:aView]
 
+//网络状态
+#define XLNetworkState [Util getNetWorkStates]
+
 

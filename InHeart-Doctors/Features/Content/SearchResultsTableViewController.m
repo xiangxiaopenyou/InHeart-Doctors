@@ -11,7 +11,7 @@
 #import "DetailNavigationController.h"
 #import "SearchResultCell.h"
 
-#import "ContentModel.h"
+#import "SingleContentModel.h"
 
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
@@ -94,7 +94,7 @@
 #pragma mark - private methods
 - (void)searchRequest:(NSString *)keywordString {
     XLShowHUDWithMessage(nil, self.view);
-    [ContentModel fetchContentsList:@(_paging) disease:nil therapy:nil type:nil keyword:keywordString handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchContentsList:@(_paging) disease:nil therapy:nil type:nil keyword:keywordString handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (object) {
@@ -144,7 +144,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"SearchResult";
     SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    ContentModel *tempModel = self.resultsArray[indexPath.row];
+    SingleContentModel *tempModel = self.resultsArray[indexPath.row];
     [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
     cell.contentNameLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", tempModel.createdAt];
@@ -153,11 +153,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ContentModel *tempModel = [self.resultsArray[indexPath.row] copy];
+    SingleContentModel *tempModel = self.resultsArray[indexPath.row];
     ContentDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
-    detailViewController.contentModel = [tempModel copy];
+    detailViewController.contentModel = tempModel;
     DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
-    navigationController.contentModel = [tempModel copy];
+    navigationController.contentModel = tempModel;
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 

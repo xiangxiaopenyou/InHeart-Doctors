@@ -192,4 +192,40 @@
         [MBProgressHUD showError:message toView:view];
     }
 }
++ (NSInteger)getNetWorkStates {
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *children = [[[app valueForKeyPath:@"statusBar"]valueForKeyPath:@"foregroundView"]subviews];
+    NSInteger state = 0;
+    int netType = 0;
+    //获取到网络返回码
+    for (id child in children) {
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
+            //获取到状态栏
+            netType = [[child valueForKeyPath:@"dataNetworkType"]intValue];
+            
+            switch (netType) {
+                case 0:
+                    state = 0;
+                    //无网模式
+                    break;
+                case 1:
+                    state =  1;
+                    break;
+                case 2:
+                    state =  2;
+                    break;
+                case 3:
+                    state =   3;
+                    break;
+                case 5:
+                    state =  5;
+                    break;
+                default:
+                    break;
+            }
+        }
+        //根据状态选择
+    }
+    return state;
+}
 @end

@@ -12,8 +12,8 @@
 #import "ContentCell.h"
 #import "SelectionView.h"
 
-#import "ContentModel.h"
-#import "ContentTypeModel.h"
+#import "SingleContentModel.h"
+#import "ContentsTypeModel.h"
 
 #import <UIImage-Helpers.h>
 #import <GJCFUitils.h>
@@ -92,7 +92,7 @@
                     strongSelf.diseaseButton.selected = NO;
                     strongSelf.selectedDiseaseId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.diseaseButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.diseaseButton.selected = YES;
                     strongSelf.selectedDiseaseId = tempModel.typeId;
@@ -106,7 +106,7 @@
                     strongSelf.contentButton.selected = NO;
                     strongSelf.selectedTypeId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.contentButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.contentButton.selected = YES;
                     strongSelf.selectedTypeId = tempModel.typeId;
@@ -120,7 +120,7 @@
                     strongSelf.therapyButton.selected = NO;
                     strongSelf.selectedTherapyId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.therapyButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.therapyButton.selected = YES;
                     strongSelf.selectedTherapyId = tempModel.typeId;
@@ -161,7 +161,7 @@
 #pragma mark - Requests
 //获取类别
 - (void)fetchTypes:(XJContentsTypes)type {
-    [ContentModel fetchTypes:type handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchTypes:type handler:^(id object, NSString *msg) {
         if (object) {
             if (type == XJContentsTypesContents) {
                 self.contentTypesArray = [object copy];
@@ -175,7 +175,7 @@
 }
 //筛选请求
 - (void)fetchContentsList {
-    [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:_keyword handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:_keyword handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (object) {
@@ -199,7 +199,7 @@
                 }
             });
         } else {
-            XLDismissHUD(self.view, YES, YES, msg);
+            XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
 }
@@ -234,11 +234,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
     [cell setupContents:self.contentsResultsArray];
-    cell.block = ^(ContentModel *model){
+    cell.block = ^(SingleContentModel *model){
         ContentDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentDetail"];
-        detailViewController.contentModel = [model copy];
+        detailViewController.contentModel = model;
         DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
-        navigationController.contentModel = [model copy];
+        navigationController.contentModel = model;
         [self presentViewController:navigationController animated:YES completion:nil];
     };
     return cell;

@@ -1,42 +1,22 @@
 //
-//  ContentModel.m
+//  SingleContentModel.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/10/11.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "ContentModel.h"
-#import "ContentTypeModel.h"
-#import "FetchTypsRequest.h"
+#import "SingleContentModel.h"
+#import "ContentsTypeModel.h"
 #import "FetchContentsListRequest.h"
 #import "FetchContentDetailRequest.h"
 #import "CollectRequest.h"
 #import "CancelCollectRequest.h"
+#import "FetchTypsRequest.h"
 
-@implementation ContentModel
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"contentId" : @"id"}];
-}
-+ (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler {
-    [[FetchTypsRequest new] request:^BOOL(FetchTypsRequest *request) {
-        request.contentsType = contentsType;
-        return YES;
-    } result:^(id object, NSString *msg) {
-        if (msg) {
-            !handler ?: handler(nil, msg);
-        } else {
-            if (object && [object isKindOfClass:[NSArray class]]) {
-                if (contentsType == XJContentsTypesContents) {
-                    NSArray *tempArray = [[ContentTypeModel class] setupWithArray:object];
-                    !handler ?: handler(tempArray, nil);
-                } else {
-                    !handler ?: handler (object, nil);
-                }
-            }
-        }
-    }];
-    
+@implementation SingleContentModel
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
+    return @{@"contentId" : @"id"};
 }
 + (void)fetchContentsList:(NSNumber *)paging disease:(NSString *)diseaseId therapy:(NSString *)therapyId type:(NSString *)contentTypeId keyword:(NSString *)keyword handler:(RequestResultHandler)handler {
     [[FetchContentsListRequest new] request:^BOOL(FetchContentsListRequest *request) {
@@ -50,8 +30,27 @@
         if (msg) {
             !handler ?: handler(nil, msg);
         } else {
-            NSArray *tempArray = [[ContentModel class] setupWithArray:object];
+            NSArray *tempArray = [SingleContentModel setupWithArray:object];
             !handler ?: handler(tempArray, nil);
+        }
+    }];
+}
++ (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler {
+    [[FetchTypsRequest new] request:^BOOL(FetchTypsRequest *request) {
+        request.contentsType = contentsType;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            if (object && [object isKindOfClass:[NSArray class]]) {
+                if (contentsType == XJContentsTypesContents) {
+                    NSArray *tempArray = [ContentsTypeModel setupWithArray:object];
+                    !handler ?: handler(tempArray, nil);
+                } else {
+                    !handler ?: handler (object, nil);
+                }
+            }
         }
     }];
 }
@@ -63,7 +62,7 @@
         if (msg) {
             !handler ?: handler(nil, msg);
         } else {
-            ContentModel *tempModel = [[ContentModel alloc] initWithDictionary:object error:nil];
+            SingleContentModel *tempModel = [SingleContentModel yy_modelWithDictionary:object];
             !handler ?: handler(tempModel, nil);
         }
     }];
@@ -80,5 +79,5 @@
         return YES;
     } result:handler];
 }
-@end
 
+@end

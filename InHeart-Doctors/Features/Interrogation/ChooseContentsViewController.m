@@ -10,8 +10,9 @@
 #import "ContentCell.h"
 #import "SelectionView.h"
 
-#import "ContentModel.h"
-#import "ContentTypeModel.h"
+#import "SingleContentModel.h"
+#import "SingleContentModel.h"
+#import "ContentsTypeModel.h"
 
 #import <MJRefresh.h>
 #import <GJCFUitils.h>
@@ -79,7 +80,7 @@
                     strongSelf.diseaseButton.selected = NO;
                     strongSelf.selectedDiseaseId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.diseaseButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.diseaseButton.selected = YES;
                     strongSelf.selectedDiseaseId = tempModel.typeId;
@@ -93,7 +94,7 @@
                     strongSelf.contentsButton.selected = NO;
                     strongSelf.selectedTypeId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.contentsButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.contentsButton.selected = YES;
                     strongSelf.selectedTypeId = tempModel.typeId;
@@ -107,7 +108,7 @@
                     strongSelf.therapyButton.selected = NO;
                     strongSelf.selectedTherapyId = nil;
                 } else {
-                    ContentTypeModel *tempModel = [object copy];
+                    ContentsTypeModel *tempModel = object;
                     [strongSelf.therapyButton setTitle:[NSString stringWithFormat:@"%@", tempModel.name] forState:UIControlStateNormal];
                     strongSelf.therapyButton.selected = YES;
                     strongSelf.selectedTherapyId = tempModel.typeId;
@@ -163,7 +164,7 @@
     [self.scrollOfContents.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat width = 15.0;
     for (NSInteger i = 0; i < self.contentsArray.count; i ++) {
-        ContentModel *tempModel = self.contentsArray[i];
+        SingleContentModel *tempModel = self.contentsArray[i];
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
@@ -190,11 +191,11 @@
     }
     self.scrollOfContents.contentSize = CGSizeMake(self.contentsArray.count * 79 + 15, 0);
 }
-- (BOOL)isSelectedContent:(ContentModel *)model {
+- (BOOL)isSelectedContent:(SingleContentModel *)model {
     if (!model) {
         return NO;
     }
-    for (ContentModel *tempModel in self.contentsArray) {
+    for (SingleContentModel *tempModel in self.contentsArray) {
         if ([tempModel.contentId isEqualToString:model.contentId]) {
             return YES;
         }
@@ -206,7 +207,7 @@
 #pragma mark - Requests
 //获取类别
 - (void)fetchTypes:(XJContentsTypes)type {
-    [ContentModel fetchTypes:type handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchTypes:type handler:^(id object, NSString *msg) {
         if (object) {
             if (type == XJContentsTypesContents) {
                 self.contentTypesArray = [object copy];
@@ -220,7 +221,7 @@
 }
 //筛选请求
 - (void)fetchContentsList {
-    [ContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:nil handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchContentsList:@(_paging) disease:_selectedDiseaseId therapy:_selectedTherapyId type:_selectedTypeId keyword:nil handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (object) {
@@ -263,7 +264,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
     [cell setupContents:self.contentsResultsArray];
-    cell.block = ^(ContentModel *model){
+    cell.block = ^(SingleContentModel *model){
         if ([self isSelectedContent:model]) {
             XLShowThenDismissHUD(NO, @"你已经选择了该内容", self.view);
         } else {

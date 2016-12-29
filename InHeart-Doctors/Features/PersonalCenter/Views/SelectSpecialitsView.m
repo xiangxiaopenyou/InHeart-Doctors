@@ -7,7 +7,7 @@
 //
 
 #import "SelectSpecialitsView.h"
-#import "ContentTypeModel.h"
+#import "ContentsTypeModel.h"
 @interface SelectSpecialitsView ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UITableView *tableView;
@@ -32,7 +32,7 @@
         NSMutableArray *tempMutableArray = [[NSMutableArray alloc] init];
         NSMutableArray *tempIndexArray = [[NSMutableArray alloc] init];
         for (NSDictionary *tempDictionary in contentsArray) {
-            NSArray *tempArray = [[ContentTypeModel class] setupWithArray:tempDictionary[@"array"]];
+            NSArray *tempArray = [ContentsTypeModel setupWithArray:tempDictionary[@"array"]];
             [tempMutableArray addObject:tempArray];
             [tempIndexArray addObject:tempDictionary[@"letter"]];
         }
@@ -49,7 +49,7 @@
     NSMutableArray *tempMutableArray = [[NSMutableArray alloc] init];
     NSMutableArray *tempIndexArray = [[NSMutableArray alloc] init];
     for (NSDictionary *tempDictionary in contentsArray) {
-        NSArray *tempArray = [[ContentTypeModel class] setupWithArray:tempDictionary[@"array"]];
+        NSArray *tempArray = [ContentsTypeModel setupWithArray:tempDictionary[@"array"]];
         [tempMutableArray addObject:tempArray];
         [tempIndexArray addObject:tempDictionary[@"letter"]];
     }
@@ -140,7 +140,7 @@
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     cell.textLabel.font = kSystemFont(13);
     NSArray *tempArray = [self.array[indexPath.section] copy];
-    ContentTypeModel *tempModel = [tempArray[indexPath.row] copy];
+    ContentsTypeModel *tempModel = [tempArray[indexPath.row] copy];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     if ([self.selectedContentsArray containsObject:tempModel.name]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -165,7 +165,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray *tempArray = [self.array[indexPath.section] copy];
-    ContentTypeModel *tempModel = [tempArray[indexPath.row] copy];
+    ContentsTypeModel *tempModel = [tempArray[indexPath.row] copy];
     UITableViewCell *tempCell = [tableView cellForRowAtIndexPath:indexPath];
     if (tempCell.accessoryType == UITableViewCellAccessoryCheckmark) {
         tempCell.accessoryType = UITableViewCellAccessoryNone;

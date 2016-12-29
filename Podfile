@@ -13,5 +13,7 @@ pod 'IQKeyboardManager'
 pod 'GTSDK'
 pod 'Hyphenate_CN'
 pod 'SAMKeychain'
+pod 'YYModel'
+pod 'Reachability'
 end 
 

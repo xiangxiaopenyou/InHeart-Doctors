@@ -22,4 +22,7 @@
 - (PersonalInfo *)personalInfo;
 - (void)removePersonalInfo;
 
+- (BOOL)saveDetailInformation:(NSDictionary *)dictionary;
+- (NSDictionary *)readDetailInformation;
+
 @end

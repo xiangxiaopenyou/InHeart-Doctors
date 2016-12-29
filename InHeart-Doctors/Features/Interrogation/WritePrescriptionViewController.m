@@ -11,7 +11,7 @@
 
 #import "XLBlockAlertView.h"
 
-#import "ContentModel.h"
+#import "SingleContentModel.h"
 #import "DoctorModel.h"
 #import "UserMessageModel.h"
 #import "UserInfo.h"
@@ -79,7 +79,7 @@
     NSString *contentsString = nil;
     if (self.contentsArray.count > 0) {
         NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-        for (ContentModel *tempModel in self.contentsArray) {
+        for (SingleContentModel *tempModel in self.contentsArray) {
             [tempArray addObject:tempModel.contentId];
         }
         contentsString = [tempArray componentsJoinedByString:@","];
@@ -104,7 +104,7 @@
             [dictionary setObject:@(1) forKey:@"status"];
             [dictionary setObject:price forKey:@"price"];
             if (self.contentsArray.count > 0) {
-                ContentModel *tempModel = [self.contentsArray[0] copy];
+                SingleContentModel *tempModel = [self.contentsArray[0] copy];
                 [dictionary setObject:tempModel.coverPic forKey:@"imageUrl"];
             }
             if (self.block) {
@@ -133,7 +133,7 @@
                 make.centerY.equalTo(self.scrollOfContents);
             }];
         } else {
-            ContentModel *tempModel = self.contentsArray[i];
+            SingleContentModel *tempModel = self.contentsArray[i];
             UIImageView *imageView = [[UIImageView alloc] init];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.clipsToBounds = YES;

@@ -7,7 +7,7 @@
 //
 
 #import "DetailNavigationController.h"
-#import "ContentModel.h"
+#import "SingleContentModel.h"
 
 @interface DetailNavigationController ()
 

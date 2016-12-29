@@ -11,6 +11,7 @@
 
 #import "PersonalInfo.h"
 #import <SAMKeychain.h>
+#import <GJCFUitils.h>
 
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {
@@ -106,6 +107,16 @@
     UserModel *tempModel = [self userInfo];
     NSString *username = tempModel.username;
     [SAMKeychain deletePasswordForService:KEYCHAINSERVICE account:username error:nil];
+}
+- (BOOL)saveDetailInformation:(NSDictionary *)dictionary {
+    NSString *path = GJCFAppDoucmentPath(@"information");
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+    return [data writeToFile:path atomically:YES];
+}
+- (NSDictionary *)readDetailInformation {
+    NSString *path = GJCFAppDoucmentPath(@"information");
+    NSDictionary *temp = [NSDictionary dictionaryWithContentsOfFile:path];
+    return temp;
 }
 
 @end

@@ -1,35 +1,36 @@
 //
-//  ContentModel.h
+//  SingleContentModel.h
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/10/11.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "XLModel.h"
+#import "BaseRequest.h"
 
-@interface ContentModel : BaseModel
+@interface SingleContentModel : XLModel
 @property (copy, nonatomic) NSString *contentId;
 @property (copy, nonatomic) NSString *creator;
 @property (strong, nonatomic) NSNumber *hidden;
 @property (copy, nonatomic) NSString *remark;
 @property (copy, nonatomic) NSString *helpCode;
 @property (strong, nonatomic) NSNumber *type;
-@property (copy, nonatomic) NSString<Optional> *config_type;
+@property (copy, nonatomic) NSString *config_type;
 @property (copy, nonatomic) NSString *createdAt;
 @property (strong, nonatomic) NSNumber *isFree;
-@property (copy, nonatomic) NSString<Optional> *config_isFree;
+@property (copy, nonatomic) NSString *config_isFree;
 @property (strong, nonatomic) NSNumber *status;
-@property (copy, nonatomic) NSString<Optional> *config_status;
-@property (strong, nonatomic) NSNumber<Optional> *price;
+@property (copy, nonatomic) NSString *config_status;
+@property (strong, nonatomic) NSNumber *price;
 @property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString<Optional> *updator;
+@property (copy, nonatomic) NSString *updator;
 @property (copy, nonatomic) NSString *coverPic;
-@property (copy, nonatomic) NSDictionary<Optional> *ext;
-@property (strong, nonatomic) NSNumber<Optional> *isCollect;
+@property (copy, nonatomic) NSDictionary *ext;
+@property (strong, nonatomic) NSNumber *isCollect;
 
-+ (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler;
 + (void)fetchContentsList:(NSNumber *)paging disease:(NSString *)diseaseId therapy:(NSString *)therapyId type:(NSString *)contentTypeId keyword:(NSString *)keyword handler:(RequestResultHandler)handler;
++ (void)fetchTypes:(XJContentsTypes)contentsType handler:(RequestResultHandler)handler;
 + (void)fetchContentDetail:(NSString *)contentId handler:(RequestResultHandler)handler;
 + (void)collectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
 + (void)cancelCollectContent:(NSString *)contentId handler:(RequestResultHandler)handler;

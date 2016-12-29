@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ContentModel;
+@class SingleContentModel;
 
 @interface ContentDetailViewController : UIViewController
-@property (strong, nonatomic) ContentModel *contentModel;
+@property (strong, nonatomic) SingleContentModel *contentModel;
 
 @end

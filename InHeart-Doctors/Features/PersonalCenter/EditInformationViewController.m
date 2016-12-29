@@ -14,7 +14,7 @@
 #import "XLBlockAlertView.h"
 
 #import "DoctorModel.h"
-#import "ContentModel.h"
+#import "SingleContentModel.h"
 #import "ProvinceModel.h"
 #import "CityModel.h"
 #import "UserInfo.h"
@@ -55,6 +55,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
         UIImage *avatar = [UIImage imageWithContentsOfFile:kAvatarPath];
         self.avatarImageView.image = avatar;
     }
+//    [self reloadInformationData];
     [self fetchInformation];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldEditChanged:) name:UITextFieldTextDidChangeNotification object:self.signatureTextField];
@@ -126,15 +127,9 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     [DoctorModel fetchPersonalInformation:^(id object, NSString *msg) {
         if (object && [object isKindOfClass:[NSDictionary class]]) {
             self.informationDictionary = [object mutableCopy];
-            if (!XLIsNullObject(self.informationDictionary[@"region"])) {
-                self.selectedCityModel = [CityModel new];
-                self.selectedCityModel.fullName = self.informationDictionary[@"region"];
-            }
-            if (!XLIsNullObject(self.informationDictionary[@"expertise"])) {
-                NSString *tempString = self.informationDictionary[@"expertise"];
-                NSArray *tempArray = [tempString componentsSeparatedByString:@"|"];
-                self.selectedSpecialitsArray = [tempArray copy];
-            }
+//            if ([[UserInfo sharedUserInfo] saveDetailInformation:self.informationDictionary]) {
+//                NSLog(@"成功");
+//            }
             [self reloadInformationData];
             [self fetchSpecialits];
             [self fetchCities];
@@ -142,7 +137,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     }];
 }
 - (void)fetchSpecialits {
-    [ContentModel fetchTypes:XJContentsTypesDiseases handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchTypes:XJContentsTypesDiseases handler:^(id object, NSString *msg) {
         if (object) {
             self.specialitsArray = [object copy];
             [self.specialitsView resetContents:self.specialitsArray selectedArray:self.selectedSpecialitsArray];
@@ -166,10 +161,11 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     pickerController.mediaTypes = @[(NSString *)kUTTypeImage];
     pickerController.allowsEditing = YES;
     [self presentViewController:pickerController animated:YES completion:nil];
+
 }
 - (void)reloadInformationData {
-//    if (!XLIsNullObject(self.informationDictionary[@"headPictureUrl"])) {
-//        [self.avatarImageView sd_setImageWithURL:XLURLFromString(self.informationDictionary[@"headPictureUrl"]) placeholderImage:[UIImage imageNamed:@"default_image"]];
+//    if (self.informationDictionary.count == 0) {
+//        self.informationDictionary = [[[UserInfo sharedUserInfo] readDetailInformation] mutableCopy];
 //    }
     if (!XLIsNullObject(self.informationDictionary[@"signature"])) {
         self.signatureTextField.text = [NSString stringWithFormat:@"%@", self.informationDictionary[@"signature"]];
@@ -177,6 +173,15 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     if (!XLIsNullObject(self.informationDictionary[@"introduction"])) {
         self.introductionPlaceholder.hidden = YES;
         self.introductionTextView.text = [NSString stringWithFormat:@"%@", self.informationDictionary[@"introduction"]];
+    }
+    if (!XLIsNullObject(self.informationDictionary[@"region"])) {
+        self.selectedCityModel = [CityModel new];
+        self.selectedCityModel.fullName = self.informationDictionary[@"region"];
+    }
+    if (!XLIsNullObject(self.informationDictionary[@"expertise"])) {
+        NSString *tempString = self.informationDictionary[@"expertise"];
+        NSArray *tempArray = [tempString componentsSeparatedByString:@"|"];
+        self.selectedSpecialitsArray = [tempArray copy];
     }
     [self.tableView reloadData];
 }

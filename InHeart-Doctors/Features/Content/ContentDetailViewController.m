@@ -9,9 +9,10 @@
 #import "ContentDetailViewController.h"
 #import "DetailContentCell.h"
 #import "AudioPlayerView.h"
+#import "XLBlockAlertView.h"
 
-#import "ContentModel.h"
-#import "ContentMediaModel.h"
+#import "SingleContentModel.h"
+#import "ContentsMediaModel.h"
 
 #import <UtoVRPlayer/UtoVRPlayer.h>
 #import <Masonry.h>
@@ -29,7 +30,7 @@
 @property (strong, nonatomic) SDCycleScrollView *cyclePicturesView;
 @property (strong, nonatomic) UIButton *startButton;
 @property (assign, nonatomic) CGFloat width;
-@property (strong, nonatomic) ContentMediaModel *mediaModel;
+@property (strong, nonatomic) ContentsMediaModel *mediaModel;
 
 @end
 
@@ -150,12 +151,12 @@
 
 #pragma mark - Requests
 - (void)fetchDetails:(NSString *)contentId {
-    [ContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
+    [SingleContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(self.view, NO, YES, nil);
-            self.contentModel = [object copy];
+            self.contentModel = object;
             if (self.contentModel.ext) {
-                self.mediaModel = [[ContentMediaModel alloc] initWithDictionary:self.contentModel.ext error:nil];
+                self.mediaModel = [ContentsMediaModel yy_modelWithDictionary:self.contentModel.ext];
                 GJCFAsyncMainQueue(^{
                     [self loadPlayer];
                 });
@@ -219,11 +220,11 @@
             if ([self.contentModel.isCollect integerValue] == 0) {
                 self.contentModel.isCollect = @1;
                 weakCell.collectionButton.selected = YES;
-                [ContentModel collectContent:self.contentModel.contentId handler:nil];
+                [SingleContentModel collectContent:self.contentModel.contentId handler:nil];
             } else {
                 self.contentModel.isCollect = @0;
                 weakCell.collectionButton.selected = NO;
-                [ContentModel cancelCollectContent:self.contentModel.contentId handler:nil];
+                [SingleContentModel cancelCollectContent:self.contentModel.contentId handler:nil];
             }
         };
     }
@@ -243,6 +244,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)startPlay {
+    if (XLNetworkState != 5) {
+        [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:NSLocalizedString(@"player.wifiNotReachability", nil) block:^(NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self videoPlay];
+            }
+        } cancelButtonTitle:NSLocalizedString(@"cancel", nil) otherButtonTitles:NSLocalizedString(@"player.continuePlay", nil), nil] show];
+    } else {
+        [self videoPlay];
+    }
+    
+}
+- (void)videoPlay {
     if (self.vrPlayer.currentItem) {
         [self.vrPlayer play];
     } else {

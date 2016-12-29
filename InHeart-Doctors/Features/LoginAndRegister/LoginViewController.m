@@ -157,10 +157,10 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                     [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
                 } else {
-                    XLDismissHUD(self.view, YES, NO, @"登录出现问题，请重试");
+                    XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
                 }
             } else {
-                XLDismissHUD(self.view, YES, NO, @"登录出现问题，请重试");
+                XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
             }
             
         } else {

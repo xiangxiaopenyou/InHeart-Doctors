@@ -17,6 +17,7 @@
 "password" = "密码";
 "username" = "个人账户";
 "confirmpassword"="确认密码";
+"loginerror" = "登录出现问题，请重试";
 
 "ok" = "确定";
 "yes" = "是";
@@ -356,3 +357,7 @@
 "NSDateCategory.text12" = "晚上hh:mm";
 "NSDateCategory.text13" = "昨天HH:mm";
 "NSDateCategory.text14" = "今天 %@";
+
+//Player
+"player.wifiNotReachability" = "当前非WiFi网络，\n观看视频可能产生流量费用";
+"player.continuePlay" = "继续播放";
