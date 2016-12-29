@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <YYModel.h>
+#import "BaseRequest.h"
 
 @interface XLModel : NSObject<YYModel>
 + (NSArray *)setupWithArray:(NSArray *)array;

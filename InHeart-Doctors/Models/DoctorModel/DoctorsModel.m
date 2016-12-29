@@ -1,12 +1,12 @@
 //
-//  DoctorModel.m
-//  InHeart
+//  DoctorsModel.m
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/9/20.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "DoctorModel.h"
+#import "DoctorsModel.h"
 #import "SingleContentModel.h"
 #import "FetchPersonalInformationRequest.h"
 #import "FetchCollectionsListRequest.h"
@@ -17,7 +17,7 @@
 #import "SetCommonPriceRequest.h"
 #import "SetInterrogationStateRequest.h"
 
-@implementation DoctorModel
+@implementation DoctorsModel
 + (void)fetchPersonalInformation:(RequestResultHandler)handler {
     [[FetchPersonalInformationRequest new] request:^BOOL(id request) {
         return YES;

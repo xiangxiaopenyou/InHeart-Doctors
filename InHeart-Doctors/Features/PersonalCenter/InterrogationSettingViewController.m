@@ -11,13 +11,13 @@
 #import "XLBlockAlertView.h"
 
 #import "UserInfo.h"
-#import "UserModel.h"
-#import "DoctorModel.h"
+#import "UsersModel.h"
+#import "DoctorsModel.h"
 
 @interface InterrogationSettingViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *feesTextField;
 
-@property (strong, nonatomic) UserModel *userModel;
+@property (strong, nonatomic) UsersModel *userModel;
 @property (assign, nonatomic) CGFloat commonPrice;
 
 @end
@@ -39,7 +39,7 @@
 }
 #pragma mark - Requests
 - (void)fetchPrice {
-    [DoctorModel fetchCommonPrice:^(id object, NSString *msg) {
+    [DoctorsModel fetchCommonPrice:^(id object, NSString *msg) {
         if (object && [object isKindOfClass:[NSDictionary class]]) {
             if (object[@"minPrice"] && [object[@"minPrice"] floatValue] > 0) {
                 _commonPrice = [object[@"minPrice"] floatValue];
@@ -66,7 +66,7 @@
     } else {
         tempPrice = @([tempString floatValue]);
     }
-    [DoctorModel setCommonPrice:tempPrice handler:^(id object, NSString *msg) {
+    [DoctorsModel setCommonPrice:tempPrice handler:^(id object, NSString *msg) {
         if (object) {
             [self resetState];
         } else {
@@ -77,7 +77,7 @@
 }
 - (void)resetState {
     NSNumber *stateNumber = [_userModel.code integerValue] == -7? @9 : @4;
-    [DoctorModel setDoctorState:stateNumber handler:^(id object, NSString *msg) {
+    [DoctorsModel setDoctorState:stateNumber handler:^(id object, NSString *msg) {
         if (object) {
             [[UserInfo sharedUserInfo] saveUserInfo:_userModel];
             XLDismissHUD(self.view, NO, YES, nil);

@@ -8,8 +8,8 @@
 
 #import "SelectCityView.h"
 
-#import "ProvinceModel.h"
-#import "CityModel.h"
+#import "ProvincesModel.h"
+#import "CitiesModel.h"
 
 @interface SelectCityView ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -17,7 +17,7 @@
 @property (strong, nonatomic) UIView *topView;
 @property (strong, nonatomic) UIButton *backgroundButton;
 @property (copy, nonatomic) NSArray *areaArray;
-@property (copy, nonatomic) CityModel *selectedCityModel;
+@property (strong, nonatomic) CitiesModel *selectedCityModel;
 @end
 
 @implementation SelectCityView
@@ -33,9 +33,9 @@
     }
     return self;
 }
-- (void)resetContents:(NSArray *)array selectedCity:(CityModel *)selectedCity {
+- (void)resetContents:(NSArray *)array selectedCity:(CitiesModel *)selectedCity {
     self.areaArray = [array copy];
-    self.selectedCityModel = [selectedCity copy];
+    self.selectedCityModel = selectedCity;
     [self.tableView reloadData];
 }
 #pragma mark - Getters
@@ -81,7 +81,7 @@
     return self.areaArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    ProvinceModel *provinceModel = self.areaArray[section];
+    ProvincesModel *provinceModel = self.areaArray[section];
     NSArray *tempArray = [provinceModel.array copy];
     return tempArray.count;
 }
@@ -89,9 +89,9 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     cell.textLabel.font = kSystemFont(13);
-    ProvinceModel *provinceModel = self.areaArray[indexPath.section];
+    ProvincesModel *provinceModel = self.areaArray[indexPath.section];
     NSArray *tempArray = [provinceModel.array copy];
-    CityModel *cityModel = [[CityModel alloc] initWithDictionary:tempArray[indexPath.row] error:nil];
+    CitiesModel *cityModel = [CitiesModel yy_modelWithDictionary:tempArray[indexPath.row]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", cityModel.name];
     cell.accessoryType = [cityModel.code isEqualToString:self.selectedCityModel.code] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
@@ -103,7 +103,7 @@
     UIView *headerView = [UIView new];
     headerView.backgroundColor = kRGBColor(240, 240, 240, 1.0);
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 21)];
-    ProvinceModel *provinceModel = self.areaArray[section];
+    ProvincesModel *provinceModel = self.areaArray[section];
     label.text = [NSString stringWithFormat:@"%@", provinceModel.name];
     label.textColor = kHexRGBColorWithAlpha(0xAAAAAA, 1.0);
     label.font = kSystemFont(12);
@@ -113,9 +113,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ProvinceModel *provinceModel = self.areaArray[indexPath.section];
+    ProvincesModel *provinceModel = self.areaArray[indexPath.section];
     NSArray *tempArray = [provinceModel.array copy];
-    CityModel *cityModel = [[CityModel alloc] initWithDictionary:tempArray[indexPath.row] error:nil];
+    CitiesModel *cityModel = [CitiesModel yy_modelWithDictionary:tempArray[indexPath.row]];
     if (![cityModel.code isEqualToString:self.selectedCityModel.code]) {
         self.selectedCityModel = cityModel;
         [tableView reloadData];

@@ -13,7 +13,7 @@
 #import "AuthenticationStepsViewController.h"
 #import "UserInfo.h"
 #import "PersonalInfo.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 
 #import <UIImage-Helpers.h>
 #import <IQKeyboardManager.h>
@@ -115,9 +115,9 @@
             self.window.rootViewController = viewController;
             PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
             if (tempInfo.username && tempInfo.password) {
-                [UserModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
+                [UsersModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
                     if (object) {
-                        UserModel *userModel = [object copy];
+                        UsersModel *userModel = object;
                         NSInteger code = [msg integerValue];
                         userModel.code = @(code);
                         if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {

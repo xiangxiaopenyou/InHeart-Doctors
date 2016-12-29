@@ -9,7 +9,7 @@
 #import "FindPasswordTableViewController.h"
 #import "RegisterPhoneCell.h"
 #import "LoginContentCell.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 
 #import <GJCFUitils.h>
 #import <Masonry.h>
@@ -273,7 +273,7 @@
     if (!self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
     }
-    [UserModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
         
     }];
 }
@@ -312,7 +312,7 @@
         return;
     }
     XLShowHUDWithMessage(nil, self.view);
-    [UserModel findPassword:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel findPassword:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(self.view, YES, YES, @"成功");
             [self.navigationController popViewControllerAnimated:YES];

@@ -7,7 +7,6 @@
 //
 
 #import "XLModel.h"
-#import "BaseRequest.h"
 
 @interface SingleContentModel : XLModel
 @property (copy, nonatomic) NSString *contentId;

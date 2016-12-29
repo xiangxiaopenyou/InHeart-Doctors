@@ -9,7 +9,7 @@
 #import "ConversationListView.h"
 
 #import "ConversationModel.h"
-#import "UserMessageModel.h"
+#import "UserMessagesModel.h"
 
 #import <GJCFUitils.h>
 
@@ -73,9 +73,9 @@
     }
     __block NSInteger count = 0;
     for (ConversationModel *tempModel in self.conversationArray) {
-        [UserMessageModel fetchUsersIdAndName:tempModel.conversation.conversationId handler:^(id object, NSString *msg) {
+        [UserMessagesModel fetchUsersIdAndName:tempModel.conversation.conversationId handler:^(id object, NSString *msg) {
             if (object) {
-                UserMessageModel *userModel = [object copy];
+                UserMessagesModel *userModel = object;
                 tempModel.userId = userModel.userId;
                 tempModel.realname = userModel.realname;
                 count += 1;

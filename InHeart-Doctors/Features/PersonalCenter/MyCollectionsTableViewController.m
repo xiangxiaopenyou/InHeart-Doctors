@@ -12,7 +12,7 @@
 
 #import "CollectionCell.h"
 
-#import "DoctorModel.h"
+#import "DoctorsModel.h"
 #import "SingleContentModel.h"
 
 #import <MJRefresh.h>
@@ -53,7 +53,7 @@
 #pragma mark - Requset
 - (void)fetchCollectionsList {
     XLShowHUDWithMessage(nil, self.view);
-    [DoctorModel fetchCollectionsList:@(_paging) handler:^(id object, NSString *msg) {
+    [DoctorsModel fetchCollectionsList:@(_paging) handler:^(id object, NSString *msg) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (object) {

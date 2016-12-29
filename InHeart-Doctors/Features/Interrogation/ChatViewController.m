@@ -13,7 +13,7 @@
 #import "PrescriptionMessageCell.h"
 
 #import "ConversationModel.h"
-#import "UserMessageModel.h"
+#import "UserMessagesModel.h"
 
 @interface ChatViewController ()<EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource>
 
@@ -118,9 +118,9 @@
     if (!XLIsNullObject(self.model.userId)) {
         [self presentWritePrescription];
     } else {
-        [UserMessageModel fetchUsersIdAndName:self.model.conversation.conversationId handler:^(id object, NSString *msg) {
+        [UserMessagesModel fetchUsersIdAndName:self.model.conversation.conversationId handler:^(id object, NSString *msg) {
             if (object) {
-                UserMessageModel *userModel = [object copy];
+                UserMessagesModel *userModel = object;
                 self.model.userId = userModel.userId;
                 self.model.realname = userModel.realname;
                 [self presentWritePrescription];

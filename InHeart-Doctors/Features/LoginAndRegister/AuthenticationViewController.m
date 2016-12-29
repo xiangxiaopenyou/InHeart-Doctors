@@ -12,7 +12,7 @@
 #import "XLBlockActionSheet.h"
 #import "XLBlockAlertView.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 
 #import <Masonry.h>
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -76,7 +76,7 @@
     [self presentViewController:pickerController animated:YES completion:nil];
 }
 - (void)submitAuthentication:(NSString *)imageId titlesImageId:(NSString *)titleImageId {
-    [UserModel userAuthentication:imageId titlesPictureId:titleImageId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel userAuthentication:imageId titlesPictureId:titleImageId name:self.nameTextField.text card:self.idcardTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(self.view, NO, YES, nil);
             [[NSUserDefaults standardUserDefaults] setObject:@(-5) forKey:USERCODE];
@@ -181,13 +181,13 @@
     NSString *tempName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
     NSData *tempData = UIImageJPEGRepresentation(self.selectedImage, 1.0);
     XLShowHUDWithMessage(@"正在提交信息...", self.view);
-    [UserModel uploadAuthenticationPicture:tempName data:tempData handler:^(id object, NSString *msg) {
+    [UsersModel uploadAuthenticationPicture:tempName data:tempData handler:^(id object, NSString *msg) {
         if (object) {
             NSString *pictureId = object[@"imageId"];
             if (self.selectedTitlesImage) {
                 NSString *tempTitlesName = @(ceil([[NSDate date] timeIntervalSince1970])).stringValue;
                 NSData *tempTitlesData = UIImageJPEGRepresentation(self.selectedImage, 1.0);
-                [UserModel uploadTitlesPicture:tempTitlesName data:tempTitlesData handler:^(id object, NSString *msg) {
+                [UsersModel uploadTitlesPicture:tempTitlesName data:tempTitlesData handler:^(id object, NSString *msg) {
                     if (object) {
                         NSString *titlePictureId = object[@"imageId"];
                         [self submitAuthentication:pictureId titlesImageId:titlePictureId];

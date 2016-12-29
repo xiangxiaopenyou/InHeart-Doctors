@@ -4,7 +4,6 @@ target 'InHeart-Doctors' do
 pod 'AFNetworking'
 pod 'MJRefresh'
 pod 'Masonry'
-pod 'JSONModel'
 pod 'OpenShare'
 pod 'SDCycleScrollView'
 pod 'GJCFUitils'

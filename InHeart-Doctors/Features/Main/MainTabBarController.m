@@ -11,7 +11,7 @@
 #import "InterrogationListViewController.h"
 #import "PersonalCenterTableViewController.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "UserInfo.h"
 
 static CGFloat const kTipLabelHeight = 2.0;
@@ -59,7 +59,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     
     //环信
     if (![[EMClient sharedClient] isLoggedIn]) {
-        UserModel *user = [[UserInfo sharedUserInfo] userInfo];
+        UsersModel *user = [[UserInfo sharedUserInfo] userInfo];
         [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
             if (!aError) {
                 [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];

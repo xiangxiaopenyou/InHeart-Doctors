@@ -12,10 +12,10 @@
 #import "XLBlockAlertView.h"
 
 #import "SingleContentModel.h"
-#import "DoctorModel.h"
-#import "UserMessageModel.h"
+#import "DoctorsModel.h"
+#import "UserMessagesModel.h"
 #import "UserInfo.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "ConversationModel.h"
 
 #import <Masonry.h>
@@ -58,7 +58,7 @@
 }
 #pragma mark - Requests
 - (void)fetchPrice {
-    [DoctorModel fetchCommonPrice:^(id object, NSString *msg) {
+    [DoctorsModel fetchCommonPrice:^(id object, NSString *msg) {
         if (object && [object isKindOfClass:[NSDictionary class]]) {
             if (object[@"minPrice"] && [object[@"minPrice"] floatValue] > 0) {
                 if ([object[@"minPrice"] floatValue] == [object[@"minPrice"] integerValue]) {
@@ -92,8 +92,8 @@
             price = @([self.feesTextField.text floatValue]);
         }
     }
-    UserModel *userModel = [[UserInfo sharedUserInfo] userInfo];
-    [UserMessageModel sendPrescription:contentsString doctor:userModel.userId user:self.conversationModel.userId suggestion:self.adviceTextView.text price:price handler:^(id object, NSString *msg) {
+    UsersModel *userModel = [[UserInfo sharedUserInfo] userInfo];
+    [UserMessagesModel sendPrescription:contentsString doctor:userModel.userId user:self.conversationModel.userId suggestion:self.adviceTextView.text price:price handler:^(id object, NSString *msg) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.navigationItem.leftBarButtonItem.enabled = YES;
         if (object && object[@"prescriptionId"]) {
@@ -104,7 +104,7 @@
             [dictionary setObject:@(1) forKey:@"status"];
             [dictionary setObject:price forKey:@"price"];
             if (self.contentsArray.count > 0) {
-                SingleContentModel *tempModel = [self.contentsArray[0] copy];
+                SingleContentModel *tempModel = self.contentsArray[0];
                 [dictionary setObject:tempModel.coverPic forKey:@"imageUrl"];
             }
             if (self.block) {

@@ -7,7 +7,7 @@
 //
 
 #import "UserInfo.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 
 #import "PersonalInfo.h"
 #import <SAMKeychain.h>
@@ -29,7 +29,7 @@
         return NO;
     }
 }
-- (BOOL)saveUserInfo:(UserModel *)userModel {
+- (BOOL)saveUserInfo:(UsersModel *)userModel {
     if (!userModel) {
         return NO;
     }
@@ -54,8 +54,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
-- (UserModel *)userInfo {
-    UserModel *model = [UserModel new];
+- (UsersModel *)userInfo {
+    UsersModel *model = [UsersModel new];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERID]) {
         model.userId = [[NSUserDefaults standardUserDefaults] objectForKey:USERID];
     }
@@ -96,7 +96,7 @@
 }
 - (PersonalInfo *)personalInfo {
     PersonalInfo *info = [PersonalInfo new];
-    UserModel *tempModel = [self userInfo];
+    UsersModel *tempModel = [self userInfo];
     NSString *username = tempModel.username;
     NSString *password = [SAMKeychain passwordForService:KEYCHAINSERVICE account:username];
     info.username = username;
@@ -104,7 +104,7 @@
     return info;
 }
 - (void)removePersonalInfo {
-    UserModel *tempModel = [self userInfo];
+    UsersModel *tempModel = [self userInfo];
     NSString *username = tempModel.username;
     [SAMKeychain deletePasswordForService:KEYCHAINSERVICE account:username error:nil];
 }

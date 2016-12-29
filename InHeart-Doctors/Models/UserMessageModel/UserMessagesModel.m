@@ -1,20 +1,21 @@
 //
-//  UserMessageModel.m
-//  InHeart
+//  UserMessagesModel.m
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/11/14.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "UserMessageModel.h"
-
+#import "UserMessagesModel.h"
 #import "UsersNameAndIdRequest.h"
 #import "SendPrescriptionRequest.h"
 
-@implementation UserMessageModel
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"userId" : @"id"}];
+@implementation UserMessagesModel
+
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
+    return @{@"userId" : @"id"};
 }
+
 + (void)fetchUsersIdAndName:(NSString *)phone handler:(RequestResultHandler)handler {
     [[UsersNameAndIdRequest new] request:^BOOL(UsersNameAndIdRequest *request) {
         request.username = phone;
@@ -23,7 +24,7 @@
         if (msg) {
             !handler ?: handler(nil, msg);
         } else {
-            UserMessageModel *tempModel = [[UserMessageModel alloc] initWithDictionary:object error:nil];
+            UserMessagesModel *tempModel = [UserMessagesModel yy_modelWithDictionary:object];
             !handler ?: handler(tempModel, nil);
         }
     }];
@@ -38,4 +39,5 @@
         return YES;
     } result:handler];
 }
+
 @end

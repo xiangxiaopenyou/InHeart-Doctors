@@ -8,7 +8,7 @@
 
 #import "BillTableViewController.h"
 #import "BillCell.h"
-#import "BillModel.h"
+#import "BillsModel.h"
 
 #import <MJRefresh.h>
 
@@ -53,7 +53,7 @@
 
 #pragma mark - Request
 - (void)fetchBillList {
-    [BillModel fetchBills:@(_paging) handler:^(id object, NSString *msg) {
+    [BillsModel fetchBills:@(_paging) handler:^(id object, NSString *msg) {
         if (object) {
             NSArray *resultArray = [object copy];
             if (_paging == 1) {
@@ -85,7 +85,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BillCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BillCell" forIndexPath:indexPath];
-    BillModel *tempModel = self.billsArray[indexPath.row];
+    BillsModel *tempModel = self.billsArray[indexPath.row];
     cell.billImageView.image = [tempModel.type integerValue] == 1 ? [UIImage imageNamed:@"bill_income"] : [UIImage imageNamed:@"bill_expenditure"];
     NSString *titleString = [tempModel.type integerValue] == 1 ? [NSString stringWithFormat:@"%@-问诊费", tempModel.toUser_username] : @"提现";
     cell.billTitleLabel.text = titleString;

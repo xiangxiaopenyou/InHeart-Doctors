@@ -1,12 +1,12 @@
 //
-//  UserModel.m
+//  UsersModel.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/9/27.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "LoginRequest.h"
 #import "FetchVerificationCodeRequest.h"
 #import "RegisterRequest.h"
@@ -16,8 +16,7 @@
 #import "FindPasswordRequest.h"
 #import "LogoutRequest.h"
 
-
-@implementation UserModel
+@implementation UsersModel
 + (void)userLogin:(NSString *)username password:(NSString *)password handler:(RequestResultHandler)handler {
     [[LoginRequest new] request:^BOOL(LoginRequest *request) {
         request.username = username;
@@ -28,7 +27,7 @@
             !handler ?: handler(nil, msg);
         } else {
             if (object && [object isKindOfClass:[NSDictionary class]]) {
-                UserModel *tempModel = [[UserModel alloc] initWithDictionary:object[@"data"] error:nil];
+                UsersModel *tempModel = [UsersModel yy_modelWithDictionary:object[@"data"]];
                 !handler ?: handler(tempModel, [object[@"code"] stringValue]);
             }
         }

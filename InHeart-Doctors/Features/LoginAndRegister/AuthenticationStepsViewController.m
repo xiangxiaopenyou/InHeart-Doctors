@@ -10,7 +10,7 @@
 #import "AuthenticationViewController.h"
 #import "PersonalInfo.h"
 #import "UserInfo.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 
 @interface AuthenticationStepsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *tipImageView;
@@ -62,9 +62,9 @@
 - (void)refreshAuthenticationState {
     PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
     if (tempInfo.username && tempInfo.password) {
-        [UserModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
+        [UsersModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
             if (object) {
-                UserModel *userModel = [object copy];
+                UsersModel *userModel = [object copy];
                 NSInteger code = [msg integerValue];
                 userModel.code = @(code);
                 if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {

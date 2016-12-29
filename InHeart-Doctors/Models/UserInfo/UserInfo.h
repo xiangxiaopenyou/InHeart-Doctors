@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-@class UserModel;
+@class UsersModel;
 @class PersonalInfo;
 
 @interface UserInfo : NSObject
 
 + (UserInfo *)sharedUserInfo;
 - (BOOL)isLogined;
-- (BOOL)saveUserInfo:(UserModel *)userModel;
-- (UserModel *)userInfo;
+- (BOOL)saveUserInfo:(UsersModel *)userModel;
+- (UsersModel *)userInfo;
 - (void)removeUserInfo;
 
 - (BOOL)savePersonalInfo:(PersonalInfo *)personalInfo;

@@ -12,7 +12,7 @@
 #import "RegisterPhoneCell.h"
 #import "XLHyperLinkButton.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "PersonalInfo.h"
 #import "UserInfo.h"
 
@@ -257,12 +257,12 @@
         return;
     }
     XLShowHUDWithMessage(nil, self.view);
-    [UserModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
             XLShowHUDWithMessage(@"正在登陆...", self.view);
-            [UserModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
+            [UsersModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
                 if (object) {
-                    UserModel *userModel = [object copy];
+                    UsersModel *userModel = object;
                     NSInteger code = [msg integerValue];
                     userModel.code = @(code);
                     if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
@@ -306,7 +306,7 @@
     if (!self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
     }
-    [UserModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
         
     }];
 }

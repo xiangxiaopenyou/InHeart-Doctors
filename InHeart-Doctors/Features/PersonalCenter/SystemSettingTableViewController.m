@@ -10,7 +10,7 @@
 
 #import "XLBlockAlertView.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "UserInfo.h"
 
 #import <SDImageCache.h>
@@ -137,7 +137,7 @@
     } else {
         [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录吗？" block:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
-                [UserModel userLogout:^(id object, NSString *msg) {
+                [UsersModel userLogout:^(id object, NSString *msg) {
                     if (object) {
                         [[EMClient sharedClient] logout:NO completion:^(EMError *aError) {
                             if (!aError) {

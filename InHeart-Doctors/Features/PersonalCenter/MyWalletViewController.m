@@ -7,7 +7,7 @@
 //
 
 #import "MyWalletViewController.h"
-#import "DoctorModel.h"
+#import "DoctorsModel.h"
 
 @interface MyWalletViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
@@ -29,7 +29,7 @@
 
 #pragma mark - Request
 - (void)fetchBalance {
-    [DoctorModel fetchAccountBalance:^(id object, NSString *msg) {
+    [DoctorsModel fetchAccountBalance:^(id object, NSString *msg) {
         if (object) {
             if (!XLIsNullObject(object[@"balance"])) {
                 self.balanceValue = [object[@"balance"] floatValue];

@@ -1,31 +1,31 @@
 //
-//  DoctorModel.h
-//  InHeart
+//  DoctorsModel.h
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/9/20.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "XLModel.h"
 
-@interface DoctorModel : BaseModel
-@property (strong, nonatomic) NSNumber<Optional> *age;
-@property (copy, nonatomic) NSString<Optional> *certificate;
-@property (copy, nonatomic) NSString<Optional> *email;
-@property (copy, nonatomic) NSString<Optional> *entryDate;
-@property (copy, nonatomic) NSString<Optional> *expertise;
+@interface DoctorsModel : XLModel
+@property (strong, nonatomic) NSNumber *age;
+@property (copy, nonatomic) NSString *certificate;
+@property (copy, nonatomic) NSString *email;
+@property (copy, nonatomic) NSString *entryDate;
+@property (copy, nonatomic) NSString *expertise;
 @property (copy, nonatomic) NSString *headPictureUrl;
-@property (copy, nonatomic) NSString<Optional> *hospital;
-@property (copy, nonatomic) NSString<Optional> *idCardInverse;
-@property (copy, nonatomic) NSString<Optional> *idCardFront;
+@property (copy, nonatomic) NSString *hospital;
+@property (copy, nonatomic) NSString *idCardInverse;
+@property (copy, nonatomic) NSString *idCardFront;
 @property (copy, nonatomic) NSString *idNumber;
-@property (copy, nonatomic) NSString<Optional> *introduction;
+@property (copy, nonatomic) NSString *introduction;
 @property (copy, nonatomic) NSString *mobile;
-@property (copy, nonatomic) NSString<Optional> *photo;
+@property (copy, nonatomic) NSString *photo;
 @property (copy, nonatomic) NSString *realname;
-@property (copy, nonatomic) NSString<Optional> *region;
-@property (copy, nonatomic) NSString<Optional> *signature;
-@property (copy, nonatomic) NSString<Optional> *token;
+@property (copy, nonatomic) NSString *region;
+@property (copy, nonatomic) NSString *signature;
+@property (copy, nonatomic) NSString *token;
 //@property (copy, nonatomic) NSString<Optional> *level;
 //@property (strong, nonatomic) NSNumber<Optional> *consultNumber;
 //@property (strong, nonatomic) NSNumber<Optional> *favoriteNumber;
@@ -38,4 +38,5 @@
 + (void)fetchCommonPrice:(RequestResultHandler)handler;
 + (void)setCommonPrice:(NSNumber *)price handler:(RequestResultHandler)handler;
 + (void)setDoctorState:(NSNumber *)state handler:(RequestResultHandler)handler;
+
 @end

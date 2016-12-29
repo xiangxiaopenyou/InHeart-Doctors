@@ -1,14 +1,14 @@
 //
-//  UserMessageModel.h
-//  InHeart
+//  UserMessagesModel.h
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/11/14.
+//  Created by 项小盆友 on 16/12/29.
 //  Copyright © 2016年 项小盆友. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "XLModel.h"
 
-@interface UserMessageModel : BaseModel
+@interface UserMessagesModel : XLModel
 @property (copy, nonatomic) NSString *userId;
 @property (copy, nonatomic) NSString *realname;
 

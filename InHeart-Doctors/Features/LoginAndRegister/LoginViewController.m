@@ -12,7 +12,7 @@
 
 #import "LoginContentCell.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "UserInfo.h"
 #import "PersonalInfo.h"
 
@@ -143,9 +143,9 @@
     }
     [self resignTextField];
     XLShowHUDWithMessage(nil, self.view);
-    [UserModel userLogin:self.phoneTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
+    [UsersModel userLogin:self.phoneTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            UserModel *userModel = [object copy];
+            UsersModel *userModel = object;
             NSInteger code = [msg integerValue];
             userModel.code = @(code);
             if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {

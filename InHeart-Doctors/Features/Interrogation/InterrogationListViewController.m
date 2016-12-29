@@ -10,7 +10,7 @@
 #import "ChatViewController.h"
 #import "ConversationListView.h"
 
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "UserInfo.h"
 #import "ConversationModel.h"
 
@@ -47,7 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![[EMClient sharedClient] isLoggedIn]) {
-        UserModel *user = [[UserInfo sharedUserInfo] userInfo];
+        UsersModel *user = [[UserInfo sharedUserInfo] userInfo];
         [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
             if (!aError) {
                 [self.conversationsView fetchConversations];

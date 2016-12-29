@@ -13,10 +13,10 @@
 #import "XLBlockActionSheet.h"
 #import "XLBlockAlertView.h"
 
-#import "DoctorModel.h"
+#import "DoctorsModel.h"
 #import "SingleContentModel.h"
-#import "ProvinceModel.h"
-#import "CityModel.h"
+#import "ProvincesModel.h"
+#import "CitiesModel.h"
 #import "UserInfo.h"
 
 #import <UIImageView+WebCache.h>
@@ -40,7 +40,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 @property (copy, nonatomic) NSArray *specialitsArray;
 @property (copy, nonatomic) NSArray *selectedSpecialitsArray;
 @property (copy, nonatomic) NSArray *areasArray;
-@property (strong, nonatomic) CityModel *selectedCityModel;
+@property (strong, nonatomic) CitiesModel *selectedCityModel;
 @property (strong, nonatomic) NSMutableDictionary *informationDictionary;
 
 @end
@@ -76,7 +76,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
             [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         }
     };
-    self.cityView.selectBlock = ^(CityModel *selectedCity) {
+    self.cityView.selectBlock = ^(CitiesModel *selectedCity) {
         GJCFStrongSelf strongSelf = weakSelf;
         [UIView animateWithDuration:0.3 animations:^{
             strongSelf.cityView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -124,12 +124,9 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 
 #pragma mark - Request
 - (void)fetchInformation {
-    [DoctorModel fetchPersonalInformation:^(id object, NSString *msg) {
+    [DoctorsModel fetchPersonalInformation:^(id object, NSString *msg) {
         if (object && [object isKindOfClass:[NSDictionary class]]) {
             self.informationDictionary = [object mutableCopy];
-//            if ([[UserInfo sharedUserInfo] saveDetailInformation:self.informationDictionary]) {
-//                NSLog(@"成功");
-//            }
             [self reloadInformationData];
             [self fetchSpecialits];
             [self fetchCities];
@@ -145,7 +142,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     }];
 }
 - (void)fetchCities {
-    [ProvinceModel fetchAreas:^(id object, NSString *msg) {
+    [ProvincesModel fetchAreas:^(id object, NSString *msg) {
         if (object) {
             self.areasArray = [object copy];
             [self.cityView resetContents:self.areasArray selectedCity:self.selectedCityModel];
@@ -175,7 +172,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
         self.introductionTextView.text = [NSString stringWithFormat:@"%@", self.informationDictionary[@"introduction"]];
     }
     if (!XLIsNullObject(self.informationDictionary[@"region"])) {
-        self.selectedCityModel = [CityModel new];
+        self.selectedCityModel = [CitiesModel new];
         self.selectedCityModel.fullName = self.informationDictionary[@"region"];
     }
     if (!XLIsNullObject(self.informationDictionary[@"expertise"])) {
@@ -356,7 +353,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
             CGFloat rate = 300.0 * 1024.0 / tempData.length;
             tempData = UIImageJPEGRepresentation(self.selectedAvatarImage, rate);
         }
-        [DoctorModel uploadAvatar:tempName data:tempData handler:^(id object, NSString *msg) {
+        [DoctorsModel uploadAvatar:tempName data:tempData handler:^(id object, NSString *msg) {
             if (object) {
                 NSString *imageId = object[@"imageUrl"];
                 [self submitInformations:imageId];
@@ -375,7 +372,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     if (imageId) {
         uploadImageId = imageId;
     }
-    [DoctorModel informationEdit:uploadImageId signature:self.signatureTextField.text introduction:self.introductionTextView.text expertise:self.selectedSpecialitsArray city:self.selectedCityModel.code handler:^(id object, NSString *msg) {
+    [DoctorsModel informationEdit:uploadImageId signature:self.signatureTextField.text introduction:self.introductionTextView.text expertise:self.selectedSpecialitsArray city:self.selectedCityModel.code handler:^(id object, NSString *msg) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         if (object) {
             XLDismissHUD(self.view, YES, YES, @"保存成功");

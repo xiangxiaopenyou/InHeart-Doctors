@@ -16,11 +16,11 @@
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
 #import "UserInfo.h"
-#import "UserModel.h"
+#import "UsersModel.h"
 #import "PersonalInfo.h"
 
 @interface PersonalCenterTableViewController ()
-@property (strong, nonatomic) UserModel *userModel;
+@property (strong, nonatomic) UsersModel *userModel;
 @property (strong, nonatomic) PersonalInfo *personalModel;
 
 @end

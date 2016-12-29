@@ -140,7 +140,7 @@
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     cell.textLabel.font = kSystemFont(13);
     NSArray *tempArray = [self.array[indexPath.section] copy];
-    ContentsTypeModel *tempModel = [tempArray[indexPath.row] copy];
+    ContentsTypeModel *tempModel = tempArray[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     if ([self.selectedContentsArray containsObject:tempModel.name]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -165,7 +165,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray *tempArray = [self.array[indexPath.section] copy];
-    ContentsTypeModel *tempModel = [tempArray[indexPath.row] copy];
+    ContentsTypeModel *tempModel = tempArray[indexPath.row];
     UITableViewCell *tempCell = [tableView cellForRowAtIndexPath:indexPath];
     if (tempCell.accessoryType == UITableViewCellAccessoryCheckmark) {
         tempCell.accessoryType = UITableViewCellAccessoryNone;

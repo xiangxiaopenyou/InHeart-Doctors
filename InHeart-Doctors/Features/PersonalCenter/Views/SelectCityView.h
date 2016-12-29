@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CityModel;
+@class CitiesModel;
 
 @interface SelectCityView : UIView
-@property (copy, nonatomic) void (^selectBlock)(CityModel *selectedCity);
-- (void)resetContents:(NSArray *)array selectedCity:(CityModel *)selectedCity;
+@property (copy, nonatomic) void (^selectBlock)(CitiesModel *selectedCity);
+- (void)resetContents:(NSArray *)array selectedCity:(CitiesModel *)selectedCity;
 
 @end
