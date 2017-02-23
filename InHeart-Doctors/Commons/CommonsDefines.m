@@ -85,7 +85,7 @@ NSString * const kApplicationBecomeActive = @"ApplicationBecomeActive";
 NSString * const kSetupUnreadMessagesCount = @"SetupUnreadMessagesCount";
 NSString * const kConversationsDidChange = @"ConversationsDidChange";
 
-NSString * const BASEAPIURL = @"http://xj.dosnsoft.com:8000/api/v1/";
+NSString * const BASEAPIURL = @"http://test.med-vision.cn/api/v1/";
 
 NSString * const USER_LOGIN = @"doctor/login";
 NSString * const USER_REGISTER = @"doctor/register";
