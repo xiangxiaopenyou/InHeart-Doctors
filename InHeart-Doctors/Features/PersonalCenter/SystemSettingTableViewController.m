@@ -139,7 +139,7 @@
             if (buttonIndex == 1) {
                 [UsersModel userLogout:^(id object, NSString *msg) {
                     if (object) {
-                        [[EMClient sharedClient] logout:NO completion:^(EMError *aError) {
+                        [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
                             if (!aError) {
                                 [[UserInfo sharedUserInfo] removeUserInfo];
                                 [[UserInfo sharedUserInfo] removePersonalInfo];

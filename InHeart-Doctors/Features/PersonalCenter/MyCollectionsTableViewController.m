@@ -96,11 +96,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SingleContentModel *tempModel = [self.collectionsArray[indexPath.row] copy];
+    SingleContentModel *tempModel = self.collectionsArray[indexPath.row];
     ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
-    detailViewController.contentModel = [tempModel copy];
+    detailViewController.contentModel = tempModel;
     DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
-    navigationController.contentModel = [tempModel copy];
+    navigationController.contentModel = tempModel;
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
