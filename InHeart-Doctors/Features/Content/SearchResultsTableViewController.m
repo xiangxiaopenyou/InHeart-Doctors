@@ -28,6 +28,7 @@
 
 @implementation SearchResultsTableViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,42 +51,6 @@
     [super viewWillDisappear:animated];
     [self.searchTextField resignFirstResponder];
 }
-
-#pragma mark - Getters
-- (UIView *)searchView {
-    if (!_searchView) {
-        _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 60, 30)];
-        _searchView.layer.masksToBounds = YES;
-        _searchView.layer.cornerRadius = 4.0;
-        _searchView.backgroundColor = kRGBColor(255, 255, 255, 0.5);
-        UIImageView *searchImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 6, 18, 18)];
-        searchImage.image = [UIImage imageNamed:@"content_search"];
-        [_searchView addSubview:searchImage];
-        [_searchView addSubview:self.searchTextField];
-
-    }
-    return _searchView;
-}
-- (UITextField *)searchTextField {
-    if (!_searchTextField) {
-        _searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 0, SCREEN_WIDTH - 104, 30)];
-        _searchTextField.backgroundColor = [UIColor clearColor];
-        _searchTextField.placeholder = kSearchPlaceholder;
-        _searchTextField.font = kSystemFont(13);
-        _searchTextField.returnKeyType = UIReturnKeySearch;
-        _searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-        _searchTextField.delegate = self;
-    }
-    return _searchTextField;
-}
-- (NSMutableArray *)resultsArray {
-    if (!_resultsArray) {
-        _resultsArray = [[NSMutableArray alloc] init];
-    }
-    return _resultsArray;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -134,13 +99,10 @@
     return YES;
 }
 
-#pragma mark - Table view data source
-
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.resultsArray.count;
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"SearchResult";
     SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
@@ -151,6 +113,8 @@
     
     return cell;
 }
+
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SingleContentModel *tempModel = self.resultsArray[indexPath.row];
@@ -205,8 +169,45 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - IBAction
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Getters
+- (UIView *)searchView {
+    if (!_searchView) {
+        _searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 60, 30)];
+        _searchView.layer.masksToBounds = YES;
+        _searchView.layer.cornerRadius = 4.0;
+        _searchView.backgroundColor = kRGBColor(255, 255, 255, 0.5);
+        UIImageView *searchImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 6, 18, 18)];
+        searchImage.image = [UIImage imageNamed:@"content_search"];
+        [_searchView addSubview:searchImage];
+        [_searchView addSubview:self.searchTextField];
+        
+    }
+    return _searchView;
+}
+- (UITextField *)searchTextField {
+    if (!_searchTextField) {
+        _searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 0, SCREEN_WIDTH - 104, 30)];
+        _searchTextField.backgroundColor = [UIColor clearColor];
+        _searchTextField.placeholder = kSearchPlaceholder;
+        _searchTextField.font = kSystemFont(13);
+        _searchTextField.returnKeyType = UIReturnKeySearch;
+        _searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+        _searchTextField.delegate = self;
+    }
+    return _searchTextField;
+}
+- (NSMutableArray *)resultsArray {
+    if (!_resultsArray) {
+        _resultsArray = [[NSMutableArray alloc] init];
+    }
+    return _resultsArray;
 }
 
 @end

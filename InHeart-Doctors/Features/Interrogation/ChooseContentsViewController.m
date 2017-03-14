@@ -41,6 +41,7 @@
 
 @implementation ChooseContentsViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -131,32 +132,9 @@
     [super viewDidDisappear:animated];
     [self.selectionView removeFromSuperview];
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Setters & Getters
-- (SelectionView *)selectionView {
-    if (!_selectionView) {
-        _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
-    }
-    return _selectionView;
-}
-- (NSMutableArray *)contentsResultsArray {
-    if (!_contentsResultsArray) {
-        _contentsResultsArray = [[NSMutableArray alloc] init];
-    }
-    return _contentsResultsArray;
-}
-- (NSMutableArray *)contentsArray {
-    if (!_contentArray) {
-        _contentArray = [[NSMutableArray alloc] init];
-    }
-    return _contentArray;
 }
 
 #pragma mark - private methods
@@ -248,18 +226,9 @@
     }];
 }
 
-#pragma mark - UITableView Delegate DataSource
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.contentsResultsArray.count == 0) {
-        return 0;
-    } else {
-        NSInteger interger = (self.contentsResultsArray.count - 1) / 2 + 1;
-        return interger * (kCollectionCellItemHeight + 5.0);
-    }
-    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
@@ -278,6 +247,16 @@
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.contentsResultsArray.count == 0) {
+        return 0;
+    } else {
+        NSInteger interger = (self.contentsResultsArray.count - 1) / 2 + 1;
+        return interger * (kCollectionCellItemHeight + 5.0);
+    }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -287,6 +266,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - IBAction & Selector
 - (IBAction)diseaseClick:(id)sender {
     [self.selectionView refreshTableView:XJContentsTypesDiseases array:_diseasesArray seletedItem:self.selectedDiseaseItem];
     [UIView animateWithDuration:0.3 animations:^{
@@ -314,6 +295,26 @@
         self.saveBlock(self.contentArray);
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Setters & Getters
+- (SelectionView *)selectionView {
+    if (!_selectionView) {
+        _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
+    }
+    return _selectionView;
+}
+- (NSMutableArray *)contentsResultsArray {
+    if (!_contentsResultsArray) {
+        _contentsResultsArray = [[NSMutableArray alloc] init];
+    }
+    return _contentsResultsArray;
+}
+- (NSMutableArray *)contentsArray {
+    if (!_contentArray) {
+        _contentArray = [[NSMutableArray alloc] init];
+    }
+    return _contentArray;
 }
 
 @end

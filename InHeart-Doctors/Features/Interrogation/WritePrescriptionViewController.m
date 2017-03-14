@@ -31,6 +31,7 @@
 
 @implementation WritePrescriptionViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -178,6 +179,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - IBAction & Selector
 - (IBAction)closeAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

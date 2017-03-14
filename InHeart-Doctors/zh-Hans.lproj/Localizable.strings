@@ -361,3 +361,11 @@
 //Player
 "player.wifiNotReachability" = "当前非WiFi网络，\n观看视频可能产生流量费用";
 "player.continuePlay" = "继续播放";
+
+//Homepage
+"homepage.college" = "心景学院";
+"homepage.collegeContent" = "心景学院内容";
+"homepage.news" = "行业新闻";
+"homepage.newsContent" = "行业新闻内容";
+"homepage.systemMessage" = "系统消息";
+"homepage.systemMessageContent" = "系统消息内容";

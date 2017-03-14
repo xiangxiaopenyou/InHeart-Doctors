@@ -7,9 +7,11 @@
 //
 
 #import "MainTabBarController.h"
-#import "ContentViewController.h"
+//#import "ContentViewController.h"
+#import "HomepageViewController.h"
 #import "InterrogationListViewController.h"
 #import "PersonalCenterTableViewController.h"
+#import "HomepageNavigationController.h"
 
 #import "UsersModel.h"
 #import "UserInfo.h"
@@ -45,8 +47,10 @@ static CGFloat const kTipLabelHeight = 2.0;
     personalSelectedImage = [personalSelectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //内容
-    ContentViewController *contentViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentView"];
-    [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
+//    ContentViewController *contentViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentView"];
+//    [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
+    HomepageViewController *homepageViewController = [[UIStoryboard storyboardWithName:@"Homepage" bundle:nil] instantiateViewControllerWithIdentifier:@"Homepage"];
+    [self setupChildControllerWith:homepageViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
     
     //问诊
     InterrogationListViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
@@ -78,13 +82,35 @@ static CGFloat const kTipLabelHeight = 2.0;
     [super viewDidAppear:animated];
     [self setupUnreadMessagesCount];
 }
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+- (void)setupChildControllerWith:(UIViewController *)childViewController normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage title:(NSString *)title index:(NSInteger)index {
+    if (index == 0) {
+        HomepageNavigationController *navigation = [[HomepageNavigationController alloc] initWithRootViewController:childViewController];
+        childViewController.title = title;
+        childViewController.tabBarItem.image = normalImage;
+        childViewController.tabBarItem.selectedImage = selectedImage;
+        [self addChildViewController:navigation];
+    } else {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
+        childViewController.title = title;
+        childViewController.tabBarItem.image = normalImage;
+        childViewController.tabBarItem.selectedImage = selectedImage;
+        [self addChildViewController:navigationController];
+    }
+}
+
+#pragma mark - Orientations
 - (BOOL)shouldAutorotate {
     return NO;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
+
 - (UILabel *)bottomTipLabel {
     if (!_bottomTipLabel) {
         _bottomTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kTipLabelWidth, kTipLabelHeight)];
@@ -94,20 +120,6 @@ static CGFloat const kTipLabelHeight = 2.0;
 }
 - (void)addViewToTabBar {
     [self.tabBar addSubview:self.bottomTipLabel];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)setupChildControllerWith:(UIViewController *)childViewController normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage title:(NSString *)title index:(NSInteger)index {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:childViewController];
-    childViewController.title = title;
-    childViewController.tabBarItem.image = normalImage;
-    childViewController.tabBarItem.selectedImage = selectedImage;
-    [self addChildViewController:navigationController];
- 
 }
 - (void)changeTipLabelPosition:(CGFloat)positionX {
     [UIView animateWithDuration:0.2 animations:^{

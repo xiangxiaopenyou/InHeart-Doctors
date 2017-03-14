@@ -24,6 +24,8 @@ extern NSString * const USERREALNAME;
 extern NSString * const USERNAME;
 extern NSString * const USERENCRYPTEDPASSWORD;
 extern NSString * const KEYCHAINSERVICE;
+extern NSString * const FIRSTLOAD;
+extern NSString * const LAST_RUN_VERSION;
 
 //常用数值
 extern CGFloat const TABBARHEIGHT;
@@ -50,6 +52,7 @@ extern NSString * const kMyInterrogation;
 extern NSString * const kMyWallet;
 extern NSString * const kMyDoctors;
 extern NSString * const kMyCollections;
+extern NSString * const kMyPatients;
 extern NSString * const kMyAccount;
 extern NSString * const kHelpAndFeedback;
 extern NSString * const kPersonalSetting;

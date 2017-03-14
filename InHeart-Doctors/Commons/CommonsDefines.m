@@ -19,6 +19,8 @@ NSString * const USERREALNAME = @"Realname";
 NSString * const USERNAME = @"Username";
 NSString * const USERENCRYPTEDPASSWORD = @"EncryptedPassword";
 NSString * const KEYCHAINSERVICE = @"com.midvision.vrdoctor";
+NSString * const FIRSTLOAD = @"FirstLoad";
+NSString * const LAST_RUN_VERSION = @"last_run_version";
 
 
 CGFloat const TABBARHEIGHT = 49.0;
@@ -42,6 +44,7 @@ NSString * const kMyInterrogation = @"我的问诊";
 NSString * const kMyWallet = @"我的钱包";
 NSString * const kMyDoctors = @"我的医生";
 NSString * const kMyCollections = @"我的收藏";
+NSString * const kMyPatients = @"我的患者";
 NSString * const kMyAccount = @"我的账户";
 NSString * const kHelpAndFeedback = @"帮助与反馈";
 NSString * const kPersonalSetting = @"设置";

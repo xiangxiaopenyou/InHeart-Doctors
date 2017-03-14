@@ -64,7 +64,7 @@
     if (tempInfo.username && tempInfo.password) {
         [UsersModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
             if (object) {
-                UsersModel *userModel = [object copy];
+                UsersModel *userModel = object;
                 NSInteger code = [msg integerValue];
                 userModel.code = @(code);
                 if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {

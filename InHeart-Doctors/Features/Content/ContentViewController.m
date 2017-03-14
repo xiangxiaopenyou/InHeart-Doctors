@@ -43,6 +43,7 @@
 
 @implementation ContentViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -144,19 +145,27 @@
     [self.selectionView removeFromSuperview];
 }
 
-#pragma mark - Setters & Getters
-- (SelectionView *)selectionView {
-    if (!_selectionView) {
-        _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
-    }
-    return _selectionView;
+#pragma mark - IBAction
+- (IBAction)diseaseSelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesDiseases array:_diseasesArray seletedItem:self.selectedDiseaseItem];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
 }
-- (NSMutableArray *)contentsResultsArray {
-    if (!_contentsResultsArray) {
-        _contentsResultsArray = [[NSMutableArray alloc] init];
-    }
-    return _contentsResultsArray;
+- (IBAction)contentTypesSelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesContents array:self.contentTypesArray seletedItem:self.selectedContentTypeItem];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
 }
+- (IBAction)therapySelectionClick:(id)sender {
+    [self.selectionView refreshTableView:XJContentsTypesTherapies array:_therapiesArray seletedItem:self.selectedTherapyItem];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }];
+}
+
+
 
 #pragma mark - Requests
 //获取类别
@@ -218,18 +227,9 @@
 //    
 //}
 
-#pragma mark - UITableView Delegate DataSource
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.contentsResultsArray.count == 0) {
-        return 0;
-    } else {
-        NSInteger interger = (self.contentsResultsArray.count - 1) / 2 + 1;
-        return interger * (kCollectionCellItemHeight + 5.0);
-    }
-    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Content" forIndexPath:indexPath];
@@ -244,6 +244,17 @@
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.contentsResultsArray.count == 0) {
+        return 0;
+    } else {
+        NSInteger interger = (self.contentsResultsArray.count - 1) / 2 + 1;
+        return interger * (kCollectionCellItemHeight + 5.0);
+    }
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -253,31 +264,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - Setters & Getters
+- (SelectionView *)selectionView {
+    if (!_selectionView) {
+        _selectionView = [[SelectionView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) type:XJContentsTypesNone array:nil selectedItem:nil];
+    }
+    return _selectionView;
+}
+- (NSMutableArray *)contentsResultsArray {
+    if (!_contentsResultsArray) {
+        _contentsResultsArray = [[NSMutableArray alloc] init];
+    }
+    return _contentsResultsArray;
+}
 
-//- (void)cancelSearchClick {
-//    [self.tabBarController.tabBar setHidden:NO];
-//    self.searchContentView.hidden = YES;
-//    self.navigationItem.leftBarButtonItem = nil;
-//    self.searchTextField.text = nil;
-//    [self.searchTextField resignFirstResponder];
-//}
-- (IBAction)diseaseSelectionClick:(id)sender {
-    [self.selectionView refreshTableView:XJContentsTypesDiseases array:_diseasesArray seletedItem:self.selectedDiseaseItem];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }];
-}
-- (IBAction)contentTypesSelectionClick:(id)sender {
-    [self.selectionView refreshTableView:XJContentsTypesContents array:self.contentTypesArray seletedItem:self.selectedContentTypeItem];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }];
-}
-- (IBAction)therapySelectionClick:(id)sender {
-    [self.selectionView refreshTableView:XJContentsTypesTherapies array:_therapiesArray seletedItem:self.selectedTherapyItem];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.selectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }];
-}
 
 @end

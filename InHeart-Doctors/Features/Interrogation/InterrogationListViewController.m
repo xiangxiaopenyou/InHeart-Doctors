@@ -24,6 +24,7 @@
 
 @implementation InterrogationListViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -83,6 +84,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - IBAction & Selector
 - (void)conversationsDidChange {
     [self.conversationsView fetchConversations];
 }

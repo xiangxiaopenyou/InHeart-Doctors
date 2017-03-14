@@ -1,23 +1,22 @@
 //
-//  BlankRootViewController.m
+//  NewsViewController.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/10/11.
-//  Copyright © 2016年 项小盆友. All rights reserved.
+//  Created by 项小盆友 on 2017/3/13.
+//  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "BlankRootViewController.h"
+#import "NewsViewController.h"
 
-@interface BlankRootViewController ()
+@interface NewsViewController ()
 
 @end
 
-@implementation BlankRootViewController
+@implementation NewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    XLShowHUDWithMessage(nil, self.view);
 }
 
 - (void)didReceiveMemoryWarning {

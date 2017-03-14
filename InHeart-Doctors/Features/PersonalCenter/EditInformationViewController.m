@@ -47,6 +47,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 
 @implementation EditInformationViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -92,7 +93,6 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     [self.specialitsView removeFromSuperview];
     [self.cityView removeFromSuperview];
 }
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.signatureTextField];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self.introductionTextView];
@@ -100,26 +100,6 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Getters
-- (SelectSpecialitsView *)specialitsView {
-    if (!_specialitsView) {
-        _specialitsView = [[SelectSpecialitsView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) array:self.specialitsArray selectedArray:self.selectedSpecialitsArray];
-    }
-    return _specialitsView;
-}
-- (SelectCityView *)cityView {
-    if (!_cityView) {
-        _cityView = [[SelectCityView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    }
-    return _cityView;
-}
-- (NSMutableDictionary *)informationDictionary {
-    if (!_informationDictionary) {
-        _informationDictionary = [[NSMutableDictionary alloc] init];
-    }
-    return _informationDictionary;
 }
 
 #pragma mark - Request
@@ -276,6 +256,8 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - IBAction & Selector
 - (IBAction)changeAvatarClick:(id)sender {
     [[[XLBlockActionSheet alloc] initWithTitle:nil clickedBlock:^(NSInteger buttonIndex) {
         if (buttonIndex == 1) {
@@ -388,6 +370,26 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 }
 - (void)saveAvatar:(NSData *)imageData {
     [imageData writeToFile:kAvatarPath atomically:NO];
+}
+
+#pragma mark - Getters
+- (SelectSpecialitsView *)specialitsView {
+    if (!_specialitsView) {
+        _specialitsView = [[SelectSpecialitsView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT) array:self.specialitsArray selectedArray:self.selectedSpecialitsArray];
+    }
+    return _specialitsView;
+}
+- (SelectCityView *)cityView {
+    if (!_cityView) {
+        _cityView = [[SelectCityView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    }
+    return _cityView;
+}
+- (NSMutableDictionary *)informationDictionary {
+    if (!_informationDictionary) {
+        _informationDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return _informationDictionary;
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "PersonalCenterTableViewController.h"
-#import "EditInformationViewController.h"
+//#import "EditInformationViewController.h"
+#import "AuthenticationInformationViewController.h"
 #import "MyWalletViewController.h"
 #import "MyCollectionsTableViewController.h"
 #import "InterrogationSettingViewController.h"
@@ -27,6 +28,7 @@
 
 @implementation PersonalCenterTableViewController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,12 +50,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
+#pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger number = 0;
     switch (section) {
@@ -61,7 +61,7 @@
             number = 1;
             break;
         case 1:
-            number = 2;
+            number = 3;
             break;
         case 2:
             number = 2;
@@ -84,8 +84,8 @@
             break;
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            NSArray *tempIconArray = @[@"my_wallet", @"my_collections"];
-            NSArray *tempTitleArray = @[kMyWallet, kMyCollections];
+            NSArray *tempIconArray = @[@"my_wallet", @"my_collections", @"my_collections"];
+            NSArray *tempTitleArray = @[kMyWallet, kMyCollections, kMyPatients];
             cell.imageView.image = [UIImage imageNamed:tempIconArray[indexPath.row]];
             cell.textLabel.font = kSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
@@ -118,21 +118,27 @@
             break;
     }
 }
+
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:{
-            EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
-            [self.navigationController pushViewController:editViewController animated:YES];
+//            EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
+//            [self.navigationController pushViewController:editViewController animated:YES];
+            AuthenticationInformationViewController *authenticationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthenticationInformation"];
+            [self.navigationController pushViewController:authenticationViewController animated:YES];
         }
             break;
         case 1:{
             if (indexPath.row == 0) {
                 MyWalletViewController *walletViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyWallet"];
                 [self.navigationController pushViewController:walletViewController animated:YES];
-            } else {
+            } else if (indexPath.row == 1) {
                 MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
                 [self.navigationController pushViewController:collectionViewController animated:YES];
+            } else {
+                
             }
         }
             break;
