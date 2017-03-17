@@ -12,6 +12,11 @@ typedef NS_ENUM(NSInteger, XJContentsTypes) {
     XJContentsTypesContents,
     XJContentsTypesTherapies
 };
+typedef NS_ENUM(NSInteger, XJSortTypes) {
+    XJSortTypesNone,
+    XJSortTypesDescending,
+    XJSortTypesIncrease
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;

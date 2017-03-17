@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0A5C791E77B7990017204D /* SceneContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C781E77B7990017204D /* SceneContentsViewController.m */; };
+		3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */; };
+		3D0A5C801E7A91100017204D /* SceneContentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C7F1E7A91100017204D /* SceneContentsListViewController.m */; };
+		3D0A5C831E7A949A0017204D /* SortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C821E7A949A0017204D /* SortButton.m */; };
 		3D0E57E81DD1C05E00294463 /* ChooseContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */; };
 		3D1682EA1DACB59E006E3317 /* FetchContentsListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1682E91DACB59E006E3317 /* FetchContentsListRequest.m */; };
 		3D16C0BA1DC834D1006DEF85 /* LogoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D16C0B91DC834D1006DEF85 /* LogoutRequest.m */; };
@@ -217,6 +221,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0A5C771E77B7990017204D /* SceneContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneContentsViewController.h; sourceTree = "<group>"; };
+		3D0A5C781E77B7990017204D /* SceneContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneContentsViewController.m; sourceTree = "<group>"; };
+		3D0A5C7B1E7A58E30017204D /* DepartmentSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentSelectCell.h; sourceTree = "<group>"; };
+		3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentSelectCell.m; sourceTree = "<group>"; };
+		3D0A5C7E1E7A91100017204D /* SceneContentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneContentsListViewController.h; sourceTree = "<group>"; };
+		3D0A5C7F1E7A91100017204D /* SceneContentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneContentsListViewController.m; sourceTree = "<group>"; };
+		3D0A5C811E7A949A0017204D /* SortButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortButton.h; sourceTree = "<group>"; };
+		3D0A5C821E7A949A0017204D /* SortButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortButton.m; sourceTree = "<group>"; };
 		3D0E57E61DD1C05E00294463 /* ChooseContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContentsViewController.h; sourceTree = "<group>"; };
 		3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContentsViewController.m; sourceTree = "<group>"; };
 		3D1682E81DACB59E006E3317 /* FetchContentsListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchContentsListRequest.h; sourceTree = "<group>"; };
@@ -687,6 +699,17 @@
 				B579E0F31EFB7A2DB4EDDF84 /* libPods-InHeart-Doctors.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D0A5C7A1E7A58AC0017204D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D0A5C7B1E7A58E30017204D /* DepartmentSelectCell.h */,
+				3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */,
+				3D0A5C811E7A949A0017204D /* SortButton.h */,
+				3D0A5C821E7A949A0017204D /* SortButton.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3D1682E21DACB15D006E3317 /* ContentModel */ = {
@@ -1290,11 +1313,16 @@
 		3D62074C1E72555A0061B261 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
+				3D0A5C7A1E7A58AC0017204D /* Views */,
 				3D6207501E7255A50061B261 /* Homepage.storyboard */,
 				3D62074D1E7255700061B261 /* HomepageViewController.h */,
 				3D62074E1E7255700061B261 /* HomepageViewController.m */,
 				3DEEC8CA1E72A62A006A40D3 /* HomepageNavigationController.h */,
 				3DEEC8CB1E72A62A006A40D3 /* HomepageNavigationController.m */,
+				3D0A5C771E77B7990017204D /* SceneContentsViewController.h */,
+				3D0A5C781E77B7990017204D /* SceneContentsViewController.m */,
+				3D0A5C7E1E7A91100017204D /* SceneContentsListViewController.h */,
+				3D0A5C7F1E7A91100017204D /* SceneContentsListViewController.m */,
 				3DEEC8D61E766DF4006A40D3 /* NewsViewController.h */,
 				3DEEC8D71E766DF4006A40D3 /* NewsViewController.m */,
 			);
@@ -1865,12 +1893,14 @@
 				3D57C0911E4AAEA200F211A7 /* EMCDDeviceManager+Remind.m in Sources */,
 				3D57C0B61E4AAEA200F211A7 /* PSTCollectionViewController.m in Sources */,
 				3DE076901DD15F4F0008C1DF /* ConversationListView.m in Sources */,
+				3D0A5C831E7A949A0017204D /* SortButton.m in Sources */,
 				3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */,
 				3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */,
 				3D57C09E1E4AAEA200F211A7 /* MWPhotoBrowser.m in Sources */,
 				3D57C0E41E4AAEA300F211A7 /* EaseBubbleView.m in Sources */,
 				3D57C0991E4AAEA200F211A7 /* MBProgressHUD.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
+				3D0A5C791E77B7990017204D /* SceneContentsViewController.m in Sources */,
 				3D57C0AE1E4AAEA200F211A7 /* UIImage+EMMultiFormat.m in Sources */,
 				3D57C0B01E4AAEA200F211A7 /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				3D57C09B1E4AAEA200F211A7 /* MWGridCell.m in Sources */,
@@ -1888,6 +1918,7 @@
 				3D4326C41DC0AA880043008D /* UploadTitlesPictureRequest.m in Sources */,
 				3DEEC8D51E76347C006A40D3 /* AuthenticationContentCell.m in Sources */,
 				3D57C0941E4AAEA200F211A7 /* wav.mm in Sources */,
+				3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */,
 				3D4326CA1DC1A05D0043008D /* FetchAccountBalanceRequest.m in Sources */,
 				3D57C0BD1E4AAEA200F211A7 /* PSTGridLayoutItem.m in Sources */,
 				3D4326B21DC0441B0043008D /* FetchPersonalInformationRequest.m in Sources */,
@@ -2030,6 +2061,7 @@
 				3D57C08D1E4AAEA200F211A7 /* EMAudioRecorderUtil.m in Sources */,
 				3D57C0AB1E4AAEA200F211A7 /* NSData+EMImageContentType.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
+				3D0A5C801E7A91100017204D /* SceneContentsListViewController.m in Sources */,
 				3D57C0A21E4AAEA200F211A7 /* DACircularProgressView.m in Sources */,
 				3D3529CB1E14EFDA00C053FE /* DoctorsModel.m in Sources */,
 				3D968DA01DB468C3005A1596 /* FindPasswordRequest.m in Sources */,

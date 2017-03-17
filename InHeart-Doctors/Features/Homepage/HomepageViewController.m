@@ -8,6 +8,7 @@
 
 #import "HomepageViewController.h"
 #import "NewsViewController.h"
+#import "SceneContentsViewController.h"
 
 #import "XLBlockAlertView.h"
 
@@ -107,6 +108,12 @@
 - (IBAction)invitePatientAction:(id)sender {
 }
 - (IBAction)mySceneAction:(id)sender {
+    SceneContentsViewController *sceneViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContents"];
+    [self.navigationController pushViewController:sceneViewController animated:YES];
+}
+- (IBAction)myPatientsAction:(id)sender {
+}
+- (IBAction)myEvaluationAction:(id)sender {
 }
 
 #pragma mark - UITableViewDataSource
@@ -125,16 +132,19 @@
     }
     switch (indexPath.row) {
         case 0:{
+            cell.imageView.image = [UIImage imageNamed:@"homepage_news"];
             cell.textLabel.text = NSLocalizedString(@"homepage.news", nil);
             cell.detailTextLabel.text = NSLocalizedString(@"homepage.newsContent", nil);
         }
             break;
         case 1:{
+            cell.imageView.image = [UIImage imageNamed:@"homepage_school"];
             cell.textLabel.text = NSLocalizedString(@"homepage.college", nil);
             cell.detailTextLabel.text = NSLocalizedString(@"homepage.collegeContent", nil);
         }
             break;
         case 2:{
+            cell.imageView.image = [UIImage imageNamed:@"homepage_message"];
             cell.textLabel.text = NSLocalizedString(@"homepage.systemMessage", nil);
             cell.detailTextLabel.text = NSLocalizedString(@"homepage.systemMessageContent", nil);
         }
