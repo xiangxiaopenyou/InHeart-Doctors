@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsViewController : UIViewController
+@property (assign, nonatomic) XJNewsTypes type;
 
 @end

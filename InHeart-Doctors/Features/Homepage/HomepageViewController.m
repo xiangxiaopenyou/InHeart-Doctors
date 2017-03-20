@@ -162,17 +162,23 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NewsViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"News"];
     switch (indexPath.row) {
         case 0:{
-            NewsViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"News"];
-            [self.navigationController pushViewController:newsViewController animated:YES];
+            newsViewController.type = XJNewsTypesIndustry;
         }
-            
             break;
-            
+        case 1:{
+            newsViewController.type = XJNewsTypesCollege;
+        }
+            break;
+        case 2:{
+            newsViewController.type = XJNewsTypesSystem;
+        }
         default:
             break;
     }
+    [self.navigationController pushViewController:newsViewController animated:YES];
 }
 
 

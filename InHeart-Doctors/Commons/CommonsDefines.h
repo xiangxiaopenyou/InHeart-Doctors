@@ -17,6 +17,12 @@ typedef NS_ENUM(NSInteger, XJSortTypes) {
     XJSortTypesDescending,
     XJSortTypesIncrease
 };
+typedef NS_ENUM(NSInteger, XJNewsTypes) {
+    XJNewsTypesIndustry,
+    XJNewsTypesCollege,
+    XJNewsTypesSystem
+    
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;
@@ -58,6 +64,8 @@ extern NSString * const kMyWallet;
 extern NSString * const kMyDoctors;
 extern NSString * const kMyCollections;
 extern NSString * const kMyPatients;
+extern NSString * const kMyBandCard;
+extern NSString * const kInviteDoctors;
 extern NSString * const kMyAccount;
 extern NSString * const kHelpAndFeedback;
 extern NSString * const kPersonalSetting;

@@ -14,5 +14,6 @@ pod 'Hyphenate_CN'
 pod 'SAMKeychain'
 pod 'YYModel'
 pod 'Reachability'
+pod 'YUChineseSorting'
 end 
 

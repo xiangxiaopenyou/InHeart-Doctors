@@ -30,7 +30,8 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.conversationsView];
     [self.conversationsView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.top.bottom.equalTo(self.view);
+        make.leading.trailing.bottom.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).with.mas_offset(50);
     }];
     GJCFWeakSelf weakSelf = self;
     self.conversationsView.block = ^(ConversationModel *model){

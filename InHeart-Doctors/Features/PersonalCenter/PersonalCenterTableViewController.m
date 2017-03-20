@@ -61,7 +61,7 @@
             number = 1;
             break;
         case 1:
-            number = 3;
+            number = 5;
             break;
         case 2:
             number = 2;
@@ -84,8 +84,8 @@
             break;
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            NSArray *tempIconArray = @[@"my_wallet", @"my_collections", @"my_collections"];
-            NSArray *tempTitleArray = @[kMyWallet, kMyCollections, kMyPatients];
+            NSArray *tempIconArray = @[@"my_wallet", @"my_collections", @"my_collections", @"my_collections", @"my_collections"];
+            NSArray *tempTitleArray = @[kMyWallet, kMyCollections, kMyPatients, kMyBandCard, kInviteDoctors];
             cell.imageView.image = [UIImage imageNamed:tempIconArray[indexPath.row]];
             cell.textLabel.font = kSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
@@ -137,6 +137,9 @@
             } else if (indexPath.row == 1) {
                 MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
                 [self.navigationController pushViewController:collectionViewController animated:YES];
+            } else if (indexPath.row == 2) {
+                
+            } else if (indexPath.row == 3) {
             } else {
                 
             }

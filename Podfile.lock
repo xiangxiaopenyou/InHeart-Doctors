@@ -29,6 +29,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - UIImage-Helpers (0.0.3)
+  - YUChineseSorting (1.0.2)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - SAMKeychain
   - SDCycleScrollView
   - UIImage-Helpers
+  - YUChineseSorting
   - YYModel
 
 SPEC CHECKSUMS:
@@ -60,8 +62,9 @@ SPEC CHECKSUMS:
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   UIImage-Helpers: 06b04a42bdd222844035602e87e936765c80f620
+  YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 5a8711186c5f1ad337b8f60fd69ebf78dbb98ced
+PODFILE CHECKSUM: 321f8cca5560e5430ce61c2b2e55efdb6d622df8
 
 COCOAPODS: 1.2.0
