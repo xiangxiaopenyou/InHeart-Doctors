@@ -143,29 +143,6 @@
 		3D57C0EE1E4AAEA300F211A7 /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D57C0881E4AAEA200F211A7 /* EaseUIResource.bundle */; };
 		3D57C0EF1E4AAEA300F211A7 /* UtoVRPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D57C08A1E4AAEA200F211A7 /* UtoVRPlayer.framework */; };
 		3D57C0F01E4AAEA300F211A7 /* UtoVRPlayerResouces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D57C08B1E4AAEA200F211A7 /* UtoVRPlayerResouces.bundle */; };
-		3D602FE41E7FD4A600EC1903 /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D602FB41E7FD4A600EC1903 /* Content.storyboard */; };
-		3D602FE51E7FD4A600EC1903 /* ContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FB61E7FD4A600EC1903 /* ContentDetailViewController.m */; };
-		3D602FE61E7FD4A600EC1903 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FB81E7FD4A600EC1903 /* ContentViewController.m */; };
-		3D602FE71E7FD4A600EC1903 /* DetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FBA1E7FD4A600EC1903 /* DetailNavigationController.m */; };
-		3D602FE81E7FD4A600EC1903 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FBC1E7FD4A600EC1903 /* SearchResultsTableViewController.m */; };
-		3D602FE91E7FD4A600EC1903 /* AudioPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FBF1E7FD4A600EC1903 /* AudioPlayerView.m */; };
-		3D602FEA1E7FD4A600EC1903 /* AudioPlayerview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D602FC01E7FD4A600EC1903 /* AudioPlayerview.xib */; };
-		3D602FEB1E7FD4A600EC1903 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FC21E7FD4A600EC1903 /* ContentCell.m */; };
-		3D602FEC1E7FD4A600EC1903 /* ContentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FC41E7FD4A600EC1903 /* ContentCollectionCell.m */; };
-		3D602FED1E7FD4A600EC1903 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FC61E7FD4A600EC1903 /* DetailContentCell.m */; };
-		3D602FEE1E7FD4A600EC1903 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FC81E7FD4A600EC1903 /* SearchResultCell.m */; };
-		3D602FEF1E7FD4A600EC1903 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FCA1E7FD4A600EC1903 /* SelectionView.m */; };
-		3D602FF01E7FD4A600EC1903 /* GuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FCD1E7FD4A600EC1903 /* GuidePageView.m */; };
-		3D602FF11E7FD4A600EC1903 /* AuthenticationStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FD01E7FD4A600EC1903 /* AuthenticationStepsViewController.m */; };
-		3D602FF21E7FD4A600EC1903 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FD21E7FD4A600EC1903 /* AuthenticationViewController.m */; };
-		3D602FF31E7FD4A600EC1903 /* FindPasswordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FD41E7FD4A600EC1903 /* FindPasswordTableViewController.m */; };
-		3D602FF41E7FD4A600EC1903 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D602FD51E7FD4A600EC1903 /* Login.storyboard */; };
-		3D602FF51E7FD4A600EC1903 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FD71E7FD4A600EC1903 /* LoginViewController.m */; };
-		3D602FF61E7FD4A600EC1903 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FD91E7FD4A600EC1903 /* RegisterViewController.m */; };
-		3D602FF71E7FD4A600EC1903 /* AuthenticationInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FDC1E7FD4A600EC1903 /* AuthenticationInformationCell.m */; };
-		3D602FF81E7FD4A600EC1903 /* LoginContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FDE1E7FD4A600EC1903 /* LoginContentCell.m */; };
-		3D602FF91E7FD4A600EC1903 /* RegisterPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FE01E7FD4A600EC1903 /* RegisterPhoneCell.m */; };
-		3D602FFA1E7FD4A600EC1903 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D602FE31E7FD4A600EC1903 /* MainTabBarController.m */; };
 		3D62074B1E7238DD0061B261 /* GuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D62074A1E7238DD0061B261 /* GuidePageView.m */; };
 		3D62074F1E7255700061B261 /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D62074E1E7255700061B261 /* HomepageViewController.m */; };
 		3D6207511E7255A50061B261 /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6207501E7255A50061B261 /* Homepage.storyboard */; };
@@ -535,49 +512,6 @@
 		3D57C0881E4AAEA200F211A7 /* EaseUIResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseUIResource.bundle; sourceTree = "<group>"; };
 		3D57C08A1E4AAEA200F211A7 /* UtoVRPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UtoVRPlayer.framework; sourceTree = "<group>"; };
 		3D57C08B1E4AAEA200F211A7 /* UtoVRPlayerResouces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UtoVRPlayerResouces.bundle; sourceTree = "<group>"; };
-		3D602FB41E7FD4A600EC1903 /* Content.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Content.storyboard; sourceTree = "<group>"; };
-		3D602FB51E7FD4A600EC1903 /* ContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDetailViewController.h; sourceTree = "<group>"; };
-		3D602FB61E7FD4A600EC1903 /* ContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDetailViewController.m; sourceTree = "<group>"; };
-		3D602FB71E7FD4A600EC1903 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
-		3D602FB81E7FD4A600EC1903 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
-		3D602FB91E7FD4A600EC1903 /* DetailNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailNavigationController.h; sourceTree = "<group>"; };
-		3D602FBA1E7FD4A600EC1903 /* DetailNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailNavigationController.m; sourceTree = "<group>"; };
-		3D602FBB1E7FD4A600EC1903 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
-		3D602FBC1E7FD4A600EC1903 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
-		3D602FBE1E7FD4A600EC1903 /* AudioPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerView.h; sourceTree = "<group>"; };
-		3D602FBF1E7FD4A600EC1903 /* AudioPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerView.m; sourceTree = "<group>"; };
-		3D602FC01E7FD4A600EC1903 /* AudioPlayerview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioPlayerview.xib; sourceTree = "<group>"; };
-		3D602FC11E7FD4A600EC1903 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
-		3D602FC21E7FD4A600EC1903 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
-		3D602FC31E7FD4A600EC1903 /* ContentCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCollectionCell.h; sourceTree = "<group>"; };
-		3D602FC41E7FD4A600EC1903 /* ContentCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCollectionCell.m; sourceTree = "<group>"; };
-		3D602FC51E7FD4A600EC1903 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
-		3D602FC61E7FD4A600EC1903 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
-		3D602FC71E7FD4A600EC1903 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
-		3D602FC81E7FD4A600EC1903 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
-		3D602FC91E7FD4A600EC1903 /* SelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionView.h; sourceTree = "<group>"; };
-		3D602FCA1E7FD4A600EC1903 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionView.m; sourceTree = "<group>"; };
-		3D602FCC1E7FD4A600EC1903 /* GuidePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageView.h; sourceTree = "<group>"; };
-		3D602FCD1E7FD4A600EC1903 /* GuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageView.m; sourceTree = "<group>"; };
-		3D602FCF1E7FD4A600EC1903 /* AuthenticationStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationStepsViewController.h; sourceTree = "<group>"; };
-		3D602FD01E7FD4A600EC1903 /* AuthenticationStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationStepsViewController.m; sourceTree = "<group>"; };
-		3D602FD11E7FD4A600EC1903 /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
-		3D602FD21E7FD4A600EC1903 /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
-		3D602FD31E7FD4A600EC1903 /* FindPasswordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordTableViewController.h; sourceTree = "<group>"; };
-		3D602FD41E7FD4A600EC1903 /* FindPasswordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordTableViewController.m; sourceTree = "<group>"; };
-		3D602FD51E7FD4A600EC1903 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		3D602FD61E7FD4A600EC1903 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		3D602FD71E7FD4A600EC1903 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3D602FD81E7FD4A600EC1903 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		3D602FD91E7FD4A600EC1903 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		3D602FDB1E7FD4A600EC1903 /* AuthenticationInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationCell.h; sourceTree = "<group>"; };
-		3D602FDC1E7FD4A600EC1903 /* AuthenticationInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationCell.m; sourceTree = "<group>"; };
-		3D602FDD1E7FD4A600EC1903 /* LoginContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginContentCell.h; sourceTree = "<group>"; };
-		3D602FDE1E7FD4A600EC1903 /* LoginContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginContentCell.m; sourceTree = "<group>"; };
-		3D602FDF1E7FD4A600EC1903 /* RegisterPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPhoneCell.h; sourceTree = "<group>"; };
-		3D602FE01E7FD4A600EC1903 /* RegisterPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPhoneCell.m; sourceTree = "<group>"; };
-		3D602FE21E7FD4A600EC1903 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		3D602FE31E7FD4A600EC1903 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		3D6207491E7238DD0061B261 /* GuidePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageView.h; sourceTree = "<group>"; };
 		3D62074A1E7238DD0061B261 /* GuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageView.m; sourceTree = "<group>"; };
 		3D62074D1E7255700061B261 /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageViewController.h; sourceTree = "<group>"; };
@@ -1385,93 +1319,6 @@
 			path = UtoVRPlayerSDK;
 			sourceTree = "<group>";
 		};
-		3D602FB31E7FD4A600EC1903 /* Content */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FB41E7FD4A600EC1903 /* Content.storyboard */,
-				3D602FB51E7FD4A600EC1903 /* ContentDetailViewController.h */,
-				3D602FB61E7FD4A600EC1903 /* ContentDetailViewController.m */,
-				3D602FB71E7FD4A600EC1903 /* ContentViewController.h */,
-				3D602FB81E7FD4A600EC1903 /* ContentViewController.m */,
-				3D602FB91E7FD4A600EC1903 /* DetailNavigationController.h */,
-				3D602FBA1E7FD4A600EC1903 /* DetailNavigationController.m */,
-				3D602FBB1E7FD4A600EC1903 /* SearchResultsTableViewController.h */,
-				3D602FBC1E7FD4A600EC1903 /* SearchResultsTableViewController.m */,
-				3D602FBD1E7FD4A600EC1903 /* Views */,
-			);
-			path = Content;
-			sourceTree = "<group>";
-		};
-		3D602FBD1E7FD4A600EC1903 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FBE1E7FD4A600EC1903 /* AudioPlayerView.h */,
-				3D602FBF1E7FD4A600EC1903 /* AudioPlayerView.m */,
-				3D602FC01E7FD4A600EC1903 /* AudioPlayerview.xib */,
-				3D602FC11E7FD4A600EC1903 /* ContentCell.h */,
-				3D602FC21E7FD4A600EC1903 /* ContentCell.m */,
-				3D602FC31E7FD4A600EC1903 /* ContentCollectionCell.h */,
-				3D602FC41E7FD4A600EC1903 /* ContentCollectionCell.m */,
-				3D602FC51E7FD4A600EC1903 /* DetailContentCell.h */,
-				3D602FC61E7FD4A600EC1903 /* DetailContentCell.m */,
-				3D602FC71E7FD4A600EC1903 /* SearchResultCell.h */,
-				3D602FC81E7FD4A600EC1903 /* SearchResultCell.m */,
-				3D602FC91E7FD4A600EC1903 /* SelectionView.h */,
-				3D602FCA1E7FD4A600EC1903 /* SelectionView.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3D602FCB1E7FD4A600EC1903 /* GuidePage */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FCC1E7FD4A600EC1903 /* GuidePageView.h */,
-				3D602FCD1E7FD4A600EC1903 /* GuidePageView.m */,
-			);
-			path = GuidePage;
-			sourceTree = "<group>";
-		};
-		3D602FCE1E7FD4A600EC1903 /* LoginAndRegister */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FCF1E7FD4A600EC1903 /* AuthenticationStepsViewController.h */,
-				3D602FD01E7FD4A600EC1903 /* AuthenticationStepsViewController.m */,
-				3D602FD11E7FD4A600EC1903 /* AuthenticationViewController.h */,
-				3D602FD21E7FD4A600EC1903 /* AuthenticationViewController.m */,
-				3D602FD31E7FD4A600EC1903 /* FindPasswordTableViewController.h */,
-				3D602FD41E7FD4A600EC1903 /* FindPasswordTableViewController.m */,
-				3D602FD51E7FD4A600EC1903 /* Login.storyboard */,
-				3D602FD61E7FD4A600EC1903 /* LoginViewController.h */,
-				3D602FD71E7FD4A600EC1903 /* LoginViewController.m */,
-				3D602FD81E7FD4A600EC1903 /* RegisterViewController.h */,
-				3D602FD91E7FD4A600EC1903 /* RegisterViewController.m */,
-				3D602FDA1E7FD4A600EC1903 /* Views */,
-			);
-			path = LoginAndRegister;
-			sourceTree = "<group>";
-		};
-		3D602FDA1E7FD4A600EC1903 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FDB1E7FD4A600EC1903 /* AuthenticationInformationCell.h */,
-				3D602FDC1E7FD4A600EC1903 /* AuthenticationInformationCell.m */,
-				3D602FDD1E7FD4A600EC1903 /* LoginContentCell.h */,
-				3D602FDE1E7FD4A600EC1903 /* LoginContentCell.m */,
-				3D602FDF1E7FD4A600EC1903 /* RegisterPhoneCell.h */,
-				3D602FE01E7FD4A600EC1903 /* RegisterPhoneCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3D602FE11E7FD4A600EC1903 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				3D602FE21E7FD4A600EC1903 /* MainTabBarController.h */,
-				3D602FE31E7FD4A600EC1903 /* MainTabBarController.m */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		3D6207481E7237E80061B261 /* GuidePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1578,10 +1425,6 @@
 		3D6A8E951D98C69600C405DA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				3D602FB31E7FD4A600EC1903 /* Content */,
-				3D602FCB1E7FD4A600EC1903 /* GuidePage */,
-				3D602FCE1E7FD4A600EC1903 /* LoginAndRegister */,
-				3D602FE11E7FD4A600EC1903 /* Main */,
 				3D6A8EB61D98C69600C405DA /* Main */,
 				3D62074C1E72555A0061B261 /* Homepage */,
 				3D6A8E961D98C69600C405DA /* Content */,
@@ -1986,10 +1829,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D602FF41E7FD4A600EC1903 /* Login.storyboard in Resources */,
 				3D57C0F01E4AAEA300F211A7 /* UtoVRPlayerResouces.bundle in Resources */,
 				3D6207511E7255A50061B261 /* Homepage.storyboard in Resources */,
-				3D602FE41E7FD4A600EC1903 /* Content.storyboard in Resources */,
 				3D9422F31DD17BE800D19786 /* Localizable.strings in Resources */,
 				3D57C0EE1E4AAEA300F211A7 /* EaseUIResource.bundle in Resources */,
 				3D6A8ED71D98C69600C405DA /* Content.storyboard in Resources */,
@@ -2000,7 +1841,6 @@
 				3D6A8E7A1D98B07700C405DA /* Main.storyboard in Resources */,
 				3D6A8EE61D98C69600C405DA /* Personal.storyboard in Resources */,
 				3D894B221DDEF65F004963C7 /* Assets.xcassets in Resources */,
-				3D602FEA1E7FD4A600EC1903 /* AudioPlayerview.xib in Resources */,
 				3D57C0C01E4AAEA200F211A7 /* MWPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2061,12 +1901,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D57C0B11E4AAEA200F211A7 /* UIImageView+EMWebCache.m in Sources */,
-				3D602FF81E7FD4A600EC1903 /* LoginContentCell.m in Sources */,
 				3D57C0E71E4AAEA300F211A7 /* EaseImageView.m in Sources */,
 				3D968D881DACD733005A1596 /* UploadImageManager.m in Sources */,
 				3D57C09C1E4AAEA200F211A7 /* MWGridViewController.m in Sources */,
 				3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */,
-				3D602FE91E7FD4A600EC1903 /* AudioPlayerView.m in Sources */,
 				3D57C0E01E4AAEA300F211A7 /* EaseBubbleView+Location.m in Sources */,
 				3D57C0BA1E4AAEA200F211A7 /* PSTCollectionViewLayout.m in Sources */,
 				3D57C0D71E4AAEA200F211A7 /* EaseViewController.m in Sources */,
@@ -2082,7 +1920,6 @@
 				3D57C0E41E4AAEA300F211A7 /* EaseBubbleView.m in Sources */,
 				3D57C0991E4AAEA200F211A7 /* MBProgressHUD.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
-				3D602FEE1E7FD4A600EC1903 /* SearchResultCell.m in Sources */,
 				3D0A5C791E77B7990017204D /* SceneContentsViewController.m in Sources */,
 				3D57C0AE1E4AAEA200F211A7 /* UIImage+EMMultiFormat.m in Sources */,
 				3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */,
@@ -2104,16 +1941,13 @@
 				3D57C0941E4AAEA200F211A7 /* wav.mm in Sources */,
 				3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */,
 				3D4326CA1DC1A05D0043008D /* FetchAccountBalanceRequest.m in Sources */,
-				3D602FED1E7FD4A600EC1903 /* DetailContentCell.m in Sources */,
 				3D57C0BD1E4AAEA200F211A7 /* PSTGridLayoutItem.m in Sources */,
 				3D4326B21DC0441B0043008D /* FetchPersonalInformationRequest.m in Sources */,
 				3D57C0D81E4AAEA300F211A7 /* EaseUserCell.m in Sources */,
 				3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */,
 				3D57C0A41E4AAEA200F211A7 /* EMSDWebImageCompat.m in Sources */,
-				3D602FFA1E7FD4A600EC1903 /* MainTabBarController.m in Sources */,
 				3D6A8EE91D98C69600C405DA /* PersonalInformationCell.m in Sources */,
 				3D57C0BC1E4AAEA200F211A7 /* PSTGridLayoutInfo.m in Sources */,
-				3D602FE71E7FD4A600EC1903 /* DetailNavigationController.m in Sources */,
 				3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */,
 				3D57C0B21E4AAEA200F211A7 /* UIView+EMWebCacheOperation.m in Sources */,
 				3D57C0921E4AAEA200F211A7 /* EMCDDeviceManagerBase.m in Sources */,
@@ -2123,7 +1957,6 @@
 				3D57C08E1E4AAEA200F211A7 /* EMCDDeviceManager+Media.m in Sources */,
 				3DEEC8CC1E72A62A006A40D3 /* HomepageNavigationController.m in Sources */,
 				3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */,
-				3D602FEB1E7FD4A600EC1903 /* ContentCell.m in Sources */,
 				3D57C09F1E4AAEA200F211A7 /* MWTapDetectingImageView.m in Sources */,
 				3D57C0DA1E4AAEA300F211A7 /* EaseCustomMessageCell.m in Sources */,
 				3D57C0DC1E4AAEA300F211A7 /* EaseMessageTimeCell.m in Sources */,
@@ -2168,8 +2001,6 @@
 				3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */,
 				3D968D9D1DB4651B005A1596 /* FindPasswordTableViewController.m in Sources */,
 				3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */,
-				3D602FF71E7FD4A600EC1903 /* AuthenticationInformationCell.m in Sources */,
-				3D602FE51E7FD4A600EC1903 /* ContentDetailViewController.m in Sources */,
 				3D3529B61E14A3CF00C053FE /* ContentsTypeModel.m in Sources */,
 				3D57C0931E4AAEA200F211A7 /* amrFileCodec.mm in Sources */,
 				3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */,
@@ -2178,7 +2009,6 @@
 				3D57C0981E4AAEA200F211A7 /* MBProgressHUD+Add.m in Sources */,
 				3D6A8EE81D98C69600C405DA /* CommonFunctionCell.m in Sources */,
 				3D42806C1DC33EFE006E3B95 /* EditInformationRequest.m in Sources */,
-				3D602FF01E7FD4A600EC1903 /* GuidePageView.m in Sources */,
 				3D57C0E91E4AAEA300F211A7 /* EaseFaceView.m in Sources */,
 				3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */,
 				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
@@ -2204,12 +2034,10 @@
 				3D6F35491E10E9F300F9E6E0 /* XLModel.m in Sources */,
 				3D57C0B71E4AAEA200F211A7 /* PSTCollectionViewData.m in Sources */,
 				3D57C0B81E4AAEA200F211A7 /* PSTCollectionViewFlowLayout.m in Sources */,
-				3D602FE81E7FD4A600EC1903 /* SearchResultsTableViewController.m in Sources */,
 				3D57C0C11E4AAEA200F211A7 /* EaseSDKHelper.m in Sources */,
 				3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */,
 				3D57C0A91E4AAEA200F211A7 /* EMSDWebImagePrefetcher.m in Sources */,
 				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
-				3D602FF21E7FD4A600EC1903 /* AuthenticationViewController.m in Sources */,
 				3DF08A091DDA9AFA00D64EA6 /* UsersNameAndIdRequest.m in Sources */,
 				3D6C1BBD1DD2BC5D00FAC75E /* FetchCommonPriceRequest.m in Sources */,
 				3D57C08F1E4AAEA200F211A7 /* EMCDDeviceManager+Microphone.m in Sources */,
@@ -2228,28 +2056,23 @@
 				3D1963841DDBEB4F00EFF558 /* PrescriptionMessageCell.m in Sources */,
 				3D57C0CE1E4AAEA200F211A7 /* EaseEmojiEmoticons.m in Sources */,
 				3D6A8EF41D98FD4F00C405DA /* RegisterPhoneCell.m in Sources */,
-				3D602FF61E7FD4A600EC1903 /* RegisterViewController.m in Sources */,
 				3D57C0D11E4AAEA200F211A7 /* FixFopen.c in Sources */,
 				3D57C0D01E4AAEA200F211A7 /* EaseEmotionManager.m in Sources */,
 				3D4326AC1DBF07BA0043008D /* CollectRequest.m in Sources */,
 				3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */,
 				3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */,
-				3D602FF51E7FD4A600EC1903 /* LoginViewController.m in Sources */,
 				3D57C0C71E4AAEA200F211A7 /* NSString+Valid.m in Sources */,
 				3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */,
 				3D1870D51D9BC6F600B8B34B /* PersonalInfo.m in Sources */,
-				3D602FEF1E7FD4A600EC1903 /* SelectionView.m in Sources */,
 				3D57C0A31E4AAEA200F211A7 /* EMSDImageCache.m in Sources */,
 				3D57C0901E4AAEA200F211A7 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				3D6A8EEC1D98C69600C405DA /* BaseRequest.m in Sources */,
-				3D602FF31E7FD4A600EC1903 /* FindPasswordTableViewController.m in Sources */,
 				3DA4D3B31DC3283D00CD47FF /* SelectCityView.m in Sources */,
 				3D57C0A71E4AAEA200F211A7 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */,
 				3D3529CE1E14EFF200C053FE /* BillsModel.m in Sources */,
 				3D57C0DD1E4AAEA300F211A7 /* EaseBubbleView+File.m in Sources */,
 				3D57C0AA1E4AAEA200F211A7 /* MKAnnotationView+EMWebCache.m in Sources */,
-				3D602FF91E7FD4A600EC1903 /* RegisterPhoneCell.m in Sources */,
 				3D57C0E21E4AAEA300F211A7 /* EaseBubbleView+Video.m in Sources */,
 				3D968D8B1DADDC8E005A1596 /* FetchTypsRequest.m in Sources */,
 				3D42806F1DC3474F006E3B95 /* UploadAvatarRequest.m in Sources */,
@@ -2260,7 +2083,6 @@
 				3D6A8ED31D98C69600C405DA /* XLBlockActionSheet.m in Sources */,
 				3D57C08D1E4AAEA200F211A7 /* EMAudioRecorderUtil.m in Sources */,
 				3D57C0AB1E4AAEA200F211A7 /* NSData+EMImageContentType.m in Sources */,
-				3D602FF11E7FD4A600EC1903 /* AuthenticationStepsViewController.m in Sources */,
 				3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
 				3D0A5C801E7A91100017204D /* SceneContentsListViewController.m in Sources */,
@@ -2273,8 +2095,6 @@
 				3D57C0ED1E4AAEA300F211A7 /* EaseConversationCell.m in Sources */,
 				3D57C09D1E4AAEA200F211A7 /* MWPhoto.m in Sources */,
 				3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */,
-				3D602FEC1E7FD4A600EC1903 /* ContentCollectionCell.m in Sources */,
-				3D602FE61E7FD4A600EC1903 /* ContentViewController.m in Sources */,
 				3DEEC8CF1E762C22006A40D3 /* AuthenticationInformationViewController.m in Sources */,
 				3D57C08C1E4AAEA200F211A7 /* EMAudioPlayerUtil.m in Sources */,
 				3D6A8EE71D98C69600C405DA /* PersonalCenterTableViewController.m in Sources */,

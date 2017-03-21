@@ -73,6 +73,17 @@
     }
     return _patientsArray;
 }
-- (NSMutableArray *)
+- (NSMutableArray *)indexArray {
+    if (!_indexArray) {
+        _indexArray = [[NSMutableArray alloc] init];
+    }
+    return _indexArray;
+}
+- (NSMutableArray *)sortedArray {
+    if (!_sortedArray) {
+        _sortedArray = [[NSMutableArray alloc] init];
+    }
+    return _sortedArray;
+}
 
 @end
