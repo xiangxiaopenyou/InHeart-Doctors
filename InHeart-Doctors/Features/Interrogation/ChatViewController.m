@@ -103,17 +103,14 @@
 
 #pragma mark - EaseChatBarMoreViewDelegate
 - (void)moreViewPhoneCallAction:(EaseChatBarMoreView *)moreView {
-    [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kIsMakePhoneCall block:^(NSInteger buttonIndex) {
-        if (buttonIndex == 1) {
-            NSString *tempString = [NSString stringWithFormat:@"tel://%@", self.title];
-            [[UIApplication sharedApplication] openURL:XLURLFromString(tempString) options:@{} completionHandler:^(BOOL success) {
-                
-            }];
-        }
-    } cancelButtonTitle:kCommonCancel otherButtonTitles:kCommonEnsure, nil] show];
-    
+    [self.chatToolbar endEditing:YES];
+    NSString *tempString = [NSString stringWithFormat:@"tel://%@", self.conversation.conversationId];
+    [[UIApplication sharedApplication] openURL:XLURLFromString(tempString) options:@{} completionHandler:^(BOOL success) {
+        
+    }];
 }
 - (void)moreViewPrescribeAction:(EaseChatBarMoreView *)moreView {
+    [self.chatToolbar endEditing:YES];
     if (!XLIsNullObject(self.model.userId)) {
         [self presentWritePrescription];
     } else {
