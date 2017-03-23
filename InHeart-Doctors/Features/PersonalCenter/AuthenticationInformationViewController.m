@@ -7,6 +7,7 @@
 //
 
 #import "AuthenticationInformationViewController.h"
+#import "EditInformationViewController.h"
 
 #import "AuthenticationContentCell.h"
 
@@ -76,6 +77,12 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
+            [self.navigationController pushViewController:editViewController animated:YES];
+        }
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return section == 0 ? 0 : 20.f;

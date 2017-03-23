@@ -101,7 +101,6 @@
     }
 }
 
-
 #pragma mark - EaseChatBarMoreViewDelegate
 - (void)moreViewPhoneCallAction:(EaseChatBarMoreView *)moreView {
     [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kIsMakePhoneCall block:^(NSInteger buttonIndex) {

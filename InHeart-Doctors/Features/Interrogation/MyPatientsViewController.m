@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.tableFooterView = [UIView new];
     [self setupArray:self.patientsArray];
     
 }
@@ -36,7 +37,8 @@
 #pragma mark - Private Methods
 - (void)setupArray:(NSArray *)array {
     self.indexArray = [ChineseString IndexArray:array];
-    self.sortedArray = [ChineseString SortArray:array];
+    self.sortedArray = [ChineseString LetterSortArray:array];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -44,7 +46,8 @@
     return self.indexArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    NSArray *tempArray = [self.sortedArray[section] copy];
+    return tempArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"PatientCell";
@@ -52,10 +55,32 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.imageView.image = [UIImage imageNamed:@"personal_avatar"];
+    NSArray *tempArray = [self.sortedArray[indexPath.section] copy];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", (NSString *)tempArray[indexPath.row]];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.f;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20.f;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    headerView.backgroundColor = MAIN_BACKGROUND_COLOR;
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 20)];
+    headerLabel.font = kSystemFont(12);
+    headerLabel.textColor = MAIN_TEXT_COLOR;
+    headerLabel.text = [NSString stringWithFormat:@"%@", (NSString *)self.indexArray[section]];
+    [headerView addSubview:headerLabel];
+    return headerView;
+}
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.indexArray;
+}
 
 /*
 #pragma mark - Navigation
@@ -69,7 +94,7 @@
 #pragma mark - Getters
 - (NSArray *)patientsArray {
     if (!_patientsArray) {
-        _patientsArray = [[NSArray alloc] initWithObjects:@"dj", @"哈哈", @"888", @"却", @"hhhh", @"aa", @"uu", @"zz", nil];
+        _patientsArray = [[NSArray alloc] initWithObjects:@"dj", @"哈哈", @"888", @"却", @"hhhh", @"aa", @"uu", @"zz", @"以以i", @"大姐夫", @"哦哦哦", @"gg", @"sdj", nil];
     }
     return _patientsArray;
 }
