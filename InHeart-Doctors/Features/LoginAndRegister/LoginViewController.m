@@ -153,9 +153,21 @@
                 tempInfo.username = userModel.username;
                 tempInfo.password = self.passwordTextField.text;
                 if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                    XLDismissHUD(self.view, NO, YES, nil);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
-                    [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                    GJCFAsyncGlobalDefaultQueue(^{
+                        EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                        GJCFAsyncMainQueue(^{
+                            if (!error) {
+                                XLDismissHUD(self.view, NO, YES, nil);
+                                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                                //设置环信自动登录
+                                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                                //更新环信数据库
+                                [[EMClient sharedClient] migrateDatabaseToLatestSDK];
+                            } else {
+                                XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
+                            }
+                        });
+                    });
                 } else {
                     XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
                 }

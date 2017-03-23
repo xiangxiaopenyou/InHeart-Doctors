@@ -143,7 +143,6 @@
                             if (!aError) {
                                 [[UserInfo sharedUserInfo] removeUserInfo];
                                 [[UserInfo sharedUserInfo] removePersonalInfo];
-                                //[self.navigationController popToRootViewControllerAnimated:YES];
                                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                             } else {
                                 XLShowThenDismissHUD(NO, kNetworkError, self.view);

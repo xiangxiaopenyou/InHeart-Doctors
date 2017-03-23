@@ -214,6 +214,8 @@
 		3DEED9651E839BA700F96A5A /* EaseRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEED8EB1E839BA700F96A5A /* EaseRecordView.m */; };
 		3DEED9661E839BA700F96A5A /* EaseConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEED8EE1E839BA700F96A5A /* EaseConversationCell.m */; };
 		3DEED9671E839BA700F96A5A /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3DEED8F01E839BA700F96A5A /* EaseUIResource.bundle */; };
+		3DEED96B1E83A2AE00F96A5A /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEED9691E83A2A200F96A5A /* Hyphenate.framework */; };
+		3DEED96C1E83A2AE00F96A5A /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEED9691E83A2A200F96A5A /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */; };
 		3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */; };
 		3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF025991DD31D3B008F6467 /* PatientInformationsViewController.m */; };
@@ -224,6 +226,20 @@
 		3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */; };
 		6239AAC654ABCF066E0A62F6 /* libPods-InHeart-Doctors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B579E0F31EFB7A2DB4EDDF84 /* libPods-InHeart-Doctors.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DEED96D1E83A2AE00F96A5A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DEED96C1E83A2AE00F96A5A /* Hyphenate.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D0A5C771E77B7990017204D /* SceneContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneContentsViewController.h; sourceTree = "<group>"; };
@@ -661,6 +677,7 @@
 		3DEED8ED1E839BA700F96A5A /* EaseConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseConversationCell.h; sourceTree = "<group>"; };
 		3DEED8EE1E839BA700F96A5A /* EaseConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseConversationCell.m; sourceTree = "<group>"; };
 		3DEED8F01E839BA700F96A5A /* EaseUIResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseUIResource.bundle; sourceTree = "<group>"; };
+		3DEED9691E83A2A200F96A5A /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		3DEFA4B21D9A1B0000876E56 /* ContentCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCollectionCell.h; sourceTree = "<group>"; };
 		3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCollectionCell.m; sourceTree = "<group>"; };
 		3DEFA4B61D9A3D9C00876E56 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
@@ -688,6 +705,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6239AAC654ABCF066E0A62F6 /* libPods-InHeart-Doctors.a in Frameworks */,
+				3DEED96B1E83A2AE00F96A5A /* Hyphenate.framework in Frameworks */,
 				3DEED8FC1E839BA700F96A5A /* libopencore-amrnb.a in Frameworks */,
 				3DEED8FD1E839BA700F96A5A /* libopencore-amrwb.a in Frameworks */,
 				3D57C0EF1E4AAEA300F211A7 /* UtoVRPlayer.framework in Frameworks */,
@@ -766,6 +784,7 @@
 		3D57BF891E4AAE0A00F211A7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3DEED9681E83A2A200F96A5A /* HyphenateFullSDK */,
 				3DEED7CA1E839BA700F96A5A /* EaseUI */,
 				3D57C0891E4AAEA200F211A7 /* UtoVRPlayerSDK */,
 			);
@@ -1653,6 +1672,14 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		3DEED9681E83A2A200F96A5A /* HyphenateFullSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3DEED9691E83A2A200F96A5A /* Hyphenate.framework */,
+			);
+			path = HyphenateFullSDK;
+			sourceTree = "<group>";
+		};
 		3DEFA4B51D9A3D8700876E56 /* LoginAndRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -1720,6 +1747,7 @@
 				3D6A8E6A1D98B07700C405DA /* Resources */,
 				B0A449D53ED042E93097B6E8 /* [CP] Embed Pods Frameworks */,
 				3CB32DECE3A998C87C465A3A /* [CP] Copy Pods Resources */,
+				3DEED96D1E83A2AE00F96A5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2192,6 +2220,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/UtoVRPlayerSDK",
+					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/HyphenateFullSDK",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";
@@ -2226,6 +2255,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/UtoVRPlayerSDK",
+					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/HyphenateFullSDK",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/InHeart-Doctors/InHeart-Doctors-Prefix.pch";
 				INFOPLIST_FILE = "InHeart-Doctors/Info.plist";

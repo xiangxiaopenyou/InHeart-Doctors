@@ -18,6 +18,7 @@
 "username" = "个人账户";
 "confirmpassword"="确认密码";
 "loginerror" = "登录出现问题，请重试";
+"autologinfailed" = "自动登录失败";
 
 "ok" = "确定";
 "yes" = "是";

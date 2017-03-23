@@ -259,7 +259,7 @@
     XLShowHUDWithMessage(nil, self.view);
     [UsersModel userRegister:self.phoneNumberTextField.text password:self.passwordTextField.text code:self.codeTextField.text handler:^(id object, NSString *msg) {
         if (object) {
-            XLShowHUDWithMessage(@"正在登陆...", self.view);
+            XLShowHUDWithMessage(@"正在登录...", self.view);
             [UsersModel userLogin:self.phoneNumberTextField.text password:self.passwordTextField.text handler:^(id object, NSString *msg) {
                 if (object) {
                     UsersModel *userModel = object;
@@ -270,20 +270,32 @@
                         tempInfo.username = userModel.username;
                         tempInfo.password = self.passwordTextField.text;
                         if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                            XLDismissHUD(self.view, NO, YES, nil);
-                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
-                            [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                            GJCFAsyncGlobalDefaultQueue(^{
+                                EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                                if (!error) {
+                                    XLDismissHUD(self.view, NO, YES, nil);
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                                    //设置环信自动登录
+                                    [[EMClient sharedClient].options setIsAutoLogin:YES];
+                                    //更新环信数据库
+                                    [[EMClient sharedClient] migrateDatabaseToLatestSDK];
+                                    
+                                } else {
+                                    XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }
+                            });
                         } else {
-                            XLDismissHUD(self.view, YES, NO, @"自动登录失败");
+                            XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
                             [self.navigationController popViewControllerAnimated:YES];
                         }
                     } else {
-                        XLDismissHUD(self.view, YES, NO, @"自动登录失败");
+                        XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
                         [self.navigationController popViewControllerAnimated:YES];
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        XLDismissHUD(self.view, YES, NO, @"自动登录失败");
+                        XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
                         [self.navigationController popViewControllerAnimated:YES];
                     });
                 }
