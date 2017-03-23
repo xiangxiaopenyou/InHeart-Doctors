@@ -16,7 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - GJCFUitils (1.0)
   - GTSDK (1.5.0)
-  - Hyphenate_CN (3.1.5.1)
   - IQKeyboardManager (4.0.7)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
@@ -36,7 +35,6 @@ DEPENDENCIES:
   - AFNetworking
   - GJCFUitils
   - GTSDK
-  - Hyphenate_CN
   - IQKeyboardManager
   - Masonry
   - MJRefresh
@@ -52,7 +50,6 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   GJCFUitils: ad4f8373eb10edb94299594d348d1ee6f21dbe5e
   GTSDK: 4380de452178d8ba2a67189f10c6743d0f9536b9
-  Hyphenate_CN: 2db75216631051fb79550fe28d04927a560209a3
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -65,6 +62,6 @@ SPEC CHECKSUMS:
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 321f8cca5560e5430ce61c2b2e55efdb6d622df8
+PODFILE CHECKSUM: f5cc15eb11c5da7efa0e61f58db079212f7158e1
 
 COCOAPODS: 1.2.0

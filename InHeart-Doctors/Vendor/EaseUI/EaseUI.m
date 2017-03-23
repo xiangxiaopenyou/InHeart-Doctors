@@ -10,26 +10,8 @@
  * from Hyphenate Inc.
  */
 
+#import "EaseUI.h"
 
-#import "EaseBubbleView.h"
-
-@interface EaseBubbleView (Voice)
-
-/*!
- @method
- @brief 构建语音类型消息气泡视图
- @discussion
- @result
- */
-- (void)setupVoiceBubbleView;
-
-/*!
- @method
- @brief 变更语音类型消息气泡的边距，并更新改子视图约束
- @discussion
- @param margin 气泡边距
- @result
- */
-- (void)updateVoiceMargin:(UIEdgeInsets)margin;
+@implementation EaseUI
 
 @end

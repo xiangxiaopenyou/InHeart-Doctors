@@ -10,26 +10,9 @@
  * from Hyphenate Inc.
  */
 
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#import "EaseBubbleView.h"
-
-@interface EaseBubbleView (Voice)
-
-/*!
- @method
- @brief 构建语音类型消息气泡视图
- @discussion
- @result
- */
-- (void)setupVoiceBubbleView;
-
-/*!
- @method
- @brief 变更语音类型消息气泡的边距，并更新改子视图约束
- @discussion
- @param margin 气泡边距
- @result
- */
-- (void)updateVoiceMargin:(UIEdgeInsets)margin;
-
-@end
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

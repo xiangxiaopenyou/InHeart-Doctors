@@ -131,6 +131,13 @@
     }
 }
 
+/*!
+ @method
+ @brief 根据传入的消息对象，设置头像、昵称、气泡的约束
+ @discussion
+ @param model   消息对象
+ @result
+ */
 - (void)configureLayoutConstraintsWithModel:(id<IMessageModel>)model
 {
     if (model.isSender) {
@@ -140,6 +147,12 @@
     }
 }
 
+/*!
+ @method
+ @brief 发送方控件约束
+ @discussion  当前登录用户为消息发送方时，设置控件约束，在cell的右侧排列显示
+ @result
+ */
 - (void)configureSendLayoutConstraints
 {
     //avatar view
@@ -170,9 +183,15 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.activity attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
     
     //hasRead
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-EaseMessageCellPadding]];
 }
 
+/*!
+ @method
+ @brief 接收方控件约束
+ @discussion  当前登录用户为消息接收方时，设置控件约束，在cell的左侧排列显示
+ @result
+ */
 - (void)configureRecvLayoutConstraints
 {
     //avatar view
@@ -199,6 +218,12 @@
 
 #pragma mark - Update Constraint
 
+/*!
+ @method
+ @brief 更新头像宽度的约束
+ @discussion
+ @result
+ */
 - (void)_updateAvatarViewWidthConstraint
 {
     if (self.avatarView) {
@@ -209,6 +234,12 @@
     }
 }
 
+/*!
+ @method
+ @brief 更新昵称高度的约束
+ @discussion
+ @result
+ */
 - (void)_updateNameHeightConstraint
 {
     if (_nameLabel) {
@@ -233,7 +264,7 @@
     _nameLabel.text = model.nickname;
     
     if (self.model.isSender) {
-//        _hasRead.hidden = YES;
+        _hasRead.hidden = YES;
         switch (self.model.messageStatus) {
             case EMMessageStatusDelivering:
             {
@@ -247,7 +278,7 @@
                 _statusButton.hidden = YES;
                 [_activity stopAnimating];
                 if (self.model.isMessageRead) {
-//                    _hasRead.hidden = NO;
+                    _hasRead.hidden = NO;
                 }
             }
                 break;
@@ -315,6 +346,12 @@
 
 #pragma mark - public
 
+/*!
+ @method
+ @brief 获取当前cell的高度
+ @discussion  
+ @result
+ */
 + (CGFloat)cellHeightWithModel:(id<IMessageModel>)model
 {
     EaseBaseMessageCell *cell = [self appearance];

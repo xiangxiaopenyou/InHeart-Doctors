@@ -15,9 +15,8 @@
    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.labelText = text;
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     hud.mode = MBProgressHUDModeCustomView;
-    hud.square = YES;
     
     hud.removeFromSuperViewOnHide = YES;
     
@@ -25,12 +24,12 @@
 }
 
 + (void)showError:(NSString *)error toView:(UIView *)view{
-    [self show:error icon:@"tip_error.png" view:view];
+    [self show:error icon:@"error.png" view:view];
 }
 
 + (void)showSuccess:(NSString *)success toView:(UIView *)view
 {
-    [self show:success icon:@"tip_success.png" view:view];
+    [self show:success icon:@"success.png" view:view];
 }
 
 + (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view {

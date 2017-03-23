@@ -46,6 +46,7 @@
 @property (nonatomic, strong) UIButton *videoCallButton;
 @property (strong, nonatomic) UIButton *phoneCallButton;
 @property (strong, nonatomic) UIButton *prescribeButton;
+@property (strong, nonatomic) UIButton *advisoryFeesButton;
 
 @end
 
@@ -72,6 +73,7 @@
 - (void)setupSubviewsForType:(EMChatToolbarType)type
 {
     //self.backgroundColor = [UIColor clearColor];
+    self.accessibilityIdentifier = @"more_view";
     
     _scrollview = [[UIScrollView alloc] init];
     _scrollview.pagingEnabled = YES;
@@ -88,47 +90,16 @@
     CGFloat insets = (self.frame.size.width - 4 * CHAT_BUTTON_SIZE) / 5;
     
     _photoButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_photoButton setFrame:CGRectMake(insets, 10, CHAT_BUTTON_SIZE , 90)];
-//    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photo"] forState:UIControlStateNormal];
-//    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photoSelected"] forState:UIControlStateHighlighted];
-    [_photoButton setImage:[UIImage imageNamed:@"send_picture"] forState:UIControlStateNormal];
-    _photoButton.titleLabel.font = kSystemFont(14);
-    [_photoButton setTitle:@"图片" forState:UIControlStateNormal];
-    [_photoButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-    [_photoButton setImageEdgeInsets:UIEdgeInsetsMake(- 30, 0, 0, 0)];
-    [_photoButton setTitleEdgeInsets:UIEdgeInsetsMake(0, - 60, - 70, 0)];
+    _photoButton.accessibilityIdentifier = @"image";
+    [_photoButton setFrame:CGRectMake(insets, 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];
+    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photo"] forState:UIControlStateNormal];
+    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photoSelected"] forState:UIControlStateHighlighted];
     [_photoButton addTarget:self action:@selector(photoAction) forControlEvents:UIControlEventTouchUpInside];
     _photoButton.tag = MOREVIEW_BUTTON_TAG;
     [_scrollview addSubview:_photoButton];
     
-    if (!_phoneCallButton) {
-        _phoneCallButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _phoneCallButton.frame = CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE, 90);
-        [_phoneCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
-        [_phoneCallButton setTitle:@"拨打电话" forState:UIControlStateNormal];
-        _phoneCallButton.titleLabel.font = kSystemFont(14);
-        [_phoneCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-        [_phoneCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
-        [_phoneCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-        [_phoneCallButton addTarget:self action:@selector(phoneCallAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    [_scrollview addSubview:_phoneCallButton];
-    
-    if (!_prescribeButton) {
-        _prescribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _prescribeButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
-        [_prescribeButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
-        [_prescribeButton setTitle:@"开处方" forState:UIControlStateNormal];
-        _prescribeButton.titleLabel.font = kSystemFont(14);
-        [_prescribeButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-        [_prescribeButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
-        [_prescribeButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-        [_prescribeButton addTarget:self action:@selector(prescribeAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    [_scrollview addSubview:_prescribeButton];
-    
-    
 //    _locationButton =[UIButton buttonWithType:UIButtonTypeCustom];
+//    _locationButton.accessibilityIdentifier = @"location";
 //    [_locationButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];
 //    [_locationButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_location"] forState:UIControlStateNormal];
 //    [_locationButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_locationSelected"] forState:UIControlStateHighlighted];
@@ -142,9 +113,8 @@
 //    [_takePicButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_cameraSelected"] forState:UIControlStateHighlighted];
 //    [_takePicButton addTarget:self action:@selector(takePicAction) forControlEvents:UIControlEventTouchUpInside];
 //    _takePicButton.tag = MOREVIEW_BUTTON_TAG + 2;
-//    _maxIndex = 2;
+    _maxIndex = 0;
 //    [_scrollview addSubview:_takePicButton];
-    
 
     CGRect frame = self.frame;
     if (type == EMChatToolbarTypeChat) {
@@ -156,15 +126,55 @@
 //        [_audioCallButton addTarget:self action:@selector(takeAudioCallAction) forControlEvents:UIControlEventTouchUpInside];
 //        _audioCallButton.tag = MOREVIEW_BUTTON_TAG + 3;
 //        [_scrollview addSubview:_audioCallButton];
-//        
-//        _videoCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
-//        [_videoCallButton setFrame:CGRectMake(insets, 10 * 2 + CHAT_BUTTON_SIZE + 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];
-//        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCall"] forState:UIControlStateNormal];
-//        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCallSelected"] forState:UIControlStateHighlighted];
-//        [_videoCallButton addTarget:self action:@selector(takeVideoCallAction) forControlEvents:UIControlEventTouchUpInside];
-//        _videoCallButton.tag =MOREVIEW_BUTTON_TAG + 4;
-//        _maxIndex = 4;
-//        [_scrollview addSubview:_videoCallButton];
+        
+        _videoCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
+        [_videoCallButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE , 90)];
+        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCall"] forState:UIControlStateNormal];
+        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCallSelected"] forState:UIControlStateHighlighted];
+        [_videoCallButton addTarget:self action:@selector(takeVideoCallAction) forControlEvents:UIControlEventTouchUpInside];
+        _videoCallButton.tag =MOREVIEW_BUTTON_TAG + 4;
+        [_scrollview addSubview:_videoCallButton];
+        
+        if (!_phoneCallButton) {
+            _phoneCallButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _phoneCallButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
+            [_phoneCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+            [_phoneCallButton setTitle:@"拨打电话" forState:UIControlStateNormal];
+            _phoneCallButton.titleLabel.font = kSystemFont(14);
+            [_phoneCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+            [_phoneCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+            [_phoneCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+            [_phoneCallButton addTarget:self action:@selector(phoneCallAction) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [_scrollview addSubview:_phoneCallButton];
+        
+        if (!_prescribeButton) {
+            _prescribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _prescribeButton.frame = CGRectMake(insets * 4 + CHAT_BUTTON_SIZE * 3, 10, CHAT_BUTTON_SIZE, 90);
+            [_prescribeButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
+            [_prescribeButton setTitle:@"开处方" forState:UIControlStateNormal];
+            _prescribeButton.titleLabel.font = kSystemFont(14);
+            [_prescribeButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+            [_prescribeButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+            [_prescribeButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+            [_prescribeButton addTarget:self action:@selector(prescribeAction) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [_scrollview addSubview:_prescribeButton];
+        
+        if (!_advisoryFeesButton) {
+            _advisoryFeesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _advisoryFeesButton.frame = CGRectMake(insets, 110, CHAT_BUTTON_SIZE, 90);
+            [_advisoryFeesButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
+            [_advisoryFeesButton setTitle:@"咨询收费" forState:UIControlStateNormal];
+            _advisoryFeesButton.titleLabel.font = kSystemFont(14);
+            [_advisoryFeesButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+            [_advisoryFeesButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+            [_advisoryFeesButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+            [_advisoryFeesButton addTarget:self action:@selector(advisoryFeesAction) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [_scrollview addSubview:_advisoryFeesButton];
+        
+        _maxIndex = 4;
     }
     else if (type == EMChatToolbarTypeGroup)
     {
@@ -369,6 +379,11 @@
         [_delegate moreViewPrescribeAction:self];
     }
 }
+- (void)advisoryFeesAction {
+    if (_delegate && [_delegate respondsToSelector:@selector(moreViewAdvisoryFeesAction:)]) {
+        [_delegate moreViewAdvisoryFeesAction:self];
+    }
+}
 
 - (void)moreAction:(id)sender
 {
@@ -377,6 +392,5 @@
         [_delegate moreView:self didItemInMoreViewAtIndex:button.tag-MOREVIEW_BUTTON_TAG];
     }
 }
-
 
 @end

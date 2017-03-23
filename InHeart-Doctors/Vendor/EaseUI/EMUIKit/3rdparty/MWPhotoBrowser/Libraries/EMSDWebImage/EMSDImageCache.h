@@ -136,7 +136,7 @@ typedef void(^EMSDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger t
  * Remove the image from memory and disk cache synchronously
  *
  * @param key             The unique image cache key
- * @param completion An block that should be executed after the image has been removed (optional)
+ * @param completionBlock An block that should be executed after the image has been removed (optional)
  */
 - (void)removeImageForKey:(NSString *)key withCompletion:(EMSDWebImageNoParamsBlock)completion;
 
@@ -153,7 +153,7 @@ typedef void(^EMSDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger t
  *
  * @param key             The unique image cache key
  * @param fromDisk        Also remove cache entry from disk if YES
- * @param completion An block that should be executed after the image has been removed (optional)
+ * @param completionBlock An block that should be executed after the image has been removed (optional)
  */
 - (void)removeImageForKey:(NSString *)key fromDisk:(BOOL)fromDisk withCompletion:(EMSDWebImageNoParamsBlock)completion;
 
@@ -164,7 +164,7 @@ typedef void(^EMSDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger t
 
 /**
  * Clear all disk cached images. Non-blocking method - returns immediately.
- * @param completion An block that should be executed after cache expiration completes (optional)
+ * @param completionBlock An block that should be executed after cache expiration completes (optional)
  */
 - (void)clearDiskOnCompletion:(EMSDWebImageNoParamsBlock)completion;
 

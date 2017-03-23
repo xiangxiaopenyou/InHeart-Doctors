@@ -18,4 +18,5 @@ DerivedData
 *.ipa
 *.xccheckout
 #CocoaPods
+/InHeart-Doctors/Vendor/HyphenateFullSDK/
 Pods

@@ -16,12 +16,6 @@
 #define PADDING                  10
 #define ACTION_SHEET_OLD_ACTIONS 2000
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_9_0
-#define supportedInterfaceOrientationsReturnType NSUInteger
-#else
-#define supportedInterfaceOrientationsReturnType UIInterfaceOrientationMask
-#endif
-
 @implementation MWPhotoBrowser
 
 #pragma mark - Init
@@ -168,14 +162,14 @@
 	[self.view addSubview:_pagingScrollView];
 	
     // Toolbar
-    _toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:[[UIApplication sharedApplication] statusBarOrientation]]];
+    _toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:self.interfaceOrientation]];
     _toolbar.tintColor = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7") ? [UIColor whiteColor] : nil;
     if ([_toolbar respondsToSelector:@selector(setBarTintColor:)]) {
         _toolbar.barTintColor = nil;
     }
     if ([[UIToolbar class] respondsToSelector:@selector(appearance)]) {
         [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-        [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsCompact];
+        [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsLandscapePhone];
     }
     _toolbar.barStyle = UIBarStyleBlackTranslucent;
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
@@ -223,13 +217,13 @@
     // Navigation buttons
     if ([self.navigationController.viewControllers objectAtIndex:0] == self) {
         // We're first on stack so show done button
-        _doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
+        _doneButton = [[UIBarButtonItem alloc] initWithTitle:NSEaseLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
         // Set appearance
         if ([UIBarButtonItem respondsToSelector:@selector(appearance)]) {
             [_doneButton setBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-            [_doneButton setBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
+            [_doneButton setBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
             [_doneButton setBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-            [_doneButton setBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsCompact];
+            [_doneButton setBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsLandscapePhone];
             [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
             [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
         }
@@ -242,9 +236,9 @@
         // Appearance
         if ([UIBarButtonItem respondsToSelector:@selector(appearance)]) {
             [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
+            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
             [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsCompact];
+            [newBackButton setBackButtonBackgroundImage:nil forState:UIControlStateHighlighted barMetrics:UIBarMetricsLandscapePhone];
             [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
             [newBackButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
         }
@@ -570,11 +564,8 @@
     return YES;
 }
 
-//- (NSUInteger)supportedInterfaceOrientations {
-//    return UIInterfaceOrientationMaskAll;
-//}
-- (supportedInterfaceOrientationsReturnType)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -1460,91 +1451,86 @@
 #pragma mark - Actions
 
 - (void)actionButtonPressed:(id)sender {
-    id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
-    if ([self numberOfPhotos] && [photo underlyingImage]) {
-        UIImageWriteToSavedPhotosAlbum([photo underlyingImage], self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
-        XLShowThenDismissHUD(YES, @"已保存到相册", self.view);
+    if (_actionsSheet) {
+        
+        // Dismiss
+        [_actionsSheet dismissWithClickedButtonIndex:_actionsSheet.cancelButtonIndex animated:YES];
+        
+    } else {
+        
+        // Only react when image has loaded
+        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
+        if ([self numberOfPhotos] > 0 && [photo underlyingImage]) {
+            
+            // If they have defined a delegate method then just message them
+            if ([self.delegate respondsToSelector:@selector(photoBrowser:actionButtonPressedForPhotoAtIndex:)]) {
+                
+                // Let delegate handle things
+                [self.delegate photoBrowser:self actionButtonPressedForPhotoAtIndex:_currentPageIndex];
+                
+            } else {
+                
+                // Handle default actions
+                if (SYSTEM_VERSION_LESS_THAN(@"6")) {
+                    
+                    // Old handling of activities with action sheet
+                    if ([MFMailComposeViewController canSendMail]) {
+                        _actionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
+                                                               cancelButtonTitle:NSEaseLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil
+                                                               otherButtonTitles:NSEaseLocalizedString(@"Save", nil), NSEaseLocalizedString(@"Copy", nil), NSEaseLocalizedString(@"Email", nil), nil];
+                    } else {
+                        _actionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
+                                                               cancelButtonTitle:NSEaseLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil
+                                                               otherButtonTitles:NSEaseLocalizedString(@"Save", nil), NSEaseLocalizedString(@"Copy", nil), nil];
+                    }
+                    _actionsSheet.tag = ACTION_SHEET_OLD_ACTIONS;
+                    _actionsSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+                    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                        [_actionsSheet showFromBarButtonItem:sender animated:YES];
+                    } else {
+                        [_actionsSheet showInView:self.view];
+                    }
+                    
+                } else {
+                    
+                    // Show activity view controller
+                    NSMutableArray *items = [NSMutableArray arrayWithObject:[photo underlyingImage]];
+                    if (photo.caption) {
+                        [items addObject:photo.caption];
+                    }
+                    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+                    
+                    // Show loading spinner after a couple of seconds
+                    double delayInSeconds = 2.0;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        if (self.activityViewController) {
+                            [self showProgressHUDWithMessage:nil];
+                        }
+                    });
+
+                    // Show
+                    typeof(self) __weak weakSelf = self;
+                    [self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+                        weakSelf.activityViewController = nil;
+                        [weakSelf hideControlsAfterDelay];
+                        [weakSelf hideProgressHUD:YES];
+                    }];
+                    // iOS 8 - Set the Anchor Point for the popover
+                    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8")) {
+                        self.activityViewController.popoverPresentationController.barButtonItem = _actionButton;
+                    }
+                    [self presentViewController:self.activityViewController animated:YES completion:nil];
+                    
+                }
+                
+            }
+            
+            // Keep controls hidden
+            [self setControlsHidden:NO animated:YES permanent:YES];
+
+        }
     }
-//    if (_actionsSheet) {
-//        
-//        // Dismiss
-//        [_actionsSheet dismissWithClickedButtonIndex:_actionsSheet.cancelButtonIndex animated:YES];
-//        
-//    } else {
-//        
-//        // Only react when image has loaded
-//        id <MWPhoto> photo = [self photoAtIndex:_currentPageIndex];
-//        if ([self numberOfPhotos] > 0 && [photo underlyingImage]) {
-//            
-//            // If they have defined a delegate method then just message them
-//            if ([self.delegate respondsToSelector:@selector(photoBrowser:actionButtonPressedForPhotoAtIndex:)]) {
-//                
-//                // Let delegate handle things
-//                [self.delegate photoBrowser:self actionButtonPressedForPhotoAtIndex:_currentPageIndex];
-//                
-//            } else {
-//                
-//                // Handle default actions
-//                if (SYSTEM_VERSION_LESS_THAN(@"6")) {
-//                    
-//                    // Old handling of activities with action sheet
-////                    if ([MFMailComposeViewController canSendMail]) {
-////                        _actionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
-////                                                               cancelButtonTitle:NSEaseLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil
-////                                                               otherButtonTitles:NSEaseLocalizedString(@"Save", nil), NSEaseLocalizedString(@"Copy", nil), NSEaseLocalizedString(@"Email", nil), nil];
-////                    } else {
-//                        _actionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
-//                                                               cancelButtonTitle:NSEaseLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil
-//                                                               otherButtonTitles:NSEaseLocalizedString(@"Save", nil), NSEaseLocalizedString(@"Copy", nil), nil];
-////                    }
-//                    _actionsSheet.tag = ACTION_SHEET_OLD_ACTIONS;
-//                    _actionsSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//                    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-//                        [_actionsSheet showFromBarButtonItem:sender animated:YES];
-//                    } else {
-//                        [_actionsSheet showInView:self.view];
-//                    }
-//                    
-//                } else {
-//                    
-//                    // Show activity view controller
-//                    NSMutableArray *items = [NSMutableArray arrayWithObject:[photo underlyingImage]];
-//                    if (photo.caption) {
-//                        [items addObject:photo.caption];
-//                    }
-//                    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
-//                    
-//                    // Show loading spinner after a couple of seconds
-//                    double delayInSeconds = 2.0;
-//                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                        if (self.activityViewController) {
-//                            [self showProgressHUDWithMessage:nil];
-//                        }
-//                    });
-//
-//                    // Show
-//                    typeof(self) __weak weakSelf = self;
-//                    [self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
-//                        weakSelf.activityViewController = nil;
-//                        [weakSelf hideControlsAfterDelay];
-//                        [weakSelf hideProgressHUD:YES];
-//                    }];
-//                    // iOS 8 - Set the Anchor Point for the popover
-//                    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8")) {
-//                        self.activityViewController.popoverPresentationController.barButtonItem = _actionButton;
-//                    }
-//                    [self presentViewController:self.activityViewController animated:YES completion:nil];
-//                    
-//                }
-//                
-//            }
-//            
-//            // Keep controls hidden
-//            [self setControlsHidden:NO animated:YES permanent:YES];
-//
-//        }
-//    }
 }
 
 #pragma mark - Action Sheet Delegate
