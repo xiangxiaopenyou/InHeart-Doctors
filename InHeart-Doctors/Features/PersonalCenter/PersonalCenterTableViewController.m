@@ -76,9 +76,9 @@
     switch (indexPath.section) {
         case 0:{
             PersonalInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InformationCell" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"personal_avatar"];
-            cell.textLabel.text = self.userModel.realname ? [NSString stringWithFormat:@"%@", self.userModel.realname] : @"尚未登录";
-            cell.detailTextLabel.text = self.personalModel.username ? [NSString stringWithFormat:@"%@", self.personalModel.username] : nil;
+            cell.avatarImageView.image = [UIImage imageNamed:@"personal_avatar"];
+            cell.nameLabel.text = self.userModel.realname ? [NSString stringWithFormat:@"%@", self.userModel.realname] : @"尚未登录";
+            cell.phoneLabel.text = self.personalModel.username ? [NSString stringWithFormat:@"%@", self.personalModel.username] : nil;
             return cell;
         }
             break;

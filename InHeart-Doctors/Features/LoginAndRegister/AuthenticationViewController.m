@@ -16,7 +16,6 @@
 
 #import <Masonry.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import <GJCFUitils.h>
 
 @interface AuthenticationViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *authenticationPictureButton;

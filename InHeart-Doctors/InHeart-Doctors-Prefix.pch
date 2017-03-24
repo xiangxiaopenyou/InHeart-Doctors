@@ -15,5 +15,6 @@
 #import "CommonsDefines.h"
 #import "EaseUI.h"
 #import "MBProgressHUD+Add.h"
+#import <GJCFUitils.h>
 #endif /* InHeart_Doctors_Prefix_pch */
 #endif

@@ -7,7 +7,6 @@
 //
 
 #import "LoginRequest.h"
-#import <GJCFUitils.h>
 
 @implementation LoginRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
@@ -17,7 +16,7 @@
     NSMutableDictionary *param = [@{@"username" : self.username,
                                     @"password" : self.password,
                                     @"deviceId" : XLMobileModel,
-                                    @"appVersion" : @(XLAppVersion),
+                                    @"appVersion" : XLAppVersion,
                                     @"deviceSystem" : @"iOS",
                                     @"deviceVersion" : XLSystemVersion,
                                     @"appId" : XLIDFVString,

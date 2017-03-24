@@ -7,6 +7,8 @@
 //
 
 #import "NewsViewController.h"
+#import "NewsDetailViewController.h"
+
 #import "NewsAndMessagesCell.h"
 
 @interface NewsViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -53,6 +55,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"NewsAndMessages";
     NewsAndMessagesCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    cell.block = ^(){
+        GJCFAsyncMainQueue(^{
+            NewsDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetail"];
+            detailViewController.title = self.title;
+            [self.navigationController pushViewController:detailViewController animated:YES];
+        });
+    };
     return cell;
 }
 

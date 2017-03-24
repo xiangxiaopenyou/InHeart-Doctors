@@ -20,7 +20,6 @@
 #import "UserInfo.h"
 
 #import <UIImageView+WebCache.h>
-#import <GJCFUitils.h>
 
 static NSInteger const MAX_SIGNATURE_LENGTH = 30;
 static NSInteger const MAX_INTRODUCTION_LENGTH = 300;

@@ -7,7 +7,6 @@
 //
 
 #import "AudioPlayerView.h"
-#import <GJCFUitils.h>
 #import <UIImageView+WebCache.h>
 @interface AudioPlayerView ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;

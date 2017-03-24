@@ -17,7 +17,6 @@
 #import "UserInfo.h"
 
 #import <Masonry.h>
-#import <GJCFUitils.h>
 
 @interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *footerView;

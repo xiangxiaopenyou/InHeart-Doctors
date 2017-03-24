@@ -105,6 +105,9 @@
 		3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */; };
 		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
 		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
+		3DC30CB61E83BA5F00AF48D6 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; };
+		3DC30CB71E83BA5F00AF48D6 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DC30CBB1E84ADA100AF48D6 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */; };
 		3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD93E631DAA10A6008B190A /* EditInformationViewController.m */; };
 		3DE0768D1DD15F190008C1DF /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0768C1DD15F190008C1DF /* ChatViewController.m */; };
 		3DE076901DD15F4F0008C1DF /* ConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0768F1DD15F4F0008C1DF /* ConversationListView.m */; };
@@ -214,8 +217,6 @@
 		3DEED9651E839BA700F96A5A /* EaseRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEED8EB1E839BA700F96A5A /* EaseRecordView.m */; };
 		3DEED9661E839BA700F96A5A /* EaseConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEED8EE1E839BA700F96A5A /* EaseConversationCell.m */; };
 		3DEED9671E839BA700F96A5A /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3DEED8F01E839BA700F96A5A /* EaseUIResource.bundle */; };
-		3DEED96B1E83A2AE00F96A5A /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEED9691E83A2A200F96A5A /* Hyphenate.framework */; };
-		3DEED96C1E83A2AE00F96A5A /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEED9691E83A2A200F96A5A /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */; };
 		3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */; };
 		3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF025991DD31D3B008F6467 /* PatientInformationsViewController.m */; };
@@ -228,13 +229,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3DEED96D1E83A2AE00F96A5A /* Embed Frameworks */ = {
+		3DC30CB81E83BA5F00AF48D6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3DEED96C1E83A2AE00F96A5A /* Hyphenate.framework in Embed Frameworks */,
+				3DC30CB71E83BA5F00AF48D6 /* Hyphenate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +444,9 @@
 		3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionsTableViewController.m; sourceTree = "<group>"; };
 		3DBDFD451DAA45E70065AA7A /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
 		3DBDFD461DAA45E70065AA7A /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
+		3DC30CB91E84ADA100AF48D6 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
+		3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 		3DD93E621DAA10A6008B190A /* EditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationViewController.h; sourceTree = "<group>"; };
 		3DD93E631DAA10A6008B190A /* EditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationViewController.m; sourceTree = "<group>"; };
 		3DE0768B1DD15F190008C1DF /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -677,7 +681,6 @@
 		3DEED8ED1E839BA700F96A5A /* EaseConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseConversationCell.h; sourceTree = "<group>"; };
 		3DEED8EE1E839BA700F96A5A /* EaseConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseConversationCell.m; sourceTree = "<group>"; };
 		3DEED8F01E839BA700F96A5A /* EaseUIResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseUIResource.bundle; sourceTree = "<group>"; };
-		3DEED9691E83A2A200F96A5A /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		3DEFA4B21D9A1B0000876E56 /* ContentCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCollectionCell.h; sourceTree = "<group>"; };
 		3DEFA4B31D9A1B0000876E56 /* ContentCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCollectionCell.m; sourceTree = "<group>"; };
 		3DEFA4B61D9A3D9C00876E56 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
@@ -705,10 +708,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6239AAC654ABCF066E0A62F6 /* libPods-InHeart-Doctors.a in Frameworks */,
-				3DEED96B1E83A2AE00F96A5A /* Hyphenate.framework in Frameworks */,
 				3DEED8FC1E839BA700F96A5A /* libopencore-amrnb.a in Frameworks */,
 				3DEED8FD1E839BA700F96A5A /* libopencore-amrwb.a in Frameworks */,
 				3D57C0EF1E4AAEA300F211A7 /* UtoVRPlayer.framework in Frameworks */,
+				3DC30CB61E83BA5F00AF48D6 /* Hyphenate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +787,7 @@
 		3D57BF891E4AAE0A00F211A7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				3DEED9681E83A2A200F96A5A /* HyphenateFullSDK */,
+				3DC30CB11E83B8E300AF48D6 /* HyphenateFullSDK */,
 				3DEED7CA1E839BA700F96A5A /* EaseUI */,
 				3D57C0891E4AAEA200F211A7 /* UtoVRPlayerSDK */,
 			);
@@ -824,6 +827,8 @@
 				3D0A5C7F1E7A91100017204D /* SceneContentsListViewController.m */,
 				3DEEC8D61E766DF4006A40D3 /* NewsViewController.h */,
 				3DEEC8D71E766DF4006A40D3 /* NewsViewController.m */,
+				3DC30CB91E84ADA100AF48D6 /* NewsDetailViewController.h */,
+				3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -1183,6 +1188,14 @@
 				3D6C1BC21DD2F39C00FAC75E /* SetInterrogationStateRequest.m */,
 			);
 			path = Personal;
+			sourceTree = "<group>";
+		};
+		3DC30CB11E83B8E300AF48D6 /* HyphenateFullSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */,
+			);
+			path = HyphenateFullSDK;
 			sourceTree = "<group>";
 		};
 		3DEED7CA1E839BA700F96A5A /* EaseUI */ = {
@@ -1672,14 +1685,6 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
-		3DEED9681E83A2A200F96A5A /* HyphenateFullSDK */ = {
-			isa = PBXGroup;
-			children = (
-				3DEED9691E83A2A200F96A5A /* Hyphenate.framework */,
-			);
-			path = HyphenateFullSDK;
-			sourceTree = "<group>";
-		};
 		3DEFA4B51D9A3D8700876E56 /* LoginAndRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -1747,7 +1752,7 @@
 				3D6A8E6A1D98B07700C405DA /* Resources */,
 				B0A449D53ED042E93097B6E8 /* [CP] Embed Pods Frameworks */,
 				3CB32DECE3A998C87C465A3A /* [CP] Copy Pods Resources */,
-				3DEED96D1E83A2AE00F96A5A /* Embed Frameworks */,
+				3DC30CB81E83BA5F00AF48D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2073,6 +2078,7 @@
 				3DEED9191E839BA700F96A5A /* MWTapDetectingView.m in Sources */,
 				3DEED9491E839BA700F96A5A /* EaseEmotionManager.m in Sources */,
 				3DEED8F71E839BA700F96A5A /* EMCDDeviceManager+Remind.m in Sources */,
+				3DC30CBB1E84ADA100AF48D6 /* NewsDetailViewController.m in Sources */,
 				3DEEC8CF1E762C22006A40D3 /* AuthenticationInformationViewController.m in Sources */,
 				3D6A8EE71D98C69600C405DA /* PersonalCenterTableViewController.m in Sources */,
 				3DEED93A1E839BA700F96A5A /* EaseSDKHelper.m in Sources */,
@@ -2212,13 +2218,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = "InHeart-Doctors/InHeart-Doctors.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/HyphenateFullSDK",
 				);
@@ -2228,8 +2234,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
@@ -2247,13 +2251,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = "InHeart-Doctors/InHeart-Doctors.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/UtoVRPlayerSDK",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/HyphenateFullSDK",
 				);
@@ -2263,8 +2267,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/InHeart-Doctors/ThirdLibs/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);

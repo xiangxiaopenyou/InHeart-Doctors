@@ -15,7 +15,6 @@
 #import "ContentsTypeModel.h"
 
 #import <MJRefresh.h>
-#import <GJCFUitils.h>
 #import <Masonry.h>
 
 @interface ChooseContentsViewController ()

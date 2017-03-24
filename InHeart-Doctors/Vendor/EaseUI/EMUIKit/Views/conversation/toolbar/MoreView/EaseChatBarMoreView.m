@@ -89,14 +89,20 @@
     
     CGFloat insets = (self.frame.size.width - 4 * CHAT_BUTTON_SIZE) / 5;
     
-    _photoButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    _photoButton.accessibilityIdentifier = @"image";
-    [_photoButton setFrame:CGRectMake(insets, 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];
-    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photo"] forState:UIControlStateNormal];
-    [_photoButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photoSelected"] forState:UIControlStateHighlighted];
-    [_photoButton addTarget:self action:@selector(photoAction) forControlEvents:UIControlEventTouchUpInside];
-    _photoButton.tag = MOREVIEW_BUTTON_TAG;
-    [_scrollview addSubview:_photoButton];
+    if (!_photoButton) {
+        _photoButton =[UIButton buttonWithType:UIButtonTypeCustom];
+        _photoButton.accessibilityIdentifier = @"image";
+        [_photoButton setFrame:CGRectMake(insets, 10, CHAT_BUTTON_SIZE , 90)];
+        [_photoButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+        [_photoButton setTitle:@"图片" forState:UIControlStateNormal];
+        [_photoButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+        _photoButton.titleLabel.font = kSystemFont(14);
+        [_photoButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+        [_photoButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+        [_photoButton addTarget:self action:@selector(photoAction) forControlEvents:UIControlEventTouchUpInside];
+        _photoButton.tag = MOREVIEW_BUTTON_TAG;
+        [_scrollview addSubview:_photoButton];
+    }
     
 //    _locationButton =[UIButton buttonWithType:UIButtonTypeCustom];
 //    _locationButton.accessibilityIdentifier = @"location";
@@ -118,7 +124,7 @@
 
     CGRect frame = self.frame;
     if (type == EMChatToolbarTypeChat) {
-        frame.size.height = 150;
+        frame.size.height = 210;
 //        _audioCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
 //        [_audioCallButton setFrame:CGRectMake(insets * 4 + CHAT_BUTTON_SIZE * 3, 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];
 //        [_audioCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_audioCall"] forState:UIControlStateNormal];
@@ -127,13 +133,19 @@
 //        _audioCallButton.tag = MOREVIEW_BUTTON_TAG + 3;
 //        [_scrollview addSubview:_audioCallButton];
         
-        _videoCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
-        [_videoCallButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE , 90)];
-        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCall"] forState:UIControlStateNormal];
-        [_videoCallButton setImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_videoCallSelected"] forState:UIControlStateHighlighted];
-        [_videoCallButton addTarget:self action:@selector(takeVideoCallAction) forControlEvents:UIControlEventTouchUpInside];
-        _videoCallButton.tag =MOREVIEW_BUTTON_TAG + 4;
-        [_scrollview addSubview:_videoCallButton];
+        if (!_videoButton) {
+            _videoCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
+            [_videoCallButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE , 90)];
+            [_videoCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+            [_videoCallButton setTitle:@"视频通话" forState:UIControlStateNormal];
+            [_videoCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+            [_videoCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+            [_videoCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+            _videoCallButton.titleLabel.font = kSystemFont(14);
+            [_videoCallButton addTarget:self action:@selector(takeVideoCallAction) forControlEvents:UIControlEventTouchUpInside];
+            _videoCallButton.tag =MOREVIEW_BUTTON_TAG + 4;
+            [_scrollview addSubview:_videoCallButton];
+        }
         
         if (!_phoneCallButton) {
             _phoneCallButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -11,7 +11,6 @@
 
 #import "PersonalInfo.h"
 #import <SAMKeychain.h>
-#import <GJCFUitils.h>
 
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {

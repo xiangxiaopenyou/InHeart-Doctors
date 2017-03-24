@@ -70,6 +70,10 @@ extern NSString * const kMyAccount;
 extern NSString * const kHelpAndFeedback;
 extern NSString * const kPersonalSetting;
 extern NSString * const kInterrogationSetting;
+extern NSString * const kTelephoneNumber;
+extern NSString * const kChangePassword;
+extern NSString * const kCheckNewVersion;
+extern NSString * const kServiceAgreement;
 extern NSString * const kClearCache;
 extern NSString * const kAboutUs;
 extern NSString * const kMySpecialits;
@@ -103,7 +107,6 @@ extern NSString * const kAuthenticationFail;
 extern NSString * const kAuthenticationFailed;
 extern NSString * const kWaitingForAuthentication;
 extern NSString * const kFindPassword;
-extern NSString * const kChangePassword;
 
 //NotificationName
 extern NSString * const kLoginSuccess;

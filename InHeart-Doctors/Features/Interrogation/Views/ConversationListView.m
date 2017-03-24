@@ -11,8 +11,6 @@
 #import "ConversationModel.h"
 #import "UserMessagesModel.h"
 
-#import <GJCFUitils.h>
-
 @interface ConversationListView ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *conversationArray;

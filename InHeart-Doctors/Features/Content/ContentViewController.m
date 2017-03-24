@@ -16,7 +16,6 @@
 #import "ContentsTypeModel.h"
 
 #import <UIImage-Helpers.h>
-#import <GJCFUitils.h>
 #import <MJRefresh.h>
 
 @interface ContentViewController ()<UITableViewDelegate, UITableViewDataSource>

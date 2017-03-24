@@ -17,7 +17,6 @@
 #import <UtoVRPlayer/UtoVRPlayer.h>
 #import <Masonry.h>
 #import <SDCycleScrollView.h>
-#import <GJCFUitils.h>
 
 @interface ContentDetailViewController ()<UVPlayerDelegate, UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewOfPlayer;

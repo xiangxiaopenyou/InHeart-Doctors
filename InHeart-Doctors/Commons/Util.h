@@ -11,7 +11,7 @@
 
 @interface Util : NSObject
 #pragma mark - System
-+ (CGFloat)appVersion;
++ (NSString *)appVersion;
 + (NSString *)systemVersion;
 + (NSString *)mobileModel;
 + (NSString *)idfvString;

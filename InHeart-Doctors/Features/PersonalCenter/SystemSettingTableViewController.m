@@ -14,6 +14,7 @@
 #import "UserInfo.h"
 
 #import <SDImageCache.h>
+#import <Masonry.h>
 
 @interface SystemSettingTableViewController ()
 
@@ -34,6 +35,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Action
+- (void)servicePhoneAction {
+    NSString *phoneString = [NSString stringWithFormat:@"tel://13732254511"];
+    [[UIApplication sharedApplication] openURL:XLURLFromString(phoneString)];
 }
 
 #pragma mark - private methods
@@ -64,17 +71,9 @@
     }
     return 0;
 }
-//- (NSString *)getCachesPath{
-//    // 获取Caches目录路径
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask,YES);
-//    NSString *cachesDir = [paths objectAtIndex:0];
-//    return cachesDir;
-//}
 //清除缓存
 - (void)clearCache {
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    //cachePath = [cachePath stringByAppendingPathComponent:path];
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:cachePath]) {
         NSArray *childerFiles = [fileManager subpathsAtPath:cachePath];
@@ -85,28 +84,41 @@
             [fileManager removeItemAtPath:fileAbsolutePath error:nil];
         }
     }
-    [[SDImageCache sharedImageCache] cleanDisk];
-    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        [self refreshTableView];
+    }];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 2 : 1;
+    return section == 0 ? 6 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
-        cell.textLabel.text = indexPath.row == 0 ? kClearCache : kAboutUs;
-        CGFloat cacheSize = [self folderSizeAtPath];
-        NSString *cacheString = cacheSize >= 0.1? [NSString stringWithFormat:@"%.1fM", cacheSize] : @"0M";
-        cell.detailTextLabel.text = indexPath.row == 0 ? cacheString : nil;
-        cell.accessoryType = indexPath.row == 0 ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
+        NSArray *tempArray = @[kTelephoneNumber, kChangePassword, kCheckNewVersion, kServiceAgreement, kClearCache, kAboutUs];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", (NSString *)tempArray[indexPath.row]];
+        if (indexPath.row == 0) {
+            UsersModel *tempModel = [[UserInfo sharedUserInfo] userInfo];
+            if (tempModel.username) {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", tempModel.username];
+            }
+        }
+        if (indexPath.row == 2) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", XLAppVersion];
+        }
+        if (indexPath.row == 4) {
+            CGFloat cacheSize = [self folderSizeAtPath];
+            NSString *cacheString = cacheSize >= 0.1? [NSString stringWithFormat:@"%.1fM", cacheSize] : @"0M";
+            cell.detailTextLabel.text = cacheString;
+        }
+        cell.accessoryType = (indexPath.row == 2 || indexPath.row == 4) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogoutCell" forIndexPath:indexPath];
@@ -114,16 +126,73 @@
     }
     
 }
+
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.1;
+    return section == 0 ? 65.f : 0.1;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == 0) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 65)];
+        footerView.backgroundColor = [UIColor whiteColor];
+        UILabel *topLabel = [[UILabel alloc] init];
+        topLabel.backgroundColor = MAIN_BACKGROUND_COLOR;
+        [footerView addSubview:topLabel];
+        [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.leading.trailing.equalTo(footerView);
+            make.height.mas_offset(5);
+        }];
+        UILabel *servicePhoneLabel = [[UILabel alloc] init];
+        servicePhoneLabel.textColor = MAIN_TEXT_COLOR;
+        servicePhoneLabel.font = kSystemFont(14);
+        servicePhoneLabel.text = NSLocalizedString(@"servicePhone", nil);
+        [footerView addSubview:servicePhoneLabel];
+        [servicePhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(footerView.mas_top).with.mas_offset(15);
+            make.centerX.equalTo(footerView).with.mas_offset(- 50);
+        }];
+        UIButton *servicePhoneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [servicePhoneButton setTitle:@"400-000-000" forState:UIControlStateNormal];
+        [servicePhoneButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
+        servicePhoneButton.titleLabel.font = kSystemFont(14);
+        [servicePhoneButton addTarget:self action:@selector(servicePhoneAction) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:servicePhoneButton];
+        [servicePhoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(servicePhoneLabel.mas_trailing);
+            make.top.equalTo(footerView.mas_top).with.mas_offset(7.5);
+        }];
+        
+        UILabel *serviceTimeLabel = [[UILabel alloc] init];
+        serviceTimeLabel.textColor = MAIN_TEXT_COLOR;
+        serviceTimeLabel.font = kSystemFont(14);
+        serviceTimeLabel.text = NSLocalizedString(@"serviceTime", nil);
+        [footerView addSubview:serviceTimeLabel];
+        [serviceTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(servicePhoneLabel.mas_bottom).with.mas_offset(2);
+            make.centerX.equalTo(footerView).with.mas_offset(- 50);
+        }];
+        
+        UILabel *timeLabel = [[UILabel alloc] init];
+        timeLabel.textColor = MAIN_TEXT_COLOR;
+        timeLabel.font = kSystemFont(14);
+        timeLabel.text = @"09:00--22:00";
+        [footerView addSubview:timeLabel];
+        [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(serviceTimeLabel.mas_trailing);
+            make.top.equalTo(servicePhoneLabel.mas_bottom).with.mas_offset(2);
+        }];
+        return footerView;
+    } else {
+        return nil;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 4) {
             if ([self folderSizeAtPath] >= 0.1) {
                 [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要清除缓存吗？" block:^(NSInteger buttonIndex) {
                     if (buttonIndex == 1) {

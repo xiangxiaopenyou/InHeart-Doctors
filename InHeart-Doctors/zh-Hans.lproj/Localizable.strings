@@ -370,3 +370,7 @@
 "homepage.newsContent" = "行业新闻内容";
 "homepage.systemMessage" = "系统消息";
 "homepage.systemMessageContent" = "系统消息内容";
+
+//PersonalCenter
+"servicePhone" = "服务电话：";
+"serviceTime" = "服务时间：";

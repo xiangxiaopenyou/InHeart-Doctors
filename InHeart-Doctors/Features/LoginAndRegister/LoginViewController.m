@@ -17,7 +17,6 @@
 #import "PersonalInfo.h"
 
 #import <Masonry.h>
-#import <GJCFUitils.h>
 
 @interface LoginViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *phoneTextField;

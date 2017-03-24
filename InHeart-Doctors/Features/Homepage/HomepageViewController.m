@@ -91,6 +91,8 @@
 }
 - (void)addData {
     self.avatarImageView.image = [UIImage imageNamed:@"default_doctor_avatar"];
+    self.avatarImageView.userInteractionEnabled = YES;
+    [self.avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarAction)]];
 }
 - (void)judgeCodeState:(NSInteger)code {
     if (code == - 4) {
@@ -114,6 +116,10 @@
 - (IBAction)myPatientsAction:(id)sender {
 }
 - (IBAction)myEvaluationAction:(id)sender {
+}
+//点击头像
+- (void)avatarAction {
+    
 }
 
 #pragma mark - UITableViewDataSource

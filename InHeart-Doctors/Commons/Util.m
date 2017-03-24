@@ -9,13 +9,12 @@
 #import "Util.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <GJCFUitils.h>
 #import "sys/utsname.h"
 
 @implementation Util
-+ (CGFloat)appVersion {
++ (NSString *)appVersion {
     NSDictionary *dictionary = [[NSBundle mainBundle] infoDictionary];
-    return [dictionary[@"CFBundleShortVersionString"] floatValue];
+    return dictionary[@"CFBundleShortVersionString"];
 }
 + (NSString *)mobileModel {
     struct utsname systemInfo;

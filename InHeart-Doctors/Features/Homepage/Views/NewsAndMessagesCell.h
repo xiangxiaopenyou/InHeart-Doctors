@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^selectCellBlock)();
 
 @interface NewsAndMessagesCell : UITableViewCell
+
+@property (copy, nonatomic) selectCellBlock block;
 
 @end
