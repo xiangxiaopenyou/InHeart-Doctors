@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -208,25 +209,75 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNN-qs-4QI">
                                 <rect key="frame" x="0.0" y="64" width="375" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-G4-4FA">
-                                        <rect key="frame" x="15" y="58" width="124.5" height="72"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tez-eh-bKe">
-                                        <rect key="frame" x="15" y="30" width="107.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmV-Ba-DsN">
+                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="150"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tez-eh-bKe">
+                                                <rect key="frame" x="39" y="30" width="107.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-G4-4FA">
+                                                <rect key="frame" x="31" y="58" width="124.5" height="72"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="for-G4-4FA" firstAttribute="top" secondItem="tez-eh-bKe" secondAttribute="bottom" constant="10" id="ENQ-EK-7lT"/>
+                                            <constraint firstItem="for-G4-4FA" firstAttribute="centerX" secondItem="AmV-Ba-DsN" secondAttribute="centerX" id="lOJ-Kd-0lz"/>
+                                            <constraint firstItem="tez-eh-bKe" firstAttribute="centerX" secondItem="AmV-Ba-DsN" secondAttribute="centerX" id="m4h-mS-ZIf"/>
+                                            <constraint firstItem="tez-eh-bKe" firstAttribute="top" secondItem="AmV-Ba-DsN" secondAttribute="top" constant="30" id="vZp-T8-5SX"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-Fc-aVi">
+                                        <rect key="frame" x="186.5" y="45" width="1" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="hEU-1E-Hlc"/>
+                                            <constraint firstAttribute="width" constant="1" id="kRz-9p-u2t"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sz-zK-WEZ">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="150"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIc-3d-Ckx">
+                                                <rect key="frame" x="39.5" y="30" width="107.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLg-RB-yp0">
+                                                <rect key="frame" x="31.5" y="58" width="124.5" height="72"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="rIc-3d-Ckx" firstAttribute="top" secondItem="5sz-zK-WEZ" secondAttribute="top" constant="30" id="CcE-6g-Ean"/>
+                                            <constraint firstItem="HLg-RB-yp0" firstAttribute="top" secondItem="rIc-3d-Ckx" secondAttribute="bottom" constant="10" id="Hgf-b5-buT"/>
+                                            <constraint firstItem="rIc-3d-Ckx" firstAttribute="centerX" secondItem="5sz-zK-WEZ" secondAttribute="centerX" id="XXt-EM-mXZ"/>
+                                            <constraint firstItem="HLg-RB-yp0" firstAttribute="centerX" secondItem="5sz-zK-WEZ" secondAttribute="centerX" id="lle-2p-4BX"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="for-G4-4FA" secondAttribute="bottom" constant="20" id="DeK-jl-JfC"/>
-                                    <constraint firstItem="for-G4-4FA" firstAttribute="top" secondItem="tez-eh-bKe" secondAttribute="bottom" constant="10" id="Gw9-54-16E"/>
+                                    <constraint firstItem="rfw-Fc-aVi" firstAttribute="centerY" secondItem="ZNN-qs-4QI" secondAttribute="centerY" id="92f-Vi-cYW"/>
+                                    <constraint firstItem="rfw-Fc-aVi" firstAttribute="leading" secondItem="AmV-Ba-DsN" secondAttribute="trailing" id="DIt-xT-scI"/>
+                                    <constraint firstItem="AmV-Ba-DsN" firstAttribute="top" secondItem="ZNN-qs-4QI" secondAttribute="top" id="Kpb-4C-oqc"/>
+                                    <constraint firstItem="5sz-zK-WEZ" firstAttribute="top" secondItem="ZNN-qs-4QI" secondAttribute="top" id="P17-Nw-ffK"/>
+                                    <constraint firstAttribute="bottom" secondItem="5sz-zK-WEZ" secondAttribute="bottom" id="SCd-T0-Y78"/>
+                                    <constraint firstAttribute="trailing" secondItem="5sz-zK-WEZ" secondAttribute="trailing" id="TxH-Nz-68r"/>
+                                    <constraint firstItem="AmV-Ba-DsN" firstAttribute="width" secondItem="ZNN-qs-4QI" secondAttribute="width" multiplier="1:2" constant="-1" id="XAu-9c-bsv"/>
+                                    <constraint firstItem="AmV-Ba-DsN" firstAttribute="leading" secondItem="ZNN-qs-4QI" secondAttribute="leading" id="f6z-Pl-Tpf"/>
                                     <constraint firstAttribute="height" constant="150" id="k03-LS-YKc"/>
-                                    <constraint firstItem="tez-eh-bKe" firstAttribute="leading" secondItem="ZNN-qs-4QI" secondAttribute="leading" constant="15" id="rvH-f9-5PO"/>
-                                    <constraint firstItem="for-G4-4FA" firstAttribute="leading" secondItem="ZNN-qs-4QI" secondAttribute="leading" constant="15" id="u6O-AN-o0t"/>
+                                    <constraint firstItem="5sz-zK-WEZ" firstAttribute="leading" secondItem="rfw-Fc-aVi" secondAttribute="trailing" id="p9M-T3-WrZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="AmV-Ba-DsN" secondAttribute="bottom" id="wWX-nD-Nvf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxI-In-TWF">
@@ -336,7 +387,7 @@
             </objects>
             <point key="canvasLocation" x="1581.5999999999999" y="764.16791604197908"/>
         </scene>
-        <!--账单-->
+        <!--待收账单-->
         <scene sceneID="mCF-uI-nIi">
             <objects>
                 <tableViewController storyboardIdentifier="BillView" id="gQS-sd-maj" customClass="BillTableViewController" sceneMemberID="viewController">
@@ -403,7 +454,7 @@
                             <outlet property="delegate" destination="gQS-sd-maj" id="QTL-vO-pP7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="账单" id="GLd-mw-Kyo"/>
+                    <navigationItem key="navigationItem" title="待收账单" id="GLd-mw-Kyo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lec-XD-meR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,6 +9,7 @@
 #import "HomepageViewController.h"
 #import "NewsViewController.h"
 #import "SceneContentsViewController.h"
+#import "MyPatientsViewController.h"
 
 #import "XLBlockAlertView.h"
 
@@ -26,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *evaluationsNumber;
 @property (weak, nonatomic) IBOutlet UIButton *scoresNumber;
 @property (weak, nonatomic) IBOutlet UIButton *patientsNumber;
+@property (weak, nonatomic) IBOutlet UIView *patientsView;
+@property (weak, nonatomic) IBOutlet UIView *evaluationsView;
+@property (weak, nonatomic) IBOutlet UIView *scoresView;
 
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 
@@ -88,6 +92,7 @@
                                                    ];
     
     [self addData];
+    [self addGestureRecognizer];
 }
 - (void)addData {
     self.avatarImageView.image = [UIImage imageNamed:@"default_doctor_avatar"];
@@ -105,6 +110,11 @@
         } cancelButtonTitle:@"取消" otherButtonTitles:@"查看原因", nil] show];
     }
 }
+- (void)addGestureRecognizer {
+    [self.patientsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
+    [self.evaluationsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
+    [self.scoresView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
+}
 
 #pragma mark - IBAction
 - (IBAction)invitePatientAction:(id)sender {
@@ -120,6 +130,26 @@
 //点击头像
 - (void)avatarAction {
     
+}
+//点击我的患者，我的评价，我的积分
+- (void)tapGesture:(UITapGestureRecognizer *)gesture {
+    UIView *tempView = gesture.view;
+    switch (tempView.tag) {
+        case 10:{
+            MyPatientsViewController *patientsViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"MyPatients"];
+            [self.navigationController pushViewController:patientsViewController animated:YES];
+        }
+            break;
+        case 11:{
+        }
+            break;
+        case 12:{
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - UITableViewDataSource
