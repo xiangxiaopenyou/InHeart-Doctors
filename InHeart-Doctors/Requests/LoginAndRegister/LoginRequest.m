@@ -15,7 +15,7 @@
     }
     NSMutableDictionary *param = [@{@"username" : self.username,
                                     @"password" : self.password,
-                                    @"deviceId" : XLMobileModel,
+                                    @"deviceModel" : XLMobileModel,
                                     @"appVersion" : XLAppVersion,
                                     @"deviceSystem" : @"iOS",
                                     @"deviceVersion" : XLSystemVersion,
