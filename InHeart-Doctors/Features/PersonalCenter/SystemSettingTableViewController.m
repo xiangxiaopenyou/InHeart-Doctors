@@ -14,7 +14,6 @@
 #import "UserInfo.h"
 
 #import <SDImageCache.h>
-#import <Masonry.h>
 
 @interface SystemSettingTableViewController ()
 

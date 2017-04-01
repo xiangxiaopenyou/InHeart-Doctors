@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4E99A47103E9028E6BFFFB38DC27C6598CC9ED00",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9178F0831BBFEF7919850FC62C4709C75E3332C5" : 9223372036854775807,
+    "4E99A47103E9028E6BFFFB38DC27C6598CC9ED00" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DA3F0519-D97D-45BA-B784-B21D98FFD7FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9178F0831BBFEF7919850FC62C4709C75E3332C5" : "InHeart\/",
+    "4E99A47103E9028E6BFFFB38DC27C6598CC9ED00" : "InHeart-Doctor\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "InHeart-Doctors",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "InHeart-Doctors.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/xiangxiaopenyou\/InHeart-Doctors.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4E99A47103E9028E6BFFFB38DC27C6598CC9ED00"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/xiangxiaopenyou\/InHeart.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9178F0831BBFEF7919850FC62C4709C75E3332C5"
+    }
+  ]
+}

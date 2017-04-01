@@ -14,7 +14,6 @@
 
 #import "UsersModel.h"
 
-#import <Masonry.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface AuthenticationViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>

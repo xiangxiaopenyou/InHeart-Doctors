@@ -10,8 +10,6 @@
 
 #import "DepartmentSelectCell.h"
 
-#import <Masonry.h>
-
 @interface SceneContentsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *departmentTableView;
 @property (weak, nonatomic) IBOutlet UITableView *diseaseTableView;

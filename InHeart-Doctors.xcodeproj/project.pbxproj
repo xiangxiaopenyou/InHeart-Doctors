@@ -20,6 +20,8 @@
 		3D16C0BA1DC834D1006DEF85 /* LogoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D16C0B91DC834D1006DEF85 /* LogoutRequest.m */; };
 		3D1870D51D9BC6F600B8B34B /* PersonalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1870D41D9BC6F600B8B34B /* PersonalInfo.m */; };
 		3D1963841DDBEB4F00EFF558 /* PrescriptionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1963831DDBEB4F00EFF558 /* PrescriptionMessageCell.m */; };
+		3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */; };
+		3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4291E8CD65300353864 /* AddBankCardViewController.m */; };
 		3D3529B61E14A3CF00C053FE /* ContentsTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529B51E14A3CF00C053FE /* ContentsTypeModel.m */; };
 		3D3529B91E14AFCA00C053FE /* ContentsMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529B81E14AFCA00C053FE /* ContentsMediaModel.m */; };
 		3D3529BC1E14D44400C053FE /* ProvincesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529BB1E14D44400C053FE /* ProvincesModel.m */; };
@@ -47,6 +49,67 @@
 		3D62074B1E7238DD0061B261 /* GuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D62074A1E7238DD0061B261 /* GuidePageView.m */; };
 		3D62074F1E7255700061B261 /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D62074E1E7255700061B261 /* HomepageViewController.m */; };
 		3D6207511E7255A50061B261 /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D6207501E7255A50061B261 /* Homepage.storyboard */; };
+		3D64A6631E8CE6750021B537 /* AddCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6621E8CE6750021B537 /* AddCardCell.m */; };
+		3D64A6A61E8DEA2F0021B537 /* EMCallViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6651E8DEA2F0021B537 /* EMCallViewController.mm */; };
+		3D64A6A71E8DEA2F0021B537 /* EMCallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6661E8DEA2F0021B537 /* EMCallViewController.xib */; };
+		3D64A6A81E8DEA2F0021B537 /* EMVideoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6681E8DEA2F0021B537 /* EMVideoInfoViewController.m */; };
+		3D64A6A91E8DEA2F0021B537 /* EMVideoInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6691E8DEA2F0021B537 /* EMVideoInfoViewController.xib */; };
+		3D64A6AA1E8DEA2F0021B537 /* CallResolutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A66C1E8DEA2F0021B537 /* CallResolutionViewController.m */; };
+		3D64A6AB1E8DEA2F0021B537 /* CallSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A66E1E8DEA2F0021B537 /* CallSettingViewController.m */; };
+		3D64A6AC1E8DEA2F0021B537 /* DemoCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6701E8DEA2F0021B537 /* DemoCallManager.m */; };
+		3D64A6AD1E8DEA2F0021B537 /* EMCallOptions+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6721E8DEA2F0021B537 /* EMCallOptions+NSCoding.m */; };
+		3D64A6AE1E8DEA2F0021B537 /* Button_Answer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6731E8DEA2F0021B537 /* Button_Answer.png */; };
+		3D64A6AF1E8DEA2F0021B537 /* Button_Answer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6741E8DEA2F0021B537 /* Button_Answer@2x.png */; };
+		3D64A6B01E8DEA2F0021B537 /* Button_Answer@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6751E8DEA2F0021B537 /* Button_Answer@3x.png */; };
+		3D64A6B11E8DEA2F0021B537 /* Button_Camera switch active.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6761E8DEA2F0021B537 /* Button_Camera switch active.png */; };
+		3D64A6B21E8DEA2F0021B537 /* Button_Camera switch active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6771E8DEA2F0021B537 /* Button_Camera switch active@2x.png */; };
+		3D64A6B31E8DEA2F0021B537 /* Button_Camera switch active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6781E8DEA2F0021B537 /* Button_Camera switch active@3x.png */; };
+		3D64A6B41E8DEA2F0021B537 /* Button_Camera switch disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6791E8DEA2F0021B537 /* Button_Camera switch disabled.png */; };
+		3D64A6B51E8DEA2F0021B537 /* Button_Camera switch disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67A1E8DEA2F0021B537 /* Button_Camera switch disabled@2x.png */; };
+		3D64A6B61E8DEA2F0021B537 /* Button_Camera switch disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67B1E8DEA2F0021B537 /* Button_Camera switch disabled@3x.png */; };
+		3D64A6B71E8DEA2F0021B537 /* Button_Camera switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67C1E8DEA2F0021B537 /* Button_Camera switch.png */; };
+		3D64A6B81E8DEA2F0021B537 /* Button_Camera switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67D1E8DEA2F0021B537 /* Button_Camera switch@2x.png */; };
+		3D64A6B91E8DEA2F0021B537 /* Button_Camera switch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67E1E8DEA2F0021B537 /* Button_Camera switch@3x.png */; };
+		3D64A6BA1E8DEA2F0021B537 /* Button_Cancel Call.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A67F1E8DEA2F0021B537 /* Button_Cancel Call.png */; };
+		3D64A6BB1E8DEA2F0021B537 /* Button_Cancel Call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6801E8DEA2F0021B537 /* Button_Cancel Call@2x.png */; };
+		3D64A6BC1E8DEA2F0021B537 /* Button_Cancel Call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6811E8DEA2F0021B537 /* Button_Cancel Call@3x.png */; };
+		3D64A6BD1E8DEA2F0021B537 /* Button_End.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6821E8DEA2F0021B537 /* Button_End.png */; };
+		3D64A6BE1E8DEA2F0021B537 /* Button_End@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6831E8DEA2F0021B537 /* Button_End@2x.png */; };
+		3D64A6BF1E8DEA2F0021B537 /* Button_End@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6841E8DEA2F0021B537 /* Button_End@3x.png */; };
+		3D64A6C01E8DEA2F0021B537 /* Button_Minimize disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6851E8DEA2F0021B537 /* Button_Minimize disabled.png */; };
+		3D64A6C11E8DEA2F0021B537 /* Button_Minimize disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6861E8DEA2F0021B537 /* Button_Minimize disabled@2x.png */; };
+		3D64A6C21E8DEA2F0021B537 /* Button_Minimize disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6871E8DEA2F0021B537 /* Button_Minimize disabled@3x.png */; };
+		3D64A6C31E8DEA2F0021B537 /* Button_Minimize.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6881E8DEA2F0021B537 /* Button_Minimize.png */; };
+		3D64A6C41E8DEA2F0021B537 /* Button_Minimize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6891E8DEA2F0021B537 /* Button_Minimize@2x.png */; };
+		3D64A6C51E8DEA2F0021B537 /* Button_Minimize@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68A1E8DEA2F0021B537 /* Button_Minimize@3x.png */; };
+		3D64A6C61E8DEA2F0021B537 /* Button_Mute active.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68B1E8DEA2F0021B537 /* Button_Mute active.png */; };
+		3D64A6C71E8DEA2F0021B537 /* Button_Mute active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68C1E8DEA2F0021B537 /* Button_Mute active@2x.png */; };
+		3D64A6C81E8DEA2F0021B537 /* Button_Mute active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68D1E8DEA2F0021B537 /* Button_Mute active@3x.png */; };
+		3D64A6C91E8DEA2F0021B537 /* Button_Mute disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68E1E8DEA2F0021B537 /* Button_Mute disabled.png */; };
+		3D64A6CA1E8DEA2F0021B537 /* Button_Mute disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A68F1E8DEA2F0021B537 /* Button_Mute disabled@2x.png */; };
+		3D64A6CB1E8DEA2F0021B537 /* Button_Mute disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6901E8DEA2F0021B537 /* Button_Mute disabled@3x.png */; };
+		3D64A6CC1E8DEA2F0021B537 /* Button_Mute.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6911E8DEA2F0021B537 /* Button_Mute.png */; };
+		3D64A6CD1E8DEA2F0021B537 /* Button_Mute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6921E8DEA2F0021B537 /* Button_Mute@2x.png */; };
+		3D64A6CE1E8DEA2F0021B537 /* Button_Mute@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6931E8DEA2F0021B537 /* Button_Mute@3x.png */; };
+		3D64A6CF1E8DEA2F0021B537 /* Button_Speaker active.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6941E8DEA2F0021B537 /* Button_Speaker active.png */; };
+		3D64A6D01E8DEA2F0021B537 /* Button_Speaker active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6951E8DEA2F0021B537 /* Button_Speaker active@2x.png */; };
+		3D64A6D11E8DEA2F0021B537 /* Button_Speaker active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6961E8DEA2F0021B537 /* Button_Speaker active@3x.png */; };
+		3D64A6D21E8DEA2F0021B537 /* Button_Speaker disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6971E8DEA2F0021B537 /* Button_Speaker disabled.png */; };
+		3D64A6D31E8DEA2F0021B537 /* Button_Speaker disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6981E8DEA2F0021B537 /* Button_Speaker disabled@2x.png */; };
+		3D64A6D41E8DEA2F0021B537 /* Button_Speaker disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6991E8DEA2F0021B537 /* Button_Speaker disabled@3x.png */; };
+		3D64A6D51E8DEA2F0021B537 /* Button_Speaker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69A1E8DEA2F0021B537 /* Button_Speaker.png */; };
+		3D64A6D61E8DEA2F0021B537 /* Button_Speaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69B1E8DEA2F0021B537 /* Button_Speaker@2x.png */; };
+		3D64A6D71E8DEA2F0021B537 /* Button_Speaker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69C1E8DEA2F0021B537 /* Button_Speaker@3x.png */; };
+		3D64A6D81E8DEA2F0021B537 /* Button_Stats disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69D1E8DEA2F0021B537 /* Button_Stats disabled.png */; };
+		3D64A6D91E8DEA2F0021B537 /* Button_Stats disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69E1E8DEA2F0021B537 /* Button_Stats disabled@2x.png */; };
+		3D64A6DA1E8DEA2F0021B537 /* Button_Stats disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A69F1E8DEA2F0021B537 /* Button_Stats disabled@3x.png */; };
+		3D64A6DB1E8DEA2F0021B537 /* Button_Stats.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6A01E8DEA2F0021B537 /* Button_Stats.png */; };
+		3D64A6DC1E8DEA2F0021B537 /* Button_Stats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6A11E8DEA2F0021B537 /* Button_Stats@2x.png */; };
+		3D64A6DD1E8DEA2F0021B537 /* Button_Stats@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6A21E8DEA2F0021B537 /* Button_Stats@3x.png */; };
+		3D64A6DE1E8DEA2F0021B537 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6A31E8DEA2F0021B537 /* default_avatar.png */; };
+		3D64A6E11E8E55F20021B537 /* SelectSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E01E8E55F20021B537 /* SelectSexCell.m */; };
+		3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E31E8F72440021B537 /* AuthenticationPicturesCell.m */; };
+		3D64A6E71E8F72A60021B537 /* AuthenticationPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */; };
 		3D64AC161DC1E13B00F46AA3 /* SelectSpecialitsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64AC151DC1E13B00F46AA3 /* SelectSpecialitsView.m */; };
 		3D6A8E711D98B07700C405DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E701D98B07700C405DA /* main.m */; };
 		3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E731D98B07700C405DA /* AppDelegate.m */; };
@@ -270,6 +333,10 @@
 		3D1963821DDBEB4F00EFF558 /* PrescriptionMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionMessageCell.h; sourceTree = "<group>"; };
 		3D1963831DDBEB4F00EFF558 /* PrescriptionMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionMessageCell.m; sourceTree = "<group>"; };
 		3D1D972D1D9BA3CD0089501B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3D32F4251E8CD17F00353864 /* MyBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankCardViewController.h; sourceTree = "<group>"; };
+		3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankCardViewController.m; sourceTree = "<group>"; };
+		3D32F4281E8CD65300353864 /* AddBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
+		3D32F4291E8CD65300353864 /* AddBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCardViewController.m; sourceTree = "<group>"; };
 		3D3529B41E14A3CF00C053FE /* ContentsTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsTypeModel.h; sourceTree = "<group>"; };
 		3D3529B51E14A3CF00C053FE /* ContentsTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsTypeModel.m; sourceTree = "<group>"; };
 		3D3529B71E14AFCA00C053FE /* ContentsMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsMediaModel.h; sourceTree = "<group>"; };
@@ -321,6 +388,77 @@
 		3D62074D1E7255700061B261 /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageViewController.h; sourceTree = "<group>"; };
 		3D62074E1E7255700061B261 /* HomepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageViewController.m; sourceTree = "<group>"; };
 		3D6207501E7255A50061B261 /* Homepage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
+		3D64A6611E8CE6750021B537 /* AddCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCardCell.h; sourceTree = "<group>"; };
+		3D64A6621E8CE6750021B537 /* AddCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCardCell.m; sourceTree = "<group>"; };
+		3D64A6641E8DEA2F0021B537 /* EMCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallViewController.h; sourceTree = "<group>"; };
+		3D64A6651E8DEA2F0021B537 /* EMCallViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EMCallViewController.mm; sourceTree = "<group>"; };
+		3D64A6661E8DEA2F0021B537 /* EMCallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMCallViewController.xib; sourceTree = "<group>"; };
+		3D64A6671E8DEA2F0021B537 /* EMVideoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVideoInfoViewController.h; sourceTree = "<group>"; };
+		3D64A6681E8DEA2F0021B537 /* EMVideoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMVideoInfoViewController.m; sourceTree = "<group>"; };
+		3D64A6691E8DEA2F0021B537 /* EMVideoInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMVideoInfoViewController.xib; sourceTree = "<group>"; };
+		3D64A66B1E8DEA2F0021B537 /* CallResolutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallResolutionViewController.h; sourceTree = "<group>"; };
+		3D64A66C1E8DEA2F0021B537 /* CallResolutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallResolutionViewController.m; sourceTree = "<group>"; };
+		3D64A66D1E8DEA2F0021B537 /* CallSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallSettingViewController.h; sourceTree = "<group>"; };
+		3D64A66E1E8DEA2F0021B537 /* CallSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallSettingViewController.m; sourceTree = "<group>"; };
+		3D64A66F1E8DEA2F0021B537 /* DemoCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCallManager.h; sourceTree = "<group>"; };
+		3D64A6701E8DEA2F0021B537 /* DemoCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCallManager.m; sourceTree = "<group>"; };
+		3D64A6711E8DEA2F0021B537 /* EMCallOptions+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMCallOptions+NSCoding.h"; sourceTree = "<group>"; };
+		3D64A6721E8DEA2F0021B537 /* EMCallOptions+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EMCallOptions+NSCoding.m"; sourceTree = "<group>"; };
+		3D64A6731E8DEA2F0021B537 /* Button_Answer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Answer.png; sourceTree = "<group>"; };
+		3D64A6741E8DEA2F0021B537 /* Button_Answer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Answer@2x.png"; sourceTree = "<group>"; };
+		3D64A6751E8DEA2F0021B537 /* Button_Answer@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Answer@3x.png"; sourceTree = "<group>"; };
+		3D64A6761E8DEA2F0021B537 /* Button_Camera switch active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch active.png"; sourceTree = "<group>"; };
+		3D64A6771E8DEA2F0021B537 /* Button_Camera switch active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch active@2x.png"; sourceTree = "<group>"; };
+		3D64A6781E8DEA2F0021B537 /* Button_Camera switch active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch active@3x.png"; sourceTree = "<group>"; };
+		3D64A6791E8DEA2F0021B537 /* Button_Camera switch disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch disabled.png"; sourceTree = "<group>"; };
+		3D64A67A1E8DEA2F0021B537 /* Button_Camera switch disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch disabled@2x.png"; sourceTree = "<group>"; };
+		3D64A67B1E8DEA2F0021B537 /* Button_Camera switch disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch disabled@3x.png"; sourceTree = "<group>"; };
+		3D64A67C1E8DEA2F0021B537 /* Button_Camera switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch.png"; sourceTree = "<group>"; };
+		3D64A67D1E8DEA2F0021B537 /* Button_Camera switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch@2x.png"; sourceTree = "<group>"; };
+		3D64A67E1E8DEA2F0021B537 /* Button_Camera switch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Camera switch@3x.png"; sourceTree = "<group>"; };
+		3D64A67F1E8DEA2F0021B537 /* Button_Cancel Call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Cancel Call.png"; sourceTree = "<group>"; };
+		3D64A6801E8DEA2F0021B537 /* Button_Cancel Call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Cancel Call@2x.png"; sourceTree = "<group>"; };
+		3D64A6811E8DEA2F0021B537 /* Button_Cancel Call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Cancel Call@3x.png"; sourceTree = "<group>"; };
+		3D64A6821E8DEA2F0021B537 /* Button_End.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_End.png; sourceTree = "<group>"; };
+		3D64A6831E8DEA2F0021B537 /* Button_End@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_End@2x.png"; sourceTree = "<group>"; };
+		3D64A6841E8DEA2F0021B537 /* Button_End@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_End@3x.png"; sourceTree = "<group>"; };
+		3D64A6851E8DEA2F0021B537 /* Button_Minimize disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Minimize disabled.png"; sourceTree = "<group>"; };
+		3D64A6861E8DEA2F0021B537 /* Button_Minimize disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Minimize disabled@2x.png"; sourceTree = "<group>"; };
+		3D64A6871E8DEA2F0021B537 /* Button_Minimize disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Minimize disabled@3x.png"; sourceTree = "<group>"; };
+		3D64A6881E8DEA2F0021B537 /* Button_Minimize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Minimize.png; sourceTree = "<group>"; };
+		3D64A6891E8DEA2F0021B537 /* Button_Minimize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Minimize@2x.png"; sourceTree = "<group>"; };
+		3D64A68A1E8DEA2F0021B537 /* Button_Minimize@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Minimize@3x.png"; sourceTree = "<group>"; };
+		3D64A68B1E8DEA2F0021B537 /* Button_Mute active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute active.png"; sourceTree = "<group>"; };
+		3D64A68C1E8DEA2F0021B537 /* Button_Mute active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute active@2x.png"; sourceTree = "<group>"; };
+		3D64A68D1E8DEA2F0021B537 /* Button_Mute active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute active@3x.png"; sourceTree = "<group>"; };
+		3D64A68E1E8DEA2F0021B537 /* Button_Mute disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute disabled.png"; sourceTree = "<group>"; };
+		3D64A68F1E8DEA2F0021B537 /* Button_Mute disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute disabled@2x.png"; sourceTree = "<group>"; };
+		3D64A6901E8DEA2F0021B537 /* Button_Mute disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute disabled@3x.png"; sourceTree = "<group>"; };
+		3D64A6911E8DEA2F0021B537 /* Button_Mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Mute.png; sourceTree = "<group>"; };
+		3D64A6921E8DEA2F0021B537 /* Button_Mute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute@2x.png"; sourceTree = "<group>"; };
+		3D64A6931E8DEA2F0021B537 /* Button_Mute@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Mute@3x.png"; sourceTree = "<group>"; };
+		3D64A6941E8DEA2F0021B537 /* Button_Speaker active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker active.png"; sourceTree = "<group>"; };
+		3D64A6951E8DEA2F0021B537 /* Button_Speaker active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker active@2x.png"; sourceTree = "<group>"; };
+		3D64A6961E8DEA2F0021B537 /* Button_Speaker active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker active@3x.png"; sourceTree = "<group>"; };
+		3D64A6971E8DEA2F0021B537 /* Button_Speaker disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker disabled.png"; sourceTree = "<group>"; };
+		3D64A6981E8DEA2F0021B537 /* Button_Speaker disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker disabled@2x.png"; sourceTree = "<group>"; };
+		3D64A6991E8DEA2F0021B537 /* Button_Speaker disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker disabled@3x.png"; sourceTree = "<group>"; };
+		3D64A69A1E8DEA2F0021B537 /* Button_Speaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Speaker.png; sourceTree = "<group>"; };
+		3D64A69B1E8DEA2F0021B537 /* Button_Speaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker@2x.png"; sourceTree = "<group>"; };
+		3D64A69C1E8DEA2F0021B537 /* Button_Speaker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Speaker@3x.png"; sourceTree = "<group>"; };
+		3D64A69D1E8DEA2F0021B537 /* Button_Stats disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats disabled.png"; sourceTree = "<group>"; };
+		3D64A69E1E8DEA2F0021B537 /* Button_Stats disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats disabled@2x.png"; sourceTree = "<group>"; };
+		3D64A69F1E8DEA2F0021B537 /* Button_Stats disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats disabled@3x.png"; sourceTree = "<group>"; };
+		3D64A6A01E8DEA2F0021B537 /* Button_Stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_Stats.png; sourceTree = "<group>"; };
+		3D64A6A11E8DEA2F0021B537 /* Button_Stats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats@2x.png"; sourceTree = "<group>"; };
+		3D64A6A21E8DEA2F0021B537 /* Button_Stats@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats@3x.png"; sourceTree = "<group>"; };
+		3D64A6A31E8DEA2F0021B537 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
+		3D64A6DF1E8E55F20021B537 /* SelectSexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSexCell.h; sourceTree = "<group>"; };
+		3D64A6E01E8E55F20021B537 /* SelectSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSexCell.m; sourceTree = "<group>"; };
+		3D64A6E21E8F72440021B537 /* AuthenticationPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationPicturesCell.h; sourceTree = "<group>"; };
+		3D64A6E31E8F72440021B537 /* AuthenticationPicturesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationPicturesCell.m; sourceTree = "<group>"; };
+		3D64A6E51E8F72A60021B537 /* AuthenticationPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationPicturesViewController.h; sourceTree = "<group>"; };
+		3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationPicturesViewController.m; sourceTree = "<group>"; };
 		3D64AC141DC1E13B00F46AA3 /* SelectSpecialitsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSpecialitsView.h; sourceTree = "<group>"; };
 		3D64AC151DC1E13B00F46AA3 /* SelectSpecialitsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSpecialitsView.m; sourceTree = "<group>"; };
 		3D6A8E6C1D98B07700C405DA /* InHeart-Doctors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InHeart-Doctors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -787,6 +925,7 @@
 		3D57BF891E4AAE0A00F211A7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3D64A6A51E8DEA2F0021B537 /* Call */,
 				3DC30CB11E83B8E300AF48D6 /* HyphenateFullSDK */,
 				3DEED7CA1E839BA700F96A5A /* EaseUI */,
 				3D57C0891E4AAEA200F211A7 /* UtoVRPlayerSDK */,
@@ -831,6 +970,93 @@
 				3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */,
 			);
 			path = Homepage;
+			sourceTree = "<group>";
+		};
+		3D64A66A1E8DEA2F0021B537 /* 1v1Call */ = {
+			isa = PBXGroup;
+			children = (
+				3D64A6641E8DEA2F0021B537 /* EMCallViewController.h */,
+				3D64A6651E8DEA2F0021B537 /* EMCallViewController.mm */,
+				3D64A6661E8DEA2F0021B537 /* EMCallViewController.xib */,
+				3D64A6671E8DEA2F0021B537 /* EMVideoInfoViewController.h */,
+				3D64A6681E8DEA2F0021B537 /* EMVideoInfoViewController.m */,
+				3D64A6691E8DEA2F0021B537 /* EMVideoInfoViewController.xib */,
+			);
+			path = 1v1Call;
+			sourceTree = "<group>";
+		};
+		3D64A6A41E8DEA2F0021B537 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				3D64A6731E8DEA2F0021B537 /* Button_Answer.png */,
+				3D64A6741E8DEA2F0021B537 /* Button_Answer@2x.png */,
+				3D64A6751E8DEA2F0021B537 /* Button_Answer@3x.png */,
+				3D64A6761E8DEA2F0021B537 /* Button_Camera switch active.png */,
+				3D64A6771E8DEA2F0021B537 /* Button_Camera switch active@2x.png */,
+				3D64A6781E8DEA2F0021B537 /* Button_Camera switch active@3x.png */,
+				3D64A6791E8DEA2F0021B537 /* Button_Camera switch disabled.png */,
+				3D64A67A1E8DEA2F0021B537 /* Button_Camera switch disabled@2x.png */,
+				3D64A67B1E8DEA2F0021B537 /* Button_Camera switch disabled@3x.png */,
+				3D64A67C1E8DEA2F0021B537 /* Button_Camera switch.png */,
+				3D64A67D1E8DEA2F0021B537 /* Button_Camera switch@2x.png */,
+				3D64A67E1E8DEA2F0021B537 /* Button_Camera switch@3x.png */,
+				3D64A67F1E8DEA2F0021B537 /* Button_Cancel Call.png */,
+				3D64A6801E8DEA2F0021B537 /* Button_Cancel Call@2x.png */,
+				3D64A6811E8DEA2F0021B537 /* Button_Cancel Call@3x.png */,
+				3D64A6821E8DEA2F0021B537 /* Button_End.png */,
+				3D64A6831E8DEA2F0021B537 /* Button_End@2x.png */,
+				3D64A6841E8DEA2F0021B537 /* Button_End@3x.png */,
+				3D64A6851E8DEA2F0021B537 /* Button_Minimize disabled.png */,
+				3D64A6861E8DEA2F0021B537 /* Button_Minimize disabled@2x.png */,
+				3D64A6871E8DEA2F0021B537 /* Button_Minimize disabled@3x.png */,
+				3D64A6881E8DEA2F0021B537 /* Button_Minimize.png */,
+				3D64A6891E8DEA2F0021B537 /* Button_Minimize@2x.png */,
+				3D64A68A1E8DEA2F0021B537 /* Button_Minimize@3x.png */,
+				3D64A68B1E8DEA2F0021B537 /* Button_Mute active.png */,
+				3D64A68C1E8DEA2F0021B537 /* Button_Mute active@2x.png */,
+				3D64A68D1E8DEA2F0021B537 /* Button_Mute active@3x.png */,
+				3D64A68E1E8DEA2F0021B537 /* Button_Mute disabled.png */,
+				3D64A68F1E8DEA2F0021B537 /* Button_Mute disabled@2x.png */,
+				3D64A6901E8DEA2F0021B537 /* Button_Mute disabled@3x.png */,
+				3D64A6911E8DEA2F0021B537 /* Button_Mute.png */,
+				3D64A6921E8DEA2F0021B537 /* Button_Mute@2x.png */,
+				3D64A6931E8DEA2F0021B537 /* Button_Mute@3x.png */,
+				3D64A6941E8DEA2F0021B537 /* Button_Speaker active.png */,
+				3D64A6951E8DEA2F0021B537 /* Button_Speaker active@2x.png */,
+				3D64A6961E8DEA2F0021B537 /* Button_Speaker active@3x.png */,
+				3D64A6971E8DEA2F0021B537 /* Button_Speaker disabled.png */,
+				3D64A6981E8DEA2F0021B537 /* Button_Speaker disabled@2x.png */,
+				3D64A6991E8DEA2F0021B537 /* Button_Speaker disabled@3x.png */,
+				3D64A69A1E8DEA2F0021B537 /* Button_Speaker.png */,
+				3D64A69B1E8DEA2F0021B537 /* Button_Speaker@2x.png */,
+				3D64A69C1E8DEA2F0021B537 /* Button_Speaker@3x.png */,
+				3D64A69D1E8DEA2F0021B537 /* Button_Stats disabled.png */,
+				3D64A69E1E8DEA2F0021B537 /* Button_Stats disabled@2x.png */,
+				3D64A69F1E8DEA2F0021B537 /* Button_Stats disabled@3x.png */,
+				3D64A6A01E8DEA2F0021B537 /* Button_Stats.png */,
+				3D64A6A11E8DEA2F0021B537 /* Button_Stats@2x.png */,
+				3D64A6A21E8DEA2F0021B537 /* Button_Stats@3x.png */,
+				3D64A6A31E8DEA2F0021B537 /* default_avatar.png */,
+			);
+			path = imgs;
+			sourceTree = "<group>";
+		};
+		3D64A6A51E8DEA2F0021B537 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				3D64A66A1E8DEA2F0021B537 /* 1v1Call */,
+				3D64A66B1E8DEA2F0021B537 /* CallResolutionViewController.h */,
+				3D64A66C1E8DEA2F0021B537 /* CallResolutionViewController.m */,
+				3D64A66D1E8DEA2F0021B537 /* CallSettingViewController.h */,
+				3D64A66E1E8DEA2F0021B537 /* CallSettingViewController.m */,
+				3D64A66F1E8DEA2F0021B537 /* DemoCallManager.h */,
+				3D64A6701E8DEA2F0021B537 /* DemoCallManager.m */,
+				3D64A6711E8DEA2F0021B537 /* EMCallOptions+NSCoding.h */,
+				3D64A6721E8DEA2F0021B537 /* EMCallOptions+NSCoding.m */,
+				3D64A6A41E8DEA2F0021B537 /* imgs */,
+			);
+			name = Call;
+			path = ../../../InHeart/InHeart/ThirdLibs/Call;
 			sourceTree = "<group>";
 		};
 		3D6A8E631D98B07700C405DA = {
@@ -1042,6 +1268,8 @@
 				3D6A8EBC1D98C69600C405DA /* PersonalCenterTableViewController.m */,
 				3DEEC8CD1E762C22006A40D3 /* AuthenticationInformationViewController.h */,
 				3DEEC8CE1E762C22006A40D3 /* AuthenticationInformationViewController.m */,
+				3D64A6E51E8F72A60021B537 /* AuthenticationPicturesViewController.h */,
+				3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */,
 				3DD93E621DAA10A6008B190A /* EditInformationViewController.h */,
 				3DD93E631DAA10A6008B190A /* EditInformationViewController.m */,
 				3D4326BF1DC08C010043008D /* MyWalletViewController.h */,
@@ -1054,6 +1282,10 @@
 				3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */,
 				3D8F1C921DC720B3000E3604 /* BillTableViewController.h */,
 				3D8F1C931DC720B3000E3604 /* BillTableViewController.m */,
+				3D32F4251E8CD17F00353864 /* MyBankCardViewController.h */,
+				3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */,
+				3D32F4281E8CD65300353864 /* AddBankCardViewController.h */,
+				3D32F4291E8CD65300353864 /* AddBankCardViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -1075,6 +1307,12 @@
 				3D8F1C901DC71C51000E3604 /* BillCell.m */,
 				3DEEC8D31E76347C006A40D3 /* AuthenticationContentCell.h */,
 				3DEEC8D41E76347C006A40D3 /* AuthenticationContentCell.m */,
+				3D64A6E21E8F72440021B537 /* AuthenticationPicturesCell.h */,
+				3D64A6E31E8F72440021B537 /* AuthenticationPicturesCell.m */,
+				3D64A6DF1E8E55F20021B537 /* SelectSexCell.h */,
+				3D64A6E01E8E55F20021B537 /* SelectSexCell.m */,
+				3D64A6611E8CE6750021B537 /* AddCardCell.h */,
+				3D64A6621E8CE6750021B537 /* AddCardCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1811,19 +2049,70 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D64A6BE1E8DEA2F0021B537 /* Button_End@2x.png in Resources */,
+				3D64A6BB1E8DEA2F0021B537 /* Button_Cancel Call@2x.png in Resources */,
+				3D64A6D11E8DEA2F0021B537 /* Button_Speaker active@3x.png in Resources */,
 				3D57C0F01E4AAEA300F211A7 /* UtoVRPlayerResouces.bundle in Resources */,
+				3D64A6BD1E8DEA2F0021B537 /* Button_End.png in Resources */,
+				3D64A6B31E8DEA2F0021B537 /* Button_Camera switch active@3x.png in Resources */,
+				3D64A6B21E8DEA2F0021B537 /* Button_Camera switch active@2x.png in Resources */,
+				3D64A6CB1E8DEA2F0021B537 /* Button_Mute disabled@3x.png in Resources */,
+				3D64A6DE1E8DEA2F0021B537 /* default_avatar.png in Resources */,
+				3D64A6D21E8DEA2F0021B537 /* Button_Speaker disabled.png in Resources */,
+				3D64A6D01E8DEA2F0021B537 /* Button_Speaker active@2x.png in Resources */,
 				3DEED9671E839BA700F96A5A /* EaseUIResource.bundle in Resources */,
+				3D64A6CF1E8DEA2F0021B537 /* Button_Speaker active.png in Resources */,
+				3D64A6C81E8DEA2F0021B537 /* Button_Mute active@3x.png in Resources */,
+				3D64A6B41E8DEA2F0021B537 /* Button_Camera switch disabled.png in Resources */,
+				3D64A6B71E8DEA2F0021B537 /* Button_Camera switch.png in Resources */,
 				3D6207511E7255A50061B261 /* Homepage.storyboard in Resources */,
 				3D9422F31DD17BE800D19786 /* Localizable.strings in Resources */,
+				3D64A6B51E8DEA2F0021B537 /* Button_Camera switch disabled@2x.png in Resources */,
+				3D64A6B61E8DEA2F0021B537 /* Button_Camera switch disabled@3x.png in Resources */,
+				3D64A6A71E8DEA2F0021B537 /* EMCallViewController.xib in Resources */,
+				3D64A6DA1E8DEA2F0021B537 /* Button_Stats disabled@3x.png in Resources */,
+				3D64A6C21E8DEA2F0021B537 /* Button_Minimize disabled@3x.png in Resources */,
+				3D64A6C01E8DEA2F0021B537 /* Button_Minimize disabled.png in Resources */,
+				3D64A6BF1E8DEA2F0021B537 /* Button_End@3x.png in Resources */,
 				3D6A8ED71D98C69600C405DA /* Content.storyboard in Resources */,
+				3D64A6D61E8DEA2F0021B537 /* Button_Speaker@2x.png in Resources */,
 				3D6A8EDC1D98C69600C405DA /* Interrogation.storyboard in Resources */,
+				3D64A6C11E8DEA2F0021B537 /* Button_Minimize disabled@2x.png in Resources */,
+				3D64A6B11E8DEA2F0021B537 /* Button_Camera switch active.png in Resources */,
+				3D64A6BA1E8DEA2F0021B537 /* Button_Cancel Call.png in Resources */,
+				3D64A6C71E8DEA2F0021B537 /* Button_Mute active@2x.png in Resources */,
+				3D64A6C41E8DEA2F0021B537 /* Button_Minimize@2x.png in Resources */,
 				3D4326A01DBDB9C70043008D /* AudioPlayerview.xib in Resources */,
 				3D6A8EE11D98C69600C405DA /* Login.storyboard in Resources */,
+				3D64A6B01E8DEA2F0021B537 /* Button_Answer@3x.png in Resources */,
+				3D64A6D51E8DEA2F0021B537 /* Button_Speaker.png in Resources */,
+				3D64A6D91E8DEA2F0021B537 /* Button_Stats disabled@2x.png in Resources */,
 				3D6A8E7F1D98B07700C405DA /* LaunchScreen.storyboard in Resources */,
+				3D64A6C31E8DEA2F0021B537 /* Button_Minimize.png in Resources */,
+				3D64A6CA1E8DEA2F0021B537 /* Button_Mute disabled@2x.png in Resources */,
+				3D64A6BC1E8DEA2F0021B537 /* Button_Cancel Call@3x.png in Resources */,
+				3D64A6B81E8DEA2F0021B537 /* Button_Camera switch@2x.png in Resources */,
+				3D64A6D81E8DEA2F0021B537 /* Button_Stats disabled.png in Resources */,
+				3D64A6C91E8DEA2F0021B537 /* Button_Mute disabled.png in Resources */,
 				3DEED9391E839BA700F96A5A /* MWPhotoBrowser.bundle in Resources */,
+				3D64A6B91E8DEA2F0021B537 /* Button_Camera switch@3x.png in Resources */,
+				3D64A6DB1E8DEA2F0021B537 /* Button_Stats.png in Resources */,
+				3D64A6CD1E8DEA2F0021B537 /* Button_Mute@2x.png in Resources */,
+				3D64A6CE1E8DEA2F0021B537 /* Button_Mute@3x.png in Resources */,
+				3D64A6D31E8DEA2F0021B537 /* Button_Speaker disabled@2x.png in Resources */,
+				3D64A6D41E8DEA2F0021B537 /* Button_Speaker disabled@3x.png in Resources */,
+				3D64A6AF1E8DEA2F0021B537 /* Button_Answer@2x.png in Resources */,
+				3D64A6DD1E8DEA2F0021B537 /* Button_Stats@3x.png in Resources */,
+				3D64A6C51E8DEA2F0021B537 /* Button_Minimize@3x.png in Resources */,
 				3D6A8E7A1D98B07700C405DA /* Main.storyboard in Resources */,
+				3D64A6DC1E8DEA2F0021B537 /* Button_Stats@2x.png in Resources */,
+				3D64A6C61E8DEA2F0021B537 /* Button_Mute active.png in Resources */,
+				3D64A6A91E8DEA2F0021B537 /* EMVideoInfoViewController.xib in Resources */,
+				3D64A6D71E8DEA2F0021B537 /* Button_Speaker@3x.png in Resources */,
+				3D64A6CC1E8DEA2F0021B537 /* Button_Mute.png in Resources */,
 				3D6A8EE61D98C69600C405DA /* Personal.storyboard in Resources */,
 				3D894B221DDEF65F004963C7 /* Assets.xcassets in Resources */,
+				3D64A6AE1E8DEA2F0021B537 /* Button_Answer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1898,9 +2187,11 @@
 				3D4326AF1DBF07CD0043008D /* CancelCollectRequest.m in Sources */,
 				3DA4D3B61DC3297600CD47FF /* FetchCitiesRequest.m in Sources */,
 				3D6A8EED1D98C69600C405DA /* RequestCacher.m in Sources */,
+				3D64A6AA1E8DEA2F0021B537 /* CallResolutionViewController.m in Sources */,
 				3DEED8F31E839BA700F96A5A /* EMAudioRecorderUtil.m in Sources */,
 				3DEED8FB1E839BA700F96A5A /* EMVoiceConverter.mm in Sources */,
 				3D6A8EE41D98C69600C405DA /* LoginContentCell.m in Sources */,
+				3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */,
 				3DEED9271E839BA700F96A5A /* UIImage+EMMultiFormat.m in Sources */,
 				3D9F2D8F1E149A8200F6D65D /* SingleContentModel.m in Sources */,
 				3DEED8F81E839BA700F96A5A /* EMCDDeviceManagerBase.m in Sources */,
@@ -1920,6 +2211,7 @@
 				3DEED94A1E839BA700F96A5A /* FixFopen.c in Sources */,
 				3DEED8F91E839BA700F96A5A /* amrFileCodec.mm in Sources */,
 				3D4326CA1DC1A05D0043008D /* FetchAccountBalanceRequest.m in Sources */,
+				3D64A6631E8CE6750021B537 /* AddCardCell.m in Sources */,
 				3D4326B21DC0441B0043008D /* FetchPersonalInformationRequest.m in Sources */,
 				3DEED9201E839BA700F96A5A /* EMSDWebImageDownloaderOperation.m in Sources */,
 				3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */,
@@ -1931,6 +2223,7 @@
 				3DEED8F41E839BA700F96A5A /* EMCDDeviceManager+Media.m in Sources */,
 				3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */,
 				3DEED9281E839BA700F96A5A /* UIImage+EMWebP.m in Sources */,
+				3D64A6E11E8E55F20021B537 /* SelectSexCell.m in Sources */,
 				3DEED9501E839BA700F96A5A /* EaseViewController.m in Sources */,
 				3DEED9421E839BA700F96A5A /* UIViewController+HUD.m in Sources */,
 				3D3529C21E14E1AD00C053FE /* UserMessagesModel.m in Sources */,
@@ -1944,6 +2237,7 @@
 				3DEED92C1E839BA700F96A5A /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				3DEED9431E839BA700F96A5A /* EaseChineseToPinyin.m in Sources */,
 				3D968D911DAE10BF005A1596 /* AuthenticationStepsViewController.m in Sources */,
+				3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */,
 				3DEED9381E839BA700F96A5A /* PSTGridLayoutSection.m in Sources */,
 				3DF08A0C1DDAA37800D64EA6 /* SendPrescriptionRequest.m in Sources */,
 				3D0E57E81DD1C05E00294463 /* ChooseContentsViewController.m in Sources */,
@@ -1983,16 +2277,19 @@
 				3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */,
 				3D3529B61E14A3CF00C053FE /* ContentsTypeModel.m in Sources */,
 				3DEED93B1E839BA700F96A5A /* EaseConversationModel.m in Sources */,
+				3D64A6AD1E8DEA2F0021B537 /* EMCallOptions+NSCoding.m in Sources */,
 				3DEED9411E839BA700F96A5A /* UIViewController+DismissKeyboard.m in Sources */,
 				3DEED9611E839BA700F96A5A /* EaseTextView.m in Sources */,
 				3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */,
 				3D6A8EE81D98C69600C405DA /* CommonFunctionCell.m in Sources */,
 				3DEED9351E839BA700F96A5A /* PSTGridLayoutInfo.m in Sources */,
+				3D64A6A61E8DEA2F0021B537 /* EMCallViewController.mm in Sources */,
 				3DEED9631E839BA700F96A5A /* EaseFacialView.m in Sources */,
 				3DEED9561E839BA700F96A5A /* EaseBubbleView+File.m in Sources */,
 				3D42806C1DC33EFE006E3B95 /* EditInformationRequest.m in Sources */,
 				3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */,
 				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
+				3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */,
 				3D6A8ED41D98C69600C405DA /* XLBlockAlertView.m in Sources */,
 				3DEED9451E839BA700F96A5A /* EaseMessageReadManager.m in Sources */,
 				3DEED9181E839BA700F96A5A /* MWTapDetectingImageView.m in Sources */,
@@ -2013,6 +2310,7 @@
 				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
 				3D6F35491E10E9F300F9E6E0 /* XLModel.m in Sources */,
 				3DEED91C1E839BA700F96A5A /* EMSDImageCache.m in Sources */,
+				3D64A6E71E8F72A60021B537 /* AuthenticationPicturesViewController.m in Sources */,
 				3DEED91F1E839BA700F96A5A /* EMSDWebImageDownloader.m in Sources */,
 				3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */,
 				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
@@ -2035,6 +2333,8 @@
 				3D4326AC1DBF07BA0043008D /* CollectRequest.m in Sources */,
 				3DEED92E1E839BA700F96A5A /* PSTCollectionViewCell.m in Sources */,
 				3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */,
+				3D64A6A81E8DEA2F0021B537 /* EMVideoInfoViewController.m in Sources */,
+				3D64A6AB1E8DEA2F0021B537 /* CallSettingViewController.m in Sources */,
 				3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */,
 				3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */,
 				3DEED9401E839BA700F96A5A /* NSString+Valid.m in Sources */,
@@ -2075,6 +2375,7 @@
 				3D8F1C941DC720B3000E3604 /* BillTableViewController.m in Sources */,
 				3DEED94C1E839BA700F96A5A /* EaseLocationViewController.m in Sources */,
 				3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */,
+				3D64A6AC1E8DEA2F0021B537 /* DemoCallManager.m in Sources */,
 				3DEED9191E839BA700F96A5A /* MWTapDetectingView.m in Sources */,
 				3DEED9491E839BA700F96A5A /* EaseEmotionManager.m in Sources */,
 				3DEED8F71E839BA700F96A5A /* EMCDDeviceManager+Remind.m in Sources */,
@@ -2236,6 +2537,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/Call/plugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.medvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2269,6 +2571,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/InHeart-Doctors/Vendor/Call/plugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.medvision.vrdoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";

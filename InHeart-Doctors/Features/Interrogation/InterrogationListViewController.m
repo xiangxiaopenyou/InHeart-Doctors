@@ -14,7 +14,6 @@
 #import "UserInfo.h"
 #import "ConversationModel.h"
 
-#import <Masonry.h>
 
 @interface InterrogationListViewController ()
 @property (strong, nonatomic) ConversationListView *conversationsView;

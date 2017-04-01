@@ -11,7 +11,6 @@
 #import "LoginContentCell.h"
 #import "UsersModel.h"
 
-#import <Masonry.h>
 
 @interface FindPasswordTableViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) UITextField *phoneNumberTextField;

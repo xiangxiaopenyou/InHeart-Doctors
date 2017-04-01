@@ -23,6 +23,10 @@ typedef NS_ENUM(NSInteger, XJNewsTypes) {
     XJNewsTypesSystem
     
 };
+typedef NS_ENUM(NSInteger, XJUserSex) {
+    XJUserSexMale = 1,
+    XJUserSexFemale = 2
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;

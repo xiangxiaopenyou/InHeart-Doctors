@@ -209,6 +209,7 @@
 "call.answer"="接听";
 "call.hangup"="挂断";
 "call.finished"="连接建立完成";
+"call.offline"="对方不在线";
 "call.autoHangup"="没有响应，自动挂断";
 "call.noResponse"="对方没有回应";
 "call.connectFailed"="建立连接失败";
@@ -374,3 +375,9 @@
 //PersonalCenter
 "servicePhone" = "服务电话：";
 "serviceTime" = "服务时间：";
+"personal.addBankCard" = "添加银行卡";
+"personal.changeBankCard" = "修改银行卡";
+"personal.card1" = "请上传医师职业证(带职业信息的详情页)";
+"personal.card2" = "请上传职称资格证";
+"personal.card3" = "请上传心理咨询师证";
+"personal.card4" = "请上传工作证";

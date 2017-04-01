@@ -11,7 +11,6 @@
 
 #import "DoctorsModel.h"
 
-#import <Masonry.h>
 
 @interface MyWalletViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

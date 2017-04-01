@@ -16,5 +16,7 @@
 #import "EaseUI.h"
 #import "MBProgressHUD+Add.h"
 #import <GJCFUitils.h>
+#import <Hyphenate/Hyphenate.h>
+#import <Masonry.h>
 #endif /* InHeart_Doctors_Prefix_pch */
 #endif

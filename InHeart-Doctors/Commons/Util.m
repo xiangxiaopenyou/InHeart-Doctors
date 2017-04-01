@@ -76,10 +76,7 @@
     return [numberFormatter stringFromNumber:@(floatNumber)];
 }
 + (CGSize)sizeOfText:(NSString *)text width:(CGFloat)width font:(UIFont *)font {
-    CGSize size;
-    if (text) {
-        size = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
-    }
+    CGSize size = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
     return size;
 }
 + (BOOL)checkPassword:(NSString *)password {

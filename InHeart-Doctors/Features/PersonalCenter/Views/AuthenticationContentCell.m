@@ -7,6 +7,8 @@
 //
 
 #import "AuthenticationContentCell.h"
+@interface AuthenticationContentCell ()<UITextFieldDelegate>
+@end
 
 @implementation AuthenticationContentCell
 
@@ -19,6 +21,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

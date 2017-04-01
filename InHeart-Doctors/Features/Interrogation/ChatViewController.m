@@ -15,6 +15,8 @@
 #import "ConversationModel.h"
 #import "UserMessagesModel.h"
 
+#import "DemoCallManager.h"
+
 @interface ChatViewController ()<EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource>
 
 @end
@@ -30,6 +32,8 @@
     
     self.delegate = self;
     self.dataSource = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callMessageInsert:) name:@"callMessageDidInserted" object:nil];
 
 }
 
@@ -37,6 +41,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Notifications
+- (void)callMessageInsert:(NSNotification *)notification {
+    EMMessage *tempMessage = (EMMessage *)notification.object;
+    [self addMessageToDataSource:tempMessage progress:nil];
+    //[self.conversation insertMessage:tempMessage error:nil];
+}
+
 #pragma mark - private methods
 //创建处方消息
 - (void)createPrescriptionMessage:(NSDictionary *)dictionary {
@@ -125,6 +136,11 @@
             }
         }];
     }
+}
+- (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView {
+    [self.chatToolbar endEditing:YES];
+    //[[DemoCallManager sharedManager] setMainController:self.navigationController];
+    [[DemoCallManager sharedManager] makeCallWithUsername:self.model.conversation.conversationId type:EMCallTypeVideo];
 }
 
 /*

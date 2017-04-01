@@ -15,7 +15,6 @@
 #import "ContentsTypeModel.h"
 
 #import <MJRefresh.h>
-#import <Masonry.h>
 
 @interface ChooseContentsViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollOfContents;

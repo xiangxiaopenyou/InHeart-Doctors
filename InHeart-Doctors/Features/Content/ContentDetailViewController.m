@@ -15,7 +15,6 @@
 #import "ContentsMediaModel.h"
 
 #import <UtoVRPlayer/UtoVRPlayer.h>
-#import <Masonry.h>
 #import <SDCycleScrollView.h>
 
 @interface ContentDetailViewController ()<UVPlayerDelegate, UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>

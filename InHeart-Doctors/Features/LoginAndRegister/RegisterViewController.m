@@ -16,8 +16,6 @@
 #import "PersonalInfo.h"
 #import "UserInfo.h"
 
-#import <Masonry.h>
-
 @interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (strong, nonatomic) XLHyperLinkButton *linkButton;

@@ -16,6 +16,8 @@
 #import "UsersModel.h"
 #import "UserInfo.h"
 
+#import "DemoCallManager.h"
+
 static CGFloat const kTipLabelHeight = 2.0;
 #define kTipLabelWidth SCREEN_WIDTH / 3.0
 
@@ -27,6 +29,7 @@ static CGFloat const kTipLabelHeight = 2.0;
 
 @implementation MainTabBarController
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -67,6 +70,7 @@ static CGFloat const kTipLabelHeight = 2.0;
         [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
             if (!aError) {
                 [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+                [[DemoCallManager sharedManager] setMainController:self];
                 //[self setupUnreadMessagesCount];
             } else {
                 XLShowThenDismissHUD(NO, kNetworkError, self.view);
@@ -74,8 +78,10 @@ static CGFloat const kTipLabelHeight = 2.0;
         }];
     } else {
         [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+        [[DemoCallManager sharedManager] setMainController:self];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:kSetupUnreadMessagesCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
 
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -85,6 +91,50 @@ static CGFloat const kTipLabelHeight = 2.0;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)dealloc {
+    [[EMClient sharedClient].chatManager removeDelegate:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSetupUnreadMessagesCount object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoCallDidEnded" object:nil];
+}
+
+#pragma mark - Notifications
+- (void)setupUnreadMessagesCount {
+    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+    NSInteger unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+    }
+    UITabBarItem *item = self.tabBar.items[1];
+    item.badgeValue = unreadCount > 0 ? [NSString stringWithFormat:@"%@", @(unreadCount)] : nil;
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
+}
+//插入视频通话消息
+- (void)insertCallMessage:(NSNotification *)notification {
+    NSDictionary *tempDictionary = (NSDictionary *)notification.object;
+    NSString *toUser = [NSString stringWithFormat:@"%@", tempDictionary[@"username"]];
+    NSInteger time = [tempDictionary[@"callTime"] integerValue];
+    NSInteger hours = time / 3600;
+    NSInteger minites = (time - hours * 3600) / 60;
+    NSInteger seconds = time - hours * 3600 - minites * 60;
+    NSString *timeString;
+    if (hours > 0) {
+        timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minites, (long)seconds];
+    } else if(minites > 0){
+        timeString = [NSString stringWithFormat:@"%02ld:%02ld", minites, (long)seconds];
+    }
+    else{
+        timeString = [NSString stringWithFormat:@"00:%02ld", seconds];
+    }
+    NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
+    EMMessage *callMessage = [EaseSDKHelper sendTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];
+    callMessage.status = EMMessageStatusSuccessed;
+    [[EMClient sharedClient].chatManager importMessages:@[callMessage] completion:^(EMError *aError) {
+        if (!aError) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"callMessageDidInserted" object:callMessage];
+        }
+    }];
 }
 
 - (void)setupChildControllerWith:(UIViewController *)childViewController normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage title:(NSString *)title index:(NSInteger)index {
@@ -173,16 +223,5 @@ static CGFloat const kTipLabelHeight = 2.0;
     // Pass the selected object to the new view controller.
 }
 */
-- (void)setupUnreadMessagesCount {
-    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
-    NSInteger unreadCount = 0;
-    for (EMConversation *conversation in conversations) {
-        unreadCount += conversation.unreadMessagesCount;
-    }
-    UITabBarItem *item = self.tabBar.items[1];
-    item.badgeValue = unreadCount > 0 ? [NSString stringWithFormat:@"%@", @(unreadCount)] : nil;
-    UIApplication *application = [UIApplication sharedApplication];
-    [application setApplicationIconBadgeNumber:unreadCount];
-}
 
 @end

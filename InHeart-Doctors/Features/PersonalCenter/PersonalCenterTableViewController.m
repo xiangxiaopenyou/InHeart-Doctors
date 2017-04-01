@@ -11,6 +11,7 @@
 #import "AuthenticationInformationViewController.h"
 #import "MyWalletViewController.h"
 #import "MyCollectionsTableViewController.h"
+#import "MyBankCardViewController.h"
 #import "InterrogationSettingViewController.h"
 #import "SystemSettingTableViewController.h"
 
@@ -23,6 +24,8 @@
 @interface PersonalCenterTableViewController ()
 @property (strong, nonatomic) UsersModel *userModel;
 @property (strong, nonatomic) PersonalInfo *personalModel;
+@property (copy, nonatomic) NSArray *iconArray;
+@property (copy, nonatomic) NSArray *itemTitleArray;
 
 @end
 
@@ -84,12 +87,10 @@
             break;
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            NSArray *tempIconArray = @[@"my_wallet", @"my_collections", @"my_collections", @"my_collections", @"my_collections"];
-            NSArray *tempTitleArray = @[kMyWallet, kMyCollections, kMyPatients, kMyBandCard, kInviteDoctors];
-            cell.imageView.image = [UIImage imageNamed:tempIconArray[indexPath.row]];
+            cell.imageView.image = [UIImage imageNamed:self.iconArray[indexPath.row]];
             cell.textLabel.font = kSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
-            cell.textLabel.text = tempTitleArray[indexPath.row];
+            cell.textLabel.text = self.itemTitleArray[indexPath.row];
             
             return cell;
         }
@@ -140,6 +141,8 @@
             } else if (indexPath.row == 2) {
                 
             } else if (indexPath.row == 3) {
+                MyBankCardViewController *cardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyBankCard"];
+                [self.navigationController pushViewController:cardViewController animated:YES];
             } else {
                 
             }
@@ -219,5 +222,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Getters
+- (NSArray *)iconArray {
+    if (!_iconArray) {
+        _iconArray = @[@"my_wallet", @"my_collections", @"my_collections", @"my_collections", @"my_collections"];
+    }
+    return _iconArray;
+}
+- (NSArray *)itemTitleArray {
+    if (!_itemTitleArray) {
+        _itemTitleArray = @[kMyWallet, kMyCollections, kMyPatients, kMyBandCard, kInviteDoctors];
+    }
+    return _itemTitleArray;
+}
 
 @end

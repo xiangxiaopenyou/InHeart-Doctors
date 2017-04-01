@@ -7,7 +7,7 @@
 //
 
 #import "GuidePageView.h"
-#import <Masonry.h>
+
 @interface GuidePageView ()<UIScrollViewDelegate>
 @property (strong, nonatomic) UIScrollView *guideScrollView;
 @property (strong, nonatomic) UIButton *closeButton;
