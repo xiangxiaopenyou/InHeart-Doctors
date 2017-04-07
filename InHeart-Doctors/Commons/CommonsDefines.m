@@ -123,6 +123,12 @@ NSString * const FETCH_BILLS_LIST = @"doctor/getBills";
 NSString * const FETCH_COMMON_PRICE = @"doctor/getMinPrice";
 NSString * const SET_COMMON_PRICE = @"doctor/setMinPrice";
 NSString * const SET_INTERROGATION_STATE = @"doctor/setStatus";
+NSString * const FETCH_PROFESSIONAL_TITLES = @"doctor/professionalTitles";
+NSString * const UPLOAD_IMAGE = @"doctor/imageUpload";
+NSString * const SUBMIT_INFORMATIONS = @"doctor/auth";
+NSString * const BANK_LIST = @"";
+NSString * const ADD_BANKCARD = @"doctor/bankCard/save";
+NSString * const MY_BANKCARD = @"doctor/bankCard/get";
 
 NSString * const FETCH_USERS_NAME = @"doctor/getUserIDAndName";
 NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";

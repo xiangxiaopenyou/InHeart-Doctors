@@ -12,7 +12,6 @@
 #import "FetchCollectionsListRequest.h"
 #import "FetchAccountBalanceRequest.h"
 #import "EditInformationRequest.h"
-#import "UploadAvatarRequest.h"
 #import "FetchCommonPriceRequest.h"
 #import "SetCommonPriceRequest.h"
 #import "SetInterrogationStateRequest.h"
@@ -63,19 +62,6 @@
         request.city = cityCode;
         return YES;
     } result:handler];
-}
-+ (void)uploadAvatar:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler {
-    [[UploadAvatarRequest new] request:^BOOL(UploadAvatarRequest *request) {
-        request.fileName = fileName;
-        request.fileData = fileData;
-        return YES;
-    } result:^(id object, NSString *msg) {
-        if (msg) {
-            !handler ?: handler(nil, msg);
-        } else {
-            !handler ?: handler(object, nil);
-        }
-    }];
 }
 + (void)fetchCommonPrice:(RequestResultHandler)handler {
     [[FetchCommonPriceRequest new] request:^BOOL(id request) {

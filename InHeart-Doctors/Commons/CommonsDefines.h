@@ -154,6 +154,12 @@ extern NSString * const FETCH_BILLS_LIST;
 extern NSString * const FETCH_COMMON_PRICE;
 extern NSString * const SET_COMMON_PRICE;
 extern NSString * const SET_INTERROGATION_STATE;
+extern NSString * const FETCH_PROFESSIONAL_TITLES;
+extern NSString * const UPLOAD_IMAGE;
+extern NSString * const SUBMIT_INFORMATIONS;
+extern NSString * const BANK_LIST;
+extern NSString * const ADD_BANKCARD;
+extern NSString * const MY_BANKCARD;
 
 //5.消息(问诊)
 extern NSString * const FETCH_USERS_NAME;

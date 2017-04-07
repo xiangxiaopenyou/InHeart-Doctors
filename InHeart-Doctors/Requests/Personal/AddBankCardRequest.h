@@ -1,15 +1,15 @@
 //
-//  AddBankCardViewController.h
+//  AddBankCardRequest.h
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 2017/3/30.
+//  Created by 项小盆友 on 2017/4/7.
 //  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseRequest.h"
 @class CardModel;
 
-@interface AddBankCardViewController : UIViewController
+@interface AddBankCardRequest : BaseRequest
 @property (strong, nonatomic) CardModel *model;
 
 @end

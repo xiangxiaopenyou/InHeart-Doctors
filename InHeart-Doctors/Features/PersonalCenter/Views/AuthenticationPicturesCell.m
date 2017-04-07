@@ -27,6 +27,7 @@
         for (NSInteger i = 0; i < array.count; i ++) {
             UIImage *image = array[i];
             UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.userInteractionEnabled = YES;
             imageView.clipsToBounds = YES;
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.image = image;
@@ -39,13 +40,13 @@
             
             UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
             deleteButton.tag = 100 + i;
-            [deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+            [deleteButton setImage:[UIImage imageNamed:@"delete_picture"] forState:UIControlStateNormal];
             [deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-            [imageView addSubview:deleteButton];
+            [self.viewOfPictures addSubview:deleteButton];
             [deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.trailing.equalTo(imageView.mas_trailing).with.mas_offset(10);
-                make.top.equalTo(imageView.mas_top).with.mas_offset(- 10);
-                make.size.mas_offset(CGSizeMake(20, 20));
+                make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107 + 80);
+                make.top.equalTo(self.viewOfPictures.mas_top).with.mas_offset(- 15);
+                make.size.mas_offset(CGSizeMake(30, 30));
             }];
         }
     } else {
@@ -65,13 +66,13 @@
                 
                 UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 deleteButton.tag = 100 + i;
-                [deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+                [deleteButton setImage:[UIImage imageNamed:@"delete_picture"] forState:UIControlStateNormal];
                 [deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-                [imageView addSubview:deleteButton];
+                [self.viewOfPictures addSubview:deleteButton];
                 [deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.trailing.equalTo(imageView.mas_trailing).with.mas_offset(10);
-                    make.top.equalTo(imageView.mas_top).with.mas_offset(- 10);
-                    make.size.mas_offset(CGSizeMake(20, 20));
+                    make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107 + 80);
+                    make.top.equalTo(self.viewOfPictures.mas_top).with.mas_offset(- 15);
+                    make.size.mas_offset(CGSizeMake(30, 30));
                 }];
                 
             } else {
@@ -93,9 +94,14 @@
 
 #pragma mark - IBAction
 - (void)addPictureAction {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didClickAddPicture:)]) {
+        [self.delegate didClickAddPicture:self];
+    }
 }
 - (void)deleteAction:(UIButton *)button {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pictureCell:didDeletePicture:)]) {
+        [self.delegate pictureCell:self didDeletePicture:button.tag - 100];
+    }
 }
 
 @end

@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol AuthenticationPicturesCellDelegate<NSObject>
+- (void)didClickAddPicture:(UITableViewCell *)cell;
+- (void)pictureCell:(UITableViewCell *)cell didDeletePicture:(NSInteger)index;
+@end
 
 @interface AuthenticationPicturesCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cardTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *viewOfPictures;
+
+@property (weak, nonatomic) id <AuthenticationPicturesCellDelegate> delegate;
 
 - (void)refreshContents:(NSArray *)array;
 

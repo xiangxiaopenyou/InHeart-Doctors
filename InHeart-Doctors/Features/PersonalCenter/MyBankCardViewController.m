@@ -9,11 +9,15 @@
 #import "MyBankCardViewController.h"
 #import "AddBankCardViewController.h"
 
+#import "CardModel.h"
+
 @interface MyBankCardViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewOfBankCard;
 @property (weak, nonatomic) IBOutlet UIButton *addCardButton;
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
+
+@property (strong, nonatomic) CardModel *model;
 
 @end
 
@@ -24,10 +28,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self fetchMyBankCard];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Request
+- (void)fetchMyBankCard {
+    [CardModel fetchMyBankCard:^(id object, NSString *msg) {
+        if (object) {
+            self.model = (CardModel *)object;
+            GJCFAsyncMainQueue(^{
+                [self updateView];
+            });
+        }
+    }];
+}
+
+#pragma mark - private methods
+- (void)updateView {
+    
 }
 
 #pragma mark - Navigation

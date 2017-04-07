@@ -1,21 +1,22 @@
 //
-//  UploadAvatarRequest.m
+//  UploadImageRequest.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/10/28.
-//  Copyright © 2016年 项小盆友. All rights reserved.
+//  Created by 项小盆友 on 2017/4/6.
+//  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "UploadAvatarRequest.h"
+#import "UploadImageRequest.h"
 
-@implementation UploadAvatarRequest
+@implementation UploadImageRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
     if (!paramsBlock(self)) {
         return;
     }
     [self.params setObject:self.fileName forKey:@"filename"];
-    [[UploadImageManager sharedInstance] POST:UPLOAD_AVATAR parameters:self.params  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpeg"];
+    [self.params setObject:self.fileType forKey:@"fileType"];
+    [[UploadImageManager sharedInstance] POST:UPLOAD_IMAGE parameters:self.params  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpg"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);
@@ -26,5 +27,6 @@
         !resultHandler ?: resultHandler(nil, kNetworkError);
     }];
 }
+
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0877811E9499D300064FDD /* TitlesPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0877801E9499D300064FDD /* TitlesPickerView.m */; };
 		3D0A5C791E77B7990017204D /* SceneContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C781E77B7990017204D /* SceneContentsViewController.m */; };
 		3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */; };
 		3D0A5C801E7A91100017204D /* SceneContentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C7F1E7A91100017204D /* SceneContentsListViewController.m */; };
@@ -16,12 +17,25 @@
 		3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8B1E7BAEFF0017204D /* CommonNewsCell.m */; };
 		3D0A5C8F1E7FB5270017204D /* MyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */; };
 		3D0E57E81DD1C05E00294463 /* ChooseContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */; };
+		3D0FB2951E94E8BD00F5F4A1 /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2941E94E8BD00F5F4A1 /* InformationModel.m */; };
 		3D1682EA1DACB59E006E3317 /* FetchContentsListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1682E91DACB59E006E3317 /* FetchContentsListRequest.m */; };
 		3D16C0BA1DC834D1006DEF85 /* LogoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D16C0B91DC834D1006DEF85 /* LogoutRequest.m */; };
+		3D186EFB1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D186EFA1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m */; };
+		3D186EFE1E94966B00FB8C0F /* TitlesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D186EFD1E94966B00FB8C0F /* TitlesModel.m */; };
 		3D1870D51D9BC6F600B8B34B /* PersonalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1870D41D9BC6F600B8B34B /* PersonalInfo.m */; };
 		3D1963841DDBEB4F00EFF558 /* PrescriptionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1963831DDBEB4F00EFF558 /* PrescriptionMessageCell.m */; };
 		3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */; };
 		3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4291E8CD65300353864 /* AddBankCardViewController.m */; };
+		3D33E4B01E961B43003AA8C5 /* UploadImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4AF1E961B43003AA8C5 /* UploadImageRequest.m */; };
+		3D33E4B31E962227003AA8C5 /* UploadImagesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4B21E962227003AA8C5 /* UploadImagesRequest.m */; };
+		3D33E4B61E962C55003AA8C5 /* SubmitInformationsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4B51E962C55003AA8C5 /* SubmitInformationsRequest.m */; };
+		3D33E4BE1E9724D8003AA8C5 /* AuthenticationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4B91E9724D8003AA8C5 /* AuthenticationInformationViewController.m */; };
+		3D33E4BF1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4BB1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m */; };
+		3D33E4C01E9724D8003AA8C5 /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4BD1E9724D8003AA8C5 /* EditInformationViewController.m */; };
+		3D33E4C41E972D93003AA8C5 /* CardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4C31E972D93003AA8C5 /* CardModel.m */; };
+		3D33E4D51E973F1B003AA8C5 /* AddBankCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4D01E973F1B003AA8C5 /* AddBankCardRequest.m */; };
+		3D33E4D61E973F1B003AA8C5 /* FetchBanksListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4D21E973F1B003AA8C5 /* FetchBanksListRequest.m */; };
+		3D33E4D71E973F1B003AA8C5 /* MyBankCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4D41E973F1B003AA8C5 /* MyBankCardRequest.m */; };
 		3D3529B61E14A3CF00C053FE /* ContentsTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529B51E14A3CF00C053FE /* ContentsTypeModel.m */; };
 		3D3529B91E14AFCA00C053FE /* ContentsMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529B81E14AFCA00C053FE /* ContentsMediaModel.m */; };
 		3D3529BC1E14D44400C053FE /* ProvincesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529BB1E14D44400C053FE /* ProvincesModel.m */; };
@@ -33,7 +47,6 @@
 		3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3DCE501D9B51E20067870D /* FetchVerificationCodeRequest.m */; };
 		3D3DCE541D9B70E60067870D /* RegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3DCE531D9B70E60067870D /* RegisterRequest.m */; };
 		3D42806C1DC33EFE006E3B95 /* EditInformationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42806B1DC33EFE006E3B95 /* EditInformationRequest.m */; };
-		3D42806F1DC3474F006E3B95 /* UploadAvatarRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42806E1DC3474F006E3B95 /* UploadAvatarRequest.m */; };
 		3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D43269D1DBDB9600043008D /* AudioPlayerView.m */; };
 		3D4326A01DBDB9C70043008D /* AudioPlayerview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D43269F1DBDB9C70043008D /* AudioPlayerview.xib */; };
 		3D4326A61DBE0A730043008D /* DetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4326A51DBE0A730043008D /* DetailNavigationController.m */; };
@@ -109,7 +122,6 @@
 		3D64A6DE1E8DEA2F0021B537 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64A6A31E8DEA2F0021B537 /* default_avatar.png */; };
 		3D64A6E11E8E55F20021B537 /* SelectSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E01E8E55F20021B537 /* SelectSexCell.m */; };
 		3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E31E8F72440021B537 /* AuthenticationPicturesCell.m */; };
-		3D64A6E71E8F72A60021B537 /* AuthenticationPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */; };
 		3D64AC161DC1E13B00F46AA3 /* SelectSpecialitsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D64AC151DC1E13B00F46AA3 /* SelectSpecialitsView.m */; };
 		3D6A8E711D98B07700C405DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E701D98B07700C405DA /* main.m */; };
 		3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6A8E731D98B07700C405DA /* AppDelegate.m */; };
@@ -171,13 +183,11 @@
 		3DC30CB61E83BA5F00AF48D6 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; };
 		3DC30CB71E83BA5F00AF48D6 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DC30CBB1E84ADA100AF48D6 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */; };
-		3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD93E631DAA10A6008B190A /* EditInformationViewController.m */; };
 		3DE0768D1DD15F190008C1DF /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0768C1DD15F190008C1DF /* ChatViewController.m */; };
 		3DE076901DD15F4F0008C1DF /* ConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0768F1DD15F4F0008C1DF /* ConversationListView.m */; };
 		3DEA69F41D9CED6700EA8236 /* AuthenticationInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */; };
 		3DEA69F71D9CF1BE00EA8236 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */; };
 		3DEEC8CC1E72A62A006A40D3 /* HomepageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8CB1E72A62A006A40D3 /* HomepageNavigationController.m */; };
-		3DEEC8CF1E762C22006A40D3 /* AuthenticationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8CE1E762C22006A40D3 /* AuthenticationInformationViewController.m */; };
 		3DEEC8D51E76347C006A40D3 /* AuthenticationContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8D41E76347C006A40D3 /* AuthenticationContentCell.m */; };
 		3DEEC8D81E766DF4006A40D3 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8D71E766DF4006A40D3 /* NewsViewController.m */; };
 		3DEED8F11E839BA700F96A5A /* EaseUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEED7CD1E839BA700F96A5A /* EaseUI.m */; };
@@ -306,6 +316,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D08777F1E9499D300064FDD /* TitlesPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlesPickerView.h; sourceTree = "<group>"; };
+		3D0877801E9499D300064FDD /* TitlesPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlesPickerView.m; sourceTree = "<group>"; };
 		3D0A5C771E77B7990017204D /* SceneContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneContentsViewController.h; sourceTree = "<group>"; };
 		3D0A5C781E77B7990017204D /* SceneContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneContentsViewController.m; sourceTree = "<group>"; };
 		3D0A5C7B1E7A58E30017204D /* DepartmentSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentSelectCell.h; sourceTree = "<group>"; };
@@ -324,10 +336,16 @@
 		3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatientsViewController.m; sourceTree = "<group>"; };
 		3D0E57E61DD1C05E00294463 /* ChooseContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContentsViewController.h; sourceTree = "<group>"; };
 		3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContentsViewController.m; sourceTree = "<group>"; };
+		3D0FB2931E94E8BD00F5F4A1 /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationModel.h; sourceTree = "<group>"; };
+		3D0FB2941E94E8BD00F5F4A1 /* InformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationModel.m; sourceTree = "<group>"; };
 		3D1682E81DACB59E006E3317 /* FetchContentsListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchContentsListRequest.h; sourceTree = "<group>"; };
 		3D1682E91DACB59E006E3317 /* FetchContentsListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchContentsListRequest.m; sourceTree = "<group>"; };
 		3D16C0B81DC834D1006DEF85 /* LogoutRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutRequest.h; sourceTree = "<group>"; };
 		3D16C0B91DC834D1006DEF85 /* LogoutRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutRequest.m; sourceTree = "<group>"; };
+		3D186EF91E9494E800FB8C0F /* FetchProfessionalTitlesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchProfessionalTitlesRequest.h; path = ../Personal/FetchProfessionalTitlesRequest.h; sourceTree = "<group>"; };
+		3D186EFA1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchProfessionalTitlesRequest.m; path = ../Personal/FetchProfessionalTitlesRequest.m; sourceTree = "<group>"; };
+		3D186EFC1E94966B00FB8C0F /* TitlesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlesModel.h; sourceTree = "<group>"; };
+		3D186EFD1E94966B00FB8C0F /* TitlesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlesModel.m; sourceTree = "<group>"; };
 		3D1870D31D9BC6F600B8B34B /* PersonalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfo.h; sourceTree = "<group>"; };
 		3D1870D41D9BC6F600B8B34B /* PersonalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfo.m; sourceTree = "<group>"; };
 		3D1963821DDBEB4F00EFF558 /* PrescriptionMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionMessageCell.h; sourceTree = "<group>"; };
@@ -337,6 +355,26 @@
 		3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankCardViewController.m; sourceTree = "<group>"; };
 		3D32F4281E8CD65300353864 /* AddBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
 		3D32F4291E8CD65300353864 /* AddBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCardViewController.m; sourceTree = "<group>"; };
+		3D33E4AE1E961B43003AA8C5 /* UploadImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadImageRequest.h; path = ../Personal/UploadImageRequest.h; sourceTree = "<group>"; };
+		3D33E4AF1E961B43003AA8C5 /* UploadImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadImageRequest.m; path = ../Personal/UploadImageRequest.m; sourceTree = "<group>"; };
+		3D33E4B11E962227003AA8C5 /* UploadImagesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadImagesRequest.h; path = ../Personal/UploadImagesRequest.h; sourceTree = "<group>"; };
+		3D33E4B21E962227003AA8C5 /* UploadImagesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadImagesRequest.m; path = ../Personal/UploadImagesRequest.m; sourceTree = "<group>"; };
+		3D33E4B41E962C55003AA8C5 /* SubmitInformationsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubmitInformationsRequest.h; path = ../Personal/SubmitInformationsRequest.h; sourceTree = "<group>"; };
+		3D33E4B51E962C55003AA8C5 /* SubmitInformationsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubmitInformationsRequest.m; path = ../Personal/SubmitInformationsRequest.m; sourceTree = "<group>"; };
+		3D33E4B81E9724D8003AA8C5 /* AuthenticationInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationViewController.h; sourceTree = "<group>"; };
+		3D33E4B91E9724D8003AA8C5 /* AuthenticationInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationViewController.m; sourceTree = "<group>"; };
+		3D33E4BA1E9724D8003AA8C5 /* AuthenticationPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationPicturesViewController.h; sourceTree = "<group>"; };
+		3D33E4BB1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationPicturesViewController.m; sourceTree = "<group>"; };
+		3D33E4BC1E9724D8003AA8C5 /* EditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationViewController.h; sourceTree = "<group>"; };
+		3D33E4BD1E9724D8003AA8C5 /* EditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationViewController.m; sourceTree = "<group>"; };
+		3D33E4C21E972D93003AA8C5 /* CardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardModel.h; sourceTree = "<group>"; };
+		3D33E4C31E972D93003AA8C5 /* CardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardModel.m; sourceTree = "<group>"; };
+		3D33E4CF1E973F1B003AA8C5 /* AddBankCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardRequest.h; sourceTree = "<group>"; };
+		3D33E4D01E973F1B003AA8C5 /* AddBankCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCardRequest.m; sourceTree = "<group>"; };
+		3D33E4D11E973F1B003AA8C5 /* FetchBanksListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchBanksListRequest.h; sourceTree = "<group>"; };
+		3D33E4D21E973F1B003AA8C5 /* FetchBanksListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchBanksListRequest.m; sourceTree = "<group>"; };
+		3D33E4D31E973F1B003AA8C5 /* MyBankCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankCardRequest.h; sourceTree = "<group>"; };
+		3D33E4D41E973F1B003AA8C5 /* MyBankCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankCardRequest.m; sourceTree = "<group>"; };
 		3D3529B41E14A3CF00C053FE /* ContentsTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsTypeModel.h; sourceTree = "<group>"; };
 		3D3529B51E14A3CF00C053FE /* ContentsTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentsTypeModel.m; sourceTree = "<group>"; };
 		3D3529B71E14AFCA00C053FE /* ContentsMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentsMediaModel.h; sourceTree = "<group>"; };
@@ -359,8 +397,6 @@
 		3D3DCE531D9B70E60067870D /* RegisterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRequest.m; sourceTree = "<group>"; };
 		3D42806A1DC33EFE006E3B95 /* EditInformationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationRequest.h; sourceTree = "<group>"; };
 		3D42806B1DC33EFE006E3B95 /* EditInformationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationRequest.m; sourceTree = "<group>"; };
-		3D42806D1DC3474F006E3B95 /* UploadAvatarRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAvatarRequest.h; sourceTree = "<group>"; };
-		3D42806E1DC3474F006E3B95 /* UploadAvatarRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadAvatarRequest.m; sourceTree = "<group>"; };
 		3D43269C1DBDB9600043008D /* AudioPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerView.h; sourceTree = "<group>"; };
 		3D43269D1DBDB9600043008D /* AudioPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerView.m; sourceTree = "<group>"; };
 		3D43269F1DBDB9C70043008D /* AudioPlayerview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioPlayerview.xib; sourceTree = "<group>"; };
@@ -457,8 +493,6 @@
 		3D64A6E01E8E55F20021B537 /* SelectSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSexCell.m; sourceTree = "<group>"; };
 		3D64A6E21E8F72440021B537 /* AuthenticationPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationPicturesCell.h; sourceTree = "<group>"; };
 		3D64A6E31E8F72440021B537 /* AuthenticationPicturesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationPicturesCell.m; sourceTree = "<group>"; };
-		3D64A6E51E8F72A60021B537 /* AuthenticationPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationPicturesViewController.h; sourceTree = "<group>"; };
-		3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationPicturesViewController.m; sourceTree = "<group>"; };
 		3D64AC141DC1E13B00F46AA3 /* SelectSpecialitsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSpecialitsView.h; sourceTree = "<group>"; };
 		3D64AC151DC1E13B00F46AA3 /* SelectSpecialitsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSpecialitsView.m; sourceTree = "<group>"; };
 		3D6A8E6C1D98B07700C405DA /* InHeart-Doctors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InHeart-Doctors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -585,8 +619,6 @@
 		3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		3DC30CB91E84ADA100AF48D6 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
-		3DD93E621DAA10A6008B190A /* EditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationViewController.h; sourceTree = "<group>"; };
-		3DD93E631DAA10A6008B190A /* EditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationViewController.m; sourceTree = "<group>"; };
 		3DE0768B1DD15F190008C1DF /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		3DE0768C1DD15F190008C1DF /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3DE0768E1DD15F4F0008C1DF /* ConversationListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationListView.h; sourceTree = "<group>"; };
@@ -597,8 +629,6 @@
 		3DEA69F61D9CF1BE00EA8236 /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		3DEEC8CA1E72A62A006A40D3 /* HomepageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageNavigationController.h; sourceTree = "<group>"; };
 		3DEEC8CB1E72A62A006A40D3 /* HomepageNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageNavigationController.m; sourceTree = "<group>"; };
-		3DEEC8CD1E762C22006A40D3 /* AuthenticationInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationViewController.h; sourceTree = "<group>"; };
-		3DEEC8CE1E762C22006A40D3 /* AuthenticationInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationViewController.m; sourceTree = "<group>"; };
 		3DEEC8D31E76347C006A40D3 /* AuthenticationContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationContentCell.h; sourceTree = "<group>"; };
 		3DEEC8D41E76347C006A40D3 /* AuthenticationContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationContentCell.m; sourceTree = "<group>"; };
 		3DEEC8D61E766DF4006A40D3 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
@@ -920,6 +950,43 @@
 				3D4326AE1DBF07CD0043008D /* CancelCollectRequest.m */,
 			);
 			path = Contents;
+			sourceTree = "<group>";
+		};
+		3D33E4B71E972483003AA8C5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				3D33E4B81E9724D8003AA8C5 /* AuthenticationInformationViewController.h */,
+				3D33E4B91E9724D8003AA8C5 /* AuthenticationInformationViewController.m */,
+				3D33E4BA1E9724D8003AA8C5 /* AuthenticationPicturesViewController.h */,
+				3D33E4BB1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m */,
+				3D33E4BC1E9724D8003AA8C5 /* EditInformationViewController.h */,
+				3D33E4BD1E9724D8003AA8C5 /* EditInformationViewController.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		3D33E4C11E972D81003AA8C5 /* BankCardModel */ = {
+			isa = PBXGroup;
+			children = (
+				3D33E4C21E972D93003AA8C5 /* CardModel.h */,
+				3D33E4C31E972D93003AA8C5 /* CardModel.m */,
+			);
+			path = BankCardModel;
+			sourceTree = "<group>";
+		};
+		3D33E4C51E973711003AA8C5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				3D186EF91E9494E800FB8C0F /* FetchProfessionalTitlesRequest.h */,
+				3D186EFA1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m */,
+				3D33E4AE1E961B43003AA8C5 /* UploadImageRequest.h */,
+				3D33E4AF1E961B43003AA8C5 /* UploadImageRequest.m */,
+				3D33E4B11E962227003AA8C5 /* UploadImagesRequest.h */,
+				3D33E4B21E962227003AA8C5 /* UploadImagesRequest.m */,
+				3D33E4B41E962C55003AA8C5 /* SubmitInformationsRequest.h */,
+				3D33E4B51E962C55003AA8C5 /* SubmitInformationsRequest.m */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		3D57BF891E4AAE0A00F211A7 /* Vendor */ = {
@@ -1263,15 +1330,10 @@
 			isa = PBXGroup;
 			children = (
 				3D6A8EBD1D98C69600C405DA /* Views */,
+				3D33E4B71E972483003AA8C5 /* Authentication */,
 				3D6A8EBA1D98C69600C405DA /* Personal.storyboard */,
 				3D6A8EBB1D98C69600C405DA /* PersonalCenterTableViewController.h */,
 				3D6A8EBC1D98C69600C405DA /* PersonalCenterTableViewController.m */,
-				3DEEC8CD1E762C22006A40D3 /* AuthenticationInformationViewController.h */,
-				3DEEC8CE1E762C22006A40D3 /* AuthenticationInformationViewController.m */,
-				3D64A6E51E8F72A60021B537 /* AuthenticationPicturesViewController.h */,
-				3D64A6E61E8F72A60021B537 /* AuthenticationPicturesViewController.m */,
-				3DD93E621DAA10A6008B190A /* EditInformationViewController.h */,
-				3DD93E631DAA10A6008B190A /* EditInformationViewController.m */,
 				3D4326BF1DC08C010043008D /* MyWalletViewController.h */,
 				3D4326C01DC08C010043008D /* MyWalletViewController.m */,
 				3DBDFD421DAA28750065AA7A /* MyCollectionsTableViewController.h */,
@@ -1313,6 +1375,8 @@
 				3D64A6E01E8E55F20021B537 /* SelectSexCell.m */,
 				3D64A6611E8CE6750021B537 /* AddCardCell.h */,
 				3D64A6621E8CE6750021B537 /* AddCardCell.m */,
+				3D08777F1E9499D300064FDD /* TitlesPickerView.h */,
+				3D0877801E9499D300064FDD /* TitlesPickerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1320,12 +1384,13 @@
 		3D6A8EC21D98C69600C405DA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D33E4C11E972D81003AA8C5 /* BankCardModel */,
 				3DF089FF1DDA9AB500D64EA6 /* UserMessageModel */,
 				3DA4D3B71DC32BCA00CD47FF /* CityModel */,
 				3D1682E21DACB15D006E3317 /* ContentModel */,
 				3D6A8EF91D9908E000C405DA /* UserInfo */,
-				3D6A8EC31D98C69600C405DA /* BaseModel */,
 				3D6A8EC61D98C69600C405DA /* DoctorModel */,
+				3D6A8EC31D98C69600C405DA /* BaseModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1346,6 +1411,10 @@
 				3D3529CA1E14EFDA00C053FE /* DoctorsModel.m */,
 				3D3529CC1E14EFF200C053FE /* BillsModel.h */,
 				3D3529CD1E14EFF200C053FE /* BillsModel.m */,
+				3D186EFC1E94966B00FB8C0F /* TitlesModel.h */,
+				3D186EFD1E94966B00FB8C0F /* TitlesModel.m */,
+				3D0FB2931E94E8BD00F5F4A1 /* InformationModel.h */,
+				3D0FB2941E94E8BD00F5F4A1 /* InformationModel.m */,
 			);
 			path = DoctorModel;
 			sourceTree = "<group>";
@@ -1353,6 +1422,7 @@
 		3D6A8EC91D98C69600C405DA /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				3D33E4C51E973711003AA8C5 /* Authentication */,
 				3DF08A061DDA9AF000D64EA6 /* Messages */,
 				3D1682E61DACB573006E3317 /* Contents */,
 				3DEFA4B51D9A3D8700876E56 /* LoginAndRegister */,
@@ -1414,8 +1484,6 @@
 				3DA4D3B51DC3297600CD47FF /* FetchCitiesRequest.m */,
 				3D42806A1DC33EFE006E3B95 /* EditInformationRequest.h */,
 				3D42806B1DC33EFE006E3B95 /* EditInformationRequest.m */,
-				3D42806D1DC3474F006E3B95 /* UploadAvatarRequest.h */,
-				3D42806E1DC3474F006E3B95 /* UploadAvatarRequest.m */,
 				3D8F1C951DC72151000E3604 /* FetchBillsRequest.h */,
 				3D8F1C961DC72151000E3604 /* FetchBillsRequest.m */,
 				3D6C1BBB1DD2BC5D00FAC75E /* FetchCommonPriceRequest.h */,
@@ -1424,6 +1492,12 @@
 				3D6C1BBF1DD2BC7400FAC75E /* SetCommonPriceRequest.m */,
 				3D6C1BC11DD2F39C00FAC75E /* SetInterrogationStateRequest.h */,
 				3D6C1BC21DD2F39C00FAC75E /* SetInterrogationStateRequest.m */,
+				3D33E4CF1E973F1B003AA8C5 /* AddBankCardRequest.h */,
+				3D33E4D01E973F1B003AA8C5 /* AddBankCardRequest.m */,
+				3D33E4D11E973F1B003AA8C5 /* FetchBanksListRequest.h */,
+				3D33E4D21E973F1B003AA8C5 /* FetchBanksListRequest.m */,
+				3D33E4D31E973F1B003AA8C5 /* MyBankCardRequest.h */,
+				3D33E4D41E973F1B003AA8C5 /* MyBankCardRequest.m */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -2180,6 +2254,7 @@
 				3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */,
 				3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
+				3D33E4C41E972D93003AA8C5 /* CardModel.m in Sources */,
 				3DEED9261E839BA700F96A5A /* UIImage+EMGIF.m in Sources */,
 				3DEED92D1E839BA700F96A5A /* PSTCollectionView.m in Sources */,
 				3D0A5C791E77B7990017204D /* SceneContentsViewController.m in Sources */,
@@ -2192,11 +2267,13 @@
 				3DEED8FB1E839BA700F96A5A /* EMVoiceConverter.mm in Sources */,
 				3D6A8EE41D98C69600C405DA /* LoginContentCell.m in Sources */,
 				3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */,
+				3D33E4C01E9724D8003AA8C5 /* EditInformationViewController.m in Sources */,
 				3DEED9271E839BA700F96A5A /* UIImage+EMMultiFormat.m in Sources */,
 				3D9F2D8F1E149A8200F6D65D /* SingleContentModel.m in Sources */,
 				3DEED8F81E839BA700F96A5A /* EMCDDeviceManagerBase.m in Sources */,
 				3D968DAE1DB4B6F8005A1596 /* DetailContentCell.m in Sources */,
 				3D6A8EEE1D98C69600C405DA /* RequestManager.m in Sources */,
+				3D33E4B31E962227003AA8C5 /* UploadImagesRequest.m in Sources */,
 				3DEED94B1E839BA700F96A5A /* EaseConversationListViewController.m in Sources */,
 				3D4326C41DC0AA880043008D /* UploadTitlesPictureRequest.m in Sources */,
 				3DEED93C1E839BA700F96A5A /* EaseMessageModel.m in Sources */,
@@ -2216,6 +2293,7 @@
 				3DEED9201E839BA700F96A5A /* EMSDWebImageDownloaderOperation.m in Sources */,
 				3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */,
 				3D6A8EE91D98C69600C405DA /* PersonalInformationCell.m in Sources */,
+				3D33E4BE1E9724D8003AA8C5 /* AuthenticationInformationViewController.m in Sources */,
 				3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */,
 				3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */,
 				3DEEC8CC1E72A62A006A40D3 /* HomepageNavigationController.m in Sources */,
@@ -2240,6 +2318,7 @@
 				3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */,
 				3DEED9381E839BA700F96A5A /* PSTGridLayoutSection.m in Sources */,
 				3DF08A0C1DDAA37800D64EA6 /* SendPrescriptionRequest.m in Sources */,
+				3D186EFB1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m in Sources */,
 				3D0E57E81DD1C05E00294463 /* ChooseContentsViewController.m in Sources */,
 				3D6A8EE51D98C69600C405DA /* MainTabBarController.m in Sources */,
 				3D6A8E711D98B07700C405DA /* main.m in Sources */,
@@ -2257,6 +2336,7 @@
 				3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */,
 				3D4326C11DC08C010043008D /* MyWalletViewController.m in Sources */,
 				3DEED9511E839BA700F96A5A /* EaseUserCell.m in Sources */,
+				3D33E4BF1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m in Sources */,
 				3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */,
 				3DEED9251E839BA700F96A5A /* UIButton+EMWebCache.m in Sources */,
 				3DEED9481E839BA700F96A5A /* EaseEmotionEscape.m in Sources */,
@@ -2290,14 +2370,17 @@
 				3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */,
 				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
 				3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */,
+				3D33E4D71E973F1B003AA8C5 /* MyBankCardRequest.m in Sources */,
 				3D6A8ED41D98C69600C405DA /* XLBlockAlertView.m in Sources */,
 				3DEED9451E839BA700F96A5A /* EaseMessageReadManager.m in Sources */,
+				3D33E4D51E973F1B003AA8C5 /* AddBankCardRequest.m in Sources */,
 				3DEED9181E839BA700F96A5A /* MWTapDetectingImageView.m in Sources */,
 				3DEED9461E839BA700F96A5A /* EaseEmoji.m in Sources */,
 				3DEED8FE1E839BA700F96A5A /* MBProgressHUD+Add.m in Sources */,
 				3DEED95A1E839BA700F96A5A /* EaseBubbleView+Text.m in Sources */,
 				3DEED95C1E839BA700F96A5A /* EaseBubbleView+Voice.m in Sources */,
 				3D6A8ED91D98C69600C405DA /* ContentViewController.m in Sources */,
+				3D0877811E9499D300064FDD /* TitlesPickerView.m in Sources */,
 				3DEED9581E839BA700F96A5A /* EaseBubbleView+Image.m in Sources */,
 				3DEED9341E839BA700F96A5A /* PSTCollectionViewUpdateItem.m in Sources */,
 				3D64AC161DC1E13B00F46AA3 /* SelectSpecialitsView.m in Sources */,
@@ -2310,7 +2393,6 @@
 				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
 				3D6F35491E10E9F300F9E6E0 /* XLModel.m in Sources */,
 				3DEED91C1E839BA700F96A5A /* EMSDImageCache.m in Sources */,
-				3D64A6E71E8F72A60021B537 /* AuthenticationPicturesViewController.m in Sources */,
 				3DEED91F1E839BA700F96A5A /* EMSDWebImageDownloader.m in Sources */,
 				3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */,
 				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
@@ -2335,7 +2417,7 @@
 				3DEFA4B41D9A1B0000876E56 /* ContentCollectionCell.m in Sources */,
 				3D64A6A81E8DEA2F0021B537 /* EMVideoInfoViewController.m in Sources */,
 				3D64A6AB1E8DEA2F0021B537 /* CallSettingViewController.m in Sources */,
-				3DD93E641DAA10A6008B190A /* EditInformationViewController.m in Sources */,
+				3D33E4B61E962C55003AA8C5 /* SubmitInformationsRequest.m in Sources */,
 				3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */,
 				3DEED9401E839BA700F96A5A /* NSString+Valid.m in Sources */,
 				3DEED8F61E839BA700F96A5A /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -2349,12 +2431,13 @@
 				3DEED9661E839BA700F96A5A /* EaseConversationCell.m in Sources */,
 				3DEED9321E839BA700F96A5A /* PSTCollectionViewItemKey.m in Sources */,
 				3DEED9231E839BA700F96A5A /* MKAnnotationView+EMWebCache.m in Sources */,
+				3D0FB2951E94E8BD00F5F4A1 /* InformationModel.m in Sources */,
 				3DEED91D1E839BA700F96A5A /* EMSDWebImageCompat.m in Sources */,
 				3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */,
+				3D33E4B01E961B43003AA8C5 /* UploadImageRequest.m in Sources */,
 				3D3529CE1E14EFF200C053FE /* BillsModel.m in Sources */,
 				3D968D8B1DADDC8E005A1596 /* FetchTypsRequest.m in Sources */,
 				3DEED9331E839BA700F96A5A /* PSTCollectionViewLayout.m in Sources */,
-				3D42806F1DC3474F006E3B95 /* UploadAvatarRequest.m in Sources */,
 				3DEED9441E839BA700F96A5A /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				3DEED94F1E839BA700F96A5A /* EaseUsersListViewController.m in Sources */,
 				3DEEC8D81E766DF4006A40D3 /* NewsViewController.m in Sources */,
@@ -2365,6 +2448,7 @@
 				3DEED9521E839BA700F96A5A /* EaseBaseMessageCell.m in Sources */,
 				3DEED9541E839BA700F96A5A /* EaseMessageCell.m in Sources */,
 				3D6A8ED31D98C69600C405DA /* XLBlockActionSheet.m in Sources */,
+				3D33E4D61E973F1B003AA8C5 /* FetchBanksListRequest.m in Sources */,
 				3DEED9151E839BA700F96A5A /* MWGridViewController.m in Sources */,
 				3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
@@ -2376,11 +2460,11 @@
 				3DEED94C1E839BA700F96A5A /* EaseLocationViewController.m in Sources */,
 				3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */,
 				3D64A6AC1E8DEA2F0021B537 /* DemoCallManager.m in Sources */,
+				3D186EFE1E94966B00FB8C0F /* TitlesModel.m in Sources */,
 				3DEED9191E839BA700F96A5A /* MWTapDetectingView.m in Sources */,
 				3DEED9491E839BA700F96A5A /* EaseEmotionManager.m in Sources */,
 				3DEED8F71E839BA700F96A5A /* EMCDDeviceManager+Remind.m in Sources */,
 				3DC30CBB1E84ADA100AF48D6 /* NewsDetailViewController.m in Sources */,
-				3DEEC8CF1E762C22006A40D3 /* AuthenticationInformationViewController.m in Sources */,
 				3D6A8EE71D98C69600C405DA /* PersonalCenterTableViewController.m in Sources */,
 				3DEED93A1E839BA700F96A5A /* EaseSDKHelper.m in Sources */,
 			);

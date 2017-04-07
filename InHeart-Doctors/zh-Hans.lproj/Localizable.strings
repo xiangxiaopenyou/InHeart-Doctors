@@ -381,3 +381,17 @@
 "personal.card2" = "请上传职称资格证";
 "personal.card3" = "请上传心理咨询师证";
 "personal.card4" = "请上传工作证";
+"personal.pleaseEntryName" = "请先输入您的真实姓名";
+"personal.pleaseChooseRegion" = "请先选择您所在城市";
+"personal.pleaseChooseTitle" = "请先选择您的职称";
+"personal.pleaseEntryHospitalName" = "请先输入您所在医院名称";
+"personal.pleaseEntryDepartment" = "请先输入您所属科室";
+"personal.pleaseEntryClinicName" = "请先输入您所在诊所名称";
+"personal.pleaseEntryPostion" = "请先输入您的职位";
+"personal.pleaseUploadPersonalPhoto" = "请先进入更多资料上传您的个人照片";
+"personal.pleaseEntryIntroduction" = "请先进入更多资料输入您的个人介绍";
+"personal.pleaseChooseSpecialits" = "请先进入更多资料选择您的擅长病种";
+"personal.pleaseUploadCard1" = "请先进入认证资料上传您的医师职业证";
+"personal.pleaseUploadCard2" = "请先进入认证资料上传您的职称资格证";
+"personal.pleaseUploadCard3" = "请先进入认证资料上传您的心理咨询师证";
+"personal.pleaseUploadCard4" = "请先进入认证资料上传您的工作证";
