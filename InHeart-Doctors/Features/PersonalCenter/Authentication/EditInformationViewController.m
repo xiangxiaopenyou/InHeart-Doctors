@@ -21,7 +21,9 @@
 static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 
 @interface EditInformationViewController ()<UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *finishItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *avatarButton;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextView *introductionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *introductionPlaceholder;
@@ -115,6 +117,18 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
     if (!XLIsNullObject(self.specialitsString)) {
         self.specialitsPlaceholder.hidden = YES;
         self.specialitsTextView.text = [NSString stringWithFormat:@"%@", self.specialitsString];
+    }
+    //是否能编辑
+    if (self.editable) {
+        self.finishItem.enabled = YES;
+        self.introductionTextView.editable = YES;
+        self.specialitsTextView.editable = YES;
+        self.avatarButton.enabled = YES;
+    } else {
+        self.finishItem.enabled = NO;
+        self.introductionTextView.editable = NO;
+        self.specialitsTextView.editable = NO;
+        self.avatarButton.enabled = NO;
     }
 }
 - (void)hideKeyboard {
@@ -246,7 +260,7 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
 //    } else {
 //        [self submitInformations:nil];
 //    }
-    if (XLIsNullObject(self.selectedAvatarImage)) {
+    if (XLIsNullObject(self.selectedAvatarImage) && XLIsNullObject(self.avatarUrl)) {
         XLDismissHUD(self.view, YES, NO, @"请上传个人照片");
         return;
     }

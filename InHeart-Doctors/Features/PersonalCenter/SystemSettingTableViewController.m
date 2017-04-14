@@ -7,6 +7,7 @@
 //
 
 #import "SystemSettingTableViewController.h"
+#import "ChangePasswordTableViewController.h"
 
 #import "XLBlockAlertView.h"
 
@@ -191,16 +192,34 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        if (indexPath.row == 4) {
-            if ([self folderSizeAtPath] >= 0.1) {
-                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要清除缓存吗？" block:^(NSInteger buttonIndex) {
-                    if (buttonIndex == 1) {
-                        XLShowHUDWithMessage(nil, self.view);
-                        [self clearCache];
-                    }
-                } cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil] show];
+        switch (indexPath.row) {
+            case 0:
+                break;
+            case 1:{
+                ChangePasswordTableViewController *changePasswordViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"ChangePassword"];
+                [self.navigationController pushViewController:changePasswordViewController animated:YES];
             }
-        } else {
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:{
+                if ([self folderSizeAtPath] >= 0.1) {
+                    [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要清除缓存吗？" block:^(NSInteger buttonIndex) {
+                        if (buttonIndex == 1) {
+                            XLShowHUDWithMessage(nil, self.view);
+                            [self clearCache];
+                        }
+                    } cancelButtonTitle:@"取消" otherButtonTitles:@"清除", nil] show];
+                }
+            }
+                break;
+            case 5:
+                break;
+                
+            default:
+                break;
         }
     } else {
         [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录吗？" block:^(NSInteger buttonIndex) {
@@ -210,7 +229,6 @@
                         [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
                             if (!aError) {
                                 [[UserInfo sharedUserInfo] removeUserInfo];
-                                [[UserInfo sharedUserInfo] removePersonalInfo];
                                 [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
                             } else {
                                 XLShowThenDismissHUD(NO, kNetworkError, self.view);

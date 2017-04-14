@@ -15,7 +15,7 @@
         return;
     }
     [self.params setObject:self.model.realname forKey:@"realname"];
-    [self.params setObject:self.model.sex forKey:@"sex"];
+    [self.params setObject:self.model.gender forKey:@"gender"];
     [self.params setObject:self.model.region forKey:@"region"];
     [self.params setObject:self.model.professionalTitleId forKey:@"professionalTitleId"];
     [self.params setObject:self.model.workplaceType forKey:@"workplaceType"];

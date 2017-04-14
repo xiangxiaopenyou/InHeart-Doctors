@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 @class UsersModel;
-@class PersonalInfo;
 
 @interface UserInfo : NSObject
 
@@ -17,12 +16,5 @@
 - (BOOL)saveUserInfo:(UsersModel *)userModel;
 - (UsersModel *)userInfo;
 - (void)removeUserInfo;
-
-- (BOOL)savePersonalInfo:(PersonalInfo *)personalInfo;
-- (PersonalInfo *)personalInfo;
-- (void)removePersonalInfo;
-
-- (BOOL)saveDetailInformation:(NSDictionary *)dictionary;
-- (NSDictionary *)readDetailInformation;
 
 @end

@@ -15,6 +15,8 @@ typedef void (^finishBlock)(UIImage *image, NSString *introduction, NSString *sp
 @property (copy, nonatomic) NSString *introductionString;
 @property (copy, nonatomic) NSString *specialitsString;
 
+@property (nonatomic) BOOL editable;
+
 @property (copy, nonatomic) finishBlock finishBlock;
 
 

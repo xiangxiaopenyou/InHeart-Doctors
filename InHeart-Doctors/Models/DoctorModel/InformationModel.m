@@ -10,6 +10,7 @@
 #import "UploadImageRequest.h"
 #import "UploadImagesRequest.h"
 #import "SubmitInformationsRequest.h"
+#import "FetchInformationsRequest.h"
 
 @implementation InformationModel
 + (void)uploadCommonImage:(NSString *)name fileType:(NSNumber *)type data:(NSData *)data handler:(RequestResultHandler)handler {
@@ -48,6 +49,18 @@
             !handler ?: handler(nil, msg);
         } else {
             !handler ?: handler(object, nil);
+        }
+    }];
+}
++ (void)fetchInformations:(RequestResultHandler)handler {
+    [[FetchInformationsRequest new] request:^BOOL(id request) {
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            InformationModel *tempModel = [InformationModel yy_modelWithDictionary:(NSDictionary *)object];
+            !handler ?: handler(tempModel, nil);
         }
     }];
 }

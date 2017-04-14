@@ -116,10 +116,10 @@
     ProvincesModel *provinceModel = self.areaArray[indexPath.section];
     NSArray *tempArray = [provinceModel.array copy];
     CitiesModel *cityModel = [CitiesModel yy_modelWithDictionary:tempArray[indexPath.row]];
-    if (![cityModel.code isEqualToString:self.selectedCityModel.code]) {
-        self.selectedCityModel = cityModel;
-        [tableView reloadData];
-    }
+//    if (![cityModel.code isEqualToString:self.selectedCityModel.code]) {
+    self.selectedCityModel = cityModel;
+    [tableView reloadData];
+//    }
     if (self.selectBlock) {
         self.selectBlock(self.selectedCityModel);
     }

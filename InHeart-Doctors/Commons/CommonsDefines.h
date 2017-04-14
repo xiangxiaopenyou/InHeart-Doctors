@@ -27,6 +27,13 @@ typedef NS_ENUM(NSInteger, XJUserSex) {
     XJUserSexMale = 1,
     XJUserSexFemale = 2
 };
+typedef NS_ENUM(NSInteger, XJAuthenticationStatus) {
+    XJAuthenticationStatusNot = 1,  //未认证
+    XJAuthenticationStatusWait = 2, //待认证
+    XJAuthenticationStatusFail = 3, //认证失败
+    XJAuthenticationStatusSuccess = 4, //正常
+    XJAuthenticationStatusStop = 9  //停诊
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;
@@ -132,6 +139,8 @@ extern NSString * const UPLOAD_TITLES_IMAGE;
 extern NSString * const FETCH_VERIFICATION_CODE;
 extern NSString * const FIND_PASSWORD;
 extern NSString * const USER_LOGOUT;
+extern NSString * const FETCH_BASIC_INFORMATIONS;
+extern NSString * const CHANGE_PASSWORD;
 
 //3.内容
 extern NSString * const FETCH_CONTENTS_LIST;
@@ -157,6 +166,7 @@ extern NSString * const SET_INTERROGATION_STATE;
 extern NSString * const FETCH_PROFESSIONAL_TITLES;
 extern NSString * const UPLOAD_IMAGE;
 extern NSString * const SUBMIT_INFORMATIONS;
+extern NSString * const FETCH_INFORMATIONS;
 extern NSString * const BANK_LIST;
 extern NSString * const ADD_BANKCARD;
 extern NSString * const MY_BANKCARD;
@@ -164,6 +174,7 @@ extern NSString * const MY_BANKCARD;
 //5.消息(问诊)
 extern NSString * const FETCH_USERS_NAME;
 extern NSString * const SEND_PRESCRIPTION;
+extern NSString * const FETCH_MY_PATIENTS;
 
 
 

@@ -9,9 +9,6 @@
 #import "UserInfo.h"
 #import "UsersModel.h"
 
-#import "PersonalInfo.h"
-#import <SAMKeychain.h>
-
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {
     static UserInfo *instance = nil;
@@ -83,39 +80,6 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERENCRYPTEDPASSWORD];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-- (BOOL)savePersonalInfo:(PersonalInfo *)personalInfo {
-    if (!personalInfo) {
-        return NO;
-    }
-    if ([SAMKeychain setPassword:personalInfo.password forService:KEYCHAINSERVICE account:personalInfo.username error:nil]) {
-        return YES;
-    }
-    return YES;
-}
-- (PersonalInfo *)personalInfo {
-    PersonalInfo *info = [PersonalInfo new];
-    UsersModel *tempModel = [self userInfo];
-    NSString *username = tempModel.username;
-    NSString *password = [SAMKeychain passwordForService:KEYCHAINSERVICE account:username];
-    info.username = username;
-    info.password = password;
-    return info;
-}
-- (void)removePersonalInfo {
-    UsersModel *tempModel = [self userInfo];
-    NSString *username = tempModel.username;
-    [SAMKeychain deletePasswordForService:KEYCHAINSERVICE account:username error:nil];
-}
-- (BOOL)saveDetailInformation:(NSDictionary *)dictionary {
-    NSString *path = GJCFAppDoucmentPath(@"information");
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
-    return [data writeToFile:path atomically:YES];
-}
-- (NSDictionary *)readDetailInformation {
-    NSString *path = GJCFAppDoucmentPath(@"information");
-    NSDictionary *temp = [NSDictionary dictionaryWithContentsOfFile:path];
-    return temp;
 }
 
 @end

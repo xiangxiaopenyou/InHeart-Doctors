@@ -395,3 +395,6 @@
 "personal.pleaseUploadCard2" = "请先进入认证资料上传您的职称资格证";
 "personal.pleaseUploadCard3" = "请先进入认证资料上传您的心理咨询师证";
 "personal.pleaseUploadCard4" = "请先进入认证资料上传您的工作证";
+"personal.pleaseSubmitAgain" = "请修改信息后重新提交审核";
+"personal.waitingAuthentication" = "您的信息已提交，请耐心等待审核";
+"personal.authenticationSuccess" = "您已通过审核";

@@ -8,11 +8,15 @@
 
 #import "MyPatientsViewController.h"
 
+#import "PatientModel.h"
+
 #import <ChineseString.h>
 
 @interface MyPatientsViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (copy, nonatomic) NSArray *patientsArray;
+@property (strong, nonatomic) NSMutableArray *patientsStringArray;
+@property (copy, nonatomic) NSArray *patientsNameArray;
 @property (strong, nonatomic) NSMutableArray *indexArray;
 @property (strong, nonatomic) NSMutableArray *sortedArray;
 
@@ -25,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.tableFooterView = [UIView new];
-    [self setupArray:self.patientsArray];
+    [self fetchPatients];
     
 }
 
@@ -34,11 +38,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Request
+- (void)fetchPatients {
+    [PatientModel fetchMyPatients:^(id object, NSString *msg) {
+        if (object) {
+            self.patientsArray = [(NSArray *)object copy];
+            [self setupArray:self.patientsArray];
+            GJCFAsyncMainQueue(^{
+                [self.tableView reloadData];
+            });
+        } else {
+            XLDismissHUD(self.view, YES, NO, msg);
+        }
+    }];
+}
+
 #pragma mark - Private Methods
 - (void)setupArray:(NSArray *)array {
-    self.indexArray = [ChineseString IndexArray:array];
-    self.sortedArray = [ChineseString LetterSortArray:array];
-    
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        PatientModel *tempModel = (PatientModel *)obj;
+        [self.patientsStringArray addObject:tempModel.realname];
+    }];
+    self.indexArray = [ChineseString IndexArray:self.patientsStringArray];
+    self.sortedArray = [ChineseString LetterSortArray:self.patientsStringArray];
 }
 
 #pragma mark - UITableViewDataSource
@@ -92,12 +114,6 @@
 }
 */
 #pragma mark - Getters
-- (NSArray *)patientsArray {
-    if (!_patientsArray) {
-        _patientsArray = [[NSArray alloc] initWithObjects:@"dj", @"哈哈", @"888", @"却", @"hhhh", @"aa", @"uu", @"zz", @"以以i", @"大姐夫", @"哦哦哦", @"gg", @"sdj", nil];
-    }
-    return _patientsArray;
-}
 - (NSMutableArray *)indexArray {
     if (!_indexArray) {
         _indexArray = [[NSMutableArray alloc] init];
@@ -109,6 +125,12 @@
         _sortedArray = [[NSMutableArray alloc] init];
     }
     return _sortedArray;
+}
+- (NSMutableArray *)patientsStringArray {
+    if (!_patientsStringArray) {
+        _patientsStringArray = [[NSMutableArray alloc] init];
+    }
+    return _patientsStringArray;
 }
 
 @end

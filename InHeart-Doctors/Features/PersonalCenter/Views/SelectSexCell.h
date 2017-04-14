@@ -11,6 +11,9 @@ typedef void (^selectBlock)(XJUserSex userSex);
 
 @interface SelectSexCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
+@property (weak, nonatomic) IBOutlet UIButton *maleButton;
+@property (weak, nonatomic) IBOutlet UIButton *femaleButton;
+@property (nonatomic) BOOL editable;
 @property (copy, nonatomic) selectBlock block;
 
 @end

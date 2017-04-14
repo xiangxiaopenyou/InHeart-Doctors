@@ -13,7 +13,6 @@
 #import "XLHyperLinkButton.h"
 
 #import "UsersModel.h"
-#import "PersonalInfo.h"
 #import "UserInfo.h"
 
 @interface RegisterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
@@ -263,12 +262,9 @@
                     NSInteger code = [msg integerValue];
                     userModel.code = @(code);
                     if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
-                        PersonalInfo *tempInfo = [PersonalInfo new];
-                        tempInfo.username = userModel.username;
-                        tempInfo.password = self.passwordTextField.text;
-                        if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                            GJCFAsyncGlobalDefaultQueue(^{
-                                EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                        GJCFAsyncGlobalDefaultQueue(^{
+                            EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                            GJCFAsyncMainQueue(^{
                                 if (!error) {
                                     XLDismissHUD(self.view, NO, YES, nil);
                                     [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
@@ -282,10 +278,7 @@
                                     [self.navigationController popViewControllerAnimated:YES];
                                 }
                             });
-                        } else {
-                            XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
-                            [self.navigationController popViewControllerAnimated:YES];
-                        }
+                        });
                     } else {
                         XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"autologinfailed", nil));
                         [self.navigationController popViewControllerAnimated:YES];
@@ -314,6 +307,7 @@
     [self.fetchCodeButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
     if (!self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     }
     [UsersModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
         

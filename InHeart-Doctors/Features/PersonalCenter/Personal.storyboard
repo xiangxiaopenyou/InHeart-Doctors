@@ -129,6 +129,33 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="555"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="dx8-pa-5Ig">
+                                    <rect key="frame" x="0.0" y="122" width="375" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warn" translatesAutoresizingMaskIntoConstraints="NO" id="2KG-x4-Yxa">
+                                            <rect key="frame" x="15" y="10" width="28" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="28" id="2gw-Rz-Z29"/>
+                                                <constraint firstAttribute="height" constant="28" id="N9V-Mj-F5k"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的认证图片太模糊" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzp-OM-p7z">
+                                            <rect key="frame" x="50" y="14" width="310" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.88235294117647056" green="0.31372549019607843" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="2KG-x4-Yxa" firstAttribute="top" secondItem="dx8-pa-5Ig" secondAttribute="top" constant="10" id="UvE-LJ-OU7"/>
+                                        <constraint firstAttribute="trailing" secondItem="Wzp-OM-p7z" secondAttribute="trailing" constant="15" id="gx5-c9-d1T"/>
+                                        <constraint firstItem="Wzp-OM-p7z" firstAttribute="leading" secondItem="2KG-x4-Yxa" secondAttribute="trailing" constant="7" id="kMB-Au-HdZ"/>
+                                        <constraint firstItem="2KG-x4-Yxa" firstAttribute="leading" secondItem="dx8-pa-5Ig" secondAttribute="leading" constant="15" id="mGd-vh-IxA"/>
+                                        <constraint firstItem="Wzp-OM-p7z" firstAttribute="top" secondItem="dx8-pa-5Ig" secondAttribute="top" constant="14" id="nWs-uz-ax4"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AuthenticationContent" rowHeight="47" id="RG6-wC-Rkt" customClass="AuthenticationContentCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="47"/>
@@ -229,9 +256,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="femaleButton" destination="NXU-qo-4No" id="s6a-pJ-QJF"/>
+                                            <outlet property="femaleButton" destination="NXU-qo-4No" id="FfN-f0-ROG"/>
                                             <outlet property="headerLabel" destination="5PE-bZ-815" id="tGd-7N-k87"/>
-                                            <outlet property="maleButton" destination="HiD-OD-CLr" id="qVO-59-ChH"/>
+                                            <outlet property="maleButton" destination="HiD-OD-CLr" id="lOm-dQ-xKw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -255,7 +282,11 @@
                     <navigationItem key="navigationItem" title="个人信息" id="FlP-gg-RoS"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="failureReasonLabel" destination="Wzp-OM-p7z" id="6jG-s6-NwN"/>
+                        <outlet property="footerView" destination="dx8-pa-5Ig" id="mg3-tE-RnB"/>
+                        <outlet property="submitButton" destination="LBr-3I-dZC" id="Bpp-U2-6yI"/>
                         <outlet property="tableView" destination="Bvm-uM-Drn" id="573-F4-3G2"/>
+                        <outlet property="tipImageView" destination="2KG-x4-Yxa" id="x7n-cT-TCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6F-aC-SU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -775,9 +806,9 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBE-2q-pwy">
-                                                    <rect key="frame" x="80" y="8" width="215" height="30"/>
+                                                    <rect key="frame" x="80" y="3" width="215" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="4Br-fL-qCG"/>
+                                                        <constraint firstAttribute="height" constant="40" id="4Br-fL-qCG"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1025,7 +1056,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="avatarButton" destination="AHU-dc-H3L" id="F84-7H-z9E"/>
                         <outlet property="avatarImageView" destination="U6O-go-i1k" id="zB1-t3-k25"/>
+                        <outlet property="finishItem" destination="1E8-dL-hea" id="WyW-pU-lb9"/>
                         <outlet property="introductionPlaceholder" destination="5lN-YZ-YHg" id="9ne-Ek-Yt0"/>
                         <outlet property="introductionTextView" destination="RvY-zz-jaO" id="KkJ-Qd-5lU"/>
                         <outlet property="specialitsPlaceholder" destination="IOo-8n-w31" id="GUJ-Sc-bTx"/>
@@ -1334,6 +1367,7 @@
         <image name="edit_card" width="21" height="21"/>
         <image name="holder_tip" width="29" height="29"/>
         <image name="unchecked" width="13" height="13"/>
+        <image name="warn" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zkK-0c-KsK"/>

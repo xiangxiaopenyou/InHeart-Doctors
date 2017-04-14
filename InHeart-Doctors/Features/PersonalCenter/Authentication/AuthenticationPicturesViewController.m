@@ -45,8 +45,12 @@
     [self presentViewController:pickerController animated:YES completion:nil];
 }
 - (void)checkPictures {
-    if (self.array1.count > 0 && self.array2.count > 0) {
-        self.rightItem.enabled = YES;
+    if (self.editable) {
+        if (self.array1.count > 0 && self.array2.count > 0) {
+            self.rightItem.enabled = YES;
+        } else {
+            self.rightItem.enabled = NO;
+        }
     } else {
         self.rightItem.enabled = NO;
     }
@@ -75,6 +79,7 @@
         [self.array2 removeObjectAtIndex:index];
     }
     [self.tableView reloadData];
+    [self checkPictures];
 }
 
 
@@ -108,9 +113,9 @@
         cell.cardTitleLabel.text = indexPath.row == 0 ? NSLocalizedString(@"personal.card1", nil) : NSLocalizedString(@"personal.card2", nil);
     }
     if (indexPath.row == 0) {
-        [cell refreshContents:self.array1];
+        [cell refreshContents:self.array1 editable:self.editable];
     } else {
-        [cell refreshContents:self.array2];
+        [cell refreshContents:self.array2 editable:self.editable];
     }
     return cell;
 }

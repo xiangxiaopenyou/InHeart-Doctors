@@ -21,16 +21,19 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshContents:(NSArray *)array {
+- (void)refreshContents:(NSArray *)array editable:(BOOL)edit {
     [self.viewOfPictures.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if (array.count >= 2) {
         for (NSInteger i = 0; i < array.count; i ++) {
-            UIImage *image = array[i];
             UIImageView *imageView = [[UIImageView alloc] init];
             imageView.userInteractionEnabled = YES;
             imageView.clipsToBounds = YES;
             imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.image = image;
+            if ([array[i] isKindOfClass:[UIImage class]]) {
+                imageView.image = array[i];
+            } else {
+                [imageView sd_setImageWithURL:XLURLFromString(array[i]) placeholderImage:[UIImage imageNamed:@"default_image"]];
+            }
             [self.viewOfPictures addSubview:imageView];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107);
@@ -38,32 +41,7 @@
                 make.width.mas_offset(95);
             }];
             
-            UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            deleteButton.tag = 100 + i;
-            [deleteButton setImage:[UIImage imageNamed:@"delete_picture"] forState:UIControlStateNormal];
-            [deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-            [self.viewOfPictures addSubview:deleteButton];
-            [deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107 + 80);
-                make.top.equalTo(self.viewOfPictures.mas_top).with.mas_offset(- 15);
-                make.size.mas_offset(CGSizeMake(30, 30));
-            }];
-        }
-    } else {
-        for (NSInteger i = 0; i <= array.count; i ++) {
-            if (i < array.count) {
-                UIImage *image = array[i];
-                UIImageView *imageView = [[UIImageView alloc] init];
-                imageView.clipsToBounds = YES;
-                imageView.contentMode = UIViewContentModeScaleAspectFill;
-                imageView.image = image;
-                [self.viewOfPictures addSubview:imageView];
-                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107);
-                    make.top.bottom.equalTo(self.viewOfPictures);
-                    make.width.mas_offset(95);
-                }];
-                
+            if (edit) {
                 UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 deleteButton.tag = 100 + i;
                 [deleteButton setImage:[UIImage imageNamed:@"delete_picture"] forState:UIControlStateNormal];
@@ -74,17 +52,51 @@
                     make.top.equalTo(self.viewOfPictures.mas_top).with.mas_offset(- 15);
                     make.size.mas_offset(CGSizeMake(30, 30));
                 }];
-                
-            } else {
-                UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [addButton setImage:[UIImage imageNamed:@"add_pictures"] forState:UIControlStateNormal];
-                [addButton addTarget:self action:@selector(addPictureAction) forControlEvents:UIControlEventTouchUpInside];
-                [self.viewOfPictures addSubview:addButton];
-                [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            }
+        }
+    } else {
+        for (NSInteger i = 0; i <= array.count; i ++) {
+            if (i < array.count) {
+                UIImageView *imageView = [[UIImageView alloc] init];
+                imageView.clipsToBounds = YES;
+                imageView.contentMode = UIViewContentModeScaleAspectFill;
+                if ([array[i] isKindOfClass:[UIImage class]]) {
+                    imageView.image = array[i];
+                } else {
+                    [imageView sd_setImageWithURL:XLURLFromString(array[i]) placeholderImage:[UIImage imageNamed:@"default_image"]];
+                }
+                [self.viewOfPictures addSubview:imageView];
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107);
                     make.top.bottom.equalTo(self.viewOfPictures);
                     make.width.mas_offset(95);
                 }];
+                
+                if (edit) {
+                    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    deleteButton.tag = 100 + i;
+                    [deleteButton setImage:[UIImage imageNamed:@"delete_picture"] forState:UIControlStateNormal];
+                    [deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+                    [self.viewOfPictures addSubview:deleteButton];
+                    [deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107 + 80);
+                        make.top.equalTo(self.viewOfPictures.mas_top).with.mas_offset(- 15);
+                        make.size.mas_offset(CGSizeMake(30, 30));
+                    }];
+                }
+                
+            } else {
+                if (edit) {
+                    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [addButton setImage:[UIImage imageNamed:@"add_pictures"] forState:UIControlStateNormal];
+                    [addButton addTarget:self action:@selector(addPictureAction) forControlEvents:UIControlEventTouchUpInside];
+                    [self.viewOfPictures addSubview:addButton];
+                    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.leading.equalTo(self.viewOfPictures.mas_leading).with.mas_offset(i * 107);
+                        make.top.bottom.equalTo(self.viewOfPictures);
+                        make.width.mas_offset(95);
+                    }];
+                }
                 
             }
         }

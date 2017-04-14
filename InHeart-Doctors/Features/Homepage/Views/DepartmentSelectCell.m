@@ -13,11 +13,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+    self.selectedBackgroundView.backgroundColor = MAIN_BACKGROUND_COLOR;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.departmentNameLabel.textColor = selected ? kHexRGBColorWithAlpha(0x323232, 1) : kHexRGBColorWithAlpha(0x646464, 1);
+    self.departmentNameLabel.textColor = selected ? NAVIGATIONBAR_COLOR : kHexRGBColorWithAlpha(0x323232, 1);
     // Configure the view for the selected state
 }
 

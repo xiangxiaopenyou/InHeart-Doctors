@@ -21,7 +21,6 @@ PODS:
   - MJRefresh (3.1.12)
   - OpenShare (0.0.1)
   - Reachability (3.2)
-  - SAMKeychain (1.5.2)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.8.2):
@@ -40,7 +39,6 @@ DEPENDENCIES:
   - MJRefresh
   - OpenShare
   - Reachability
-  - SAMKeychain
   - SDCycleScrollView
   - UIImage-Helpers
   - YUChineseSorting
@@ -55,13 +53,12 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   UIImage-Helpers: 06b04a42bdd222844035602e87e936765c80f620
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: f5cc15eb11c5da7efa0e61f58db079212f7158e1
+PODFILE CHECKSUM: 27309b6314f0fb1b067f72e414b309b8ad04f008
 
 COCOAPODS: 1.2.0

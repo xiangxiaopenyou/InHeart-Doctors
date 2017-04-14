@@ -14,6 +14,7 @@
 #import "UploadAuthenticationPictureRequest.h"
 #import "UploadTitlesPictureRequest.h"
 #import "FindPasswordRequest.h"
+#import "ChangePasswordRequest.h"
 #import "LogoutRequest.h"
 
 @implementation UsersModel
@@ -101,6 +102,13 @@
             !handler ?: handler(object, nil);
         }
     }];
+}
++ (void)changePassword:(NSString *)oldPassword password:(NSString *)password hanlder:(RequestResultHandler)hanlder {
+    [[ChangePasswordRequest new] request:^BOOL(ChangePasswordRequest *request) {
+        request.password = password;
+        request.oldPassword = oldPassword;
+        return YES;
+    } result:hanlder];
 }
 + (void)userLogout:(RequestResultHandler)handler {
     [[LogoutRequest new] request:^BOOL(id request) {

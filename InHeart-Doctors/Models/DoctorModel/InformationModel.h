@@ -9,10 +9,10 @@
 #import "XLModel.h"
 
 @interface InformationModel : XLModel
-@property (strong, nonatomic) NSNumber *state;
-@property (copy, nonatomic) NSString *failureReason;
+@property (strong, nonatomic) NSNumber *status;
+@property (copy, nonatomic) NSString *remark;
 @property (copy, nonatomic) NSString *realname;
-@property (strong, nonatomic) NSNumber *sex;
+@property (strong, nonatomic) NSNumber *gender;
 @property (copy, nonatomic) NSString *region;
 @property (copy, nonatomic) NSString *regionFullName;
 @property (copy, nonatomic) NSString *professionalTitleId;
@@ -32,5 +32,6 @@
 + (void)uploadCommonImage:(NSString *)name fileType:(NSNumber *)type data:(NSData *)data handler:(RequestResultHandler)handler;
 + (void)uploadAuthenticationImages:(NSArray *)images fileType:(NSNumber *)type handler:(RequestResultHandler)handler;
 + (void)uploadInformations:(InformationModel *)model handler:(RequestResultHandler)handler;
++ (void)fetchInformations:(RequestResultHandler)handler;
 
 @end

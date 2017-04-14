@@ -9,11 +9,8 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "MainTabBarController.h"
-#import "AuthenticationViewController.h"
-#import "AuthenticationStepsViewController.h"
 #import "GuidePageView.h"
 #import "UserInfo.h"
-#import "PersonalInfo.h"
 #import "UsersModel.h"
 
 #import <UIImage-Helpers.h>

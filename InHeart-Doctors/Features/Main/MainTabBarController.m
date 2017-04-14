@@ -120,12 +120,12 @@ static CGFloat const kTipLabelHeight = 2.0;
     NSInteger seconds = time - hours * 3600 - minites * 60;
     NSString *timeString;
     if (hours > 0) {
-        timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minites, (long)seconds];
+        timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minites, (long)seconds];
     } else if(minites > 0){
-        timeString = [NSString stringWithFormat:@"%02ld:%02ld", minites, (long)seconds];
+        timeString = [NSString stringWithFormat:@"%02ld:%02ld", (long)minites, (long)seconds];
     }
     else{
-        timeString = [NSString stringWithFormat:@"00:%02ld", seconds];
+        timeString = [NSString stringWithFormat:@"00:%02ld", (long)seconds];
     }
     NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
     EMMessage *callMessage = [EaseSDKHelper sendTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];

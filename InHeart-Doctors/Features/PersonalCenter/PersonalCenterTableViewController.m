@@ -19,13 +19,13 @@
 #import "CommonFunctionCell.h"
 #import "UserInfo.h"
 #import "UsersModel.h"
-#import "PersonalInfo.h"
+#import "HomepageModel.h"
 
 @interface PersonalCenterTableViewController ()
 @property (strong, nonatomic) UsersModel *userModel;
-@property (strong, nonatomic) PersonalInfo *personalModel;
 @property (copy, nonatomic) NSArray *iconArray;
 @property (copy, nonatomic) NSArray *itemTitleArray;
+@property (strong, nonatomic) HomepageModel *model;
 
 @end
 
@@ -43,14 +43,34 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.userModel = [[UserInfo sharedUserInfo] userInfo];
-    self.personalModel = [[UserInfo sharedUserInfo] personalInfo];
-    [self.tableView reloadData];
+    [self fetchInformations];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Request
+- (void)fetchInformations {
+    [HomepageModel fetchBasicInformations:^(id object, NSString *msg) {
+        if (object) {
+            self.model = (HomepageModel *)object;
+            self.userModel = [[UserInfo sharedUserInfo] userInfo];
+            if ([self.userModel.code integerValue] != [self.model.status integerValue]) {
+                self.userModel.code = self.model.status;
+            }
+            if (![self.userModel.realname isEqualToString:self.model.realname]) {
+                self.userModel.realname = self.model.realname;
+            }
+            [[UserInfo sharedUserInfo] saveUserInfo:self.userModel];
+            GJCFAsyncMainQueue(^{
+                [self.tableView reloadData];
+            });
+        } else {
+            XLDismissHUD(self.view, YES, NO, msg);
+        }
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -79,9 +99,25 @@
     switch (indexPath.section) {
         case 0:{
             PersonalInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InformationCell" forIndexPath:indexPath];
-            cell.avatarImageView.image = [UIImage imageNamed:@"personal_avatar"];
+            [cell.avatarImageView sd_setImageWithURL:XLURLFromString(self.model.headPictureUrl) placeholderImage:[UIImage imageNamed:@"default_doctor_avatar"]];
             cell.nameLabel.text = self.userModel.realname ? [NSString stringWithFormat:@"%@", self.userModel.realname] : @"尚未登录";
-            cell.phoneLabel.text = self.personalModel.username ? [NSString stringWithFormat:@"%@", self.personalModel.username] : nil;
+            cell.phoneLabel.text = self.userModel.username ? [NSString stringWithFormat:@"%@", self.userModel.username] : nil;
+            switch ([self.userModel.code integerValue]) {
+                case XJAuthenticationStatusNot:
+                    cell.authenticationStateLabel.text = @"未认证";
+                    break;
+                case XJAuthenticationStatusWait:
+                    cell.authenticationStateLabel.text = @"待认证";
+                    break;
+                case XJAuthenticationStatusFail:
+                    cell.authenticationStateLabel.text = @"认证失败";
+                    break;
+                case XJAuthenticationStatusSuccess:
+                    cell.authenticationStateLabel.text = @"已认证";
+                    break;
+                default:
+                    break;
+            }
             return cell;
         }
             break;

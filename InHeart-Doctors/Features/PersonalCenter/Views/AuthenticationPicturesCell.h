@@ -18,6 +18,6 @@
 
 @property (weak, nonatomic) id <AuthenticationPicturesCellDelegate> delegate;
 
-- (void)refreshContents:(NSArray *)array;
+- (void)refreshContents:(NSArray *)array editable:(BOOL)edit;
 
 @end

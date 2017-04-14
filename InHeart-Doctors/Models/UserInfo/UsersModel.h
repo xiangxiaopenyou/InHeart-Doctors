@@ -23,6 +23,7 @@
 + (void)uploadAuthenticationPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler;
 + (void)uploadTitlesPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler;
 + (void)findPassword:(NSString *)username password:(NSString *)password code:(NSString *)verificationCode handler:(RequestResultHandler)handler;
++ (void)changePassword:(NSString *)oldPassword password:(NSString *)password hanlder:(RequestResultHandler)hanlder;
 + (void)userLogout:(RequestResultHandler)handler;
 
 @end

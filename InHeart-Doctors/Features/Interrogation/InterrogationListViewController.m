@@ -29,7 +29,7 @@
     [self.view addSubview:self.conversationsView];
     [self.conversationsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).with.mas_offset(50);
+        make.top.equalTo(self.view.mas_top).with.mas_offset(64);
     }];
     GJCFWeakSelf weakSelf = self;
     self.conversationsView.block = ^(ConversationModel *model){

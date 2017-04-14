@@ -16,7 +16,7 @@
     [self.params setObject:self.fileName forKey:@"filename"];
     [self.params setObject:self.fileType forKey:@"fileType"];
     [[UploadImageManager sharedInstance] POST:UPLOAD_IMAGE parameters:self.params  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpg"];
+        [formData appendPartWithFileData:self.fileData name:@"fileData" fileName:self.fileName mimeType:@"image/jpeg"];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);

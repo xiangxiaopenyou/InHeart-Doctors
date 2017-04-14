@@ -10,12 +10,13 @@
 #import "NewsViewController.h"
 #import "SceneContentsViewController.h"
 #import "MyPatientsViewController.h"
+#import "AuthenticationInformationViewController.h"
 
 #import "XLBlockAlertView.h"
 
 #import "UserInfo.h"
 #import "UsersModel.h"
-#import "PersonalInfo.h"
+#import "HomepageModel.h"
 
 #import <SDCycleScrollView.h>
 
@@ -33,6 +34,9 @@
 
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 
+@property (strong, nonatomic) HomepageModel *model;
+@property (copy, nonatomic) NSArray *cycleArray;
+
 @end
 
 @implementation HomepageViewController
@@ -47,29 +51,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [self.cycleScrollView adjustWhenControllerViewWillAppera];
+    [self fetchInformations];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSInteger code = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
-    if (code != 0 && code != - 7) {
-        PersonalInfo *personalInfo = [[UserInfo sharedUserInfo] personalInfo];
-        if (personalInfo.username && personalInfo.password) {
-            [UsersModel userLogin:personalInfo.username password:personalInfo.password handler:^(id object, NSString *msg) {
-                if (object) {
-                    UsersModel *model = object;
-                    NSInteger tempCode = [msg integerValue];
-                    model.code = @(tempCode);
-                    [self judgeCodeState:tempCode];
-                    if ([[UserInfo sharedUserInfo] saveUserInfo:model]) {
-                        PersonalInfo *tempInfo = [PersonalInfo new];
-                        tempInfo.username = model.username;
-                        tempInfo.password = tempInfo.password;
-                        [[UserInfo sharedUserInfo] savePersonalInfo:tempInfo];
-                    }
-                }
-            }];
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,37 +68,73 @@
     [self.topView addSubview:self.cycleScrollView];
     self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.4 + 112);
     self.tableView.tableHeaderView = self.headerView;
-    
-    self.cycleScrollView.imageURLStringsGroup = @[ @"http://img1.3lian.com/img013/v4/57/d/4.jpg"
-                                                  , @"http://img1.3lian.com/img013/v4/57/d/7.jpg"
-                                                  , @"http://img1.3lian.com/img013/v4/57/d/6.jpg",
-                                                  @"http://img1.3lian.com/img013/v4/57/d/8.jpg",
-                                                  @"http://img1.3lian.com/img013/v4/57/d/2.jpg"
-                                                   ];
-    
-    [self addData];
     [self addGestureRecognizer];
 }
+- (void)setupCycleScrollView {
+    if (self.cycleArray.count == 0) {
+        self.cycleScrollView.imageURLStringsGroup = @[ @"http://img1.3lian.com/img013/v4/57/d/4.jpg"
+                                                          , @"http://img1.3lian.com/img013/v4/57/d/7.jpg"
+                                                          , @"http://img1.3lian.com/img013/v4/57/d/6.jpg",
+                                                          @"http://img1.3lian.com/img013/v4/57/d/8.jpg",
+                                                          @"http://img1.3lian.com/img013/v4/57/d/2.jpg"
+                                                           ];
+    } else {
+        self.cycleScrollView.imageURLStringsGroup = self.cycleArray;
+    }
+}
 - (void)addData {
-    self.avatarImageView.image = [UIImage imageNamed:@"default_doctor_avatar"];
-    self.avatarImageView.userInteractionEnabled = YES;
-    [self.avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarAction)]];
+    [self.avatarImageView sd_setImageWithURL:XLURLFromString(self.model.headPictureUrl) placeholderImage:[UIImage imageNamed:@"default_doctor_avatar"]];
+    [self.patientsNumber setTitle:[NSString stringWithFormat:@"%ld", (long)[self.model.patientsNumber integerValue]] forState:UIControlStateNormal];
+    [self.evaluationsNumber setTitle:[NSString stringWithFormat:@"%ld", (long)[self.model.evaluationsNumber integerValue]] forState:UIControlStateNormal];
+    [self.scoresNumber setTitle:[NSString stringWithFormat:@"%ld", (long)[self.model.pointsNumber integerValue]] forState:UIControlStateNormal];
 }
 - (void)judgeCodeState:(NSInteger)code {
-    if (code == - 4) {
+    if (code == XJAuthenticationStatusNot) {
         [[[XLBlockAlertView alloc] initWithTitle:@"医生认证" message:@"您需要进行医生资格认证" block:^(NSInteger buttonIndex) {
-            
+            if (buttonIndex == 1) {
+                AuthenticationInformationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationInformation"];
+                [self.navigationController pushViewController:authenticationViewController animated:YES];
+            }
         } cancelButtonTitle:@"以后再说" otherButtonTitles:@"现在认证", nil] show];
-    } else if (code == - 6) {
+    } else if (code == XJAuthenticationStatusFail) {
         [[[XLBlockAlertView alloc] initWithTitle:@"认证失败" message:@"您的认证请求被拒绝" block:^(NSInteger buttonIndex) {
             
         } cancelButtonTitle:@"取消" otherButtonTitles:@"查看原因", nil] show];
     }
 }
 - (void)addGestureRecognizer {
+    self.avatarImageView.userInteractionEnabled = YES;
+    [self.avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarAction)]];
     [self.patientsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
     [self.evaluationsView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
     [self.scoresView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
+}
+
+#pragma mark - Request
+- (void)fetchInformations {
+    [HomepageModel fetchBasicInformations:^(id object, NSString *msg) {
+        if (object) {
+            self.model = (HomepageModel *)object;
+            if (XLIsNullObject(self.cycleArray)) {
+                self.cycleArray = self.model.urls;
+                [self setupCycleScrollView];
+            }
+            [self addData];
+            if ([self.model.status integerValue] != XJAuthenticationStatusSuccess && [self.model.status integerValue] != XJAuthenticationStatusStop) {
+                [self judgeCodeState:[self.model.status integerValue]];
+            }
+            UsersModel *tempModel = [[UserInfo sharedUserInfo] userInfo];
+            if ([tempModel.code integerValue] != [self.model.status integerValue]) {
+                tempModel.code = self.model.status;
+            }
+            if (![tempModel.realname isEqualToString:self.model.realname]) {
+                tempModel.realname = self.model.realname;
+            }
+            [[UserInfo sharedUserInfo] saveUserInfo:tempModel];
+        } else {
+            XLDismissHUD(self.view, YES, NO, msg);
+        }
+    }];
 }
 
 #pragma mark - IBAction
@@ -129,7 +150,8 @@
 }
 //点击头像
 - (void)avatarAction {
-    
+    AuthenticationInformationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationInformation"];
+    [self.navigationController pushViewController:authenticationViewController animated:YES];
 }
 //点击我的患者，我的评价，我的积分
 - (void)tapGesture:(UITapGestureRecognizer *)gesture {

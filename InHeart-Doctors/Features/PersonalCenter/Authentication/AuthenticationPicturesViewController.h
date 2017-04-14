@@ -15,6 +15,8 @@ typedef void (^picturesBlock)(NSArray *array1, NSArray *array2);
 @property (strong, nonatomic) NSMutableArray *array1;
 @property (strong, nonatomic) NSMutableArray *array2;
 
+@property (nonatomic) BOOL editable;
+
 @property (copy, nonatomic) picturesBlock block;
 
 @end

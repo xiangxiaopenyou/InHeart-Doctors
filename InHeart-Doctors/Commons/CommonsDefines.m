@@ -103,6 +103,8 @@ NSString * const UPLOAD_TITLES_IMAGE = @"doctor/authTitleUpload";
 NSString * const FETCH_VERIFICATION_CODE = @"doctor/sendCode";
 NSString * const FIND_PASSWORD = @"doctor/modifyPassword";
 NSString * const USER_LOGOUT = @"doctor/logout";
+NSString * const FETCH_BASIC_INFORMATIONS = @"doctor/homepage/contents";
+NSString * const CHANGE_PASSWORD = @"doctor/modifyPassword";
 
 NSString * const FETCH_CONTENTS_LIST = @"doctor/content/search";
 NSString * const FETCH_CONTENTS_TYPES = @"doctor/content/type";
@@ -126,9 +128,11 @@ NSString * const SET_INTERROGATION_STATE = @"doctor/setStatus";
 NSString * const FETCH_PROFESSIONAL_TITLES = @"doctor/professionalTitles";
 NSString * const UPLOAD_IMAGE = @"doctor/imageUpload";
 NSString * const SUBMIT_INFORMATIONS = @"doctor/auth";
+NSString * const FETCH_INFORMATIONS = @"doctor/authInfo";
 NSString * const BANK_LIST = @"";
 NSString * const ADD_BANKCARD = @"doctor/bankCard/save";
 NSString * const MY_BANKCARD = @"doctor/bankCard/get";
 
 NSString * const FETCH_USERS_NAME = @"doctor/getUserIDAndName";
 NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";
+NSString * const FETCH_MY_PATIENTS = @"doctor/myPatients";

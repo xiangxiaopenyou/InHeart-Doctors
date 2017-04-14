@@ -14,7 +14,6 @@
 
 #import "UsersModel.h"
 #import "UserInfo.h"
-#import "PersonalInfo.h"
 
 
 @interface LoginViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
@@ -40,34 +39,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Getters
-- (UITextField *)phoneTextField {
-    if (!_phoneTextField) {
-        _phoneTextField = [[UITextField alloc] init];
-        [_phoneTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _phoneTextField.font = kSystemFont(14);
-        _phoneTextField.textColor = MAIN_TEXT_COLOR;
-        _phoneTextField.placeholder = kInputPhoneNumber;
-        _phoneTextField.clearButtonMode =  UITextFieldViewModeWhileEditing;
-        _phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
-        _phoneTextField.delegate = self;
-    }
-    return _phoneTextField;
-}
-- (UITextField *)passwordTextField {
-    if (!_passwordTextField) {
-        _passwordTextField = [[UITextField alloc] init];
-        [_passwordTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _passwordTextField.font = kSystemFont(14);
-        _passwordTextField.textColor = MAIN_TEXT_COLOR;
-        _passwordTextField.secureTextEntry = YES;
-        _passwordTextField.placeholder = kInputPassword;
-        _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _passwordTextField.returnKeyType = UIReturnKeyDone;
-        _passwordTextField.delegate = self;
-    }
-    return _passwordTextField;
-}
 - (void)resignTextField {
     [self.passwordTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
@@ -147,28 +118,21 @@
             NSInteger code = [msg integerValue];
             userModel.code = @(code);
             if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
-                PersonalInfo *tempInfo = [PersonalInfo new];
-                tempInfo.username = userModel.username;
-                tempInfo.password = self.passwordTextField.text;
-                if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-                    GJCFAsyncGlobalDefaultQueue(^{
-                        EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
-                        GJCFAsyncMainQueue(^{
-                            if (!error) {
-                                XLDismissHUD(self.view, NO, YES, nil);
-                                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
-                                //设置环信自动登录
-                                [[EMClient sharedClient].options setIsAutoLogin:YES];
-                                //更新环信数据库
-                                [[EMClient sharedClient] migrateDatabaseToLatestSDK];
-                            } else {
-                                XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
-                            }
-                        });
+                GJCFAsyncGlobalDefaultQueue(^{
+                    EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                    GJCFAsyncMainQueue(^{
+                        if (!error) {
+                            XLDismissHUD(self.view, NO, YES, nil);
+                            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                            //设置环信自动登录
+                            [[EMClient sharedClient].options setIsAutoLogin:YES];
+                            //更新环信数据库
+                            [[EMClient sharedClient] migrateDatabaseToLatestSDK];
+                        } else {
+                            XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
+                        }
                     });
-                } else {
-                    XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
-                }
+                });
             } else {
                 XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
             }
@@ -178,5 +142,34 @@
         }
     }];
     
+}
+
+#pragma mark - Getters
+- (UITextField *)phoneTextField {
+    if (!_phoneTextField) {
+        _phoneTextField = [[UITextField alloc] init];
+        [_phoneTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _phoneTextField.font = kSystemFont(14);
+        _phoneTextField.textColor = MAIN_TEXT_COLOR;
+        _phoneTextField.placeholder = kInputPhoneNumber;
+        _phoneTextField.clearButtonMode =  UITextFieldViewModeWhileEditing;
+        _phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+        _phoneTextField.delegate = self;
+    }
+    return _phoneTextField;
+}
+- (UITextField *)passwordTextField {
+    if (!_passwordTextField) {
+        _passwordTextField = [[UITextField alloc] init];
+        [_passwordTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _passwordTextField.font = kSystemFont(14);
+        _passwordTextField.textColor = MAIN_TEXT_COLOR;
+        _passwordTextField.secureTextEntry = YES;
+        _passwordTextField.placeholder = kInputPassword;
+        _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _passwordTextField.returnKeyType = UIReturnKeyDone;
+        _passwordTextField.delegate = self;
+    }
+    return _passwordTextField;
 }
 @end

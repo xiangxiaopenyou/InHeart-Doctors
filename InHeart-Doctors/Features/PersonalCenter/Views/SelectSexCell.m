@@ -9,8 +9,6 @@
 #import "SelectSexCell.h"
 
 @interface SelectSexCell ()
-@property (weak, nonatomic) IBOutlet UIButton *maleButton;
-@property (weak, nonatomic) IBOutlet UIButton *femaleButton;
 
 @end
 
@@ -27,20 +25,25 @@
     // Configure the view for the selected state
 }
 - (IBAction)maleAction:(id)sender {
-    if (!self.maleButton.selected) {
-        self.maleButton.selected = YES;
-        self.femaleButton.selected = NO;
-        if (self.block) {
-            self.block(XJUserSexMale);
+    if (self.editable) {
+        if (!self.maleButton.selected) {
+            self.maleButton.selected = YES;
+            self.femaleButton.selected = NO;
+            if (self.block) {
+                self.block(XJUserSexMale);
+            }
         }
     }
+    
 }
 - (IBAction)femaleAction:(id)sender {
-    if (!self.femaleButton.selected) {
-        self.femaleButton.selected = YES;
-        self.maleButton.selected = NO;
-        if (self.block) {
-            self.block(XJUserSexFemale);
+    if (self.editable) {
+        if (!self.femaleButton.selected) {
+            self.femaleButton.selected = YES;
+            self.maleButton.selected = NO;
+            if (self.block) {
+                self.block(XJUserSexFemale);
+            }
         }
     }
 }
