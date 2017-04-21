@@ -13,6 +13,7 @@
     if (!paramsBlock(self)) {
         return;
     }
+    [self.params setObject:self.paging forKey:@"paging"];
     [[RequestManager sharedInstance] POST:FETCH_ACCOUNT_BALANCE parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);

@@ -116,8 +116,8 @@ NSString * const CANCEL_COLLECT_CONTENT = @"doctor/content/cancelCollect";
 
 NSString * const FETCH_COLLECTIONS_LIST = @"doctor/contentCollect/search";
 NSString * const FETCH_PERSONAL_INFORMATION = @"doctor/getInfo";
-NSString * const FETCH_ACCOUNT_BALANCE = @"doctor/getBalance";
-NSString * const FETCH_BILL_LIST = @"doctor/getBills";
+NSString * const FETCH_ACCOUNT_BALANCE = @"doctor/myWallet";
+NSString * const FETCH_BILL_LIST = @"doctor/receivableBills";
 NSString * const FETCH_CITIES_LIST = @"doctor/getRegion";
 NSString * const EDIT_INFORMATION = @"doctor/fillInfo";
 NSString * const UPLOAD_AVATAR = @"doctor/headPictureUpload";

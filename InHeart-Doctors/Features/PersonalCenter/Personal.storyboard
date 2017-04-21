@@ -479,6 +479,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="balanceLabel" destination="for-G4-4FA" id="7AC-po-27a"/>
+                        <outlet property="dueInLabel" destination="HLg-RB-yp0" id="IjE-A0-Sc3"/>
                         <outlet property="tableView" destination="xsd-Zb-Slx" id="yg7-0K-eNl"/>
                     </connections>
                 </viewController>

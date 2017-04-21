@@ -7,6 +7,7 @@
 //
 
 #import "DoctorsModel.h"
+#import "AccountModel.h"
 #import "SingleContentModel.h"
 #import "FetchPersonalInformationRequest.h"
 #import "FetchCollectionsListRequest.h"
@@ -42,14 +43,16 @@
         }
     }];
 }
-+ (void)fetchAccountBalance:(RequestResultHandler)handler {
-    [[FetchAccountBalanceRequest new] request:^BOOL(id request) {
++ (void)fetchAccountBalance:(NSNumber *)paging handler:(RequestResultHandler)handler {
+    [[FetchAccountBalanceRequest new] request:^BOOL(FetchAccountBalanceRequest *request) {
+        request.paging = paging;
         return YES;
     } result:^(id object, NSString *msg) {
         if (msg) {
             !handler ?: handler(nil, msg);
         } else {
-            !handler ?: handler(object, nil);
+            AccountModel *tempModel = [AccountModel yy_modelWithDictionary:object];
+            !handler ?: handler(tempModel, nil);
         }
     }];
 }

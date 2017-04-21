@@ -52,7 +52,13 @@
 
 #pragma mark - private methods
 - (void)updateView {
-    
+    if (self.model) {
+        self.addCardButton.hidden = YES;
+        self.viewOfBankCard.hidden = NO;
+        self.bankNameLabel.text = [NSString stringWithFormat:@"%@", self.model.bankName];
+        NSString *numberString = self.model.cardNumber;
+        self.cardNumberLabel.text = [NSString stringWithFormat:@"**** **** **** %@", [numberString substringWithRange:NSMakeRange(numberString.length - 4, 4)]];
+    }
 }
 
 #pragma mark - Navigation
@@ -65,6 +71,7 @@
         addViewController.title = NSLocalizedString(@"personal.addBankCard", nil);
     } else if ([segue.identifier isEqualToString:@"changeCard"]) {
         addViewController.title = NSLocalizedString(@"personal.changeBankCard", nil);
+        addViewController.model = self.model;
     }
     
 }

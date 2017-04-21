@@ -7,6 +7,7 @@
 //
 
 #import "SceneContentsViewController.h"
+#import "SceneContentsListViewController.h"
 
 #import "DepartmentSelectCell.h"
 #import "TherapyItemCell.h"
@@ -17,7 +18,7 @@
 
 #define THERAPY_ITEM_WIDTH SCREEN_WIDTH / 3.0 - 7.5
 
-@interface SceneContentsViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SceneContentsViewController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *departmentTableView;
 @property (weak, nonatomic) IBOutlet UITableView *diseaseTableView;
 
@@ -93,6 +94,20 @@
         make.top.bottom.trailing.equalTo(titleView);
     }];
     self.navigationItem.titleView = titleView;
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (XLIsNullObject(textField.text)) {
+        XLDismissHUD(self.view, YES, NO, @"请先输入搜索内容");
+    } else {
+        [textField resignFirstResponder];
+        SceneContentsListViewController *listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContentsList"];
+        listViewController.viewType = 1;
+        listViewController.keyword = textField.text;
+        [self.navigationController pushViewController:listViewController animated:YES];
+    }
+    return YES;
 }
 
 #pragma mark - UITableViewDataSource
@@ -178,6 +193,21 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SceneContentsListViewController *listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContentsList"];
+    if (self.seletedDepartmentIndexPath.row > 1) {
+        DiseaseModel *tempModel = self.diseasesArray[self.seletedDepartmentIndexPath.row - 1];
+        listViewController.diseaseModel = tempModel;
+    }
+    if (self.seletedDepartmentIndexPath.row > 0 && indexPath.row > 0) {
+        TherapyModel *model = self.selectedTherapiesArray[indexPath.row - 1];
+        listViewController.therapyModel = model;
+    }
+    listViewController.viewType = 1;
+    [self.navigationController pushViewController:listViewController animated:YES];
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(THERAPY_ITEM_WIDTH, THERAPY_ITEM_WIDTH);
@@ -210,6 +240,8 @@
         [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         _searchTextField.textColor = MAIN_TEXT_COLOR;
         _searchTextField.font = kSystemFont(14);
+        _searchTextField.returnKeyType = UIReturnKeySearch;
+        _searchTextField.delegate = self;
         
     }
     return _searchTextField;

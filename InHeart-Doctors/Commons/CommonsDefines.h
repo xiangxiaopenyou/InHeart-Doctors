@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, XJContentsTypes) {
 typedef NS_ENUM(NSInteger, XJSortTypes) {
     XJSortTypesNone,
     XJSortTypesDescending,
-    XJSortTypesIncrease
+    XJSortTypesAscending
 };
 typedef NS_ENUM(NSInteger, XJNewsTypes) {
     XJNewsTypesIndustry,

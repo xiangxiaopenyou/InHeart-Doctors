@@ -109,6 +109,19 @@
     if (indexPath.row == 3) {
         cell.contentTextField.keyboardType = UIKeyboardTypeNumberPad;
     }
+    if (indexPath.row == 1) {
+        if (self.model) {
+            cell.contentTextField.text = [NSString stringWithFormat:@"%@", self.model.bankName];
+        }
+    } else if (indexPath.row == 2) {
+        if (self.model) {
+            cell.contentTextField.text = [NSString stringWithFormat:@"%@", self.model.depositBank];
+        }
+    } else if (indexPath.row == 3) {
+        if (self.model) {
+            cell.contentTextField.text = [NSString stringWithFormat:@"%@", self.model.cardNumber];
+        }
+    }
     return cell;
 }
 

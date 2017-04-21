@@ -32,7 +32,7 @@
 
 + (void)fetchPersonalInformation:(RequestResultHandler)handler;
 + (void)fetchCollectionsList:(NSNumber *)paging handler:(RequestResultHandler)handler;
-+ (void)fetchAccountBalance:(RequestResultHandler)handler;
++ (void)fetchAccountBalance:(NSNumber *)paging handler:(RequestResultHandler)handler;
 + (void)informationEdit:(NSString *)avatarUrl signature:(NSString *)signatureString introduction:(NSString *)introductionString expertise:(NSArray *)expertiseArray city:(NSString *)cityCode handler:(RequestResultHandler)handler;
 + (void)fetchCommonPrice:(RequestResultHandler)handler;
 + (void)setCommonPrice:(NSNumber *)price handler:(RequestResultHandler)handler;

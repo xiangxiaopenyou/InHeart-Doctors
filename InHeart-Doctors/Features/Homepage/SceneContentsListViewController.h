@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DiseaseModel;
+@class TherapyModel;
 
 @interface SceneContentsListViewController : UIViewController
+
+@property (strong, nonatomic) DiseaseModel *diseaseModel;
+@property (strong, nonatomic) TherapyModel *therapyModel;
+@property (copy, nonatomic) NSString *keyword;
+@property (assign, nonatomic) NSInteger viewType;
 
 @end

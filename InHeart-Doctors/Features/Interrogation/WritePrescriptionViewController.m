@@ -10,6 +10,8 @@
 #import "ChooseContentsViewController.h"
 
 #import "XLBlockAlertView.h"
+#import "PrescriptionContentsCell.h"
+#import "PrescriptionPriceCell.h"
 
 #import "SingleContentModel.h"
 #import "DoctorsModel.h"
@@ -19,8 +21,11 @@
 #import "ConversationModel.h"
 
 
-@interface WritePrescriptionViewController ()<UITextFieldDelegate>
+@interface WritePrescriptionViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *adviceTextView;
+@property (weak, nonatomic) IBOutlet UITextView *diseaseTextView;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollOfContents;
 @property (weak, nonatomic) IBOutlet UITextField *feesTextField;
 
@@ -34,10 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self fetchPrice];
-    [self resetViewOfContents];
+    //[self fetchPrice];
     
-    [self.adviceTextView becomeFirstResponder];
+    [self.diseaseTextView becomeFirstResponder];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -48,30 +52,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Getters
-- (NSMutableArray *)contentsArray {
-    if (!_contentsArray) {
-        _contentsArray = [[NSMutableArray alloc] init];
-    }
-    return _contentsArray;
-}
 #pragma mark - Requests
-- (void)fetchPrice {
-    [DoctorsModel fetchCommonPrice:^(id object, NSString *msg) {
-        if (object && [object isKindOfClass:[NSDictionary class]]) {
-            if (object[@"minPrice"] && [object[@"minPrice"] floatValue] > 0) {
-                if ([object[@"minPrice"] floatValue] == [object[@"minPrice"] integerValue]) {
-                    self.feesTextField.text = [NSString stringWithFormat:@"%@", object[@"minPrice"]];
-                } else {
-                    self.feesTextField.text = [NSString stringWithFormat:@"%.2f", [object[@"minPrice"] floatValue]];
-                }
-            } else {
-                self.feesTextField.text = @"0";
-            }
-        }
-    }];
-}
+//- (void)fetchPrice {
+//    [DoctorsModel fetchCommonPrice:^(id object, NSString *msg) {
+//        if (object && [object isKindOfClass:[NSDictionary class]]) {
+//            if (object[@"minPrice"] && [object[@"minPrice"] floatValue] > 0) {
+//                if ([object[@"minPrice"] floatValue] == [object[@"minPrice"] integerValue]) {
+//                    self.feesTextField.text = [NSString stringWithFormat:@"%@", object[@"minPrice"]];
+//                } else {
+//                    self.feesTextField.text = [NSString stringWithFormat:@"%.2f", [object[@"minPrice"] floatValue]];
+//                }
+//            } else {
+//                self.feesTextField.text = @"0";
+//            }
+//        }
+//    }];
+//}
 - (void)sendPrescription {
     XLShowHUDWithMessage(nil, self.view);
     self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -118,55 +114,50 @@
 }
 
 #pragma mark - private methods
-- (void)resetViewOfContents {
-    [self.scrollOfContents.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    CGFloat width = 15.0;
-    for (NSInteger i = 0; i <= self.contentsArray.count; i ++) {
-        if (i == self.contentsArray.count) {
-            UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [addButton setImage:[UIImage imageNamed:@"add_contents"] forState:UIControlStateNormal];
-            [addButton addTarget:self action:@selector(addContentsAction) forControlEvents:UIControlEventTouchUpInside];
-            [self.scrollOfContents addSubview:addButton];
-            [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.width.mas_offset(64);
-                make.leading.equalTo(self.scrollOfContents.mas_leading).with.mas_offset(width);
-                make.centerY.equalTo(self.scrollOfContents);
-            }];
-        } else {
-            SingleContentModel *tempModel = self.contentsArray[i];
-            UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            [imageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:nil];
-            [self.scrollOfContents addSubview:imageView];
-            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.width.mas_offset(64);
-                make.leading.equalTo(self.scrollOfContents.mas_leading).with.mas_offset(width);
-                make.centerY.equalTo(self.scrollOfContents);
-            }];
-            width += 79;
-        }
-    }
-    self.scrollOfContents.contentSize = CGSizeMake((self.contentsArray.count + 1) * 79 + 15, 0);
-}
 - (void)hideKeyboard {
     [self.adviceTextView resignFirstResponder];
-    [self.feesTextField resignFirstResponder];
+    [self.diseaseTextView resignFirstResponder];
 }
 
 #pragma mark - UITextField Delegate
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    const char *ch = [string cStringUsingEncoding:NSUTF8StringEncoding];
-    if ([textField.text rangeOfString:@"."].length == 1) {
-        if (*ch == 0) {
-            return YES;
-        }
-        NSUInteger length = [textField.text rangeOfString:@"."].location;
-        if ([[textField.text substringFromIndex:length] length] > 2 || *ch == 46) {
-            return NO;
-        }
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+//    const char *ch = [string cStringUsingEncoding:NSUTF8StringEncoding];
+//    if ([textField.text rangeOfString:@"."].length == 1) {
+//        if (*ch == 0) {
+//            return YES;
+//        }
+//        NSUInteger length = [textField.text rangeOfString:@"."].location;
+//        if ([[textField.text substringFromIndex:length] length] > 2 || *ch == 46) {
+//            return NO;
+//        }
+//    }
+//    return YES;
+//}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 90.f * self.contentsArray.count + 105;
+    } else {
+        return 90.f;
     }
-    return YES;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        static NSString *identifier = @"PrescriptionContentsCell";
+        PrescriptionContentsCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell resetContents:self.contentsArray];
+        return cell;
+    } else {
+        static NSString *identifier = @"PrescriptionPriceCell";
+        PrescriptionPriceCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 
 /*
@@ -199,17 +190,25 @@
         [self sendPrescription];
     }
 }
-- (void)addContentsAction {
-    ChooseContentsViewController *contentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseContents"];
-    contentsViewController.contentArray = [self.contentsArray mutableCopy];
-    contentsViewController.saveBlock = ^(NSArray *array) {
-        NSArray *tempArray = [array copy];
-        self.contentsArray = [tempArray mutableCopy];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self resetViewOfContents];
-        });
-    };
-    [self.navigationController pushViewController:contentsViewController animated:YES];
+//- (void)addContentsAction {
+//    ChooseContentsViewController *contentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseContents"];
+//    contentsViewController.contentArray = [self.contentsArray mutableCopy];
+//    contentsViewController.saveBlock = ^(NSArray *array) {
+//        NSArray *tempArray = [array copy];
+//        self.contentsArray = [tempArray mutableCopy];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self resetViewOfContents];
+//        });
+//    };
+//    [self.navigationController pushViewController:contentsViewController animated:YES];
+//}
+
+#pragma mark - Getters
+- (NSMutableArray *)contentsArray {
+    if (!_contentsArray) {
+        _contentsArray = [[NSMutableArray alloc] initWithObjects:@"1", @"2", nil];
+    }
+    return _contentsArray;
 }
 
 @end

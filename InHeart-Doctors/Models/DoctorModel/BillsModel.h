@@ -11,9 +11,8 @@
 @interface BillsModel : XLModel
 @property (strong, nonatomic) NSNumber *type;
 @property (strong, nonatomic) NSNumber *total;
-@property (copy, nonatomic) NSString *createAt;
-@property (copy, nonatomic) NSString *toUserId;
-@property (copy, nonatomic) NSString *toUser_username;
+@property (strong, nonatomic) NSNumber *amount;
+@property (copy, nonatomic) NSString *date;
 
 + (void)fetchBills:(NSNumber *)paging handler:(RequestResultHandler)handler;
 

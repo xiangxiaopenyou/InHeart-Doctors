@@ -9,5 +9,6 @@
 #import "BaseRequest.h"
 
 @interface FetchAccountBalanceRequest : BaseRequest
+@property (strong, nonatomic) NSNumber *paging;
 
 @end
