@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol PrescriptionContentsCellDelegate<NSObject>
+@optional
+- (void)didClickAddContent;
+- (void)didDeleteContent:(NSArray *)contentsArray;
+- (void)didSetContentCycle:(NSArray *)contentsArray;
+@end
 
 @interface PrescriptionContentsCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITableView *contentTableView;
+//@property (copy, nonatomic) void (^addContentBlock)();
+@property (weak, nonatomic) id<PrescriptionContentsCellDelegate> delegate;
 
 - (void)resetContents:(NSArray *)contents;
 

@@ -8,6 +8,7 @@
 
 #import "SceneContentsViewController.h"
 #import "SceneContentsListViewController.h"
+#import "AdviceWebViewController.h"
 
 #import "DepartmentSelectCell.h"
 #import "TherapyItemCell.h"
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *diseaseTableView;
 
 @property (strong, nonatomic) UITextField *searchTextField;
-@property (strong, nonatomic) NSIndexPath *seletedDepartmentIndexPath;  //当前选择的科室
+@property (strong, nonatomic) NSIndexPath *seletedDepartmentIndexPath;  //当前选择的病症
 
 @property (copy, nonatomic) NSArray *diseasesArray;
 @property (copy, nonatomic) NSArray *selectedTherapiesArray;
@@ -55,6 +56,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)adviceAction {
+    AdviceWebViewController *adviceController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdviceWeb"];
+    if (self.seletedDepartmentIndexPath.row == 1) {
+        adviceController.adviceType = XJAdviceTypeAll;
+    } else {
+        DiseaseModel *tempModel = self.diseasesArray[self.seletedDepartmentIndexPath.row - 1];
+        adviceController.adviceType = XJAdviceTypeDisease;
+        adviceController.resultId = tempModel.diseaseId;
+    }
+    [self.navigationController pushViewController:adviceController animated:YES];
+    
 }
 
 #pragma mark - Request
@@ -103,8 +114,17 @@
     } else {
         [textField resignFirstResponder];
         SceneContentsListViewController *listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContentsList"];
-        listViewController.viewType = 1;
+        listViewController.viewType = self.viewType;
         listViewController.keyword = textField.text;
+        if (self.viewType == 2) {
+            listViewController.selectedContents = [self.selectedArray mutableCopy];
+        }
+        listViewController.selectedBlock = ^(NSArray *array) {
+            self.selectedArray = [array copy];
+            if (self.pickBlock) {
+                self.pickBlock(self.selectedArray);
+            }
+        };
         [self.navigationController pushViewController:listViewController animated:YES];
     }
     return YES;
@@ -144,7 +164,7 @@
     if (tableView == self.departmentTableView) {
         return 0;
     } else {
-        if (self.seletedDepartmentIndexPath.row == 0 || self.seletedDepartmentIndexPath.row == 1) {
+        if (self.seletedDepartmentIndexPath.row == 0) {
             return 0;
         } else {
             return 50.f;
@@ -204,7 +224,16 @@
         TherapyModel *model = self.selectedTherapiesArray[indexPath.row - 1];
         listViewController.therapyModel = model;
     }
-    listViewController.viewType = 1;
+    listViewController.viewType = self.viewType;
+    if (self.viewType == 2) {
+        listViewController.selectedContents = [self.selectedArray mutableCopy];
+    }
+    listViewController.selectedBlock = ^(NSArray *array) {
+        self.selectedArray = [array copy];
+        if (self.pickBlock) {
+            self.pickBlock(self.selectedArray);
+        }
+    };
     [self.navigationController pushViewController:listViewController animated:YES];
 }
 
@@ -238,7 +267,7 @@
         _searchTextField = [[UITextField alloc] init];
         _searchTextField.placeholder = @"请输入你要搜索的内容";
         [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-        _searchTextField.textColor = MAIN_TEXT_COLOR;
+        _searchTextField.textColor = NAVIGATIONBAR_COLOR;
         _searchTextField.font = kSystemFont(14);
         _searchTextField.returnKeyType = UIReturnKeySearch;
         _searchTextField.delegate = self;

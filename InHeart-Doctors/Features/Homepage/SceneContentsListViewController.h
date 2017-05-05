@@ -16,5 +16,8 @@
 @property (strong, nonatomic) TherapyModel *therapyModel;
 @property (copy, nonatomic) NSString *keyword;
 @property (assign, nonatomic) NSInteger viewType;
+@property (strong, nonatomic) NSMutableArray *selectedContents;
+
+@property (copy, nonatomic) void (^selectedBlock)(NSArray *array);
 
 @end

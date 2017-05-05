@@ -29,13 +29,9 @@
         }
     }];
 }
-+ (void)sendPrescription:(NSString *)contents doctor:(NSString *)doctorId user:(NSString *)userId suggestion:(NSString *)suggestion price:(NSNumber *)price handler:(RequestResultHandler)handler {
++ (void)sendPrescription:(PrescriptionModel *)model handler:(RequestResultHandler)handler {
     [[SendPrescriptionRequest new] request:^BOOL(SendPrescriptionRequest *request) {
-        request.contents = contents;
-        request.doctorId = doctorId;
-        request.userId = userId;
-        request.suggestion = suggestion;
-        request.totalPrice = price;
+        request.model = model;
         return YES;
     } result:handler];
 }

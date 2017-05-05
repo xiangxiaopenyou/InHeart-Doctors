@@ -7,19 +7,19 @@
 //
 
 #import "SendPrescriptionRequest.h"
+#import "PrescriptionModel.h"
 
 @implementation SendPrescriptionRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
     if (!paramsBlock(self)) {
         return;
     }
-    [self.params addEntriesFromDictionary:@{@"suggestion"   : self.suggestion,
-                                           @"doctorId"   : self.doctorId,
-                                           @"userId"     : self.userId,
-                                            @"total"      : self.totalPrice}];
-    if (self.contents) {
-        [self.params setObject:self.contents forKey:@"contents"];
-    }
+    [self.params addEntriesFromDictionary:@{@"suggestion" : self.model.suggestion,
+                                            @"doctorId"   : self.model.doctorId,
+                                            @"userId"     : self.model.userId,
+                                            @"disease" : self.model.disease,
+                                            @"price"      : self.model.price,
+                                            @"prescriptionContentList" : self.model.prescriptionContentList}];
     [[RequestManager sharedInstance] POST:SEND_PRESCRIPTION parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);

@@ -8,20 +8,23 @@
 
 #import "WritePrescriptionViewController.h"
 #import "ChooseContentsViewController.h"
+#import "SceneContentsViewController.h"
 
 #import "XLBlockAlertView.h"
 #import "PrescriptionContentsCell.h"
 #import "PrescriptionPriceCell.h"
 
-#import "SingleContentModel.h"
+//#import "SingleContentModel.h"
+#import "ContentModel.h"
 #import "DoctorsModel.h"
 #import "UserMessagesModel.h"
 #import "UserInfo.h"
 #import "UsersModel.h"
 #import "ConversationModel.h"
+#import "PrescriptionModel.h"
 
 
-@interface WritePrescriptionViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface WritePrescriptionViewController ()<UITableViewDelegate, UITableViewDataSource, PrescriptionContentsCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *adviceTextView;
 @property (weak, nonatomic) IBOutlet UITextView *diseaseTextView;
@@ -42,6 +45,10 @@
     //[self fetchPrice];
     
     [self.diseaseTextView becomeFirstResponder];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -72,24 +79,24 @@
     XLShowHUDWithMessage(nil, self.view);
     self.navigationItem.rightBarButtonItem.enabled = NO;
     self.navigationItem.leftBarButtonItem.enabled = NO;
-    NSString *contentsString = nil;
-    if (self.contentsArray.count > 0) {
-        NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-        for (SingleContentModel *tempModel in self.contentsArray) {
-            [tempArray addObject:tempModel.contentId];
-        }
-        contentsString = [tempArray componentsJoinedByString:@","];
-    }
-    NSNumber *price = @0;
-    if ([self.feesTextField.text floatValue] > 0) {
-        if ([self.feesTextField.text floatValue] == [self.feesTextField.text integerValue]) {
-            price = @([self.feesTextField.text integerValue]);
-        } else {
-            price = @([self.feesTextField.text floatValue]);
-        }
+    CGFloat price = 0;
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    for (ContentModel *tempModel in self.contentsArray) {
+        [list addObject:@{@"contentId" : tempModel.id,
+                         @"frequency" : tempModel.frequency,
+                         @"period" : tempModel.period,
+                         @"periodUnit" : tempModel.periodUnit}];
+        price += [tempModel.price floatValue];
     }
     UsersModel *userModel = [[UserInfo sharedUserInfo] userInfo];
-    [UserMessagesModel sendPrescription:contentsString doctor:userModel.userId user:self.conversationModel.userId suggestion:self.adviceTextView.text price:price handler:^(id object, NSString *msg) {
+    PrescriptionModel *model = [[PrescriptionModel alloc] init];
+    model.doctorId = userModel.userId;
+    model.userId = self.conversationModel.userId;
+    model.disease = self.diseaseTextView.text;
+    model.suggestion = self.adviceTextView.text;
+    model.price = @(price);
+    model.prescriptionContentList = list;
+    [UserMessagesModel sendPrescription:model handler:^(id object, NSString *msg) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.navigationItem.leftBarButtonItem.enabled = YES;
         if (object && object[@"prescriptionId"]) {
@@ -98,9 +105,9 @@
             NSString *prescriptionId = object[@"prescriptionId"];
             [dictionary setObject:prescriptionId forKey:@"prescriptionId"];
             [dictionary setObject:@(1) forKey:@"status"];
-            [dictionary setObject:price forKey:@"price"];
+            [dictionary setObject:@(price) forKey:@"price"];
             if (self.contentsArray.count > 0) {
-                SingleContentModel *tempModel = self.contentsArray[0];
+                ContentModel *tempModel = self.contentsArray[0];
                 [dictionary setObject:tempModel.coverPic forKey:@"imageUrl"];
             }
             if (self.block) {
@@ -134,6 +141,25 @@
 //    return YES;
 //}
 
+#pragma mark - PrescriptionContentsCellDelegate
+- (void)didClickAddContent {
+    SceneContentsViewController *contentsViewController = [[UIStoryboard storyboardWithName:@"Homepage" bundle:nil] instantiateViewControllerWithIdentifier:@"SceneContents"];
+    contentsViewController.viewType = 2;
+    contentsViewController.selectedArray = [self.contentsArray copy];
+    contentsViewController.pickBlock = ^(NSArray *array) {
+        self.contentsArray = [array mutableCopy];
+    };
+    [self.navigationController pushViewController:contentsViewController animated:YES];
+}
+- (void)didDeleteContent:(NSArray *)contentsArray {
+    self.contentsArray = [contentsArray mutableCopy];
+    [self.tableView reloadData];
+}
+- (void)didSetContentCycle:(NSArray *)contentsArray {
+    self.contentsArray = [contentsArray mutableCopy];
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
@@ -150,11 +176,17 @@
         static NSString *identifier = @"PrescriptionContentsCell";
         PrescriptionContentsCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         [cell resetContents:self.contentsArray];
         return cell;
     } else {
         static NSString *identifier = @"PrescriptionPriceCell";
         PrescriptionPriceCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        CGFloat price = 0;
+        for (ContentModel *tempModel in self.contentsArray) {
+            price += [tempModel.price floatValue];
+        }
+        cell.priceLabel.text = [NSString stringWithFormat:@"%.2f", price];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -176,19 +208,29 @@
 }
 - (IBAction)submitAction:(id)sender {
     [self hideKeyboard];
-    if (XLIsNullObject(self.adviceTextView.text)) {
-        XLShowThenDismissHUD(NO, kPleaseInputPrescriptionWords, self.view);
+    if (XLIsNullObject(self.diseaseTextView.text)) {
+        XLDismissHUD(self.view, YES, NO, @"请先写好病症描述");
         return;
     }
-    if ([self.feesTextField.text floatValue] == 0) {
-        [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kIsFree block:^(NSInteger buttonIndex) {
-            if (buttonIndex == 1) {
-                [self sendPrescription];
-            }
-        } cancelButtonTitle:kCommonCancel otherButtonTitles:kCommonEnsure, nil] show];
-    } else {
-        [self sendPrescription];
+    if (XLIsNullObject(self.adviceTextView.text)) {
+        XLDismissHUD(self.view, YES, NO, kPleaseInputPrescriptionWords);
+        return;
     }
+    if (self.contentsArray.count <= 0) {
+        XLDismissHUD(self.view, YES, NO, @"请先添加内容");
+        return;
+    }
+    BOOL isSetCycle = YES;
+    for (ContentModel *tempModel in self.contentsArray) {
+        if (tempModel.frequency.integerValue <= 0) {
+            isSetCycle = NO;
+        }
+    }
+    if (!isSetCycle) {
+        XLDismissHUD(self.view, YES, NO, @"请先给每个内容设置周期");
+        return;
+    }
+    [self sendPrescription];
 }
 //- (void)addContentsAction {
 //    ChooseContentsViewController *contentsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ChooseContents"];
@@ -206,7 +248,7 @@
 #pragma mark - Getters
 - (NSMutableArray *)contentsArray {
     if (!_contentsArray) {
-        _contentsArray = [[NSMutableArray alloc] initWithObjects:@"1", @"2", nil];
+        _contentsArray = [[NSMutableArray alloc] init];
     }
     return _contentsArray;
 }

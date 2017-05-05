@@ -142,6 +142,7 @@
 }
 - (IBAction)mySceneAction:(id)sender {
     SceneContentsViewController *sceneViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContents"];
+    sceneViewController.viewType = 1;
     [self.navigationController pushViewController:sceneViewController animated:YES];
 }
 - (IBAction)myPatientsAction:(id)sender {

@@ -37,7 +37,7 @@ NSString * const kCommonTip = @"提示";
 NSString * const kCommonCancel = @"取消";
 NSString * const kCommonEnsure = @"确定";
 NSString * const kIsMakePhoneCall = @"打电话给患者？";
-NSString * const kPleaseInputPrescriptionWords = @"请先写好医嘱哦~";
+NSString * const kPleaseInputPrescriptionWords = @"请先写好医嘱";
 NSString * const kIsFree = @"确定发送免费处方吗？";
 
 NSString * const kMyInterrogation = @"我的问诊";
@@ -46,6 +46,7 @@ NSString * const kMyDoctors = @"我的医生";
 NSString * const kMyCollections = @"我的收藏";
 NSString * const kMyPatients = @"我的患者";
 NSString * const kMyBandCard = @"我的银行卡";
+NSString * const kMyScores = @"我的积分";
 NSString * const kInviteDoctors = @"邀请医生";
 NSString * const kMyAccount = @"我的账户";
 NSString * const kHelpAndFeedback = @"帮助与反馈";
@@ -94,6 +95,7 @@ NSString * const kSetupUnreadMessagesCount = @"SetupUnreadMessagesCount";
 NSString * const kConversationsDidChange = @"ConversationsDidChange";
 
 NSString * const BASEAPIURL = @"http://test.med-vision.cn/api/v1/";
+NSString * const ADVICEBASEURL = @"http://test.med-vision.cn/h5/help/";
 
 NSString * const USER_LOGIN = @"doctor/login";
 NSString * const USER_REGISTER = @"doctor/register";

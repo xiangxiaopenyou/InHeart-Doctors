@@ -7,6 +7,7 @@
 //
 
 #import "SceneContentsListViewController.h"
+#import "AdviceWebViewController.h"
 #import "SortButton.h"
 #import "SceneContentCell.h"
 
@@ -71,6 +72,10 @@
 
 #pragma mark - IBAction
 - (void)rightAction {
+    AdviceWebViewController *adviceController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdviceWeb"];
+    adviceController.adviceType = XJAdviceTypeTherapy;
+    adviceController.resultId = self.therapyModel.therapyId;
+    [self.navigationController pushViewController:adviceController animated:YES];
 }
 - (IBAction)clickNumberAction:(id)sender {
     _priceSort = XJSortTypesNone;
@@ -185,13 +190,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"SceneContentsCell";
     SceneContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    ContentModel *tempModel = self.contentsArray[indexPath.row];
+    __block ContentModel *tempModel = self.contentsArray[indexPath.row];
+    [self.selectedContents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ContentModel *model = (ContentModel *)obj;
+        if ([model.id isEqualToString:tempModel.id]) {
+            tempModel = model;
+        }
+    }];
     [cell setupContents:tempModel viewType:self.viewType];
     cell.block = ^(BOOL selected) {
         if (self.viewType == 1) {
             tempModel.isCollected = selected ? @(1) : @(0);
         } else {
-            tempModel.isAdded = selected ? @(1) : @(0);
+            if (selected) {
+                tempModel.isAdded = @(1);
+                [self.selectedContents addObject:tempModel];
+            } else {
+                tempModel.isAdded = @(0);
+                [self.selectedContents removeObject:tempModel];
+            }
+            if (self.selectedBlock) {
+                self.selectedBlock(self.selectedContents);
+            }
         }
     };
     return cell;
@@ -200,6 +220,8 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ContentModel *tempModel = self.contentsArray[indexPath.row];
+    
 }
 
 /*

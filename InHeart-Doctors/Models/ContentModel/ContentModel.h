@@ -14,12 +14,15 @@
 @property (strong, nonatomic) NSNumber *type;          //内容类型
 @property (copy, nonatomic) NSString *typeName;
 @property (copy, nonatomic) NSString *coverPic;
-@property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSNumber *price;
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *clicks;
 @property (strong, nonatomic) NSNumber *duration;
 @property (strong, nonatomic) NSNumber *isCollected;
 @property (strong, nonatomic) NSNumber *isAdded;
+@property (strong, nonatomic) NSNumber *frequency;  //次数
+@property (strong, nonatomic) NSNumber *period;     //日数、周数、月数
+@property (strong, nonatomic) NSNumber *periodUnit;  //单位 1 日 2 周 3 月
 
 + (void)searchContents:(NSString *)diseaseId
                therapy:(NSString *)therapyId

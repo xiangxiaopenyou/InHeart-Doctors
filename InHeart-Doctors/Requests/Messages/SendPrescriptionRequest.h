@@ -7,12 +7,9 @@
 //
 
 #import "BaseRequest.h"
+@class PrescriptionModel;
 
 @interface SendPrescriptionRequest : BaseRequest
-@property (copy, nonatomic) NSString *contents;
-@property (copy, nonatomic) NSString *doctorId;
-@property (copy, nonatomic) NSString *userId;
-@property (copy, nonatomic) NSString *suggestion;
-@property (strong, nonatomic) NSNumber *totalPrice;
+@property (strong, nonatomic) PrescriptionModel *model;
 
 @end

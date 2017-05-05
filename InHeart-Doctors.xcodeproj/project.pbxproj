@@ -16,6 +16,7 @@
 		3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C881E7BAEF10017204D /* TopNewsCell.m */; };
 		3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8B1E7BAEFF0017204D /* CommonNewsCell.m */; };
 		3D0A5C8F1E7FB5270017204D /* MyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */; };
+		3D0C8B261EBAF74200454541 /* AdviceWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0C8B251EBAF74200454541 /* AdviceWebViewController.m */; };
 		3D0E57E81DD1C05E00294463 /* ChooseContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */; };
 		3D0FB2951E94E8BD00F5F4A1 /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0FB2941E94E8BD00F5F4A1 /* InformationModel.m */; };
 		3D10D2AF1EA8937800D8D669 /* PrescriptionContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D2AE1EA8937800D8D669 /* PrescriptionContentsCell.m */; };
@@ -172,6 +173,7 @@
 		3D6C1BC31DD2F39C00FAC75E /* SetInterrogationStateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C1BC21DD2F39C00FAC75E /* SetInterrogationStateRequest.m */; };
 		3D6F35491E10E9F300F9E6E0 /* XLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F35481E10E9F300F9E6E0 /* XLModel.m */; };
 		3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */; };
+		3D85B42D1EB8686A00E72D3F /* AdjustCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */; };
 		3D894B221DDEF65F004963C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D6A8E7B1D98B07700C405DA /* Assets.xcassets */; };
 		3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F1C901DC71C51000E3604 /* BillCell.m */; };
 		3D8F1C971DC72151000E3604 /* FetchBillsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F1C961DC72151000E3604 /* FetchBillsRequest.m */; };
@@ -184,7 +186,6 @@
 		3D968DA01DB468C3005A1596 /* FindPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968D9F1DB468C3005A1596 /* FindPasswordRequest.m */; };
 		3D968DA61DB4A460005A1596 /* ContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */; };
 		3D968DAE1DB4B6F8005A1596 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DAD1DB4B6F8005A1596 /* DetailContentCell.m */; };
-		3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */; };
 		3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB31DB5C02B005A1596 /* SearchResultCell.m */; };
 		3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */; };
 		3D9F2D8F1E149A8200F6D65D /* SingleContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9F2D8E1E149A8200F6D65D /* SingleContentModel.m */; };
@@ -195,6 +196,7 @@
 		3DA804741EA5DF1D0087DF1F /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA804731EA5DF1D0087DF1F /* ContentModel.m */; };
 		3DA804771EA5E2DF0087DF1F /* SearchContentsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA804761EA5E2DF0087DF1F /* SearchContentsRequest.m */; };
 		3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */; };
+		3DB144411EB9C6600044FC0F /* PrescriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB144401EB9C6600044FC0F /* PrescriptionModel.m */; };
 		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
 		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
 		3DC30CB61E83BA5F00AF48D6 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; };
@@ -350,6 +352,8 @@
 		3D0A5C8B1E7BAEFF0017204D /* CommonNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonNewsCell.m; sourceTree = "<group>"; };
 		3D0A5C8D1E7FB5270017204D /* MyPatientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPatientsViewController.h; sourceTree = "<group>"; };
 		3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPatientsViewController.m; sourceTree = "<group>"; };
+		3D0C8B241EBAF74200454541 /* AdviceWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdviceWebViewController.h; sourceTree = "<group>"; };
+		3D0C8B251EBAF74200454541 /* AdviceWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdviceWebViewController.m; sourceTree = "<group>"; };
 		3D0E57E61DD1C05E00294463 /* ChooseContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContentsViewController.h; sourceTree = "<group>"; };
 		3D0E57E71DD1C05E00294463 /* ChooseContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContentsViewController.m; sourceTree = "<group>"; };
 		3D0FB2931E94E8BD00F5F4A1 /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationModel.h; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 		3D6F35481E10E9F300F9E6E0 /* XLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLModel.m; sourceTree = "<group>"; };
 		3D833D291DAB73DD003E970E /* WritePrescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritePrescriptionViewController.h; sourceTree = "<group>"; };
 		3D833D2A1DAB73DD003E970E /* WritePrescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritePrescriptionViewController.m; sourceTree = "<group>"; };
+		3D85B42B1EB8686A00E72D3F /* AdjustCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustCycleView.h; sourceTree = "<group>"; };
+		3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustCycleView.m; sourceTree = "<group>"; };
 		3D8F1C8F1DC71C51000E3604 /* BillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillCell.h; sourceTree = "<group>"; };
 		3D8F1C901DC71C51000E3604 /* BillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillCell.m; sourceTree = "<group>"; };
 		3D8F1C951DC72151000E3604 /* FetchBillsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchBillsRequest.h; sourceTree = "<group>"; };
@@ -629,8 +635,6 @@
 		3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDetailViewController.m; sourceTree = "<group>"; };
 		3D968DAC1DB4B6F8005A1596 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
 		3D968DAD1DB4B6F8005A1596 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
-		3D968DAF1DB5BECD005A1596 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
-		3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
 		3D968DB21DB5C02B005A1596 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		3D968DB31DB5C02B005A1596 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 		3D968DB51DB5EB4A005A1596 /* SystemSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingTableViewController.h; sourceTree = "<group>"; };
@@ -651,6 +655,8 @@
 		3DA804761EA5E2DF0087DF1F /* SearchContentsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchContentsRequest.m; sourceTree = "<group>"; };
 		3DB02F7A1DB602450014EAE9 /* FetchCollectionsListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCollectionsListRequest.h; sourceTree = "<group>"; };
 		3DB02F7B1DB602450014EAE9 /* FetchCollectionsListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCollectionsListRequest.m; sourceTree = "<group>"; };
+		3DB1443F1EB9C6600044FC0F /* PrescriptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionModel.h; sourceTree = "<group>"; };
+		3DB144401EB9C6600044FC0F /* PrescriptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionModel.m; sourceTree = "<group>"; };
 		3DB651141DD45D7B006F5C29 /* InHeart-Doctors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "InHeart-Doctors.entitlements"; sourceTree = "<group>"; };
 		3DBA048D1DB9F47200098ACF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DBA048F1DB9F47E00098ACF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -987,6 +993,8 @@
 				3D3529B81E14AFCA00C053FE /* ContentsMediaModel.m */,
 				3DA804721EA5DF1D0087DF1F /* ContentModel.h */,
 				3DA804731EA5DF1D0087DF1F /* ContentModel.m */,
+				3DB1443F1EB9C6600044FC0F /* PrescriptionModel.h */,
+				3DB144401EB9C6600044FC0F /* PrescriptionModel.m */,
 			);
 			path = ContentModel;
 			sourceTree = "<group>";
@@ -1130,6 +1138,8 @@
 				3DEEC8D71E766DF4006A40D3 /* NewsViewController.m */,
 				3DC30CB91E84ADA100AF48D6 /* NewsDetailViewController.h */,
 				3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */,
+				3D0C8B241EBAF74200454541 /* AdviceWebViewController.h */,
+				3D0C8B251EBAF74200454541 /* AdviceWebViewController.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -1321,8 +1331,6 @@
 				3D4326A51DBE0A730043008D /* DetailNavigationController.m */,
 				3D968DA41DB4A460005A1596 /* ContentDetailViewController.h */,
 				3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */,
-				3D968DAF1DB5BECD005A1596 /* SearchResultsTableViewController.h */,
-				3D968DB01DB5BECD005A1596 /* SearchResultsTableViewController.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1381,6 +1389,8 @@
 				3D10D2B11EA8938700D8D669 /* PrescriptionPriceCell.m */,
 				3D10D2B31EA895FA00D8D669 /* ContentsItemCell.h */,
 				3D10D2B41EA895FA00D8D669 /* ContentsItemCell.m */,
+				3D85B42B1EB8686A00E72D3F /* AdjustCycleView.h */,
+				3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2356,7 +2366,6 @@
 				3D10D2B51EA895FA00D8D669 /* ContentsItemCell.m in Sources */,
 				3DEED9591E839BA700F96A5A /* EaseBubbleView+Location.m in Sources */,
 				3D833D2B1DAB73DD003E970E /* WritePrescriptionViewController.m in Sources */,
-				3D968DB11DB5BECD005A1596 /* SearchResultsTableViewController.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
 				3D4FC1B61E9F210900E9CE5E /* TherapyItemCell.m in Sources */,
 				3D33E4C41E972D93003AA8C5 /* CardModel.m in Sources */,
@@ -2401,6 +2410,7 @@
 				3DEED9201E839BA700F96A5A /* EMSDWebImageDownloaderOperation.m in Sources */,
 				3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */,
 				3D6A8EE91D98C69600C405DA /* PersonalInformationCell.m in Sources */,
+				3D85B42D1EB8686A00E72D3F /* AdjustCycleView.m in Sources */,
 				3D33E4BE1E9724D8003AA8C5 /* AuthenticationInformationViewController.m in Sources */,
 				3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */,
 				3D6A8E741D98B07700C405DA /* AppDelegate.m in Sources */,
@@ -2443,6 +2453,7 @@
 				3DEED8F21E839BA700F96A5A /* EMAudioPlayerUtil.m in Sources */,
 				3D6A8ED61D98C69600C405DA /* XLHyperLinkButton.m in Sources */,
 				3D3529C81E14E78E00C053FE /* UsersModel.m in Sources */,
+				3DB144411EB9C6600044FC0F /* PrescriptionModel.m in Sources */,
 				3D62074B1E7238DD0061B261 /* GuidePageView.m in Sources */,
 				3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */,
 				3DEED9511E839BA700F96A5A /* EaseUserCell.m in Sources */,
@@ -2505,6 +2516,7 @@
 				3DEED91A1E839BA700F96A5A /* MWZoomingScrollView.m in Sources */,
 				3DEED9361E839BA700F96A5A /* PSTGridLayoutItem.m in Sources */,
 				3D0A5C8F1E7FB5270017204D /* MyPatientsViewController.m in Sources */,
+				3D0C8B261EBAF74200454541 /* AdviceWebViewController.m in Sources */,
 				3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */,
 				3D4FC1A71E9DC40600E9CE5E /* ChangePasswordRequest.m in Sources */,
 				3D6F35491E10E9F300F9E6E0 /* XLModel.m in Sources */,

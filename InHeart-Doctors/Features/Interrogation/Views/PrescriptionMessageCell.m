@@ -90,11 +90,11 @@
         self.backgroundImageView.image = [[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_bg"] stretchableImageWithLeftCapWidth:35 topCapHeight:35];
     }
     [self.prescriptionTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.viewOfContents.mas_top).with.mas_offset(12);
+        make.top.equalTo(self.viewOfContents.mas_top).with.mas_offset(15);
         make.leading.equalTo(self.prescriptionImageView.mas_trailing).with.mas_offset(8);
     }];
     [self.prescriptionStateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.viewOfContents.mas_bottom).with.mas_offset(- 12);
+        make.bottom.equalTo(self.viewOfContents.mas_bottom).with.mas_offset(- 15);
         make.leading.equalTo(self.prescriptionImageView.mas_trailing).with.mas_offset(8);
     }];
     
@@ -113,8 +113,10 @@
         priceString = [NSString stringWithFormat:@"%.2f", [tempDictionary[@"price"] floatValue]];
     }
     if ([tempDictionary[@"status"] integerValue] == 1) {
+        self.prescriptionStateLabel.textColor = kHexRGBColorWithAlpha(0xec0202, 1);
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  未付款", priceString];
     } else if ([tempDictionary[@"status"] integerValue] == 2) {
+        self.prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  已付款", priceString];
     }
 

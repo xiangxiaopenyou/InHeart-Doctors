@@ -34,6 +34,11 @@ typedef NS_ENUM(NSInteger, XJAuthenticationStatus) {
     XJAuthenticationStatusSuccess = 4, //正常
     XJAuthenticationStatusStop = 9  //停诊
 };
+typedef NS_ENUM(NSInteger, XJAdviceType) {
+    XJAdviceTypeAll = 0,
+    XJAdviceTypeDisease,
+    XJAdviceTypeTherapy
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;
@@ -75,6 +80,7 @@ extern NSString * const kMyWallet;
 extern NSString * const kMyDoctors;
 extern NSString * const kMyCollections;
 extern NSString * const kMyPatients;
+extern NSString * const kMyScores;
 extern NSString * const kMyBandCard;
 extern NSString * const kInviteDoctors;
 extern NSString * const kMyAccount;
@@ -128,6 +134,7 @@ extern NSString * const kConversationsDidChange;
 //接口
 //1.BaseURL
 extern NSString * const BASEAPIURL;
+extern NSString * const ADVICEBASEURL;
 
 
 //2.用户相关

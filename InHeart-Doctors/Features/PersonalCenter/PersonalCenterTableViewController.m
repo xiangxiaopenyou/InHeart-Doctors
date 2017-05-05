@@ -75,7 +75,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger number = 0;
@@ -84,9 +84,13 @@
             number = 1;
             break;
         case 1:
-            number = 5;
+            number = 4;
             break;
-        case 2:
+        case 2:{
+            number = 1;
+        }
+            break;
+        case 3:
             number = 2;
             break;
         default:
@@ -132,6 +136,16 @@
         }
             break;
         case 2:{
+            CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
+            cell.imageView.image = [UIImage imageNamed:@"invite_doctor"];
+            cell.textLabel.text = kInviteDoctors;
+            cell.textLabel.font = kSystemFont(15);
+            cell.textLabel.textColor = MAIN_TEXT_COLOR;
+            return cell;
+            
+        }
+            break;
+        case 3:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
             NSString *iconString;
             NSString *titleString;
@@ -185,6 +199,10 @@
         }
             break;
         case 2:{
+            
+        }
+            break;
+        case 3:{
             if (indexPath.row == 0) {
                 InterrogationSettingViewController *interrogationSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InterrogationSetting"];
                 [self.navigationController pushViewController:interrogationSettingViewController animated:YES];
@@ -262,13 +280,13 @@
 #pragma mark - Getters
 - (NSArray *)iconArray {
     if (!_iconArray) {
-        _iconArray = @[@"my_wallet", @"my_collections", @"my_collections", @"my_collections", @"my_collections"];
+        _iconArray = @[@"my_wallet", @"my_collections", @"my_scores", @"my_bankcard"];
     }
     return _iconArray;
 }
 - (NSArray *)itemTitleArray {
     if (!_itemTitleArray) {
-        _itemTitleArray = @[kMyWallet, kMyCollections, kMyPatients, kMyBandCard, kInviteDoctors];
+        _itemTitleArray = @[kMyWallet, kMyCollections, kMyScores, kMyBandCard];
     }
     return _itemTitleArray;
 }

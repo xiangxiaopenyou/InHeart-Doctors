@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SceneContentsViewController : UIViewController
+@property (assign, nonatomic) NSInteger viewType;
+@property (copy, nonatomic) NSArray *selectedArray;
+
+@property (copy, nonatomic) void (^pickBlock)(NSArray *array);
 
 @end
