@@ -1,29 +1,22 @@
 //
-//  DetailNavigationController.m
+//  PrescriptionDetailViewController.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/10/24.
-//  Copyright © 2016年 项小盆友. All rights reserved.
+//  Created by 项小盆友 on 2017/5/9.
+//  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "DetailNavigationController.h"
-#import "ContentModel.h"
+#import "PrescriptionDetailViewController.h"
 
-@interface DetailNavigationController ()
+@interface PrescriptionDetailViewController ()
 
 @end
 
-@implementation DetailNavigationController
+@implementation PrescriptionDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-- (BOOL)shouldAutorotate {
-    return [self.contentModel.type integerValue] == 1 ? YES : NO;
-}
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return [self.contentModel.type integerValue] == 1 ? UIInterfaceOrientationMaskAllButUpsideDown : UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning {

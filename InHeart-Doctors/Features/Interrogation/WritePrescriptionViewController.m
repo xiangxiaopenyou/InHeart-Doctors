@@ -7,7 +7,6 @@
 //
 
 #import "WritePrescriptionViewController.h"
-#import "ChooseContentsViewController.h"
 #import "SceneContentsViewController.h"
 
 #import "XLBlockAlertView.h"

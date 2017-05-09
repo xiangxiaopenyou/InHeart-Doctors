@@ -19,6 +19,11 @@
 @property (strong, nonatomic) NSNumber *clicks;
 @property (strong, nonatomic) NSNumber *duration;
 @property (strong, nonatomic) NSNumber *isCollected;
+@property (copy, nonatomic) NSString *createdAt;
+@property (copy, nonatomic) NSString *contentDescription;
+@property (copy, nonatomic) NSString *disease;
+@property (copy, nonatomic) NSString *therapy;
+@property (copy, nonatomic) NSDictionary *ext;
 @property (strong, nonatomic) NSNumber *isAdded;
 @property (strong, nonatomic) NSNumber *frequency;  //次数
 @property (strong, nonatomic) NSNumber *period;     //日数、周数、月数
@@ -31,5 +36,8 @@
               sortName:(NSString *)sortName
              sortOrder:(NSString *)sortOrder
                handler:(RequestResultHandler)handler;
++ (void)fetchContentDetail:(NSString *)contentId handler:(RequestResultHandler)handler;
++ (void)collectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
++ (void)cancelCollectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
 
 @end

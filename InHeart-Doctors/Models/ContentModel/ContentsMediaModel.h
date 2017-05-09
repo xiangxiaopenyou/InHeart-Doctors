@@ -10,10 +10,6 @@
 
 @interface ContentsMediaModel : XLModel
 @property (copy, nonatomic) NSString *content;
-@property (copy, nonatomic) NSString *contentId;
-@property (copy, nonatomic) NSString *createdAt;
-@property (copy, nonatomic) NSString *creator;
-@property (copy, nonatomic) NSString *updatedAt;
-@property (copy, nonatomic) NSString *updator;
+@property (copy, nonatomic) NSString *id;
 
 @end

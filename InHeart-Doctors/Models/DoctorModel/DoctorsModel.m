@@ -8,7 +8,7 @@
 
 #import "DoctorsModel.h"
 #import "AccountModel.h"
-#import "SingleContentModel.h"
+#import "ContentModel.h"
 #import "FetchPersonalInformationRequest.h"
 #import "FetchCollectionsListRequest.h"
 #import "FetchAccountBalanceRequest.h"
@@ -38,7 +38,7 @@
         if (msg) {
             !handler ?: handler(nil, msg);
         } else {
-            NSArray *tempArray = [SingleContentModel setupWithArray:object];
+            NSArray *tempArray = [ContentModel setupWithArray:object];
             !handler ?: handler(tempArray, nil);
         }
     }];

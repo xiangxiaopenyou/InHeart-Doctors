@@ -11,7 +11,7 @@
 #import "AudioPlayerView.h"
 #import "XLBlockAlertView.h"
 
-#import "SingleContentModel.h"
+#import "ContentModel.h"
 #import "ContentsMediaModel.h"
 
 #import <UtoVRPlayer/UtoVRPlayer.h>
@@ -20,7 +20,9 @@
 @interface ContentDetailViewController ()<UVPlayerDelegate, UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewOfPlayer;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *collectButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraintOfPlayer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectButtonHeight;
 
 @property (strong, nonatomic) UVPlayer *vrPlayer;
 @property (strong, nonatomic) UVPlayerItem  *vrPlayerItem;
@@ -68,7 +70,8 @@
         }];
     }
     XLShowHUDWithMessage(nil, self.view);
-    [self fetchDetails:self.contentModel.contentId];
+    [self refreshBottomButtonState];
+    [self fetchDetails:self.contentModel.id];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -109,8 +112,10 @@
     CGFloat height;
     if (isLandscape) {
         height = 225.0;
+        self.collectButtonHeight.constant = 45.f;
     } else {
         height = SCREEN_WIDTH;
+        self.collectButtonHeight.constant = 0;
     }
     CGFloat duration = [coordinator transitionDuration];
     self.heightConstraintOfPlayer.constant = height;
@@ -118,20 +123,33 @@
         [self.view layoutIfNeeded];
     }];
 }
+//设置底部按钮
+- (void)refreshBottomButtonState {
+    if (self.viewType == 1) {
+        [self.collectButton setTitle:@"收藏" forState:UIControlStateNormal];
+        [self.collectButton setTitle:@"已收藏" forState:UIControlStateSelected];
+        self.collectButton.selected = [self.contentModel.isCollected integerValue] == 0 ? NO : YES;
+    } else {
+        [self.collectButton setTitle:@"选择" forState:UIControlStateNormal];
+        [self.collectButton setTitle:@"已选择" forState:UIControlStateSelected];
+        self.collectButton.selected = [self.contentModel.isAdded integerValue] == 0 ? NO : YES;
+    }
+}
 
 #pragma mark - Requests
 - (void)fetchDetails:(NSString *)contentId {
-    [SingleContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
+    [ContentModel fetchContentDetail:contentId handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(self.view, NO, YES, nil);
             self.contentModel = object;
-            if (self.contentModel.ext) {
-                self.mediaModel = [ContentsMediaModel yy_modelWithDictionary:self.contentModel.ext];
-                GJCFAsyncMainQueue(^{
+            GJCFAsyncMainQueue(^{
+                if (self.contentModel.ext) {
+                    self.mediaModel = [ContentsMediaModel yy_modelWithDictionary:self.contentModel.ext];
                     [self loadPlayer];
-                });
-            }
-            [self.tableView reloadData];
+                }
+                [self refreshBottomButtonState];
+                [self.tableView reloadData];
+            });
         } else {
             XLDismissHUD(self.view, YES, NO, msg);
         }
@@ -141,6 +159,8 @@
 #pragma mark - IBAction & Selector
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)collectAction:(id)sender {
 }
 - (void)startPlay {
     if (XLNetworkState != 5) {
@@ -200,24 +220,53 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize size = XLSizeOfText(self.contentModel.contentDescription, SCREEN_WIDTH - 30, kSystemFont(14));
+    return 150.f + size.height;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"DetailContent";
     DetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.contentModel) {
+        cell.collectionButton.hidden = self.viewType == 1 ? YES : NO;
         cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.name];
         cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.createdAt];
-        cell.collectionButton.selected = [self.contentModel.isCollect integerValue] == 0 ? NO : YES;
+        cell.clickNumberLabel.text = [NSString stringWithFormat:@"点击量：%@", self.contentModel.clicks];
+        cell.priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.contentModel.price floatValue]];
+        NSString *diseaseString = @"";
+        if (!XLIsNullObject(self.contentModel.disease)) {
+            diseaseString = [NSString stringWithFormat:@"%@", self.contentModel.disease];
+        }
+        if (!XLIsNullObject(self.contentModel.therapy)) {
+            if (XLIsNullObject(diseaseString)) {
+                diseaseString = [NSString stringWithFormat:@"%@", self.contentModel.therapy];
+            } else {
+                diseaseString = [NSString stringWithFormat:@"%@-%@", diseaseString, self.contentModel.therapy];
+            }
+        }
+        if (!XLIsNullObject(self.contentModel.typeName)) {
+            if (XLIsNullObject(diseaseString)) {
+                diseaseString = [NSString stringWithFormat:@"%@", self.contentModel.typeName];
+            } else {
+                diseaseString = [NSString stringWithFormat:@"%@-%@", diseaseString, self.contentModel.typeName];
+            }
+        }
+        cell.diseaseLabel.text = diseaseString;
+        
+        cell.collectionButton.selected = [self.contentModel.isCollected integerValue] == 0 ? NO : YES;
+        cell.durationLabel.text = [NSString stringWithFormat:@"%@分钟", self.contentModel.duration];
+        cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.contentDescription];
         GJCFWeakObject(cell) weakCell = cell;
         cell.collectBlock = ^(){
-            if ([self.contentModel.isCollect integerValue] == 0) {
-                self.contentModel.isCollect = @1;
+            if ([self.contentModel.isCollected integerValue] == 0) {
+                self.contentModel.isCollected = @1;
                 weakCell.collectionButton.selected = YES;
-                [SingleContentModel collectContent:self.contentModel.contentId handler:nil];
+                [ContentModel collectContent:self.contentModel.id handler:nil];
             } else {
-                self.contentModel.isCollect = @0;
+                self.contentModel.isCollected = @0;
                 weakCell.collectionButton.selected = NO;
-                [SingleContentModel cancelCollectContent:self.contentModel.contentId handler:nil];
+                [ContentModel cancelCollectContent:self.contentModel.id handler:nil];
             }
         };
     }

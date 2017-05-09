@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SingleContentModel;
+@class ContentModel;
 
 @interface DetailNavigationController : UINavigationController
-@property (strong, nonatomic) SingleContentModel *contentModel;
+@property (strong, nonatomic) ContentModel *contentModel;
 
 @end

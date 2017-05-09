@@ -93,7 +93,7 @@
         _photoButton =[UIButton buttonWithType:UIButtonTypeCustom];
         _photoButton.accessibilityIdentifier = @"image";
         [_photoButton setFrame:CGRectMake(insets, 10, CHAT_BUTTON_SIZE , 90)];
-        [_photoButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+        [_photoButton setImage:[UIImage imageNamed:@"send_picture"] forState:UIControlStateNormal];
         [_photoButton setTitle:@"图片" forState:UIControlStateNormal];
         [_photoButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
         _photoButton.titleLabel.font = kSystemFont(14);
@@ -136,7 +136,7 @@
         if (!_videoButton) {
             _videoCallButton =[UIButton buttonWithType:UIButtonTypeCustom];
             [_videoCallButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE, 10, CHAT_BUTTON_SIZE , 90)];
-            [_videoCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+            [_videoCallButton setImage:[UIImage imageNamed:@"video_call"] forState:UIControlStateNormal];
             [_videoCallButton setTitle:@"视频通话" forState:UIControlStateNormal];
             [_videoCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
             [_videoCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];

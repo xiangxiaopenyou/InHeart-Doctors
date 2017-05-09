@@ -13,7 +13,6 @@
 #import "XLBlockAlertView.h"
 
 #import "DoctorsModel.h"
-#import "SingleContentModel.h"
 #import "UserInfo.h"
 
 #import <UIImageView+WebCache.h>

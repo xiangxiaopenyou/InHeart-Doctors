@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SingleContentModel;
+@class ContentModel;
 
 @interface ContentDetailViewController : UIViewController
-@property (strong, nonatomic) SingleContentModel *contentModel;
+@property (strong, nonatomic) ContentModel *contentModel;
+@property (assign, nonatomic) NSInteger viewType;
 
 @end

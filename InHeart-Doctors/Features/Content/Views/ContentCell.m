@@ -10,7 +10,7 @@
 
 #import "ContentCollectionCell.h"
 
-#import "SingleContentModel.h"
+#import "ContentModel.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -45,7 +45,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"ContentCollectionCell";
     ContentCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    SingleContentModel *tempModel = self.array[indexPath.row];
+    ContentModel *tempModel = self.array[indexPath.row];
     [cell.contentImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
     cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
     return cell;
