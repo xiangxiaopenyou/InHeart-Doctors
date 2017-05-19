@@ -76,6 +76,7 @@
                 UserMessagesModel *userModel = object;
                 tempModel.userId = userModel.userId;
                 tempModel.realname = userModel.realname;
+                tempModel.avatarString = userModel.headpictureurl;
                 count += 1;
                 if (count == self.conversationArray.count) {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -126,7 +127,8 @@
     ConversationModel *tempModel = self.conversationArray[indexPath.row];
     EMMessage *lastMessage = tempModel.conversation.latestMessage;
     cell.titleLabel.text = XLIsNullObject(tempModel.realname) ? tempModel.conversation.conversationId : tempModel.realname;
-    [cell.avatarView.imageView setImage:[UIImage imageNamed:@"personal_avatar"]];
+    //[cell.avatarView.imageView setImage:[UIImage imageNamed:@"personal_avatar"]];
+    [cell.avatarView.imageView sd_setImageWithURL:XLURLFromString(tempModel.avatarString) placeholderImage:[UIImage imageNamed:@"personal_avatar"]];
     cell.detailLabel.text = [self messageTextForLastMessage:tempModel];
     NSDate *messageDate = [NSDate dateWithTimeIntervalInMilliSecondSince1970:lastMessage.timestamp];
     cell.timeLabel.text = XLDetailTimeAgoString(messageDate);

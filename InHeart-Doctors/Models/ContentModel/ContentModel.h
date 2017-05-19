@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSNumber *frequency;  //次数
 @property (strong, nonatomic) NSNumber *period;     //日数、周数、月数
 @property (strong, nonatomic) NSNumber *periodUnit;  //单位 1 日 2 周 3 月
+@property (strong, nonatomic) NSNumber *times;
+@property (strong, nonatomic) NSNumber *useTimes;
 
 + (void)searchContents:(NSString *)diseaseId
                therapy:(NSString *)therapyId

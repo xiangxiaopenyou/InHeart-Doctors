@@ -16,5 +16,9 @@
 @property (copy, nonatomic) NSString *suggestion;
 @property (strong, nonatomic) NSNumber *price;
 @property (copy, nonatomic) NSArray *prescriptionContentList;
+@property (copy, nonatomic) NSString *billno;
+@property (strong, nonatomic) NSNumber *payStatus;
+
++ (void)prescriptionDetail:(NSString *)prescriptionId handler:(RequestResultHandler)handler;
 
 @end

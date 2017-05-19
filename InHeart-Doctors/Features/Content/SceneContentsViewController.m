@@ -42,7 +42,7 @@
     [self createNavigationTitleView];
     
     //默认当前选择全部病种
-    _seletedDepartmentIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    _seletedDepartmentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self fetchDiseases];
 }
 
@@ -73,8 +73,8 @@
     [DiseaseModel fetchDiseasesAndTherapies:^(id object, NSString *msg) {
         if (object) {
             self.diseasesArray = [object copy];
-            DiseaseModel *tempModel = self.diseasesArray[0];
-            self.selectedTherapiesArray = [tempModel.therapiesArray copy];
+//            DiseaseModel *tempModel = self.diseasesArray[0];
+//            self.selectedTherapiesArray = [tempModel.therapiesArray copy];
             GJCFAsyncMainQueue(^{
                 [self.departmentTableView reloadData];
                 [self.diseaseTableView reloadData];
@@ -204,11 +204,17 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TherapyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TherapyCollection" forIndexPath:indexPath];
-    if (indexPath.row == 0) {
-        cell.nameLabel.text = @"所有疗法";
+    if (self.seletedDepartmentIndexPath.row == 0) {
+        if (indexPath.row == 0) {
+            cell.nameLabel.text = @"常用场景";
+        }
     } else {
-        TherapyModel *model = self.selectedTherapiesArray[indexPath.row - 1];
-        cell.nameLabel.text = [NSString stringWithFormat:@"%@", model.therapyName];
+        if (indexPath.row == 0) {
+            cell.nameLabel.text = @"所有疗法";
+        } else {
+            TherapyModel *model = self.selectedTherapiesArray[indexPath.row - 1];
+            cell.nameLabel.text = [NSString stringWithFormat:@"%@", model.therapyName];
+        }
     }
     return cell;
 }
@@ -227,6 +233,9 @@
     listViewController.viewType = self.viewType;
     if (self.viewType == 2) {
         listViewController.selectedContents = [self.selectedArray mutableCopy];
+    }
+    if (self.seletedDepartmentIndexPath.row == 0 && indexPath.row == 0) {
+        listViewController.isCollectionView = YES;
     }
     listViewController.selectedBlock = ^(NSArray *array) {
         self.selectedArray = [array copy];

@@ -13,4 +13,6 @@
 @property (strong, nonatomic) ContentModel *contentModel;
 @property (assign, nonatomic) NSInteger viewType;
 
+@property (copy, nonatomic) void (^collectBlock)(ContentModel *model);
+
 @end

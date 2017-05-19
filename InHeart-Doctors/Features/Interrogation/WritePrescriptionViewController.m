@@ -81,11 +81,13 @@
     CGFloat price = 0;
     NSMutableArray *list = [[NSMutableArray alloc] init];
     for (ContentModel *tempModel in self.contentsArray) {
+        NSInteger times = tempModel.frequency.integerValue * tempModel.period.integerValue;
         [list addObject:@{@"contentId" : tempModel.id,
                          @"frequency" : tempModel.frequency,
                          @"period" : tempModel.period,
-                         @"periodUnit" : tempModel.periodUnit}];
-        price += [tempModel.price floatValue];
+                         @"periodUnit" : tempModel.periodUnit,
+                          @"times" : @(times)}];
+        price += tempModel.price.floatValue * times;
     }
     UsersModel *userModel = [[UserInfo sharedUserInfo] userInfo];
     PrescriptionModel *model = [[PrescriptionModel alloc] init];
@@ -183,7 +185,8 @@
         PrescriptionPriceCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         CGFloat price = 0;
         for (ContentModel *tempModel in self.contentsArray) {
-            price += [tempModel.price floatValue];
+            NSInteger times = tempModel.frequency.integerValue * tempModel.period.integerValue;
+            price += tempModel.price.floatValue * times;
         }
         cell.priceLabel.text = [NSString stringWithFormat:@"%.2f", price];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

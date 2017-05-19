@@ -89,7 +89,6 @@
     } else {
         cell.contentCycleLabel.hidden = YES;
     }
-    
     cell.resetCycleButton.tag = 1000 + indexPath.row;
     [cell.resetCycleButton addTarget:self action:@selector(resetCycleAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;

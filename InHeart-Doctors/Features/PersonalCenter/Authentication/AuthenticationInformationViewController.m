@@ -138,6 +138,10 @@
         } else if ([self.model.status integerValue] == 3) {
             self.tipImageView.image = [UIImage imageNamed:@"authentication_failure"];
             self.failureReasonLabel.textColor = kRGBColor(225, 80, 41, 1);
+            NSString *failureString = NSLocalizedString(@"personal.pleaseSubmitAgain", nil);
+            if (!XLIsNullObject(self.model.remark)) {
+                failureString = [NSString stringWithFormat:@"%@,%@", self.model.remark, failureString];
+            }
             self.failureReasonLabel.text = [NSString stringWithFormat:@"%@, %@", self.model.remark, NSLocalizedString(@"personal.pleaseSubmitAgain", nil)];
         } else {
             self.tipImageView.image = [UIImage imageNamed:@"authentication_success"];
@@ -196,7 +200,7 @@
         XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"personal.pleaseChooseSpecialits", nil));
         return NO;
     }
-    if ([self.selectedTitleModel.titleId integerValue] == 5 || [self.selectedTitleModel.titleId integerValue] == 5) {
+    if ([self.selectedTitleModel.titleId integerValue] == 5 || [self.selectedTitleModel.titleId integerValue] == 6) {
         if (XLIsNullObject(self.authenticationPicturesArray1)) {
             XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"personal.pleaseUploadCard3", nil));
             return NO;
@@ -338,6 +342,11 @@
     [InformationModel uploadInformations:tempModel handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(self.view, YES, YES, @"提交成功");
+            if (self.selectedPersonalImage) {
+                NSData *headData = UIImageJPEGRepresentation(self.selectedPersonalImage, 1.0);
+                [[NSUserDefaults standardUserDefaults] setObject:headData forKey:USERAVATARDATA];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
             [self performSelector:@selector(popView) withObject:nil afterDelay:1.5];
         } else {
             XLDismissHUD(self.view, YES, NO, msg);

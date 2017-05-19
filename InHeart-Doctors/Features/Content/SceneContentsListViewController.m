@@ -16,6 +16,7 @@
 #import "TherapyModel.h"
 #import "DiseaseModel.h"
 #import "ContentModel.h"
+#import "DoctorsModel.h"
 
 #import <MJRefresh.h>
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *priceSortButton;
 @property (weak, nonatomic) IBOutlet UIButton *durationSortButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 
 @property (strong, nonatomic) NSMutableArray *contentsArray;
 
@@ -45,7 +47,12 @@
         self.title = self.therapyModel.therapyName;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"建议指导" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
     } else {
-        self.title = @"所有疗法";
+        if (self.isCollectionView) {
+            self.title = @"常用场景";
+            self.topViewHeightConstraint.constant = 0;
+        } else {
+            self.title = @"所有疗法";
+        }
         self.navigationItem.rightBarButtonItem = nil;
     }
     self.tableView.tableFooterView = [UIView new];
@@ -53,18 +60,32 @@
     _priceSort = XJSortTypesNone;
     _durationSort = XJSortTypesNone;
     
-    //refresh
     [self.tableView setMj_header:[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _paging = 1;
-        [self fetchContents];
+        if (self.isCollectionView) {
+            [self fetchMyCollections];
+        } else {
+            [self fetchContents];
+        }
     }]];
     [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self fetchContents];
+        if (self.isCollectionView) {
+            [self fetchMyCollections];
+        } else {
+            [self fetchContents];
+        }
     }]];
     self.tableView.mj_footer.hidden = YES;
-    XLShowHUDWithMessage(nil, self.view);
     _paging = 1;
-    [self fetchContents];
+    
+    if (self.isCollectionView) {
+        [self fetchMyCollections];
+    } else {
+        //refresh
+        [self fetchContents];
+    }
+    
+    XLShowHUDWithMessage(nil, self.view);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,6 +205,36 @@
         
     }];
 }
+- (void)fetchMyCollections {
+    [DoctorsModel fetchCollectionsList:@(_paging) handler:^(id object, NSString *msg) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        if (object) {
+            XLDismissHUD(self.view, NO, YES, nil);
+            NSArray *resultArray = [object copy];
+            if (_paging == 1) {
+                self.contentsArray = [resultArray mutableCopy];
+            } else {
+                NSMutableArray *tempArray = [self.contentsArray mutableCopy];
+                [tempArray addObjectsFromArray:resultArray];
+                self.contentsArray = [tempArray mutableCopy];
+            }
+            GJCFAsyncMainQueue(^{
+                [self.tableView reloadData];
+                if (resultArray.count < 10) {
+                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                    self.tableView.mj_footer.hidden = YES;
+                } else {
+                    _paging += 1;
+                    self.tableView.mj_footer.hidden = NO;
+                }
+            });
+            
+        } else {
+            XLDismissHUD(self.view, YES, NO, msg);
+        }
+    }];
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -202,7 +253,13 @@
     [cell setupContents:tempModel viewType:self.viewType];
     cell.block = ^(BOOL selected) {
         if (self.viewType == 1) {
-            tempModel.isCollected = selected ? @(1) : @(0);
+            if (selected) {
+                tempModel.isCollected = @(1);
+                [ContentModel collectContent:tempModel.id handler:nil];
+            } else {
+                tempModel.isCollected = @(0);
+                [ContentModel cancelCollectContent:tempModel.id handler:nil];
+            }
         } else {
             if (selected) {
                 tempModel.isAdded = @(1);
@@ -222,10 +279,16 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ContentModel *tempModel = self.contentsArray[indexPath.row];
+    __block ContentModel *tempModel = self.contentsArray[indexPath.row];
     ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
     detailViewController.viewType = self.viewType;
     detailViewController.contentModel = tempModel;
+    detailViewController.collectBlock = ^(ContentModel *model) {
+        [self.contentsArray replaceObjectAtIndex:indexPath.row withObject:model];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    };
     DetailNavigationController *navigationController = [[DetailNavigationController alloc] initWithRootViewController:detailViewController];
     navigationController.contentModel = tempModel;
     [self presentViewController:navigationController animated:YES completion:nil];

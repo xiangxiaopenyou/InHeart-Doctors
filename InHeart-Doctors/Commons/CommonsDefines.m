@@ -17,6 +17,8 @@ NSString * const USERTOKEN = @"UserToken";
 NSString * const USERCODE = @"UserCode";
 NSString * const USERREALNAME = @"Realname";
 NSString * const USERNAME = @"Username";
+NSString * const USERAVATARDATA = @"UserAvatarData";
+NSString * const USERAVATARSTRING = @"UserAvatarString";
 NSString * const USERENCRYPTEDPASSWORD = @"EncryptedPassword";
 NSString * const KEYCHAINSERVICE = @"com.midvision.vrdoctor";
 NSString * const FIRSTLOAD = @"FirstLoad";
@@ -138,3 +140,5 @@ NSString * const MY_BANKCARD = @"doctor/bankCard/get";
 NSString * const FETCH_USERS_NAME = @"doctor/getUserIDAndName";
 NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";
 NSString * const FETCH_MY_PATIENTS = @"doctor/myPatients";
+
+NSString * const PRESCRIPTION_DETAIL = @"doctor/prescription/info";

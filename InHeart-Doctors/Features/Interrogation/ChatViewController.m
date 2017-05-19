@@ -8,6 +8,7 @@
 
 #import "ChatViewController.h"
 #import "WritePrescriptionViewController.h"
+#import "PrescriptionDetailViewController.h"
 #import "XLBlockAlertView.h"
 //#import "CustomMessageCell.h"
 #import "PrescriptionMessageCell.h"
@@ -89,7 +90,16 @@
 }
 - (UITableViewCell *)messageViewController:(UITableView *)tableView cellForMessageModel:(id<IMessageModel>)messageModel {
     if (messageModel.isSender) {
-        messageModel.avatarImage = [UIImage imageNamed:@"default_doctor_avatar"];
+        if ([[NSUserDefaults standardUserDefaults] dataForKey:USERAVATARDATA]) {
+            NSData *avatarData = [[NSUserDefaults standardUserDefaults] dataForKey:USERAVATARDATA];
+            UIImage *avatar = [UIImage imageWithData:avatarData];
+            messageModel.avatarImage = avatar;
+        } else if ([[NSUserDefaults standardUserDefaults] stringForKey:USERAVATARSTRING]) {
+            NSString *urlString = [[NSUserDefaults standardUserDefaults] stringForKey:USERAVATARSTRING];
+            messageModel.avatarURLPath = urlString;
+        } else {
+            messageModel.avatarImage = [UIImage imageNamed:@"default_doctor_avatar"];
+        }
     } else {
         messageModel.avatarImage = [UIImage imageNamed:@"personal_avatar"];
     }
@@ -98,7 +108,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setupContents:messageModel];
         cell.selectBlock = ^(){
-            
+            GJCFAsyncMainQueue(^{
+                PrescriptionDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Prescription" bundle:nil] instantiateViewControllerWithIdentifier:@"PrescriptionDetail"];
+                detailViewController.prescriptionId = messageModel.message.ext[@"prescriptionId"];
+                [self.navigationController pushViewController:detailViewController animated:YES];
+            });
         };
         return cell;
     }

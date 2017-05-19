@@ -47,6 +47,9 @@
     if (userModel.encryptPw) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.encryptPw forKey:USERENCRYPTEDPASSWORD];
     }
+    if (userModel.headPictureUrl) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.headPictureUrl forKey:USERAVATARSTRING];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
@@ -70,6 +73,9 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD]) {
         model.encryptPw = [[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD];
     }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERAVATARSTRING]) {
+        model.headPictureUrl = [[NSUserDefaults standardUserDefaults] objectForKey:USERAVATARSTRING];
+    }
     return model;
 }
 - (void)removeUserInfo {
@@ -79,6 +85,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERREALNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERENCRYPTEDPASSWORD];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERAVATARSTRING];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

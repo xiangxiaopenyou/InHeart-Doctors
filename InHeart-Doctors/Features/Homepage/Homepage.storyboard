@@ -249,10 +249,35 @@
                                     <outlet property="delegate" destination="T2J-9C-oEt" id="lbJ-Cs-83h"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3v-Xr-bUm">
+                                <rect key="frame" x="264" y="22" width="96" height="32"/>
+                                <color key="backgroundColor" red="0.32156862745098036" green="0.72156862745098038" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="0j3-jd-JwW"/>
+                                    <constraint firstAttribute="width" constant="96" id="fJs-ZU-pel"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="停止出诊" image="stop_work">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="开始出诊" image="start_work"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="workStateSetAction:" destination="T2J-9C-oEt" eventType="touchUpInside" id="NuV-c1-FtD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="g3v-Xr-bUm" firstAttribute="top" secondItem="UHY-jP-tjM" secondAttribute="top" constant="22" id="2na-eD-Fuy"/>
                             <constraint firstItem="T1A-YM-cUT" firstAttribute="top" secondItem="UHY-jP-tjM" secondAttribute="top" id="4kr-hh-XK1"/>
+                            <constraint firstAttribute="trailing" secondItem="g3v-Xr-bUm" secondAttribute="trailing" constant="15" id="5XH-WZ-hLW"/>
                             <constraint firstItem="gfx-7V-tXf" firstAttribute="top" secondItem="T1A-YM-cUT" secondAttribute="bottom" id="CXG-68-sAr"/>
                             <constraint firstItem="T1A-YM-cUT" firstAttribute="leading" secondItem="UHY-jP-tjM" secondAttribute="leading" id="jE7-hy-jwP"/>
                             <constraint firstAttribute="trailing" secondItem="T1A-YM-cUT" secondAttribute="trailing" id="smo-s6-q4q"/>
@@ -270,6 +295,7 @@
                         <outlet property="scoresView" destination="g0e-Gb-3BA" id="r24-vP-fVf"/>
                         <outlet property="tableView" destination="T1A-YM-cUT" id="XiY-8Q-Xle"/>
                         <outlet property="topView" destination="Gvs-8V-4T1" id="oS9-G2-BGy"/>
+                        <outlet property="workStateButton" destination="g3v-Xr-bUm" id="NbT-1I-okB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aw2-CR-EN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -635,7 +661,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzE-Tb-to7">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzE-Tb-to7">
                                 <rect key="frame" x="0.0" y="64" width="375" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsN-ir-NdA">
@@ -833,6 +859,7 @@
                         <outlet property="durationSortButton" destination="QmU-9y-wsn" id="wjq-xL-Vyg"/>
                         <outlet property="priceSortButton" destination="R9G-bc-sLo" id="50L-LN-JKD"/>
                         <outlet property="tableView" destination="mZn-Ot-eFd" id="rEN-99-HwR"/>
+                        <outlet property="topViewHeightConstraint" destination="Yg0-W0-2WG" id="8aW-oz-lbO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjv-s0-yKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -894,5 +921,7 @@
         <image name="homepage_scene" width="25" height="25"/>
         <image name="homepage_score" width="12" height="12"/>
         <image name="sort_none" width="9" height="15"/>
+        <image name="start_work" width="17" height="17"/>
+        <image name="stop_work" width="17" height="17"/>
     </resources>
 </document>

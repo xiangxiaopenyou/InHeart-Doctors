@@ -49,6 +49,10 @@
 		3D3529CE1E14EFF200C053FE /* BillsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3529CD1E14EFF200C053FE /* BillsModel.m */; };
 		3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3DCE501D9B51E20067870D /* FetchVerificationCodeRequest.m */; };
 		3D3DCE541D9B70E60067870D /* RegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3DCE531D9B70E60067870D /* RegisterRequest.m */; };
+		3D3F8CD81EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F8CD71EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.m */; };
+		3D3F8CDD1EC954F70040C0D5 /* PrescriptionDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F8CDC1EC954F70040C0D5 /* PrescriptionDetailRequest.m */; };
+		3D3F8CE01EC9720E0040C0D5 /* PrescriptionDetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F8CDF1EC9720E0040C0D5 /* PrescriptionDetailContentCell.m */; };
+		3D3F8CE31EC975B20040C0D5 /* DetailContentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F8CE21EC975B20040C0D5 /* DetailContentItemCell.m */; };
 		3D42806C1DC33EFE006E3B95 /* EditInformationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42806B1DC33EFE006E3B95 /* EditInformationRequest.m */; };
 		3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D43269D1DBDB9600043008D /* AudioPlayerView.m */; };
 		3D4326A01DBDB9C70043008D /* AudioPlayerview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D43269F1DBDB9C70043008D /* AudioPlayerview.xib */; };
@@ -418,6 +422,14 @@
 		3D3DCE501D9B51E20067870D /* FetchVerificationCodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchVerificationCodeRequest.m; sourceTree = "<group>"; };
 		3D3DCE521D9B70E60067870D /* RegisterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRequest.h; sourceTree = "<group>"; };
 		3D3DCE531D9B70E60067870D /* RegisterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRequest.m; sourceTree = "<group>"; };
+		3D3F8CD61EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionDetailInformationCell.h; sourceTree = "<group>"; };
+		3D3F8CD71EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionDetailInformationCell.m; sourceTree = "<group>"; };
+		3D3F8CDB1EC954F70040C0D5 /* PrescriptionDetailRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionDetailRequest.h; sourceTree = "<group>"; };
+		3D3F8CDC1EC954F70040C0D5 /* PrescriptionDetailRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionDetailRequest.m; sourceTree = "<group>"; };
+		3D3F8CDE1EC9720E0040C0D5 /* PrescriptionDetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionDetailContentCell.h; sourceTree = "<group>"; };
+		3D3F8CDF1EC9720E0040C0D5 /* PrescriptionDetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionDetailContentCell.m; sourceTree = "<group>"; };
+		3D3F8CE11EC975B20040C0D5 /* DetailContentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentItemCell.h; sourceTree = "<group>"; };
+		3D3F8CE21EC975B20040C0D5 /* DetailContentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentItemCell.m; sourceTree = "<group>"; };
 		3D42806A1DC33EFE006E3B95 /* EditInformationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInformationRequest.h; sourceTree = "<group>"; };
 		3D42806B1DC33EFE006E3B95 /* EditInformationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInformationRequest.m; sourceTree = "<group>"; };
 		3D43269C1DBDB9600043008D /* AudioPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerView.h; sourceTree = "<group>"; };
@@ -1075,6 +1087,28 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		3D3F8CD51EC94E690040C0D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D3F8CD61EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.h */,
+				3D3F8CD71EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.m */,
+				3D3F8CDE1EC9720E0040C0D5 /* PrescriptionDetailContentCell.h */,
+				3D3F8CDF1EC9720E0040C0D5 /* PrescriptionDetailContentCell.m */,
+				3D3F8CE11EC975B20040C0D5 /* DetailContentItemCell.h */,
+				3D3F8CE21EC975B20040C0D5 /* DetailContentItemCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3D3F8CDA1EC9549D0040C0D5 /* Prescription */ = {
+			isa = PBXGroup;
+			children = (
+				3D3F8CDB1EC954F70040C0D5 /* PrescriptionDetailRequest.h */,
+				3D3F8CDC1EC954F70040C0D5 /* PrescriptionDetailRequest.m */,
+			);
+			path = Prescription;
+			sourceTree = "<group>";
+		};
 		3D4FC2571EA49ABA00E9CE5E /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1522,6 +1556,7 @@
 		3D6A8EC91D98C69600C405DA /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				3D3F8CDA1EC9549D0040C0D5 /* Prescription */,
 				3D206AD81E9B208A00702559 /* Homepage */,
 				3D33E4C51E973711003AA8C5 /* Authentication */,
 				3DF08A061DDA9AF000D64EA6 /* Messages */,
@@ -1562,6 +1597,7 @@
 		3D85EEF71EC1516400CD7ED2 /* Prescription */ = {
 			isa = PBXGroup;
 			children = (
+				3D3F8CD51EC94E690040C0D5 /* Views */,
 				3D85EEF81EC1518F00CD7ED2 /* Prescription.storyboard */,
 				3D85EEFA1EC151B400CD7ED2 /* PrescriptionDetailViewController.h */,
 				3D85EEFB1EC151B400CD7ED2 /* PrescriptionDetailViewController.m */,
@@ -2436,6 +2472,7 @@
 				3DEED94D1E839BA700F96A5A /* EaseMessageViewController.m in Sources */,
 				3DEED92C1E839BA700F96A5A /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				3DEED9431E839BA700F96A5A /* EaseChineseToPinyin.m in Sources */,
+				3D3F8CE31EC975B20040C0D5 /* DetailContentItemCell.m in Sources */,
 				3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */,
 				3DEED9381E839BA700F96A5A /* PSTGridLayoutSection.m in Sources */,
 				3D206ADF1E9B220200702559 /* FetchBasicInformationsRequest.m in Sources */,
@@ -2486,6 +2523,7 @@
 				3DEED9411E839BA700F96A5A /* UIViewController+DismissKeyboard.m in Sources */,
 				3DEED9611E839BA700F96A5A /* EaseTextView.m in Sources */,
 				3D6A8EDA1D98C69600C405DA /* ContentCell.m in Sources */,
+				3D3F8CE01EC9720E0040C0D5 /* PrescriptionDetailContentCell.m in Sources */,
 				3D6A8EE81D98C69600C405DA /* CommonFunctionCell.m in Sources */,
 				3DEED9351E839BA700F96A5A /* PSTGridLayoutInfo.m in Sources */,
 				3D64A6A61E8DEA2F0021B537 /* EMCallViewController.mm in Sources */,
@@ -2495,6 +2533,7 @@
 				3D43269E1DBDB9600043008D /* AudioPlayerView.m in Sources */,
 				3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */,
 				3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */,
+				3D3F8CD81EC94E8A0040C0D5 /* PrescriptionDetailInformationCell.m in Sources */,
 				3D33E4D71E973F1B003AA8C5 /* MyBankCardRequest.m in Sources */,
 				3D6A8ED41D98C69600C405DA /* XLBlockAlertView.m in Sources */,
 				3DEED9451E839BA700F96A5A /* EaseMessageReadManager.m in Sources */,
@@ -2524,6 +2563,7 @@
 				3DEED91C1E839BA700F96A5A /* EMSDImageCache.m in Sources */,
 				3DEED91F1E839BA700F96A5A /* EMSDWebImageDownloader.m in Sources */,
 				3D8F1C911DC71C51000E3604 /* BillCell.m in Sources */,
+				3D3F8CDD1EC954F70040C0D5 /* PrescriptionDetailRequest.m in Sources */,
 				3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */,
 				3DEED9531E839BA700F96A5A /* EaseCustomMessageCell.m in Sources */,
 				3DF08A091DDA9AFA00D64EA6 /* UsersNameAndIdRequest.m in Sources */,

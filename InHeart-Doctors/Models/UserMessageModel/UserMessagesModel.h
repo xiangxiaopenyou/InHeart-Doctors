@@ -12,6 +12,7 @@
 @interface UserMessagesModel : XLModel
 @property (copy, nonatomic) NSString *userId;
 @property (copy, nonatomic) NSString *realname;
+@property (copy, nonatomic) NSString *headpictureurl;
 
 + (void)fetchUsersIdAndName:(NSString *)phone handler:(RequestResultHandler)handler;
 + (void)sendPrescription:(PrescriptionModel *)model handler:(RequestResultHandler)handler;

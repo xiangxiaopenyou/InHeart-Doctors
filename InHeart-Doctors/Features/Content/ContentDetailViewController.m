@@ -161,6 +161,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)collectAction:(id)sender {
+    if (self.contentModel.isCollected.integerValue == 0) {
+        self.contentModel.isCollected = @(1);
+        [ContentModel collectContent:self.contentModel.id handler:nil];
+    } else {
+        self.contentModel.isCollected = @(0);
+        [ContentModel cancelCollectContent:self.contentModel.id handler:nil];
+    }
+    [self refreshBottomButtonState];
+    if (self.collectBlock) {
+        self.collectBlock(self.contentModel);
+    }
 }
 - (void)startPlay {
     if (XLNetworkState != 5) {
@@ -253,7 +264,6 @@
             }
         }
         cell.diseaseLabel.text = diseaseString;
-        
         cell.collectionButton.selected = [self.contentModel.isCollected integerValue] == 0 ? NO : YES;
         cell.durationLabel.text = [NSString stringWithFormat:@"%@分钟", self.contentModel.duration];
         cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.contentDescription];
@@ -267,6 +277,9 @@
                 self.contentModel.isCollected = @0;
                 weakCell.collectionButton.selected = NO;
                 [ContentModel cancelCollectContent:self.contentModel.id handler:nil];
+            }
+            if (self.collectBlock) {
+                self.collectBlock(self.contentModel);
             }
         };
     }

@@ -17,6 +17,7 @@
 #import "UserInfo.h"
 #import "UsersModel.h"
 #import "HomepageModel.h"
+#import "DoctorsModel.h"
 
 #import <SDCycleScrollView.h>
 
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIView *patientsView;
 @property (weak, nonatomic) IBOutlet UIView *evaluationsView;
 @property (weak, nonatomic) IBOutlet UIView *scoresView;
+@property (weak, nonatomic) IBOutlet UIButton *workStateButton;
 
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 
@@ -48,6 +50,9 @@
     self.navigationItem.title = @"";
     self.tableView.tableFooterView = [UIView new];
     [self createHeaderView];
+    
+    UsersModel *model = [[UserInfo sharedUserInfo] userInfo];
+    [self checkWorkState:model.code.integerValue];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [self.cycleScrollView adjustWhenControllerViewWillAppera];
@@ -102,6 +107,14 @@
         } cancelButtonTitle:@"取消" otherButtonTitles:@"查看原因", nil] show];
     }
 }
+- (void)checkWorkState:(NSInteger)state {
+    if (state == 4 || state == 9) {
+        self.workStateButton.hidden = NO;
+        self.workStateButton.selected = state == 4 ? NO : YES;
+    } else {
+        self.workStateButton.hidden = YES;
+    }
+}
 - (void)addGestureRecognizer {
     self.avatarImageView.userInteractionEnabled = YES;
     [self.avatarImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarAction)]];
@@ -130,7 +143,11 @@
             if (![tempModel.realname isEqualToString:self.model.realname]) {
                 tempModel.realname = self.model.realname;
             }
+            if (![tempModel.headPictureUrl isEqualToString:self.model.headPictureUrl]) {
+                tempModel.headPictureUrl = self.model.headPictureUrl;
+            }
             [[UserInfo sharedUserInfo] saveUserInfo:tempModel];
+            [self checkWorkState:tempModel.code.integerValue];
         } else {
             XLDismissHUD(self.view, YES, NO, msg);
         }
@@ -148,6 +165,21 @@
 - (IBAction)myPatientsAction:(id)sender {
 }
 - (IBAction)myEvaluationAction:(id)sender {
+}
+- (IBAction)workStateSetAction:(id)sender {
+    UsersModel *model = [[UserInfo sharedUserInfo] userInfo];
+    if (self.workStateButton.selected) {
+        self.workStateButton.selected = NO;
+        model.code = @(4);
+    } else {
+        self.workStateButton.selected = YES;
+        model.code = @(9);
+    }
+    [DoctorsModel setDoctorState:model.code handler:^(id object, NSString *msg) {
+        if (object) {
+            [[UserInfo sharedUserInfo] saveUserInfo:model];
+        }
+    }];
 }
 //点击头像
 - (void)avatarAction {

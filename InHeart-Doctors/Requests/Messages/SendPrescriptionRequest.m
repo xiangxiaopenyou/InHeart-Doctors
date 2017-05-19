@@ -18,7 +18,7 @@
                                             @"doctorId"   : self.model.doctorId,
                                             @"userId"     : self.model.userId,
                                             @"disease" : self.model.disease,
-                                            @"price"      : self.model.price,
+                                            @"total"      : self.model.price,
                                             @"prescriptionContentList" : self.model.prescriptionContentList}];
     [[RequestManager sharedInstance] POST:SEND_PRESCRIPTION parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {

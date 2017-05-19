@@ -24,12 +24,12 @@
 }
 
 + (void)showError:(NSString *)error toView:(UIView *)view{
-    [self show:error icon:@"warn.png" view:view];
+    [self show:error icon:@"warn" view:view];
 }
 
 + (void)showSuccess:(NSString *)success toView:(UIView *)view
 {
-    [self show:success icon:@"submit_success.png" view:view];
+    [self show:success icon:@"submit_success" view:view];
 }
 
 + (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view {

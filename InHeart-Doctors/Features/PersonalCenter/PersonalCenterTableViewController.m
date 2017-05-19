@@ -119,6 +119,9 @@
                 case XJAuthenticationStatusSuccess:
                     cell.authenticationStateLabel.text = @"已认证";
                     break;
+                case XJAuthenticationStatusStop:
+                    cell.authenticationStateLabel.text = @"已停诊";
+                    break;
                 default:
                     break;
             }
@@ -204,8 +207,12 @@
             break;
         case 3:{
             if (indexPath.row == 0) {
-                InterrogationSettingViewController *interrogationSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InterrogationSetting"];
-                [self.navigationController pushViewController:interrogationSettingViewController animated:YES];
+                if (self.userModel.code.integerValue == 4 || self.userModel.code.integerValue == 9) {
+                    InterrogationSettingViewController *interrogationSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InterrogationSetting"];
+                    [self.navigationController pushViewController:interrogationSettingViewController animated:YES];
+                } else {
+                    XLDismissHUD(self.view, YES, NO, @"通过认证才能进行问诊设置");
+                }
             } else {
                 SystemSettingTableViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SystemSetting"];
                 [self.navigationController pushViewController:settingViewController animated:YES];

@@ -76,7 +76,7 @@
     }];
 }
 - (void)resetState {
-    NSNumber *stateNumber = [_userModel.code integerValue] == -7? @9 : @4;
+    NSNumber *stateNumber = @([_userModel.code integerValue]);
     [DoctorsModel setDoctorState:stateNumber handler:^(id object, NSString *msg) {
         if (object) {
             [[UserInfo sharedUserInfo] saveUserInfo:_userModel];
@@ -113,16 +113,16 @@
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     if (indexPath.row == 0) {
         cell.textLabel.text = @"接受问诊";
-        cell.accessoryType = [_userModel.code integerValue] == -7 ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+        cell.accessoryType = [_userModel.code integerValue] == 9 ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
     } else {
         cell.textLabel.text = @"停止问诊";
-        cell.accessoryType = [_userModel.code integerValue] == -7 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+        cell.accessoryType = [_userModel.code integerValue] == 9 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    _userModel.code = indexPath.row == 0 ? @0 : @-7;
+    _userModel.code = indexPath.row == 0 ? @4 : @9;
     [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -136,7 +136,7 @@
 }
 */
 - (IBAction)finishAction:(id)sender {
-    if ([_userModel.code integerValue] == -7) {
+    if ([_userModel.code integerValue] == 9) {
         [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kStopInterrogationTip block:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 XLShowHUDWithMessage(nil, self.view);

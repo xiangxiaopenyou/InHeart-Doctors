@@ -7,7 +7,25 @@
 //
 
 #import "PrescriptionModel.h"
+#import "PrescriptionDetailRequest.h"
 
 @implementation PrescriptionModel
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
+    return @{ @"userId" : @"patientId", @"prescriptionContentList" : @"contents", @"price" : @"total" };
+}
+
++ (void)prescriptionDetail:(NSString *)prescriptionId handler:(RequestResultHandler)handler {
+    [[PrescriptionDetailRequest new] request:^BOOL(PrescriptionDetailRequest *request) {
+        request.prescriptionId = prescriptionId;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            PrescriptionModel *tempModel = [PrescriptionModel yy_modelWithDictionary:object];
+            !handler ?: handler(tempModel, nil);
+        }
+    }];
+}
 
 @end

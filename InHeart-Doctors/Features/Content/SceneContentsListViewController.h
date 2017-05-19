@@ -18,6 +18,8 @@
 @property (assign, nonatomic) NSInteger viewType;
 @property (strong, nonatomic) NSMutableArray *selectedContents;
 
+@property (assign, nonatomic) BOOL isCollectionView;
+
 @property (copy, nonatomic) void (^selectedBlock)(NSArray *array);
 
 @end

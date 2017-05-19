@@ -11,5 +11,6 @@
 @interface ConversationModel : EaseConversationModel
 @property (copy, nonatomic) NSString *userId;
 @property (copy, nonatomic) NSString *realname;
+@property (copy, nonatomic) NSString *avatarString;
 
 @end

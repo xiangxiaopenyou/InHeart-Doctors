@@ -98,7 +98,25 @@
         make.leading.equalTo(self.prescriptionImageView.mas_trailing).with.mas_offset(8);
     }];
     
-    self.avatarImageView.image = model.avatarImage;
+    //self.avatarImageView.image = model.avatarImage;
+    if (model.isSender) {
+        if ([[NSUserDefaults standardUserDefaults] dataForKey:USERAVATARDATA]) {
+            NSData *avatarData = [[NSUserDefaults standardUserDefaults] dataForKey:USERAVATARDATA];
+            UIImage *avatar = [UIImage imageWithData:avatarData];
+            model.avatarImage = avatar;
+            self.avatarImageView.image = avatar;
+        } else if ([[NSUserDefaults standardUserDefaults] stringForKey:USERAVATARSTRING]) {
+            NSString *urlString = [[NSUserDefaults standardUserDefaults] stringForKey:USERAVATARSTRING];
+            model.avatarURLPath = urlString;
+            [self.avatarImageView sd_setImageWithURL:XLURLFromString(urlString) placeholderImage:[UIImage imageNamed:@"default_doctor_avatar"]];
+        } else {
+            model.avatarImage = [UIImage imageNamed:@"default_doctor_avatar"];
+            self.avatarImageView.image = [UIImage imageNamed:@"default_doctor_avatar"];
+        }
+    } else {
+        model.avatarImage = [UIImage imageNamed:@"personal_avatar"];
+        self.avatarImageView.image = [UIImage imageNamed:@"personal_avatar"];
+    }
     
     NSDictionary *tempDictionary = [model.message.ext copy];
     if (tempDictionary[@"imageUrl"]) {

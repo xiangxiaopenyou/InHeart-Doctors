@@ -50,6 +50,8 @@ extern NSString * const USERCODE;
 extern NSString * const USERREALNAME;
 extern NSString * const USERNAME;
 extern NSString * const USERENCRYPTEDPASSWORD;
+extern NSString * const USERAVATARDATA;
+extern NSString * const USERAVATARSTRING;
 extern NSString * const KEYCHAINSERVICE;
 extern NSString * const FIRSTLOAD;
 extern NSString * const LAST_RUN_VERSION;
@@ -182,6 +184,9 @@ extern NSString * const MY_BANKCARD;
 extern NSString * const FETCH_USERS_NAME;
 extern NSString * const SEND_PRESCRIPTION;
 extern NSString * const FETCH_MY_PATIENTS;
+
+//6.处方
+extern NSString * const PRESCRIPTION_DETAIL;
 
 
 
