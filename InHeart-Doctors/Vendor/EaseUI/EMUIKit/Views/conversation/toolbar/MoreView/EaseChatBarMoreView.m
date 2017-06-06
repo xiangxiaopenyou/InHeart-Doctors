@@ -173,20 +173,20 @@
         }
         [_scrollview addSubview:_prescribeButton];
         
-        if (!_advisoryFeesButton) {
-            _advisoryFeesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            _advisoryFeesButton.frame = CGRectMake(insets, 110, CHAT_BUTTON_SIZE, 90);
-            [_advisoryFeesButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
-            [_advisoryFeesButton setTitle:@"咨询收费" forState:UIControlStateNormal];
-            _advisoryFeesButton.titleLabel.font = kSystemFont(14);
-            [_advisoryFeesButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-            [_advisoryFeesButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
-            [_advisoryFeesButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-            [_advisoryFeesButton addTarget:self action:@selector(advisoryFeesAction) forControlEvents:UIControlEventTouchUpInside];
-        }
-        [_scrollview addSubview:_advisoryFeesButton];
+//        if (!_advisoryFeesButton) {
+//            _advisoryFeesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            _advisoryFeesButton.frame = CGRectMake(insets, 110, CHAT_BUTTON_SIZE, 90);
+//            [_advisoryFeesButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
+//            [_advisoryFeesButton setTitle:@"咨询收费" forState:UIControlStateNormal];
+//            _advisoryFeesButton.titleLabel.font = kSystemFont(14);
+//            [_advisoryFeesButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+//            [_advisoryFeesButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+//            [_advisoryFeesButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+//            [_advisoryFeesButton addTarget:self action:@selector(advisoryFeesAction) forControlEvents:UIControlEventTouchUpInside];
+//        }
+//        [_scrollview addSubview:_advisoryFeesButton];
         
-        _maxIndex = 4;
+        _maxIndex = 3;
     }
     else if (type == EMChatToolbarTypeGroup)
     {

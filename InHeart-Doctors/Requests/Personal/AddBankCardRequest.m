@@ -18,6 +18,7 @@
     [self.params setObject:self.model.bankName forKey:@"bankName"];
     [self.params setObject:self.model.depositBank forKey:@"depositBank"];
     [self.params setObject:self.model.cardNumber forKey:@"cardNumber"];
+    [self.params setObject:self.model.bankId forKey:@"bankId"];
     [[RequestManager sharedInstance] POST:ADD_BANKCARD parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject, nil);

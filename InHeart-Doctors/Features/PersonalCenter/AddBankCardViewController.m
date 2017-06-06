@@ -8,14 +8,19 @@
 
 #import "AddBankCardViewController.h"
 #import "AddCardCell.h"
+#import "XLCommonPickerView.h"
 
 #import "CardModel.h"
+#import "BankModel.h"
 
 @interface AddBankCardViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) XLCommonPickerView *pickerView;
 
 @property (copy, nonatomic) NSArray *itemTitleArray;
 @property (copy, nonatomic) NSArray *placeholderArray;
+@property (copy, nonatomic) NSArray *banksArray;
+@property (strong, nonatomic) NSNumber *selectedBankIndex;
 
 @end
 
@@ -25,6 +30,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.tableFooterView = [UIView new];
+    
+    [self fetchBanks];
+    
+    [self.view addSubview:self.pickerView];
+    GJCFWeakSelf weakSelf = self;
+    self.pickerView.block = ^(NSInteger index) {
+        _selectedBankIndex = @(index);
+        [weakSelf.tableView reloadData];
+    };
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,10 +49,9 @@
 #pragma mark - IBAction
 - (IBAction)finishAction:(id)sender {
     UITextField *textField = (UITextField *)[self.tableView viewWithTag:1000];
-    UITextField *textField1 = (UITextField *)[self.tableView viewWithTag:1001];
     UITextField *textField2 = (UITextField *)[self.tableView viewWithTag:1002];
     UITextField *textField3 = (UITextField *)[self.tableView viewWithTag:1003];
-    if (XLIsNullObject(textField1.text)) {
+    if (!self.selectedBankIndex) {
         XLDismissHUD(self.view, YES, NO, @"请先选择银行");
         return;
     }
@@ -57,7 +70,9 @@
     XLShowHUDWithMessage(@"添加中...", self.view);
     CardModel *tempModel = [[CardModel alloc] init];
     tempModel.cardholder = textField.text;
-    tempModel.bankName = textField1.text;
+    BankModel *bank = self.banksArray[_selectedBankIndex.integerValue];
+    tempModel.bankName = bank.name;
+    tempModel.bankId = bank.id;
     tempModel.depositBank = textField2.text;
     tempModel.cardNumber = textField3.text;
     [CardModel addBankCard:tempModel handler:^(id object, NSString *msg) {
@@ -71,6 +86,21 @@
 }
 - (void)popView {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Request
+- (void)fetchBanks {
+    [CardModel fetchBanks:^(id object, NSString *msg) {
+        if (object) {
+            self.banksArray = [(NSArray *)object copy];
+            NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+            for (BankModel *model in self.banksArray) {
+                [tempArray addObject:model.name];
+            }
+            [self.pickerView resetContents:tempArray selected:0];
+            
+        }
+    }];
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,7 +125,7 @@
         cell.contentTextField.textColor = [UIColor blackColor];
         cell.tipButton.hidden = YES;
     }
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 || indexPath.row == 1) {
         cell.contentTextField.enabled = NO;
     } else {
         cell.contentTextField.enabled = YES;
@@ -110,8 +140,9 @@
         cell.contentTextField.keyboardType = UIKeyboardTypeNumberPad;
     }
     if (indexPath.row == 1) {
-        if (self.model) {
-            cell.contentTextField.text = [NSString stringWithFormat:@"%@", self.model.bankName];
+        if (self.selectedBankIndex) {
+            BankModel *tempModel = self.banksArray[_selectedBankIndex.integerValue];
+            cell.contentTextField.text = [NSString stringWithFormat:@"%@", tempModel.name];
         }
     } else if (indexPath.row == 2) {
         if (self.model) {
@@ -128,6 +159,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 1) {
+        [self.pickerView show];
+    }
 }
 
 /*
@@ -151,6 +185,12 @@
         _placeholderArray = @[@"", @"请选择银行", @"请输入开户行", @"请输入卡号"];
     }
     return _placeholderArray;
+}
+- (XLCommonPickerView *)pickerView {
+    if (!_pickerView) {
+        _pickerView = [[XLCommonPickerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    }
+    return _pickerView;
 }
 
 //验证银行卡号

@@ -184,6 +184,8 @@ extern NSString * const MY_BANKCARD;
 extern NSString * const FETCH_USERS_NAME;
 extern NSString * const SEND_PRESCRIPTION;
 extern NSString * const FETCH_MY_PATIENTS;
+extern NSString * const PATIENT_INFORMATIONS;
+extern NSString * const HISTORICAL_PRESCROPTIONS;
 
 //6.处方
 extern NSString * const PRESCRIPTION_DETAIL;

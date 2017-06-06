@@ -13,5 +13,7 @@
 @property (copy, nonatomic) NSString *realname;
 @property (copy, nonatomic) NSString *avatarUrl;
 @property (copy, nonatomic) NSString *username;
+@property (copy, nonatomic) NSString *regionName;
 + (void)fetchMyPatients:(RequestResultHandler)handler;
++ (void)patientInformations:(NSString *)patientId handler:(RequestResultHandler)handler;
 @end

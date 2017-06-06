@@ -133,12 +133,14 @@ NSString * const FETCH_PROFESSIONAL_TITLES = @"doctor/professionalTitles";
 NSString * const UPLOAD_IMAGE = @"doctor/imageUpload";
 NSString * const SUBMIT_INFORMATIONS = @"doctor/auth";
 NSString * const FETCH_INFORMATIONS = @"doctor/authInfo";
-NSString * const BANK_LIST = @"";
+NSString * const BANK_LIST = @"doctor/getBanks";
 NSString * const ADD_BANKCARD = @"doctor/bankCard/save";
 NSString * const MY_BANKCARD = @"doctor/bankCard/get";
 
 NSString * const FETCH_USERS_NAME = @"doctor/getUserIDAndName";
 NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";
 NSString * const FETCH_MY_PATIENTS = @"doctor/myPatients";
+NSString * const PATIENT_INFORMATIONS = @"doctor/patient/info";
+NSString * const HISTORICAL_PRESCROPTIONS = @"doctor/historicalPrescriptions";
 
 NSString * const PRESCRIPTION_DETAIL = @"doctor/prescription/info";

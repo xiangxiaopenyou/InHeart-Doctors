@@ -289,6 +289,80 @@
             </objects>
             <point key="canvasLocation" x="124" y="88.605697151424295"/>
         </scene>
+        <!--历史处方-->
+        <scene sceneID="nTl-JV-xRB">
+            <objects>
+                <tableViewController storyboardIdentifier="HistoricalPrescriptions" id="VJ0-jp-i64" customClass="HistoricalPrescriptionsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZOD-Ss-5Kb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoricalPrescriptionCell" rowHeight="92" id="THf-j6-HrP" customClass="HistoricalPrescriptionCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="THf-j6-HrP" id="duQ-cw-c2h">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-00-00 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOG-dm-Ii9">
+                                            <rect key="frame" x="15" y="10" width="114" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="病症" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2Y-kH-a3h">
+                                            <rect key="frame" x="15" y="36" width="345" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包含0个媒体内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vY2-id-15Y">
+                                            <rect key="frame" x="15" y="64" width="101" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未付款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-mL-sRs">
+                                            <rect key="frame" x="317" y="10" width="43" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.32156862749999998" green="0.72156862749999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vY2-id-15Y" firstAttribute="leading" secondItem="duQ-cw-c2h" secondAttribute="leading" constant="15" id="27j-87-QpB"/>
+                                        <constraint firstItem="O2Y-kH-a3h" firstAttribute="top" secondItem="KOG-dm-Ii9" secondAttribute="bottom" constant="10" id="Bpo-2e-2Hs"/>
+                                        <constraint firstItem="Mto-mL-sRs" firstAttribute="top" secondItem="duQ-cw-c2h" secondAttribute="top" constant="10" id="Cpk-qq-XbQ"/>
+                                        <constraint firstItem="vY2-id-15Y" firstAttribute="top" secondItem="O2Y-kH-a3h" secondAttribute="bottom" constant="10" id="MFd-7z-o86"/>
+                                        <constraint firstItem="KOG-dm-Ii9" firstAttribute="top" secondItem="duQ-cw-c2h" secondAttribute="top" constant="10" id="Prz-G8-4px"/>
+                                        <constraint firstAttribute="trailing" secondItem="O2Y-kH-a3h" secondAttribute="trailing" constant="15" id="f3U-bx-RTO"/>
+                                        <constraint firstItem="O2Y-kH-a3h" firstAttribute="leading" secondItem="duQ-cw-c2h" secondAttribute="leading" constant="15" id="hCJ-IK-Ihd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mto-mL-sRs" secondAttribute="trailing" constant="15" id="jGG-ST-4C5"/>
+                                        <constraint firstItem="KOG-dm-Ii9" firstAttribute="leading" secondItem="duQ-cw-c2h" secondAttribute="leading" constant="15" id="vNF-GY-yB6"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="O2Y-kH-a3h" id="M41-Ze-PCA"/>
+                                    <outlet property="contentNumberLabel" destination="vY2-id-15Y" id="Pem-2k-jfy"/>
+                                    <outlet property="payStateLabel" destination="Mto-mL-sRs" id="MxV-j1-FtQ"/>
+                                    <outlet property="timeLabel" destination="KOG-dm-Ii9" id="Pzu-4h-eZF"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VJ0-jp-i64" id="YHp-9T-pB7"/>
+                            <outlet property="delegate" destination="VJ0-jp-i64" id="Glr-Ze-kR4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="历史处方" id="XwL-TZ-JXh"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="04j-tr-1Ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2208.8000000000002" y="1103.2983508245877"/>
+        </scene>
     </scenes>
     <resources>
         <image name="phone_call" width="52" height="52"/>

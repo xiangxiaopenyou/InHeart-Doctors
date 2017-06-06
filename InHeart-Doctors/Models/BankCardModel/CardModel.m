@@ -7,10 +7,24 @@
 //
 
 #import "CardModel.h"
+#import "BankModel.h"
+#import "FetchBanksListRequest.h"
 #import "MyBankCardRequest.h"
 #import "AddBankCardRequest.h"
 
 @implementation CardModel
++ (void)fetchBanks:(RequestResultHandler)handler {
+    [[FetchBanksListRequest new] request:^BOOL(id request) {
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler (nil, msg);
+        } else {
+            NSArray *tempArray = [BankModel setupWithArray:(NSArray *)object];
+            !handler ?: handler(tempArray, nil);
+        }
+    }];
+}
 + (void)fetchMyBankCard:(RequestResultHandler)handler {
     [[MyBankCardRequest new] request:^BOOL(id request) {
         return YES;

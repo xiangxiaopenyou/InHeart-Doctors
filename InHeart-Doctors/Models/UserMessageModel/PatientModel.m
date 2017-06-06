@@ -8,6 +8,7 @@
 
 #import "PatientModel.h"
 #import "FetchMyPatientsRequest.h"
+#import "PatientInformationsRequest.h"
 
 @implementation PatientModel
 + (void)fetchMyPatients:(RequestResultHandler)handler {
@@ -19,6 +20,19 @@
         } else {
             NSArray *tempArray = [PatientModel setupWithArray:(NSArray *)object];
             !handler ?: handler(tempArray, nil);
+        }
+    }];
+}
++ (void)patientInformations:(NSString *)patientId handler:(RequestResultHandler)handler {
+    [[PatientInformationsRequest new] request:^BOOL(PatientInformationsRequest *request) {
+        request.patientId = patientId;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            PatientModel *tempModel = [PatientModel yy_modelWithDictionary:object];
+            !handler ?: handler(tempModel, nil);
         }
     }];
 }

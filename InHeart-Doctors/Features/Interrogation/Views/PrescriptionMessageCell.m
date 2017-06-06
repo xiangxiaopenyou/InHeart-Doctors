@@ -133,9 +133,11 @@
     if ([tempDictionary[@"status"] integerValue] == 1) {
         self.prescriptionStateLabel.textColor = kHexRGBColorWithAlpha(0xec0202, 1);
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  未付款", priceString];
+        self.prescriptionTitleLabel.text = @"处方内容";
     } else if ([tempDictionary[@"status"] integerValue] == 2) {
         self.prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  已付款", priceString];
+        self.prescriptionTitleLabel.text = @"处方支付";
     }
 
 }
@@ -183,7 +185,6 @@
         _prescriptionTitleLabel = [[UILabel alloc] init];
         _prescriptionTitleLabel.font = kSystemFont(14);
         _prescriptionTitleLabel.textColor = MAIN_TEXT_COLOR;
-        _prescriptionTitleLabel.text = @"处方内容";
         [_prescriptionTitleLabel sizeToFit];
     }
     return _prescriptionTitleLabel;

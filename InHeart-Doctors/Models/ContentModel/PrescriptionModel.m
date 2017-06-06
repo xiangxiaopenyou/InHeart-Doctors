@@ -8,6 +8,7 @@
 
 #import "PrescriptionModel.h"
 #import "PrescriptionDetailRequest.h"
+#import "HistoricalPrescriptionsRequest.h"
 
 @implementation PrescriptionModel
 + (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
@@ -24,6 +25,20 @@
         } else {
             PrescriptionModel *tempModel = [PrescriptionModel yy_modelWithDictionary:object];
             !handler ?: handler(tempModel, nil);
+        }
+    }];
+}
++ (void)fetchHistoricalPrescriptions:(NSString *)doctorId patientId:(NSString *)patientId handler:(RequestResultHandler)handler {
+    [[HistoricalPrescriptionsRequest new] request:^BOOL(HistoricalPrescriptionsRequest *request) {
+        request.doctorId = doctorId;
+        request.patientId = patientId;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            NSArray *tempArray = [PrescriptionModel setupWithArray:(NSArray *)object];
+            !handler ?: handler(tempArray, nil);
         }
     }];
 }

@@ -9,11 +9,13 @@
 #import "XLModel.h"
 
 @interface CardModel : XLModel
+@property (copy, nonatomic) NSString *bankId;
 @property (copy, nonatomic) NSString *cardholder;
 @property (copy, nonatomic) NSString *depositBank;
 @property (copy, nonatomic) NSString *bankName;
 @property (copy, nonatomic) NSString *cardNumber;
 
++ (void)fetchBanks:(RequestResultHandler)handler;
 + (void)fetchMyBankCard:(RequestResultHandler)handler;
 + (void)addBankCard:(CardModel *)cardModel handler:(RequestResultHandler)handler;
 

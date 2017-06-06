@@ -9,6 +9,7 @@
 #import "ChatViewController.h"
 #import "WritePrescriptionViewController.h"
 #import "PrescriptionDetailViewController.h"
+#import "PatientInformationsViewController.h"
 #import "XLBlockAlertView.h"
 //#import "CustomMessageCell.h"
 #import "PrescriptionMessageCell.h"
@@ -167,7 +168,9 @@
 }
 */
 - (void)rightButtonAction {
-    
+    PatientInformationsViewController *informationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"PatientInformations"];
+    informationViewController.patientId = self.model.userId;
+    [self.navigationController pushViewController:informationViewController animated:YES];
 }
 
 @end

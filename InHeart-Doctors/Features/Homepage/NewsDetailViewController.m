@@ -7,6 +7,7 @@
 //
 
 #import "NewsDetailViewController.h"
+#import "XMNShareMenu.h"
 
 @interface NewsDetailViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -18,13 +19,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:XLURLFromString(@"https://www.baidu.com") cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:XLURLFromString(self.urlString) cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
     [self.webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)rightAction:(id)sender {
+    NSArray *shareArray = @[@{kXMNShareImage:@"more_icon_collection",
+                              kXMNShareTitle:@"收藏"}];
+    XMNShareView *shareView = [[XMNShareView alloc] init];
+    [shareView setSelectedBlock:^(NSUInteger tag, NSString *title){
+        
+    }];
+    [shareView setupShareViewWithItems:shareArray];
+    [shareView showUseAnimated:YES];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -35,7 +46,7 @@
     XLDismissHUD(self.view, NO, YES, nil);
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
+    XLDismissHUD(self.view, YES, NO, @"加载失败");
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     return YES;

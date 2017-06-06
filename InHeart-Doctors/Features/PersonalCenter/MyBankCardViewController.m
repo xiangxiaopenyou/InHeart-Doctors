@@ -71,7 +71,7 @@
         addViewController.title = NSLocalizedString(@"personal.addBankCard", nil);
     } else if ([segue.identifier isEqualToString:@"changeCard"]) {
         addViewController.title = NSLocalizedString(@"personal.changeBankCard", nil);
-        addViewController.model = self.model;
+        //addViewController.model = self.model;
     }
     
 }

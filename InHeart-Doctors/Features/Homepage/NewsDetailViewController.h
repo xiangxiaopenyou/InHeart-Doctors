@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsDetailViewController : UIViewController
+@property (copy, nonatomic) NSString *urlString;
 
 @end
