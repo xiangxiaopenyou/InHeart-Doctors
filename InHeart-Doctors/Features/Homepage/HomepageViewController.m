@@ -150,6 +150,14 @@
             [self checkWorkState:tempModel.code.integerValue];
         } else {
             XLDismissHUD(self.view, YES, NO, msg);
+            if ([msg isEqualToString:@"登录已经失效"]) {
+                [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
+                    if (!aError) {
+                        [[UserInfo sharedUserInfo] removeUserInfo];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
+                    }
+                }];
+            }
         }
     }];
 }
@@ -216,10 +224,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:idenfitier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:idenfitier];
-        cell.textLabel.font = kSystemFont(16);
-        cell.textLabel.textColor = kHexRGBColorWithAlpha(0x323232, 1.0);
-        cell.detailTextLabel.font = kSystemFont(14);
-        cell.detailTextLabel.textColor = kHexRGBColorWithAlpha(0x909090, 1.0);
+        cell.textLabel.font = XJSystemFont(16);
+        cell.textLabel.textColor = XJHexRGBColorWithAlpha(0x323232, 1.0);
+        cell.detailTextLabel.font = XJSystemFont(14);
+        cell.detailTextLabel.textColor = XJHexRGBColorWithAlpha(0x909090, 1.0);
     }
     switch (indexPath.row) {
         case 0:{

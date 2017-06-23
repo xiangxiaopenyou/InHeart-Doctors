@@ -131,7 +131,7 @@
         priceString = [NSString stringWithFormat:@"%.2f", [tempDictionary[@"price"] floatValue]];
     }
     if ([tempDictionary[@"status"] integerValue] == 1) {
-        self.prescriptionStateLabel.textColor = kHexRGBColorWithAlpha(0xec0202, 1);
+        self.prescriptionStateLabel.textColor = XJHexRGBColorWithAlpha(0xec0202, 1);
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  未付款", priceString];
         self.prescriptionTitleLabel.text = @"处方内容";
     } else if ([tempDictionary[@"status"] integerValue] == 2) {
@@ -183,7 +183,7 @@
 - (UILabel *)prescriptionTitleLabel {
     if (!_prescriptionTitleLabel) {
         _prescriptionTitleLabel = [[UILabel alloc] init];
-        _prescriptionTitleLabel.font = kSystemFont(14);
+        _prescriptionTitleLabel.font = XJSystemFont(14);
         _prescriptionTitleLabel.textColor = MAIN_TEXT_COLOR;
         [_prescriptionTitleLabel sizeToFit];
     }
@@ -192,7 +192,7 @@
 - (UILabel *)prescriptionStateLabel {
     if (!_prescriptionStateLabel) {
         _prescriptionStateLabel = [[UILabel alloc] init];
-        _prescriptionStateLabel.font = kSystemFont(12);
+        _prescriptionStateLabel.font = XJSystemFont(12);
         _prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
         [_prescriptionStateLabel sizeToFit];
     }

@@ -19,7 +19,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.departmentNameLabel.textColor = selected ? NAVIGATIONBAR_COLOR : kHexRGBColorWithAlpha(0x323232, 1);
+    self.departmentNameLabel.textColor = selected ? NAVIGATIONBAR_COLOR : XJHexRGBColorWithAlpha(0x323232, 1);
     // Configure the view for the selected state
 }
 

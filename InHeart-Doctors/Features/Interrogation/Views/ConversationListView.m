@@ -86,7 +86,7 @@
             }
         }];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSetupUnreadMessagesCount object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:XJSetupUnreadMessagesCount object:nil];
 }
 
 - (void)removeEmptyConversationsFromDB {
@@ -118,11 +118,11 @@
     EaseConversationCell *cell = [[EaseConversationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.avatarView.imageCornerRadius = CGRectGetWidth(cell.avatarView.frame) / 2.0;
     cell.avatarView.imageView.backgroundColor = [UIColor clearColor];
-    cell.titleLabelFont = kSystemFont(15);
+    cell.titleLabelFont = XJSystemFont(15);
     cell.titleLabelColor = MAIN_TEXT_COLOR;
-    cell.detailLabelFont = kSystemFont(14);
+    cell.detailLabelFont = XJSystemFont(14);
     cell.detailLabelColor = TABBAR_TITLE_COLOR;
-    cell.timeLabelFont = kSystemFont(13);
+    cell.timeLabelFont = XJSystemFont(13);
     cell.timeLabelColor = TABBAR_TITLE_COLOR;
     ConversationModel *tempModel = self.conversationArray[indexPath.row];
     EMMessage *lastMessage = tempModel.conversation.latestMessage;

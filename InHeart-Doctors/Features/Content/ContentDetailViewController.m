@@ -192,7 +192,7 @@
         if (_vrPlayerItem) {
             [self.vrPlayer appendItem:_vrPlayerItem];
         } else {
-            XLShowThenDismissHUD(NO, kVideoCanNotPlay, self.view);
+            XLShowThenDismissHUD(NO, XJVideoCanNotPlay, self.view);
         }
     }
     self.startButton.hidden = YES;
@@ -232,7 +232,7 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGSize size = XLSizeOfText(self.contentModel.contentDescription, SCREEN_WIDTH - 30, kSystemFont(14));
+    CGSize size = XLSizeOfText(self.contentModel.contentDescription, SCREEN_WIDTH - 30, XJSystemFont(14));
     return 150.f + size.height;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -31,7 +31,7 @@
                     }
                 }];
             } else {
-                !handler ?: handler(nil, kNetworkError);
+                !handler ?: handler(nil, XJNetworkError);
             }
         }
     }];

@@ -96,7 +96,7 @@
         [_photoButton setImage:[UIImage imageNamed:@"send_picture"] forState:UIControlStateNormal];
         [_photoButton setTitle:@"图片" forState:UIControlStateNormal];
         [_photoButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-        _photoButton.titleLabel.font = kSystemFont(14);
+        _photoButton.titleLabel.font = XJSystemFont(14);
         [_photoButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
         [_photoButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
         [_photoButton addTarget:self action:@selector(photoAction) forControlEvents:UIControlEventTouchUpInside];
@@ -141,7 +141,7 @@
             [_videoCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
             [_videoCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
             [_videoCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-            _videoCallButton.titleLabel.font = kSystemFont(14);
+            _videoCallButton.titleLabel.font = XJSystemFont(14);
             [_videoCallButton addTarget:self action:@selector(takeVideoCallAction) forControlEvents:UIControlEventTouchUpInside];
             _videoCallButton.tag =MOREVIEW_BUTTON_TAG + 4;
             [_scrollview addSubview:_videoCallButton];
@@ -152,7 +152,7 @@
             _phoneCallButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
             [_phoneCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
             [_phoneCallButton setTitle:@"拨打电话" forState:UIControlStateNormal];
-            _phoneCallButton.titleLabel.font = kSystemFont(14);
+            _phoneCallButton.titleLabel.font = XJSystemFont(14);
             [_phoneCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
             [_phoneCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
             [_phoneCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
@@ -165,7 +165,7 @@
             _prescribeButton.frame = CGRectMake(insets * 4 + CHAT_BUTTON_SIZE * 3, 10, CHAT_BUTTON_SIZE, 90);
             [_prescribeButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
             [_prescribeButton setTitle:@"开处方" forState:UIControlStateNormal];
-            _prescribeButton.titleLabel.font = kSystemFont(14);
+            _prescribeButton.titleLabel.font = XJSystemFont(14);
             [_prescribeButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
             [_prescribeButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
             [_prescribeButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];

@@ -194,18 +194,18 @@ static NSInteger const MAX_INTRODUCTION_LENGTH = 300;
         if (buttonIndex == 1) {
             //拍照
             if (!XLIsCameraAvailable) {
-                XLShowThenDismissHUD(NO, kCameraNotAvailable, self.view);
+                XLShowThenDismissHUD(NO, XJCameraNotAvailable, self.view);
                 return;
             }
             if (!XLIsAppCameraAccessAuthorized) {
-                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:kAppCameraAccessNotAuthorized block:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
+                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:XJAppCameraAccessNotAuthorized block:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
                 return;
             }
             [self presentImagePickerController:UIImagePickerControllerSourceTypeCamera];
         } else if (buttonIndex == 2) {
             //相册
             if (!XLIsAppPhotoLibraryAccessAuthorized) {
-                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:kAppPhotoLibraryAccessNotAuthorized block:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
+                [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:XJAppPhotoLibraryAccessNotAuthorized block:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] show];
                 return;
             }
             [self presentImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];

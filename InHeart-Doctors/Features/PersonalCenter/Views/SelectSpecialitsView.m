@@ -72,7 +72,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.topView.frame), 44)];
-        _titleLabel.font = kBoldSystemFont(15);
+        _titleLabel.font = XJBoldSystemFont(15);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = MAIN_TEXT_COLOR;
         _titleLabel.text = @"病种";
@@ -102,7 +102,7 @@
     if (!_submitButton) {
         _submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _submitButton.frame = CGRectMake(SCREEN_WIDTH - 50, 24, 40, 40);
-        _submitButton.titleLabel.font = kSystemFont(14);
+        _submitButton.titleLabel.font = XJSystemFont(14);
         [_submitButton setTitle:@"确定" forState:UIControlStateNormal];
         [_submitButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
         [_submitButton addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
@@ -138,7 +138,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
-    cell.textLabel.font = kSystemFont(13);
+    cell.textLabel.font = XJSystemFont(13);
     NSArray *tempArray = [self.array[indexPath.section] copy];
     ContentsTypeModel *tempModel = tempArray[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", tempModel.name];
@@ -154,11 +154,11 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [UIView new];
-    headerView.backgroundColor = kRGBColor(240, 240, 240, 1.0);
+    headerView.backgroundColor = XJRGBColor(240, 240, 240, 1.0);
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 21)];
     label.text = self.indexArray[section];
-    label.textColor = kHexRGBColorWithAlpha(0xAAAAAA, 1.0);
-    label.font = kSystemFont(12);
+    label.textColor = XJHexRGBColorWithAlpha(0xAAAAAA, 1.0);
+    label.font = XJSystemFont(12);
     [headerView addSubview:label];
     return headerView;
 }

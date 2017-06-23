@@ -49,7 +49,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.topView.frame), 44)];
-        _titleLabel.font = kBoldSystemFont(15);
+        _titleLabel.font = XJBoldSystemFont(15);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = MAIN_TEXT_COLOR;
         _titleLabel.text = @"城市";
@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
-    cell.textLabel.font = kSystemFont(13);
+    cell.textLabel.font = XJSystemFont(13);
     ProvincesModel *provinceModel = self.areaArray[indexPath.section];
     NSArray *tempArray = [provinceModel.array copy];
     CitiesModel *cityModel = [CitiesModel yy_modelWithDictionary:tempArray[indexPath.row]];
@@ -101,12 +101,12 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [UIView new];
-    headerView.backgroundColor = kRGBColor(240, 240, 240, 1.0);
+    headerView.backgroundColor = XJRGBColor(240, 240, 240, 1.0);
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 21)];
     ProvincesModel *provinceModel = self.areaArray[section];
     label.text = [NSString stringWithFormat:@"%@", provinceModel.name];
-    label.textColor = kHexRGBColorWithAlpha(0xAAAAAA, 1.0);
-    label.font = kSystemFont(12);
+    label.textColor = XJHexRGBColorWithAlpha(0xAAAAAA, 1.0);
+    label.font = XJSystemFont(12);
     [headerView addSubview:label];
     return headerView;
 }

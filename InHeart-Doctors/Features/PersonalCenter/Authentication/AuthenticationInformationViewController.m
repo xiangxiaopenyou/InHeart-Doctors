@@ -133,11 +133,11 @@
         self.footerView.hidden = NO;
         if ([self.model.status integerValue] == 2) {
             self.tipImageView.image = [UIImage imageNamed:@"authentication_waiting"];
-            self.failureReasonLabel.textColor = kRGBColor(67, 175, 61, 1);
+            self.failureReasonLabel.textColor = XJRGBColor(67, 175, 61, 1);
             self.failureReasonLabel.text = NSLocalizedString(@"personal.waitingAuthentication", nil);
         } else if ([self.model.status integerValue] == 3) {
             self.tipImageView.image = [UIImage imageNamed:@"authentication_failure"];
-            self.failureReasonLabel.textColor = kRGBColor(225, 80, 41, 1);
+            self.failureReasonLabel.textColor = XJRGBColor(225, 80, 41, 1);
             NSString *failureString = NSLocalizedString(@"personal.pleaseSubmitAgain", nil);
             if (!XLIsNullObject(self.model.remark)) {
                 failureString = [NSString stringWithFormat:@"%@,%@", self.model.remark, failureString];
@@ -655,11 +655,11 @@
     if (!_hospitalButton) {
         _hospitalButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_hospitalButton setTitle:@"医院" forState:UIControlStateNormal];
-        [_hospitalButton setTitleColor:kRGBColor(100, 100, 100, 1) forState:UIControlStateNormal];
+        [_hospitalButton setTitleColor:XJRGBColor(100, 100, 100, 1) forState:UIControlStateNormal];
         [_hospitalButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateSelected];
         [_hospitalButton setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
         [_hospitalButton setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateSelected];
-        _hospitalButton.titleLabel.font = kSystemFont(15);
+        _hospitalButton.titleLabel.font = XJSystemFont(15);
         [_hospitalButton setImageEdgeInsets:UIEdgeInsetsMake(0, - 5, 0, 0)];
         [_hospitalButton addTarget:self action:@selector(hospitalAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -669,11 +669,11 @@
     if (!_clinicButton) {
         _clinicButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_clinicButton setTitle:@"诊所" forState:UIControlStateNormal];
-        [_clinicButton setTitleColor:kRGBColor(100, 100, 100, 1) forState:UIControlStateNormal];
+        [_clinicButton setTitleColor:XJRGBColor(100, 100, 100, 1) forState:UIControlStateNormal];
         [_clinicButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateSelected];
         [_clinicButton setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
         [_clinicButton setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateSelected];
-        _clinicButton.titleLabel.font = kSystemFont(15);
+        _clinicButton.titleLabel.font = XJSystemFont(15);
         [_clinicButton setImageEdgeInsets:UIEdgeInsetsMake(0, - 5, 0, 0)];
         [_clinicButton addTarget:self action:@selector(clinicAction) forControlEvents:UIControlEventTouchUpInside];
     }

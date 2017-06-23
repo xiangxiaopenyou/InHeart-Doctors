@@ -42,8 +42,8 @@
         }];
         
         UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.font = kSystemFont(18);
-        titleLabel.textColor = kHexRGBColorWithAlpha(0x0865b3, 1);
+        titleLabel.font = XJSystemFont(18);
+        titleLabel.textColor = XJHexRGBColorWithAlpha(0x0865b3, 1);
         titleLabel.text = @"填写治疗周期";
         [self.contentView addSubview:titleLabel];
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -52,7 +52,7 @@
         }];
         
         UILabel *perTimes = [[UILabel alloc] init];
-        perTimes.font = kSystemFont(16);
+        perTimes.font = XJSystemFont(16);
         perTimes.textColor = MAIN_TEXT_COLOR;
         perTimes.text = @"次/";
         [self.contentView addSubview:perTimes];
@@ -100,7 +100,7 @@
         
         UILabel *label1 = [[UILabel alloc] init];
         label1.textColor = MAIN_TEXT_COLOR;
-        label1.font = kSystemFont(16);
+        label1.font = XJSystemFont(16);
         label1.text = @"共";
         [self.contentView addSubview:label1];
         [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,7 +110,7 @@
         
         UILabel *label2 = [[UILabel alloc] init];
         label2.textColor = MAIN_TEXT_COLOR;
-        label2.font = kSystemFont(16);
+        label2.font = XJSystemFont(16);
         label2.text = @"次";
         [self.contentView addSubview:label2];
         [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -127,7 +127,7 @@
         
         UILabel *label3 = [[UILabel alloc] init];
         label3.textColor = MAIN_TEXT_COLOR;
-        label3.font = kSystemFont(16);
+        label3.font = XJSystemFont(16);
         label3.text = @"共";
         [self.contentView addSubview:label3];
         [label3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -247,7 +247,7 @@
 - (void)textDidChanged:(UITextField *)textField {
     if ([self.timesTextField.text integerValue] > 0 && [self.periodTextField.text integerValue] > 0) {
         self.submitButton.enabled = YES;
-        [self.submitButton setTitleColor:kHexRGBColorWithAlpha(0x0865b3, 1) forState:UIControlStateNormal];
+        [self.submitButton setTitleColor:XJHexRGBColorWithAlpha(0x0865b3, 1) forState:UIControlStateNormal];
     } else {
         self.submitButton.enabled = NO;
         [self.submitButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
@@ -280,7 +280,7 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     cell.separatorInset = UIEdgeInsetsZero;
     UILabel *selectUnitLabel = [[UILabel alloc] init];
-    selectUnitLabel.font = kSystemFont(16);
+    selectUnitLabel.font = XJSystemFont(16);
     selectUnitLabel.textColor = MAIN_TEXT_COLOR;
     [cell.contentView addSubview:selectUnitLabel];
     [selectUnitLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -379,7 +379,7 @@
     if (!_timesTextField) {
         _timesTextField = [[UITextField alloc] init];
         _timesTextField.delegate = self;
-        _timesTextField.font = kSystemFont(16);
+        _timesTextField.font = XJSystemFont(16);
         _timesTextField.textColor = MAIN_TEXT_COLOR;
         _timesTextField.textAlignment = NSTextAlignmentCenter;
         _timesTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -395,7 +395,7 @@
     if (!_periodTextField) {
         _periodTextField = [[UITextField alloc] init];
         _periodTextField.delegate = self;
-        _periodTextField.font = kSystemFont(16);
+        _periodTextField.font = XJSystemFont(16);
         _periodTextField.textColor = MAIN_TEXT_COLOR;
         _periodTextField.textAlignment = NSTextAlignmentCenter;
         _periodTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -410,7 +410,7 @@
 - (UILabel *)unitLabel {
     if (!_unitLabel) {
         _unitLabel = [[UILabel alloc] init];
-        _unitLabel.font = kSystemFont(16);
+        _unitLabel.font = XJSystemFont(16);
         _unitLabel.textColor = MAIN_TEXT_COLOR;
         _unitLabel.text = @"日";
     }
@@ -419,7 +419,7 @@
 - (UILabel *)countTimesLabel {
     if (!_countTimesLabel) {
         _countTimesLabel = [[UILabel alloc] init];
-        _countTimesLabel.font = kSystemFont(16);
+        _countTimesLabel.font = XJSystemFont(16);
         _countTimesLabel.textColor = MAIN_TEXT_COLOR;
         _countTimesLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -438,7 +438,7 @@
         _submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_submitButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
         [_submitButton setTitle:@"确认" forState:UIControlStateNormal];
-        _submitButton.titleLabel.font = kSystemFont(16);
+        _submitButton.titleLabel.font = XJSystemFont(16);
         [_submitButton addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
         [_submitButton setBackgroundImage:[UIImage imageWithColor:BREAK_LINE_COLOR] forState:UIControlStateHighlighted];
         _submitButton.enabled = NO;

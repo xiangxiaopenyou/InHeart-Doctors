@@ -73,14 +73,14 @@ static CGFloat const kTipLabelHeight = 2.0;
                 [[DemoCallManager sharedManager] setMainController:self];
                 //[self setupUnreadMessagesCount];
             } else {
-                XLShowThenDismissHUD(NO, kNetworkError, self.view);
+                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
             }
         }];
     } else {
         [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
         [[DemoCallManager sharedManager] setMainController:self];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:kSetupUnreadMessagesCount object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:XJSetupUnreadMessagesCount object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
 
 }
@@ -94,7 +94,7 @@ static CGFloat const kTipLabelHeight = 2.0;
 }
 - (void)dealloc {
     [[EMClient sharedClient].chatManager removeDelegate:self];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSetupUnreadMessagesCount object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XJSetupUnreadMessagesCount object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoCallDidEnded" object:nil];
 }
 
@@ -206,11 +206,11 @@ static CGFloat const kTipLabelHeight = 2.0;
                 break;
         }
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:kConversationsDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
     [self setupUnreadMessagesCount];
 }
 - (void)conversationListDidUpdate:(NSArray *)aConversationList {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kConversationsDidChange object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
     [self setupUnreadMessagesCount];
 }
 

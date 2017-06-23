@@ -54,7 +54,7 @@
     return UIEdgeInsetsMake(5, 0, 0, 0);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(kCollectionCellItemWidth, kCollectionCellItemHeight);
+    return CGSizeMake(XJCollectionCellItemWidth, XJCollectionCellItemHeight);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 5.0;

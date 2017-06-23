@@ -94,7 +94,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
     headerView.backgroundColor = MAIN_BACKGROUND_COLOR;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 20)];
-    headerLabel.font = kSystemFont(12);
+    headerLabel.font = XJSystemFont(12);
     headerLabel.textColor = MAIN_TEXT_COLOR;
     headerLabel.text = [NSString stringWithFormat:@"%@", (NSString *)self.indexArray[section]];
     [headerView addSubview:headerLabel];

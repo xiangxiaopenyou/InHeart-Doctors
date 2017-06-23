@@ -35,9 +35,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     if (self.isFindPassword) {
-        self.title = kFindPassword;
+        self.title = XJFindPassword;
     } else {
-        self.title = kChangePassword;
+        self.title = XJChangePassword;
     }
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -51,10 +51,10 @@
 - (UITextField *)phoneNumberTextField {
     if (!_phoneNumberTextField) {
         _phoneNumberTextField = [[UITextField alloc] init];
-        [_phoneNumberTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _phoneNumberTextField.font = kSystemFont(14);
+        [_phoneNumberTextField setValue:XJHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _phoneNumberTextField.font = XJSystemFont(14);
         _phoneNumberTextField.textColor = MAIN_TEXT_COLOR;
-        _phoneNumberTextField.placeholder = kInputPhoneNumber;
+        _phoneNumberTextField.placeholder = XJInputPhoneNumber;
         _phoneNumberTextField.clearButtonMode =  UITextFieldViewModeWhileEditing;
         _phoneNumberTextField.keyboardType = UIKeyboardTypeNumberPad;
         _phoneNumberTextField.delegate = self;
@@ -64,11 +64,11 @@
 - (UITextField *)passwordTextField {
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc] init];
-        [_passwordTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _passwordTextField.font = kSystemFont(14);
+        [_passwordTextField setValue:XJHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _passwordTextField.font = XJSystemFont(14);
         _passwordTextField.textColor = MAIN_TEXT_COLOR;
         _passwordTextField.secureTextEntry = YES;
-        _passwordTextField.placeholder = kInputPassword;
+        _passwordTextField.placeholder = XJInputPassword;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _passwordTextField.returnKeyType = UIReturnKeyNext;
         _passwordTextField.delegate = self;
@@ -78,10 +78,10 @@
 - (UITextField *)codeTextField {
     if (!_codeTextField) {
         _codeTextField = [[UITextField alloc] init];
-        [_codeTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _codeTextField.font = kSystemFont(14);
+        [_codeTextField setValue:XJHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _codeTextField.font = XJSystemFont(14);
         _codeTextField.textColor = MAIN_TEXT_COLOR;
-        _codeTextField.placeholder = kInputVerificationCode;
+        _codeTextField.placeholder = XJInputVerificationCode;
         _codeTextField.clearButtonMode =  UITextFieldViewModeWhileEditing;
         _codeTextField.keyboardType = UIKeyboardTypeNumberPad;
         _codeTextField.delegate = self;
@@ -91,11 +91,11 @@
 - (UITextField *)validatePasswordTextField {
     if (!_validatePasswordTextField) {
         _validatePasswordTextField = [[UITextField alloc] init];
-        [_validatePasswordTextField setValue:kHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
-        _validatePasswordTextField.font = kSystemFont(14);
+        [_validatePasswordTextField setValue:XJHexRGBColorWithAlpha(0xd0d0d0, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
+        _validatePasswordTextField.font = XJSystemFont(14);
         _validatePasswordTextField.textColor = MAIN_TEXT_COLOR;
         _validatePasswordTextField.secureTextEntry = YES;
-        _validatePasswordTextField.placeholder = kInputPasswordAgain;
+        _validatePasswordTextField.placeholder = XJInputPasswordAgain;
         _validatePasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _validatePasswordTextField.returnKeyType = UIReturnKeyDone;
         _validatePasswordTextField.delegate = self;
@@ -105,9 +105,9 @@
 - (UIButton *)fetchCodeButton {
     if (!_fetchCodeButton) {
         _fetchCodeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_fetchCodeButton setTitle:kFetchVerificationCode forState:UIControlStateNormal];
+        [_fetchCodeButton setTitle:XJFetchVerificationCode forState:UIControlStateNormal];
         [_fetchCodeButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
-        _fetchCodeButton.titleLabel.font = kSystemFont(14);
+        _fetchCodeButton.titleLabel.font = XJSystemFont(14);
         [_fetchCodeButton addTarget:self action:@selector(fetchCodeClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _fetchCodeButton;
@@ -263,7 +263,7 @@
 */
 - (void)fetchCodeClick {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
+        XLShowThenDismissHUD(NO, XJInputCorrectPhoneNumberTip, self.view);
         return;
     }
     self.fetchCodeButton.enabled = NO;
@@ -282,7 +282,7 @@
         [self.timer invalidate];
         self.timer = nil;
         self.fetchCodeButton.enabled = YES;
-        [self.fetchCodeButton setTitle:kFetchVerificationCode forState:UIControlStateNormal];
+        [self.fetchCodeButton setTitle:XJFetchVerificationCode forState:UIControlStateNormal];
         [self.fetchCodeButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
         
     } else {
@@ -292,23 +292,23 @@
 }
 - (IBAction)submitClick:(id)sender {
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputCorrectPhoneNumberTip, self.view);
+        XLShowThenDismissHUD(NO, XJInputCorrectPhoneNumberTip, self.view);
         return;
     }
     if (XLIsNullObject(self.codeTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputVerificationCodeTip, self.view);
+        XLShowThenDismissHUD(NO, XJInputVerificationCodeTip, self.view);
         return;
     }
     if (XLIsNullObject(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kInputPasswordTip, self.view);
+        XLShowThenDismissHUD(NO, XJInputPasswordTip, self.view);
         return;
     }
     if (!XLCheckPassword(self.passwordTextField.text)) {
-        XLShowThenDismissHUD(NO, kPasswordFormatTip, self.view);
+        XLShowThenDismissHUD(NO, XJPasswordFormatTip, self.view);
         return;
     }
     if (![self.passwordTextField.text isEqualToString:self.validatePasswordTextField.text]) {
-        XLShowThenDismissHUD(NO, kDifferentPasswordTip, self.view);
+        XLShowThenDismissHUD(NO, XJDifferentPasswordTip, self.view);
         return;
     }
     XLShowHUDWithMessage(nil, self.view);

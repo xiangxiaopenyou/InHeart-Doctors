@@ -27,7 +27,7 @@
             !resultHandler ?: resultHandler(nil, responseObject[@"message"]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        !resultHandler ?: resultHandler(nil, kNetworkError);
+        !resultHandler ?: resultHandler(nil, XJNetworkError);
     }];
     
 }

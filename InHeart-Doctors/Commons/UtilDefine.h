@@ -14,8 +14,8 @@
 #define SCREEN_HEIGHT CGRectGetHeight(UIScreen.mainScreen.bounds)
 
 //推荐内容高度和宽度
-#define kCollectionCellItemWidth (SCREEN_WIDTH - 5) / 2.0
-#define kCollectionCellItemHeight kCollectionCellItemWidth * 30.0 / 37.0
+#define XJCollectionCellItemWidth (SCREEN_WIDTH - 5) / 2.0
+#define XJCollectionCellItemHeight XJCollectionCellItemWidth * 30.0 / 37.0
 
 //视频通话
 #define DEMO_CALL 1
@@ -32,18 +32,18 @@
 /**
  *  RGB颜色
  */
-#define kRGBColor(r,g,b,a)	[UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define XJRGBColor(r,g,b,a)	[UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 /**
  *  Hex颜色转RGB颜色
  */
-#define kHexRGBColorWithAlpha(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+#define XJHexRGBColorWithAlpha(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 /**
  *  系统字体
  */
-#define kSystemFont(x) [UIFont systemFontOfSize:x]
-#define kBoldSystemFont(x) [UIFont boldSystemFontOfSize:x]
+#define XJSystemFont(x) [UIFont systemFontOfSize:x]
+#define XJBoldSystemFont(x) [UIFont boldSystemFontOfSize:x]
 
 
 #pragma mark - System

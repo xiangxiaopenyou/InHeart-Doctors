@@ -109,7 +109,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
-    cell.textLabel.font = kSystemFont(14);
+    cell.textLabel.font = XJSystemFont(14);
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
     if (indexPath.row == 0) {
         cell.textLabel.text = @"接受问诊";
@@ -137,7 +137,7 @@
 */
 - (IBAction)finishAction:(id)sender {
     if ([_userModel.code integerValue] == 9) {
-        [[[XLBlockAlertView alloc] initWithTitle:kCommonTip message:kStopInterrogationTip block:^(NSInteger buttonIndex) {
+        [[[XLBlockAlertView alloc] initWithTitle:XJCommonTip message:XJStopInterrogationTip block:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 XLShowHUDWithMessage(nil, self.view);
                 if ([self.feesTextField.text floatValue] != _commonPrice) {
@@ -146,7 +146,7 @@
                     [self resetState];
                 }
             }
-        } cancelButtonTitle:kCommonCancel otherButtonTitles:kCommonEnsure, nil] show];
+        } cancelButtonTitle:XJCommonCancel otherButtonTitles:XJCommonEnsure, nil] show];
     } else {
         XLShowHUDWithMessage(nil, self.view);
         if ([self.feesTextField.text floatValue] != _commonPrice) {

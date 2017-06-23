@@ -102,7 +102,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell" forIndexPath:indexPath];
-        NSArray *tempArray = @[kTelephoneNumber, kChangePassword, kCheckNewVersion, kServiceAgreement, kClearCache, kAboutUs];
+        NSArray *tempArray = @[XJTelephoneNumber, XJChangePassword, XJCheckNewVersion, XJServiceAgreement, XJClearCache, XJAboutUs];
         cell.textLabel.text = [NSString stringWithFormat:@"%@", (NSString *)tempArray[indexPath.row]];
         if (indexPath.row == 0) {
             UsersModel *tempModel = [[UserInfo sharedUserInfo] userInfo];
@@ -147,7 +147,7 @@
         }];
         UILabel *servicePhoneLabel = [[UILabel alloc] init];
         servicePhoneLabel.textColor = MAIN_TEXT_COLOR;
-        servicePhoneLabel.font = kSystemFont(14);
+        servicePhoneLabel.font = XJSystemFont(14);
         servicePhoneLabel.text = NSLocalizedString(@"servicePhone", nil);
         [footerView addSubview:servicePhoneLabel];
         [servicePhoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -157,7 +157,7 @@
         UIButton *servicePhoneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [servicePhoneButton setTitle:@"400-000-000" forState:UIControlStateNormal];
         [servicePhoneButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
-        servicePhoneButton.titleLabel.font = kSystemFont(14);
+        servicePhoneButton.titleLabel.font = XJSystemFont(14);
         [servicePhoneButton addTarget:self action:@selector(servicePhoneAction) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:servicePhoneButton];
         [servicePhoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -167,7 +167,7 @@
         
         UILabel *serviceTimeLabel = [[UILabel alloc] init];
         serviceTimeLabel.textColor = MAIN_TEXT_COLOR;
-        serviceTimeLabel.font = kSystemFont(14);
+        serviceTimeLabel.font = XJSystemFont(14);
         serviceTimeLabel.text = NSLocalizedString(@"serviceTime", nil);
         [footerView addSubview:serviceTimeLabel];
         [serviceTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,7 +177,7 @@
         
         UILabel *timeLabel = [[UILabel alloc] init];
         timeLabel.textColor = MAIN_TEXT_COLOR;
-        timeLabel.font = kSystemFont(14);
+        timeLabel.font = XJSystemFont(14);
         timeLabel.text = @"09:00--22:00";
         [footerView addSubview:timeLabel];
         [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -229,9 +229,9 @@
                         [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
                             if (!aError) {
                                 [[UserInfo sharedUserInfo] removeUserInfo];
-                                [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccess object:nil];
+                                [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
                             } else {
-                                XLShowThenDismissHUD(NO, kNetworkError, self.view);
+                                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
                             }
                         }];
                         

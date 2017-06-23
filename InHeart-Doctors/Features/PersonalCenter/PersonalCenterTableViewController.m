@@ -131,7 +131,7 @@
         case 1:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
             cell.imageView.image = [UIImage imageNamed:self.iconArray[indexPath.row]];
-            cell.textLabel.font = kSystemFont(15);
+            cell.textLabel.font = XJSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             cell.textLabel.text = self.itemTitleArray[indexPath.row];
             
@@ -141,8 +141,8 @@
         case 2:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
             cell.imageView.image = [UIImage imageNamed:@"invite_doctor"];
-            cell.textLabel.text = kInviteDoctors;
-            cell.textLabel.font = kSystemFont(15);
+            cell.textLabel.text = XJInviteDoctors;
+            cell.textLabel.font = XJSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             return cell;
             
@@ -154,14 +154,14 @@
             NSString *titleString;
             if (indexPath.row == 0) {
                 iconString = @"interrogation_setting";
-                titleString = kInterrogationSetting;
+                titleString = XJInterrogationSetting;
             } else {
                 iconString = @"setting";
-                titleString = kPersonalSetting;
+                titleString = XJPersonalSetting;
             }
             cell.imageView.image = [UIImage imageNamed:iconString];
             cell.textLabel.text = titleString;
-            cell.textLabel.font = kSystemFont(15);
+            cell.textLabel.font = XJSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             return cell;
         }
@@ -293,7 +293,7 @@
 }
 - (NSArray *)itemTitleArray {
     if (!_itemTitleArray) {
-        _itemTitleArray = @[kMyWallet, kMyCollections, kMyScores, kMyBandCard];
+        _itemTitleArray = @[XJMyWallet, XJMyCollections, XJMyScores, XJMyBandCard];
     }
     return _itemTitleArray;
 }

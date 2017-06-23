@@ -114,7 +114,7 @@
     cell.contentTextField.placeholder = [NSString stringWithFormat:@"%@", self.placeholderArray[indexPath.row]];
     if (indexPath.row == 0) {
         cell.tipButton.hidden = NO;
-        cell.contentTextField.textColor = kHexRGBColorWithAlpha(0x646464, 1);
+        cell.contentTextField.textColor = XJHexRGBColorWithAlpha(0x646464, 1);
         if (self.model) {
             cell.contentTextField.text = [NSString stringWithFormat:@"%@", self.model.cardholder];
         } else {

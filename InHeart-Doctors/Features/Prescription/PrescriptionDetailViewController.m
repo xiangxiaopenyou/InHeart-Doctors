@@ -73,10 +73,10 @@
     CGFloat height = 0;
     switch (indexPath.section) {
         case 0:
-            height = 20 + XLSizeOfText(self.model.disease, SCREEN_WIDTH - 30, kSystemFont(14)).height;
+            height = 20 + XLSizeOfText(self.model.disease, SCREEN_WIDTH - 30, XJSystemFont(14)).height;
             break;
         case 1:
-            height = 20 + XLSizeOfText(self.model.suggestion, SCREEN_WIDTH - 30, kSystemFont(14)).height;
+            height = 20 + XLSizeOfText(self.model.suggestion, SCREEN_WIDTH - 30, XJSystemFont(14)).height;
             break;
         case 2:
             height = 90.f * self.model.prescriptionContentList.count;
@@ -141,7 +141,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
     headerView.backgroundColor = MAIN_BACKGROUND_COLOR;
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 40)];
-    headerLabel.font = kSystemFont(14);
+    headerLabel.font = XJSystemFont(14);
     headerLabel.textColor = [UIColor blackColor];
     NSString *title;
     switch (section) {

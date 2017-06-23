@@ -215,7 +215,7 @@
         return;
     }
     if (XLIsNullObject(self.adviceTextView.text)) {
-        XLDismissHUD(self.view, YES, NO, kPleaseInputPrescriptionWords);
+        XLDismissHUD(self.view, YES, NO, XJPleaseInputPrescriptionWords);
         return;
     }
     if (self.contentsArray.count <= 0) {

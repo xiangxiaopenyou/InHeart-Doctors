@@ -38,14 +38,14 @@
     NSMutableArray *tempIndexArray = [[NSMutableArray alloc] init];
     if (contentsType == XJContentsTypesContents) {
         tempMutableArray = [contentArray mutableCopy];
-        [tempMutableArray insertObject:kAllContents atIndex:0];
+        [tempMutableArray insertObject:XJAllContents atIndex:0];
     } else {
         for (NSDictionary *tempDictionary in contentArray) {
             NSArray *tempArray = [ContentsTypeModel setupWithArray:tempDictionary[@"array"]];
             [tempMutableArray addObject:tempArray];
             [tempIndexArray addObject:tempDictionary[@"letter"]];
         }
-        NSString *tempString = contentsType ==  XJContentsTypesDiseases ? kAllDiseases : kAllTherapies;
+        NSString *tempString = contentsType ==  XJContentsTypesDiseases ? XJAllDiseases : XJAllTherapies;
         [tempMutableArray insertObject:tempString atIndex:0];
         [tempIndexArray insertObject:@"#" atIndex:0];
     }
@@ -79,7 +79,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.topView.frame), 44)];
-        _titleLabel.font = kBoldSystemFont(15);
+        _titleLabel.font = XJBoldSystemFont(15);
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = MAIN_TEXT_COLOR;
     }
@@ -145,7 +145,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     cell.textLabel.textColor = MAIN_TEXT_COLOR;
-    cell.textLabel.font = kSystemFont(13);
+    cell.textLabel.font = XJSystemFont(13);
     if (self.type == XJContentsTypesContents) {
         if (indexPath.row == 0) {
             cell.textLabel.text = [NSString stringWithFormat:@"%@", self.array[indexPath.row]];
@@ -192,11 +192,11 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [UIView new];
-    headerView.backgroundColor = kRGBColor(240, 240, 240, 1.0);
+    headerView.backgroundColor = XJRGBColor(240, 240, 240, 1.0);
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 21)];
     label.text = self.indexArray[section];
-    label.textColor = kHexRGBColorWithAlpha(0xAAAAAA, 1.0);
-    label.font = kSystemFont(12);
+    label.textColor = XJHexRGBColorWithAlpha(0xAAAAAA, 1.0);
+    label.font = XJSystemFont(12);
     [headerView addSubview:label];
     return headerView;
 }

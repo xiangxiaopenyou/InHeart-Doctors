@@ -145,8 +145,8 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 25)];
     headerView.backgroundColor = MAIN_BACKGROUND_COLOR;
     UILabel *headerLabel = [[UILabel alloc] init];
-    headerLabel.textColor = kRGBColor(50, 50, 50, 1);
-    headerLabel.font = kSystemFont(14);
+    headerLabel.textColor = XJRGBColor(50, 50, 50, 1);
+    headerLabel.font = XJSystemFont(14);
     headerLabel.text = @"账单";
     [headerView addSubview:headerLabel];
     [headerLabel mas_makeConstraints:^(MASConstraintMaker *make) {

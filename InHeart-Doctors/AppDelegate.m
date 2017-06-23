@@ -35,7 +35,7 @@
     keyboardManager.enableAutoToolbar = NO;
     keyboardManager.shouldResignOnTouchOutside = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:kLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:XJLoginSuccess object:nil];
     [self initAppearance];
     
     [self checkUserState:nil];
@@ -177,7 +177,7 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],
-                                                           NSFontAttributeName : kBoldSystemFont(18)}];
+                                                           NSFontAttributeName : XJBoldSystemFont(18)}];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
 }

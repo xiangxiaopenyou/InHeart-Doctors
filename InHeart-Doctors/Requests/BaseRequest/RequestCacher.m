@@ -74,7 +74,7 @@
                 }
             };
             id failure = ^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"request send failed %@", kNetworkError);
+                NSLog(@"request send failed %@", XJNetworkError);
             };
             if ([method isEqualToString:@"POST"]) {
                 [[RequestManager sharedInstance] POST:request parameters:param progress:nil success:success failure:failure];

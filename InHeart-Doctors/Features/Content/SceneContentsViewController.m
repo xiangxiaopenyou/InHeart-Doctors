@@ -177,7 +177,7 @@
     UIButton *adviceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [adviceButton setTitle:@"建议指导" forState:UIControlStateNormal];
     [adviceButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    adviceButton.titleLabel.font = kSystemFont(15);
+    adviceButton.titleLabel.font = XJSystemFont(15);
     [adviceButton setBackgroundColor:NAVIGATIONBAR_COLOR];
     [adviceButton addTarget:self action:@selector(adviceAction) forControlEvents:UIControlEventTouchUpInside];
     [header addSubview:adviceButton];
@@ -277,7 +277,7 @@
         _searchTextField.placeholder = @"请输入你要搜索的内容";
         [_searchTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         _searchTextField.textColor = NAVIGATIONBAR_COLOR;
-        _searchTextField.font = kSystemFont(14);
+        _searchTextField.font = XJSystemFont(14);
         _searchTextField.returnKeyType = UIReturnKeySearch;
         _searchTextField.delegate = self;
         
