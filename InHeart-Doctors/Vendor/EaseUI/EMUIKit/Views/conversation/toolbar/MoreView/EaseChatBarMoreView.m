@@ -147,22 +147,22 @@
             [_scrollview addSubview:_videoCallButton];
         }
         
-        if (!_phoneCallButton) {
-            _phoneCallButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            _phoneCallButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
-            [_phoneCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
-            [_phoneCallButton setTitle:@"拨打电话" forState:UIControlStateNormal];
-            _phoneCallButton.titleLabel.font = XJSystemFont(14);
-            [_phoneCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-            [_phoneCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
-            [_phoneCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-            [_phoneCallButton addTarget:self action:@selector(phoneCallAction) forControlEvents:UIControlEventTouchUpInside];
-        }
-        [_scrollview addSubview:_phoneCallButton];
+//        if (!_phoneCallButton) {
+//            _phoneCallButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            _phoneCallButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
+//            [_phoneCallButton setImage:[UIImage imageNamed:@"phone_call"] forState:UIControlStateNormal];
+//            [_phoneCallButton setTitle:@"拨打电话" forState:UIControlStateNormal];
+//            _phoneCallButton.titleLabel.font = XJSystemFont(14);
+//            [_phoneCallButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+//            [_phoneCallButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+//            [_phoneCallButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+//            [_phoneCallButton addTarget:self action:@selector(phoneCallAction) forControlEvents:UIControlEventTouchUpInside];
+//        }
+//        [_scrollview addSubview:_phoneCallButton];
         
         if (!_prescribeButton) {
             _prescribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            _prescribeButton.frame = CGRectMake(insets * 4 + CHAT_BUTTON_SIZE * 3, 10, CHAT_BUTTON_SIZE, 90);
+            _prescribeButton.frame = CGRectMake(insets * 3 + CHAT_BUTTON_SIZE * 2, 10, CHAT_BUTTON_SIZE, 90);
             [_prescribeButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
             [_prescribeButton setTitle:@"开处方" forState:UIControlStateNormal];
             _prescribeButton.titleLabel.font = XJSystemFont(14);
@@ -173,18 +173,18 @@
         }
         [_scrollview addSubview:_prescribeButton];
         
-//        if (!_advisoryFeesButton) {
-//            _advisoryFeesButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//            _advisoryFeesButton.frame = CGRectMake(insets, 110, CHAT_BUTTON_SIZE, 90);
-//            [_advisoryFeesButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
-//            [_advisoryFeesButton setTitle:@"咨询收费" forState:UIControlStateNormal];
-//            _advisoryFeesButton.titleLabel.font = kSystemFont(14);
-//            [_advisoryFeesButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
-//            [_advisoryFeesButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
-//            [_advisoryFeesButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
-//            [_advisoryFeesButton addTarget:self action:@selector(advisoryFeesAction) forControlEvents:UIControlEventTouchUpInside];
-//        }
-//        [_scrollview addSubview:_advisoryFeesButton];
+        if (!_advisoryFeesButton) {
+            _advisoryFeesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _advisoryFeesButton.frame = CGRectMake(insets * 4 + CHAT_BUTTON_SIZE * 3, 10, CHAT_BUTTON_SIZE, 90);
+            [_advisoryFeesButton setImage:[UIImage imageNamed:@"prescribe"] forState:UIControlStateNormal];
+            [_advisoryFeesButton setTitle:@"咨询收费" forState:UIControlStateNormal];
+            _advisoryFeesButton.titleLabel.font = XJSystemFont(14);
+            [_advisoryFeesButton setTitleColor:TABBAR_TITLE_COLOR forState:UIControlStateNormal];
+            [_advisoryFeesButton setImageEdgeInsets:UIEdgeInsetsMake(-30, 0, 0, 0)];
+            [_advisoryFeesButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -60, -70, 0)];
+            [_advisoryFeesButton addTarget:self action:@selector(advisoryFeesAction) forControlEvents:UIControlEventTouchUpInside];
+        }
+        [_scrollview addSubview:_advisoryFeesButton];
         
         _maxIndex = 3;
     }

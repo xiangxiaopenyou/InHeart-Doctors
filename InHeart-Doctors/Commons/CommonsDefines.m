@@ -50,6 +50,7 @@ NSString * const XJMyPatients = @"我的患者";
 NSString * const XJMyBandCard = @"我的银行卡";
 NSString * const XJMyScores = @"我的积分";
 NSString * const XJInviteDoctors = @"邀请医生";
+NSString * const XJInvitePatients = @"邀请患者";
 NSString * const XJMyAccount = @"我的账户";
 NSString * const XJHelpAndFeedback = @"帮助与反馈";
 NSString * const XJPersonalSetting = @"设置";
@@ -142,5 +143,9 @@ NSString * const SEND_PRESCRIPTION = @"doctor/prescription/add";
 NSString * const FETCH_MY_PATIENTS = @"doctor/myPatients";
 NSString * const PATIENT_INFORMATIONS = @"doctor/patient/info";
 NSString * const HISTORICAL_PRESCROPTIONS = @"doctor/historicalPrescriptions";
+NSString * const VIDEOCALL_STATUS = @"doctor/videoCallStatus";
+NSString * const RESET_VIDEOCALL_STATUS = @"doctor/resetVideoCallStatus";
+NSString * const SEND_CONSULTATION_CHARGE = @"doctor/consultationCharge";
+NSString * const CONSULTATION_CHARGE_DETAIL = @"doctor/consultationDetail";
 
 NSString * const PRESCRIPTION_DETAIL = @"doctor/prescription/info";

@@ -171,6 +171,9 @@
     [self.navigationController pushViewController:sceneViewController animated:YES];
 }
 - (IBAction)myPatientsAction:(id)sender {
+    MyPatientsViewController *patientsViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"MyPatients"];
+    [self.navigationController pushViewController:patientsViewController animated:YES];
+    
 }
 - (IBAction)myEvaluationAction:(id)sender {
 }

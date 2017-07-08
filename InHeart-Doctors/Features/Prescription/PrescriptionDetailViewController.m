@@ -48,10 +48,13 @@
                 NSString *payStateString;
                 if (self.model.payStatus.integerValue == 1) {
                     payStateString = @"待付款";
+                    self.payStateLabel.textColor = XJHexRGBColorWithAlpha(0xEC0202, 1);
                 } else if (self.model.payStatus.integerValue == 2) {
                     payStateString = @"已付款";
+                    self.payStateLabel.textColor = NAVIGATIONBAR_COLOR;
                 } else {
                     payStateString = @"已取消";
+                    self.payStateLabel.textColor = XJHexRGBColorWithAlpha(0xEC0202, 1);
                 }
                 self.payStateLabel.text = payStateString;
                 [self.tableView reloadData];

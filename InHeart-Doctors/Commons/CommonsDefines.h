@@ -85,6 +85,7 @@ extern NSString * const XJMyPatients;
 extern NSString * const XJMyScores;
 extern NSString * const XJMyBandCard;
 extern NSString * const XJInviteDoctors;
+extern NSString * const XJInvitePatients;
 extern NSString * const XJMyAccount;
 extern NSString * const XJHelpAndFeedback;
 extern NSString * const XJPersonalSetting;
@@ -186,6 +187,10 @@ extern NSString * const SEND_PRESCRIPTION;
 extern NSString * const FETCH_MY_PATIENTS;
 extern NSString * const PATIENT_INFORMATIONS;
 extern NSString * const HISTORICAL_PRESCROPTIONS;
+extern NSString * const VIDEOCALL_STATUS;
+extern NSString * const RESET_VIDEOCALL_STATUS;
+extern NSString * const SEND_CONSULTATION_CHARGE;
+extern NSString * const CONSULTATION_CHARGE_DETAIL;
 
 //6.处方
 extern NSString * const PRESCRIPTION_DETAIL;

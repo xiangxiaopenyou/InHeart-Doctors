@@ -39,7 +39,7 @@
 
 #pragma mark - Action
 - (void)servicePhoneAction {
-    NSString *phoneString = [NSString stringWithFormat:@"tel://13732254511"];
+    NSString *phoneString = [NSString stringWithFormat:@"tel://4001667866"];
     [[UIApplication sharedApplication] openURL:XLURLFromString(phoneString)];
 }
 
@@ -105,6 +105,7 @@
         NSArray *tempArray = @[XJTelephoneNumber, XJChangePassword, XJCheckNewVersion, XJServiceAgreement, XJClearCache, XJAboutUs];
         cell.textLabel.text = [NSString stringWithFormat:@"%@", (NSString *)tempArray[indexPath.row]];
         if (indexPath.row == 0) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             UsersModel *tempModel = [[UserInfo sharedUserInfo] userInfo];
             if (tempModel.username) {
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", tempModel.username];
@@ -118,7 +119,7 @@
             NSString *cacheString = cacheSize >= 0.1? [NSString stringWithFormat:@"%.1fM", cacheSize] : @"0M";
             cell.detailTextLabel.text = cacheString;
         }
-        cell.accessoryType = (indexPath.row == 2 || indexPath.row == 4) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = (indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogoutCell" forIndexPath:indexPath];
@@ -155,7 +156,7 @@
             make.centerX.equalTo(footerView).with.mas_offset(- 50);
         }];
         UIButton *servicePhoneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [servicePhoneButton setTitle:@"400-000-000" forState:UIControlStateNormal];
+        [servicePhoneButton setTitle:@"400-166-7866" forState:UIControlStateNormal];
         [servicePhoneButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
         servicePhoneButton.titleLabel.font = XJSystemFont(14);
         [servicePhoneButton addTarget:self action:@selector(servicePhoneAction) forControlEvents:UIControlEventTouchUpInside];
@@ -224,6 +225,7 @@
     } else {
         [[[XLBlockAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录吗？" block:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
+                XLShowHUDWithMessage(nil, self.view);
                 [UsersModel userLogout:^(id object, NSString *msg) {
                     if (object) {
                         [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
@@ -234,7 +236,6 @@
                                 XLShowThenDismissHUD(NO, XJNetworkError, self.view);
                             }
                         }];
-                        
                     } else {
                         XLShowThenDismissHUD(NO, msg, self.view);
                     }

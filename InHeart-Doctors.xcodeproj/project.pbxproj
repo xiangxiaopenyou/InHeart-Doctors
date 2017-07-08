@@ -35,6 +35,9 @@
 		3D206ADC1E9B20D000702559 /* HomepageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206ADB1E9B20D000702559 /* HomepageModel.m */; };
 		3D206ADF1E9B220200702559 /* FetchBasicInformationsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206ADE1E9B220200702559 /* FetchBasicInformationsRequest.m */; };
 		3D206AE21E9B5A8100702559 /* FetchInformationsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206AE11E9B5A8100702559 /* FetchInformationsRequest.m */; };
+		3D2D77931F04FB4200A7E6DC /* XJConsultationChargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */; };
+		3D2D77961F05EBBA00A7E6DC /* XJConsultationChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */; };
+		3D2D77991F05F66300A7E6DC /* SendConsultationChargeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */; };
 		3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */; };
 		3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4291E8CD65300353864 /* AddBankCardViewController.m */; };
 		3D33E4B01E961B43003AA8C5 /* UploadImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4AF1E961B43003AA8C5 /* UploadImageRequest.m */; };
@@ -210,6 +213,7 @@
 		3DB144411EB9C6600044FC0F /* PrescriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB144401EB9C6600044FC0F /* PrescriptionModel.m */; };
 		3DBDFD441DAA28750065AA7A /* MyCollectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */; };
 		3DBDFD471DAA45E70065AA7A /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBDFD461DAA45E70065AA7A /* CollectionCell.m */; };
+		3DBFBA821F04E677007E611F /* VideoCallStatusRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBFBA811F04E677007E611F /* VideoCallStatusRequest.m */; };
 		3DC30CB61E83BA5F00AF48D6 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; };
 		3DC30CB71E83BA5F00AF48D6 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DC30CBB1E84ADA100AF48D6 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */; };
@@ -407,6 +411,12 @@
 		3D206ADE1E9B220200702559 /* FetchBasicInformationsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchBasicInformationsRequest.m; sourceTree = "<group>"; };
 		3D206AE01E9B5A8100702559 /* FetchInformationsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchInformationsRequest.h; sourceTree = "<group>"; };
 		3D206AE11E9B5A8100702559 /* FetchInformationsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchInformationsRequest.m; sourceTree = "<group>"; };
+		3D2D77911F04FB4200A7E6DC /* XJConsultationChargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJConsultationChargeViewController.h; sourceTree = "<group>"; };
+		3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJConsultationChargeViewController.m; sourceTree = "<group>"; };
+		3D2D77941F05EBBA00A7E6DC /* XJConsultationChargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJConsultationChargeCell.h; sourceTree = "<group>"; };
+		3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJConsultationChargeCell.m; sourceTree = "<group>"; };
+		3D2D77971F05F66300A7E6DC /* SendConsultationChargeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendConsultationChargeRequest.h; sourceTree = "<group>"; };
+		3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendConsultationChargeRequest.m; sourceTree = "<group>"; };
 		3D32F4251E8CD17F00353864 /* MyBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankCardViewController.h; sourceTree = "<group>"; };
 		3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankCardViewController.m; sourceTree = "<group>"; };
 		3D32F4281E8CD65300353864 /* AddBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
@@ -709,6 +719,8 @@
 		3DBDFD431DAA28750065AA7A /* MyCollectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionsTableViewController.m; sourceTree = "<group>"; };
 		3DBDFD451DAA45E70065AA7A /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
 		3DBDFD461DAA45E70065AA7A /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		3DBFBA801F04E677007E611F /* VideoCallStatusRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCallStatusRequest.h; sourceTree = "<group>"; };
+		3DBFBA811F04E677007E611F /* VideoCallStatusRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCallStatusRequest.m; sourceTree = "<group>"; };
 		3DC30CB21E83B8E300AF48D6 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		3DC30CB91E84ADA100AF48D6 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
@@ -1451,6 +1463,8 @@
 				3DF025991DD31D3B008F6467 /* PatientInformationsViewController.m */,
 				3D0A5C8D1E7FB5270017204D /* MyPatientsViewController.h */,
 				3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */,
+				3D2D77911F04FB4200A7E6DC /* XJConsultationChargeViewController.h */,
+				3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */,
 			);
 			path = Interrogation;
 			sourceTree = "<group>";
@@ -1472,6 +1486,8 @@
 				3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */,
 				3D0048ED1ED3C8940025EF4F /* AvatarInformationCell.h */,
 				3D0048EE1ED3C8940025EF4F /* AvatarInformationCell.m */,
+				3D2D77941F05EBBA00A7E6DC /* XJConsultationChargeCell.h */,
+				3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2262,6 +2278,10 @@
 				3D4FC1BE1E9F4E2D00E9CE5E /* FetchMyPatientsRequest.m */,
 				3D0048E31ED2BA410025EF4F /* PatientInformationsRequest.h */,
 				3D0048E41ED2BA410025EF4F /* PatientInformationsRequest.m */,
+				3DBFBA801F04E677007E611F /* VideoCallStatusRequest.h */,
+				3DBFBA811F04E677007E611F /* VideoCallStatusRequest.m */,
+				3D2D77971F05F66300A7E6DC /* SendConsultationChargeRequest.h */,
+				3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -2532,6 +2552,7 @@
 				3DEED9171E839BA700F96A5A /* MWPhotoBrowser.m in Sources */,
 				3DE482581EDEC3A5004E1110 /* BankModel.m in Sources */,
 				3DEED8F41E839BA700F96A5A /* EMCDDeviceManager+Media.m in Sources */,
+				3D2D77931F04FB4200A7E6DC /* XJConsultationChargeViewController.m in Sources */,
 				3D6A8ED11D98C69600C405DA /* CommonsDefines.m in Sources */,
 				3DEED9281E839BA700F96A5A /* UIImage+EMWebP.m in Sources */,
 				3D64A6E11E8E55F20021B537 /* SelectSexCell.m in Sources */,
@@ -2572,6 +2593,7 @@
 				3D6A8ED61D98C69600C405DA /* XLHyperLinkButton.m in Sources */,
 				3D3529C81E14E78E00C053FE /* UsersModel.m in Sources */,
 				3DB144411EB9C6600044FC0F /* PrescriptionModel.m in Sources */,
+				3DBFBA821F04E677007E611F /* VideoCallStatusRequest.m in Sources */,
 				3D62074B1E7238DD0061B261 /* GuidePageView.m in Sources */,
 				3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */,
 				3DEED9511E839BA700F96A5A /* EaseUserCell.m in Sources */,
@@ -2590,6 +2612,7 @@
 				3D3529BC1E14D44400C053FE /* ProvincesModel.m in Sources */,
 				3DEED9551E839BA700F96A5A /* EaseMessageTimeCell.m in Sources */,
 				3DEED92F1E839BA700F96A5A /* PSTCollectionViewController.m in Sources */,
+				3D2D77961F05EBBA00A7E6DC /* XJConsultationChargeCell.m in Sources */,
 				3D3DCE511D9B51E20067870D /* FetchVerificationCodeRequest.m in Sources */,
 				3D968D9D1DB4651B005A1596 /* FindPasswordTableViewController.m in Sources */,
 				3DEED9241E839BA700F96A5A /* NSData+EMImageContentType.m in Sources */,
@@ -2696,6 +2719,7 @@
 				3DEED94F1E839BA700F96A5A /* EaseUsersListViewController.m in Sources */,
 				3DEEC8D81E766DF4006A40D3 /* NewsViewController.m in Sources */,
 				3D6A8ED21D98C69600C405DA /* Util.m in Sources */,
+				3D2D77991F05F66300A7E6DC /* SendConsultationChargeRequest.m in Sources */,
 				3DEED8F51E839BA700F96A5A /* EMCDDeviceManager+Microphone.m in Sources */,
 				3D968DA61DB4A460005A1596 /* ContentDetailViewController.m in Sources */,
 				3DEED9571E839BA700F96A5A /* EaseBubbleView+Gif.m in Sources */,

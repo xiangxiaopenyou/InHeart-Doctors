@@ -9,10 +9,12 @@
 #import "ChatViewController.h"
 #import "WritePrescriptionViewController.h"
 #import "PrescriptionDetailViewController.h"
+#import "XJConsultationChargeViewController.h"
 #import "PatientInformationsViewController.h"
 #import "XLBlockAlertView.h"
 //#import "CustomMessageCell.h"
 #import "PrescriptionMessageCell.h"
+#import "XJConsultationChargeCell.h"
 
 #import "ConversationModel.h"
 #import "UserMessagesModel.h"
@@ -28,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chat_person"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonAction)];
+    
     self.title = XLIsNullObject(self.model.realname) ? self.model.conversation.conversationId : self.model.realname;
     [[EaseBaseMessageCell appearance] setMessageNameIsHidden:YES];
     
@@ -38,6 +40,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callMessageInsert:) name:@"callMessageDidInserted" object:nil];
 
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [UserMessagesModel fetchVideoCallStatus:self.model.userId handler:^(id object, NSString *msg) {
+        if (object) {
+            [self resetRightItem:[object[@"status"] integerValue]];
+        } else {
+            [self resetRightItem:1];
+        }
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -47,7 +60,6 @@
 - (void)callMessageInsert:(NSNotification *)notification {
     EMMessage *tempMessage = (EMMessage *)notification.object;
     [self addMessageToDataSource:tempMessage progress:nil];
-    //[self.conversation insertMessage:tempMessage error:nil];
 }
 
 #pragma mark - private methods
@@ -58,7 +70,13 @@
     [self.conversation insertMessage:prescriptionMessage error:nil];
     [[EMClient sharedClient].chatManager sendMessage:prescriptionMessage progress:nil completion:nil];
 }
-
+//创建咨询收费消息
+- (void)createConsultationChargeMessage:(NSDictionary *)dictionary {
+    EMMessage *message = [EaseSDKHelper sendTextMessage:@"[咨询收费]" to:self.conversation.conversationId messageType:EMChatTypeChat messageExt:dictionary];
+    [self addMessageToDataSource:message progress:nil];
+    [self.conversation insertMessage:message error:nil];
+    [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:nil];
+}
 //present写处方页面
 - (void)presentWritePrescription {
     WritePrescriptionViewController *prescriptionViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"WritePrescription"];
@@ -71,6 +89,21 @@
     UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:prescriptionViewController];
     [self presentViewController:navigationViewController animated:YES completion:nil];
 }
+//设置rightBarButtonItem
+- (void)resetRightItem:(NSInteger)videoCallStatus {
+    if (videoCallStatus == 2) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chat_person"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonAction)];
+    } else {
+        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chat_person"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonAction)];
+        UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chat_person"] style:UIBarButtonItemStylePlain target:self action:@selector(endConsultation)];
+        self.navigationItem.rightBarButtonItems = @[item1, item2];
+    }
+}
+
+- (void)endConsultation {
+}
+
+
 #pragma mark - EaseMessageViewController Delegate & DataSource
 - (BOOL)messageViewController:(EaseMessageViewController *)viewController canLongPressRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -80,7 +113,7 @@
     id object = [self.dataArray objectAtIndex:indexPath.row];
     if (![object isKindOfClass:[NSString class]]) {
         EaseMessageModel *tempModel = object;
-        if (!tempModel.message.ext[@"prescriptionId"]) {
+        if (!tempModel.message.ext[@"prescriptionId"] && !tempModel.message.ext[@"consultationId"]) {
             EaseMessageCell *cell = (EaseMessageCell *)[self.tableView cellForRowAtIndexPath:indexPath];
             [cell becomeFirstResponder];
             self.menuIndexPath = indexPath;
@@ -116,11 +149,18 @@
             });
         };
         return cell;
+    } else if (messageModel.message.ext[@"consultationId"]) {
+        XJConsultationChargeCell *cell = [[XJConsultationChargeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setupContents:messageModel];
+        cell.selectBlock = ^(){
+        };
+        return cell;
     }
     return nil;
 }
 - (CGFloat)messageViewController:(EaseMessageViewController *)viewController heightForMessageModel:(id<IMessageModel>)messageModel withCellWidth:(CGFloat)cellWidth {
-    if (messageModel.message.ext[@"prescriptionId"]) {
+    if (messageModel.message.ext[@"prescriptionId"] || messageModel.message.ext[@"consultationId"]) {
         return 120;
     } else {
         return [EaseMessageCell cellHeightWithModel:messageModel];
@@ -151,6 +191,17 @@
             }
         }];
     }
+}
+- (void)moreViewAdvisoryFeesAction:(EaseChatBarMoreView *)moreView {
+    XJConsultationChargeViewController *chargeViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"ConsultationCharge"];
+    chargeViewController.patientId = self.model.userId;
+    chargeViewController.block = ^(NSDictionary *informations) {
+        if (informations) {
+            [self createConsultationChargeMessage:informations];
+        }
+    };
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:chargeViewController];
+    [self presentViewController:navigation animated:YES completion:nil];
 }
 - (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView {
     [self.chatToolbar endEditing:YES];

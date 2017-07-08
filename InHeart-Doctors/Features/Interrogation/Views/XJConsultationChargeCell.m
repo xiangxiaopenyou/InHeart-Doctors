@@ -1,25 +1,24 @@
 //
-//  PrescriptionMessageCell.m
+//  XJConsultationChargeCell.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/11/16.
-//  Copyright © 2016年 项小盆友. All rights reserved.
+//  Created by 项小盆友 on 2017/6/30.
+//  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "PrescriptionMessageCell.h"
-
-
-@interface PrescriptionMessageCell ()
-@property (strong, nonatomic) UIView *prescriptionBackgroundView;
+#import "XJConsultationChargeCell.h"
+@interface XJConsultationChargeCell ()
+@property (strong, nonatomic) UIView *consultationBackgroundView;
 @property (strong, nonatomic) UIView *viewOfContents;
 @property (strong, nonatomic) UIImageView *backgroundImageView;
 @property (strong, nonatomic) UIImageView *avatarImageView;
-@property (strong, nonatomic) UIImageView *prescriptionImageView;
-@property (strong, nonatomic) UILabel *prescriptionTitleLabel;
-@property (strong, nonatomic) UILabel *prescriptionStateLabel;
+@property (strong, nonatomic) UIImageView *consultationImageView;
+@property (strong, nonatomic) UILabel *consultationTitleLabel;
+@property (strong, nonatomic) UILabel *consultationStateLabel;
 @end
 
-@implementation PrescriptionMessageCell
+@implementation XJConsultationChargeCell
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -28,74 +27,74 @@
     return self;
 }
 - (void)setupContents:(id<IMessageModel>)model {
-    [self.contentView addSubview:self.prescriptionBackgroundView];
-    [self.prescriptionBackgroundView addSubview:self.avatarImageView];
-    [self.prescriptionBackgroundView addSubview:self.viewOfContents];
+    [self.contentView addSubview:self.consultationBackgroundView];
+    [self.consultationBackgroundView addSubview:self.avatarImageView];
+    [self.consultationBackgroundView addSubview:self.viewOfContents];
     [self.viewOfContents addSubview:self.backgroundImageView];
-    [self.viewOfContents addSubview:self.prescriptionImageView];
-    [self.viewOfContents addSubview:self.prescriptionTitleLabel];
-    [self.viewOfContents addSubview:self.prescriptionStateLabel];
+    [self.viewOfContents addSubview:self.consultationImageView];
+    [self.viewOfContents addSubview:self.consultationTitleLabel];
+    [self.viewOfContents addSubview:self.consultationStateLabel];
     if (model.isSender) {
-        [self.prescriptionBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.consultationBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.top.bottom.equalTo(self.contentView);
             make.width.mas_offset(280);
         }];
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.trailing.equalTo(self.prescriptionBackgroundView.mas_trailing).with.mas_offset(- 10);
-            make.top.equalTo(self.prescriptionBackgroundView.mas_top).with.mas_offset(10);
+            make.trailing.equalTo(self.consultationBackgroundView.mas_trailing).with.mas_offset(- 10);
+            make.top.equalTo(self.consultationBackgroundView.mas_top).with.mas_offset(10);
             make.width.height.mas_offset(40);
         }];
         [self.viewOfContents mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.equalTo(self.avatarImageView.mas_leading).with.mas_offset(-10);
-            make.top.equalTo(self.prescriptionBackgroundView.mas_top).with.mas_offset(8);
-            make.bottom.equalTo(self.prescriptionBackgroundView.mas_bottom).with.mas_offset(-8);
-            make.leading.equalTo(self.prescriptionBackgroundView);
+            make.top.equalTo(self.consultationBackgroundView.mas_top).with.mas_offset(8);
+            make.bottom.equalTo(self.consultationBackgroundView.mas_bottom).with.mas_offset(-8);
+            make.leading.equalTo(self.consultationBackgroundView);
         }];
         [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.top.trailing.bottom.equalTo(self.viewOfContents);
         }];
-        [self.prescriptionImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.consultationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.viewOfContents.mas_top).with.mas_offset(4);
             make.bottom.equalTo(self.viewOfContents.mas_bottom).with.mas_offset(- 6);
             make.leading.equalTo(self.viewOfContents.mas_leading).with.mas_offset(6.0);
-            make.width.equalTo(self.prescriptionImageView.mas_height).multipliedBy(1);
+            make.width.equalTo(self.consultationImageView.mas_height).multipliedBy(1);
         }];
         
         self.backgroundImageView.image = [[UIImage imageNamed:@"EaseUIResource.bundle/chat_sender_bg"] stretchableImageWithLeftCapWidth:5 topCapHeight:35];
     } else {
-        [self.prescriptionBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.consultationBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.top.bottom.equalTo(self.contentView);
             make.width.mas_offset(280);
         }];
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(self.prescriptionBackgroundView.mas_leading).with.mas_offset(10);
-            make.top.equalTo(self.prescriptionBackgroundView.mas_top).with.mas_offset(10);
+            make.leading.equalTo(self.consultationBackgroundView.mas_leading).with.mas_offset(10);
+            make.top.equalTo(self.consultationBackgroundView.mas_top).with.mas_offset(10);
             make.width.height.mas_offset(40);
         }];
         [self.viewOfContents mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.equalTo(self.avatarImageView.mas_trailing).with.mas_offset(10);
-            make.top.equalTo(self.prescriptionBackgroundView.mas_top).with.mas_offset(8);
-            make.bottom.equalTo(self.prescriptionBackgroundView.mas_bottom).with.mas_offset(-8);
-            make.trailing.equalTo(self.prescriptionBackgroundView);
+            make.top.equalTo(self.consultationBackgroundView.mas_top).with.mas_offset(8);
+            make.bottom.equalTo(self.consultationBackgroundView.mas_bottom).with.mas_offset(-8);
+            make.trailing.equalTo(self.consultationBackgroundView);
         }];
         [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.top.trailing.bottom.equalTo(self.viewOfContents);
         }];
-        [self.prescriptionImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.consultationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.viewOfContents.mas_top).with.mas_offset(4);
             make.bottom.equalTo(self.viewOfContents.mas_bottom).with.mas_offset(- 6);
             make.leading.equalTo(self.viewOfContents.mas_leading).with.mas_offset(16);
-            make.width.equalTo(self.prescriptionImageView.mas_height).multipliedBy(1);
+            make.width.equalTo(self.consultationImageView.mas_height).multipliedBy(1);
         }];
         self.backgroundImageView.image = [[UIImage imageNamed:@"EaseUIResource.bundle/chat_receiver_bg"] stretchableImageWithLeftCapWidth:35 topCapHeight:35];
     }
-    [self.prescriptionTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.consultationTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.viewOfContents.mas_top).with.mas_offset(15);
-        make.leading.equalTo(self.prescriptionImageView.mas_trailing).with.mas_offset(8);
+        make.leading.equalTo(self.consultationImageView.mas_trailing).with.mas_offset(8);
     }];
-    [self.prescriptionStateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.consultationStateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.viewOfContents.mas_bottom).with.mas_offset(- 15);
-        make.leading.equalTo(self.prescriptionImageView.mas_trailing).with.mas_offset(8);
+        make.leading.equalTo(self.consultationImageView.mas_trailing).with.mas_offset(8);
     }];
     
     //self.avatarImageView.image = model.avatarImage;
@@ -119,11 +118,11 @@
     }
     
     NSDictionary *tempDictionary = [model.message.ext copy];
-    if (tempDictionary[@"imageUrl"]) {
-        [self.prescriptionImageView sd_setImageWithURL:XLURLFromString(tempDictionary[@"imageUrl"]) placeholderImage:[UIImage imageNamed:@"default_image"]];
-    } else {
-        self.prescriptionImageView.image = [UIImage imageNamed:@"default_image"];
-    }
+//    if (tempDictionary[@"imageUrl"]) {
+//        [self.consultationImageView sd_setImageWithURL:XLURLFromString(tempDictionary[@"imageUrl"]) placeholderImage:[UIImage imageNamed:@"default_image"]];
+//    } else {
+    self.consultationImageView.image = [UIImage imageNamed:@"default_image"];
+//    }
     NSString *priceString = nil;
     if ([tempDictionary[@"price"] integerValue] == [tempDictionary[@"price"] floatValue]) {
         priceString = [NSString stringWithFormat:@"%@", tempDictionary[@"price"]];
@@ -131,22 +130,28 @@
         priceString = [NSString stringWithFormat:@"%.2f", [tempDictionary[@"price"] floatValue]];
     }
     if ([tempDictionary[@"status"] integerValue] == 1) {
-        self.prescriptionStateLabel.textColor = XJHexRGBColorWithAlpha(0xec0202, 1);
-        self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@", priceString];
-        self.prescriptionTitleLabel.text = @"处方内容";
+        self.consultationStateLabel.textColor = XJHexRGBColorWithAlpha(0xec0202, 1);
+        self.consultationStateLabel.text = [NSString stringWithFormat:@"￥%@", priceString];
+        self.consultationTitleLabel.text = @"咨询收费";
     } else if ([tempDictionary[@"status"] integerValue] == 2) {
-        self.prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
-        self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  已付款", priceString];
-        self.prescriptionTitleLabel.text = @"处方支付成功";
+        self.consultationStateLabel.textColor = NAVIGATIONBAR_COLOR;
+        self.consultationStateLabel.text = [NSString stringWithFormat:@"￥%@  已付款", priceString];
+        self.consultationTitleLabel.text = @"咨询支付成功";
     }
-
+    
 }
-- (UIView *)prescriptionBackgroundView {
-    if (!_prescriptionBackgroundView) {
-        _prescriptionBackgroundView = [[UIView alloc] init];
-        _prescriptionBackgroundView.backgroundColor = [UIColor clearColor];
+- (void)selectGestureRecognizer {
+    if (self.selectBlock) {
+        self.selectBlock();
     }
-    return _prescriptionBackgroundView;
+}
+
+- (UIView *)consultationBackgroundView {
+    if (!_consultationBackgroundView) {
+        _consultationBackgroundView = [[UIView alloc] init];
+        _consultationBackgroundView.backgroundColor = [UIColor clearColor];
+    }
+    return _consultationBackgroundView;
 }
 - (UIView *)viewOfContents {
     if (!_viewOfContents) {
@@ -163,14 +168,14 @@
     }
     return _backgroundImageView;
 }
-- (UIImageView *)prescriptionImageView {
-    if (!_prescriptionImageView) {
-        _prescriptionImageView = [[UIImageView alloc] init];
-        _prescriptionImageView.contentMode = UIViewContentModeScaleAspectFill;
-        _prescriptionImageView.clipsToBounds = YES;
-        _prescriptionImageView.userInteractionEnabled = NO;
+- (UIImageView *)consultationImageView {
+    if (!_consultationImageView) {
+        _consultationImageView = [[UIImageView alloc] init];
+        _consultationImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _consultationImageView.clipsToBounds = YES;
+        _consultationImageView.userInteractionEnabled = NO;
     }
-    return _prescriptionImageView;
+    return _consultationImageView;
 }
 - (UIImageView *)avatarImageView {
     if (!_avatarImageView) {
@@ -180,23 +185,23 @@
     }
     return _avatarImageView;
 }
-- (UILabel *)prescriptionTitleLabel {
-    if (!_prescriptionTitleLabel) {
-        _prescriptionTitleLabel = [[UILabel alloc] init];
-        _prescriptionTitleLabel.font = XJSystemFont(14);
-        _prescriptionTitleLabel.textColor = MAIN_TEXT_COLOR;
-        [_prescriptionTitleLabel sizeToFit];
+- (UILabel *)consultationTitleLabel {
+    if (!_consultationTitleLabel) {
+        _consultationTitleLabel = [[UILabel alloc] init];
+        _consultationTitleLabel.font = XJSystemFont(14);
+        _consultationTitleLabel.textColor = MAIN_TEXT_COLOR;
+        [_consultationTitleLabel sizeToFit];
     }
-    return _prescriptionTitleLabel;
+    return _consultationTitleLabel;
 }
-- (UILabel *)prescriptionStateLabel {
-    if (!_prescriptionStateLabel) {
-        _prescriptionStateLabel = [[UILabel alloc] init];
-        _prescriptionStateLabel.font = XJSystemFont(12);
-        _prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
-        [_prescriptionStateLabel sizeToFit];
+- (UILabel *)consultationStateLabel {
+    if (!_consultationStateLabel) {
+        _consultationStateLabel = [[UILabel alloc] init];
+        _consultationStateLabel.font = XJSystemFont(12);
+        _consultationStateLabel.textColor = NAVIGATIONBAR_COLOR;
+        [_consultationStateLabel sizeToFit];
     }
-    return _prescriptionStateLabel;
+    return _consultationStateLabel;
 }
 
 - (void)awakeFromNib {
@@ -208,11 +213,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-- (void)selectGestureRecognizer {
-    if (self.selectBlock) {
-        self.selectBlock();
-    }
 }
 
 @end

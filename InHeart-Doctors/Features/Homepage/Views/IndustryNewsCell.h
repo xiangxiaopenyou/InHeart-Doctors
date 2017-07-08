@@ -10,6 +10,7 @@
 
 @interface IndustryNewsCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *themeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 
 @end

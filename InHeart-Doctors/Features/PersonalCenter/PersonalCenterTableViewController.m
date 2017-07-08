@@ -40,6 +40,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.userModel = [[UserInfo sharedUserInfo] userInfo];
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -63,6 +65,9 @@
             if (![self.userModel.realname isEqualToString:self.model.realname]) {
                 self.userModel.realname = self.model.realname;
             }
+            if (![self.userModel.headPictureUrl isEqualToString:self.model.headPictureUrl]) {
+                self.userModel.headPictureUrl = self.model.headPictureUrl;
+            }
             [[UserInfo sharedUserInfo] saveUserInfo:self.userModel];
             GJCFAsyncMainQueue(^{
                 [self.tableView reloadData];
@@ -84,10 +89,10 @@
             number = 1;
             break;
         case 1:
-            number = 4;
+            number = 3;
             break;
         case 2:{
-            number = 1;
+            number = 2;
         }
             break;
         case 3:
@@ -103,7 +108,7 @@
     switch (indexPath.section) {
         case 0:{
             PersonalInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InformationCell" forIndexPath:indexPath];
-            [cell.avatarImageView sd_setImageWithURL:XLURLFromString(self.model.headPictureUrl) placeholderImage:[UIImage imageNamed:@"default_doctor_avatar"]];
+            [cell.avatarImageView sd_setImageWithURL:XLURLFromString(self.userModel.headPictureUrl) placeholderImage:[UIImage imageNamed:@"default_doctor_avatar"]];
             cell.nameLabel.text = self.userModel.realname ? [NSString stringWithFormat:@"%@", self.userModel.realname] : @"尚未登录";
             cell.phoneLabel.text = self.userModel.username ? [NSString stringWithFormat:@"%@", self.userModel.username] : nil;
             switch ([self.userModel.code integerValue]) {
@@ -140,8 +145,8 @@
             break;
         case 2:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            cell.imageView.image = [UIImage imageNamed:@"invite_doctor"];
-            cell.textLabel.text = XJInviteDoctors;
+            cell.imageView.image = indexPath.row == 0 ? [UIImage imageNamed:@"invite_doctor"] : [UIImage imageNamed:@"invite_patients"];
+            cell.textLabel.text = indexPath.row == 0 ? XJInviteDoctors : XJInvitePatients;
             cell.textLabel.font = XJSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             return cell;
@@ -192,8 +197,6 @@
                 MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
                 [self.navigationController pushViewController:collectionViewController animated:YES];
             } else if (indexPath.row == 2) {
-                
-            } else if (indexPath.row == 3) {
                 MyBankCardViewController *cardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyBankCard"];
                 [self.navigationController pushViewController:cardViewController animated:YES];
             } else {
@@ -287,13 +290,13 @@
 #pragma mark - Getters
 - (NSArray *)iconArray {
     if (!_iconArray) {
-        _iconArray = @[@"my_wallet", @"my_collections", @"my_scores", @"my_bankcard"];
+        _iconArray = @[@"my_wallet", @"my_collections", /*@"my_scores",*/ @"my_bankcard"];
     }
     return _iconArray;
 }
 - (NSArray *)itemTitleArray {
     if (!_itemTitleArray) {
-        _itemTitleArray = @[XJMyWallet, XJMyCollections, XJMyScores, XJMyBandCard];
+        _itemTitleArray = @[XJMyWallet, XJMyCollections, /*XJMyScores,*/ XJMyBandCard];
     }
     return _itemTitleArray;
 }

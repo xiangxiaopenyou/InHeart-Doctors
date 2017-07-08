@@ -120,6 +120,9 @@
     NewsModel *tempModel = self.dataArray[indexPath.row];
     cell.themeLabel.text = [NSString stringWithFormat:@"%@", tempModel.themes];
     [cell.coverImageView sd_setImageWithURL:XLURLFromString(tempModel.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
+    NSString *timeString = tempModel.releaseTime;
+    timeString = [timeString substringToIndex:16];
+    cell.timeLabel.text = timeString;
     return cell;
 }
 
