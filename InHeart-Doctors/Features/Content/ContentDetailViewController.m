@@ -243,7 +243,7 @@
         cell.collectionButton.hidden = self.viewType == 1 ? YES : NO;
         cell.contentTitleLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.name];
         cell.contentTimeLabel.text = [NSString stringWithFormat:@"%@", self.contentModel.createdAt];
-        cell.clickNumberLabel.text = [NSString stringWithFormat:@"点击量：%@", self.contentModel.clicks];
+        cell.clickNumberLabel.text = [NSString stringWithFormat:@"点击量：%@", @(self.contentModel.clicks.integerValue)];
         cell.priceLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.contentModel.price floatValue]];
         NSString *diseaseString = @"";
         if (!XLIsNullObject(self.contentModel.disease)) {

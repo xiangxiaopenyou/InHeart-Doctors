@@ -45,7 +45,7 @@
     }
     [self.contentImageView sd_setImageWithURL:XLURLFromString(model.coverPic) placeholderImage:[UIImage imageNamed:@"default_image"]];
     self.contentNameLabel.text = [NSString stringWithFormat:@"%@", model.name];
-    self.clickNumberLabel.text = [NSString stringWithFormat:@"点击量:%@", model.clicks];
+    self.clickNumberLabel.text = [NSString stringWithFormat:@"点击量:%@", @(model.clicks.integerValue)];
     if ([model.type integerValue] == 1 || [model.type integerValue] == 2) {
         self.durationLabel.hidden = NO;
     } else {

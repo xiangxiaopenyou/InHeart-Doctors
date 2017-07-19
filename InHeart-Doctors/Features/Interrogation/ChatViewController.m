@@ -42,13 +42,15 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [UserMessagesModel fetchVideoCallStatus:self.model.userId handler:^(id object, NSString *msg) {
-        if (object) {
-            [self resetRightItem:[object[@"status"] integerValue]];
-        } else {
-            [self resetRightItem:1];
-        }
-    }];
+    if (self.model.userId) {
+        [UserMessagesModel fetchVideoCallStatus:self.model.userId handler:^(id object, NSString *msg) {
+            if (object) {
+                [self resetRightItem:[object[@"status"] integerValue]];
+            } else {
+                [self resetRightItem:1];
+            }
+        }];
+    }
 }
 
 

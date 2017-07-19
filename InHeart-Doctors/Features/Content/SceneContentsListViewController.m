@@ -7,6 +7,7 @@
 //
 
 #import "SceneContentsListViewController.h"
+#import "WritePrescriptionViewController.h"
 #import "AdviceWebViewController.h"
 #import "DetailNavigationController.h"
 #import "ContentDetailViewController.h"
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *durationSortButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
+@property (strong, nonatomic) UIButton *submitButton;
 
 @property (strong, nonatomic) NSMutableArray *contentsArray;
 
@@ -43,9 +45,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.viewType == 2) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.submitButton];
+        [self checkSelectedContents];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     if (self.therapyModel) {
         self.title = self.therapyModel.therapyName;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"建议指导" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"建议指导" style:UIBarButtonItemStylePlain target:self action:@selector(rightAction)];
+        
     } else {
         if (self.isCollectionView) {
             self.title = @"常用场景";
@@ -53,7 +62,7 @@
         } else {
             self.title = @"所有疗法";
         }
-        self.navigationItem.rightBarButtonItem = nil;
+        //self.navigationItem.rightBarButtonItem = nil;
     }
     self.tableView.tableFooterView = [UIView new];
     
@@ -84,7 +93,6 @@
         //refresh
         [self fetchContents];
     }
-    
     XLShowHUDWithMessage(nil, self.view);
 }
 
@@ -94,11 +102,22 @@
 }
 
 #pragma mark - IBAction
-- (void)rightAction {
-    AdviceWebViewController *adviceController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdviceWeb"];
-    adviceController.adviceType = XJAdviceTypeTherapy;
-    adviceController.resultId = self.therapyModel.therapyId;
-    [self.navigationController pushViewController:adviceController animated:YES];
+//- (void)rightAction {
+//    AdviceWebViewController *adviceController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdviceWeb"];
+//    adviceController.adviceType = XJAdviceTypeTherapy;
+//    adviceController.resultId = self.therapyModel.therapyId;
+//    [self.navigationController pushViewController:adviceController animated:YES];
+//}
+- (void)submitAction {
+    if (self.selectedBlock) {
+        self.selectedBlock(self.selectedContents);
+    }
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    for (UIViewController *viewController in viewControllers) {
+        if ([viewController isKindOfClass:[WritePrescriptionViewController class]]) {
+            [self.navigationController popToViewController:viewController animated:YES];
+        }
+    }
 }
 - (IBAction)clickNumberAction:(id)sender {
     _priceSort = XJSortTypesNone;
@@ -166,6 +185,19 @@
         [self.durationSortButton setImage:[UIImage imageNamed:@"sort_none"] forState:UIControlStateNormal];
     }
     [self.tableView.mj_header beginRefreshing];
+}
+#pragma mark - Private methods
+- (void)checkSelectedContents {
+    if (self.selectedContents.count > 0) {
+        self.submitButton.enabled = YES;
+        [self.submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.submitButton setTitle:[NSString stringWithFormat:@"确定(%@)", @(self.selectedContents.count)] forState:UIControlStateNormal];
+    } else {
+        self.submitButton.enabled = NO;
+        [self.submitButton setTitleColor:[UIColor colorWithWhite:0.8 alpha:1] forState:UIControlStateNormal];
+        [self.submitButton setTitle:@"确定" forState:UIControlStateNormal];
+    }
+
 }
 
 #pragma mark - Requests
@@ -268,9 +300,10 @@
                 tempModel.isAdded = @(0);
                 [self.selectedContents removeObject:tempModel];
             }
-            if (self.selectedBlock) {
-                self.selectedBlock(self.selectedContents);
-            }
+            [self checkSelectedContents];
+//            if (self.selectedBlock) {
+//                self.selectedBlock(self.selectedContents);
+//            }
         }
     };
     return cell;
@@ -311,6 +344,20 @@
         _contentsArray = [[NSMutableArray alloc] init];
     }
     return _contentsArray;
+}
+- (UIButton *)submitButton {
+    if (!_submitButton) {
+        _submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _submitButton.frame = CGRectMake(0, 0, 70, 40);
+        [_submitButton setTitle:@"确定" forState:UIControlStateNormal];
+        [_submitButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -20)];
+        [_submitButton setTitleColor:[UIColor colorWithWhite:0.8 alpha:1] forState:UIControlStateNormal];
+        [_submitButton setTitleColor:[UIColor colorWithWhite:0.8 alpha:1] forState:UIControlStateHighlighted];
+        _submitButton.enabled = NO;
+        _submitButton.titleLabel.font = XJSystemFont(16);
+        [_submitButton addTarget:self action:@selector(submitAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _submitButton;
 }
 
 @end

@@ -344,9 +344,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ioc-8Q-E1f" firstAttribute="top" secondItem="xkl-Rr-fTi" secondAttribute="bottom" id="7x3-BH-gnj"/>
                             <constraint firstAttribute="trailing" secondItem="ioc-8Q-E1f" secondAttribute="trailing" id="InC-u0-PcA"/>
-                            <constraint firstItem="7JE-5X-ORJ" firstAttribute="top" secondItem="ioc-8Q-E1f" secondAttribute="bottom" id="YNZ-xE-53Z"/>
-                            <constraint firstItem="ioc-8Q-E1f" firstAttribute="top" secondItem="xkl-Rr-fTi" secondAttribute="bottom" id="sQv-Dq-lQA"/>
+                            <constraint firstItem="7JE-5X-ORJ" firstAttribute="top" secondItem="ioc-8Q-E1f" secondAttribute="bottom" id="NRT-Ep-ktz"/>
                             <constraint firstItem="ioc-8Q-E1f" firstAttribute="leading" secondItem="4oS-cm-6Co" secondAttribute="leading" id="wIa-6P-kK7"/>
                         </constraints>
                     </view>
@@ -371,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7r-e4-lJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="340"/>
+            <point key="canvasLocation" x="1167" y="328"/>
         </scene>
         <!--我的患者-->
         <scene sceneID="bga-zl-3sr">

@@ -10,10 +10,13 @@
 
 #import "ConversationModel.h"
 #import "UserMessagesModel.h"
+#import "XJDataBase.h"
+#import "CommonUser+CoreDataClass.h"
 
 @interface ConversationListView ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *conversationArray;
+@property (strong, nonatomic) NSMutableArray *userInformations;
 
 @end
 
@@ -70,10 +73,12 @@
         }
     }
     __block NSInteger count = 0;
-    for (ConversationModel *tempModel in self.conversationArray) {
-        [UserMessagesModel fetchUsersIdAndName:tempModel.conversation.conversationId handler:^(id object, NSString *msg) {
-            if (object) {
-                UserMessagesModel *userModel = object;
+    if (self.conversationArray.count > 0) {
+        for (ConversationModel *tempModel in self.conversationArray) {
+            NSArray *users = [[XJDataBase sharedDataBase] selectUser:tempModel.conversation.conversationId];
+            if (users.count > 0) {
+                UserMessagesModel *userModel = users[0];
+                [self.userInformations addObject:userModel];
                 tempModel.userId = userModel.userId;
                 tempModel.realname = userModel.realname;
                 tempModel.avatarString = userModel.headpictureurl;
@@ -83,9 +88,46 @@
                         [self.tableView reloadData];
                     });
                 }
+            } else {
+                [UserMessagesModel fetchUsersIdAndName:tempModel.conversation.conversationId handler:^(id object, NSString *msg) {
+                    if (object) {
+                        UserMessagesModel *userModel = object;
+                        userModel.phone = tempModel.conversation.conversationId;
+                        [self.userInformations addObject:userModel];
+                        tempModel.userId = userModel.userId;
+                        tempModel.realname = userModel.realname;
+                        tempModel.avatarString = userModel.headpictureurl;
+                        [[XJDataBase sharedDataBase] insertUser:userModel];
+                        count += 1;
+                        if (count == self.conversationArray.count) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.tableView reloadData];
+                            });
+                        }
+                    }
+                }];
             }
-        }];
+
+        }
+    } else {
+        [self.tableView reloadData];
     }
+//    for (ConversationModel *tempModel in self.conversationArray) {
+//        [UserMessagesModel fetchUsersIdAndName:tempModel.conversation.conversationId handler:^(id object, NSString *msg) {
+//            if (object) {
+//                UserMessagesModel *userModel = object;
+//                tempModel.userId = userModel.userId;
+//                tempModel.realname = userModel.realname;
+//                tempModel.avatarString = userModel.headpictureurl;
+//                count += 1;
+//                if (count == self.conversationArray.count) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [self.tableView reloadData];
+//                    });
+//                }
+//            }
+//        }];
+//    }
     [[NSNotificationCenter defaultCenter] postNotificationName:XJSetupUnreadMessagesCount object:nil];
 }
 
@@ -188,6 +230,14 @@
         }
     }
     return text;
+}
+    
+#pragma mark - Getters
+- (NSMutableArray *)userInformations {
+    if (!_userInformations) {
+        _userInformations = [[NSMutableArray alloc] init];
+    }
+    return _userInformations;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

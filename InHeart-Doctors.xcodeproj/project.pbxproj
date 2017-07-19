@@ -35,6 +35,8 @@
 		3D206ADC1E9B20D000702559 /* HomepageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206ADB1E9B20D000702559 /* HomepageModel.m */; };
 		3D206ADF1E9B220200702559 /* FetchBasicInformationsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206ADE1E9B220200702559 /* FetchBasicInformationsRequest.m */; };
 		3D206AE21E9B5A8100702559 /* FetchInformationsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D206AE11E9B5A8100702559 /* FetchInformationsRequest.m */; };
+		3D25F0881F10AEE100B31571 /* XJUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D25F0861F10AEE100B31571 /* XJUser.xcdatamodeld */; };
+		3D25F08B1F10AF7A00B31571 /* XJDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D25F08A1F10AF7A00B31571 /* XJDataBase.m */; };
 		3D2D77931F04FB4200A7E6DC /* XJConsultationChargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */; };
 		3D2D77961F05EBBA00A7E6DC /* XJConsultationChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */; };
 		3D2D77991F05F66300A7E6DC /* SendConsultationChargeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */; };
@@ -411,6 +413,9 @@
 		3D206ADE1E9B220200702559 /* FetchBasicInformationsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchBasicInformationsRequest.m; sourceTree = "<group>"; };
 		3D206AE01E9B5A8100702559 /* FetchInformationsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchInformationsRequest.h; sourceTree = "<group>"; };
 		3D206AE11E9B5A8100702559 /* FetchInformationsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchInformationsRequest.m; sourceTree = "<group>"; };
+		3D25F0871F10AEE100B31571 /* XJUser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XJUser.xcdatamodel; sourceTree = "<group>"; };
+		3D25F0891F10AF7A00B31571 /* XJDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJDataBase.h; sourceTree = "<group>"; };
+		3D25F08A1F10AF7A00B31571 /* XJDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJDataBase.m; sourceTree = "<group>"; };
 		3D2D77911F04FB4200A7E6DC /* XJConsultationChargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJConsultationChargeViewController.h; sourceTree = "<group>"; };
 		3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJConsultationChargeViewController.m; sourceTree = "<group>"; };
 		3D2D77941F05EBBA00A7E6DC /* XJConsultationChargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJConsultationChargeCell.h; sourceTree = "<group>"; };
@@ -1105,6 +1110,16 @@
 			path = HomepageModel;
 			sourceTree = "<group>";
 		};
+		3D25F07F1F10AC7300B31571 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3D25F0861F10AEE100B31571 /* XJUser.xcdatamodeld */,
+				3D25F0891F10AF7A00B31571 /* XJDataBase.h */,
+				3D25F08A1F10AF7A00B31571 /* XJDataBase.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		3D33E4B71E972483003AA8C5 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,6 +1361,7 @@
 				3D6A8EC91D98C69600C405DA /* Requests */,
 				3D6A8E861D98C69600C405DA /* Commons */,
 				3D57BF891E4AAE0A00F211A7 /* Vendor */,
+				3D25F07F1F10AC7300B31571 /* CoreData */,
 				3D6A8E721D98B07700C405DA /* AppDelegate.h */,
 				3D6A8E731D98B07700C405DA /* AppDelegate.m */,
 				3D6A8E7B1D98B07700C405DA /* Assets.xcassets */,
@@ -2505,6 +2521,7 @@
 				3DEED92D1E839BA700F96A5A /* PSTCollectionView.m in Sources */,
 				3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */,
 				3D4326AF1DBF07CD0043008D /* CancelCollectRequest.m in Sources */,
+				3D25F08B1F10AF7A00B31571 /* XJDataBase.m in Sources */,
 				3D4FC1B31E9F18D100E9CE5E /* FetchDiseaseAndTherapiesRequest.m in Sources */,
 				3DA4D3B61DC3297600CD47FF /* FetchCitiesRequest.m in Sources */,
 				3D6A8EED1D98C69600C405DA /* RequestCacher.m in Sources */,
@@ -2573,6 +2590,7 @@
 				3DEED9431E839BA700F96A5A /* EaseChineseToPinyin.m in Sources */,
 				3D3F8CE31EC975B20040C0D5 /* DetailContentItemCell.m in Sources */,
 				3D64A6E41E8F72440021B537 /* AuthenticationPicturesCell.m in Sources */,
+				3D25F0881F10AEE100B31571 /* XJUser.xcdatamodeld in Sources */,
 				3D0049011ED56ED80025EF4F /* NewsModel.m in Sources */,
 				3DEED9381E839BA700F96A5A /* PSTGridLayoutSection.m in Sources */,
 				3D206ADF1E9B220200702559 /* FetchBasicInformationsRequest.m in Sources */,
@@ -2969,6 +2987,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3D25F0861F10AEE100B31571 /* XJUser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3D25F0871F10AEE100B31571 /* XJUser.xcdatamodel */,
+			);
+			currentVersion = 3D25F0871F10AEE100B31571 /* XJUser.xcdatamodel */;
+			path = XJUser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3D6A8E641D98B07700C405DA /* Project object */;
 }
