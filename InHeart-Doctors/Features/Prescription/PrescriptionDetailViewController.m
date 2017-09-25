@@ -160,7 +160,6 @@
         case 3:
             title = @"总价";
             break;
-            
         default:
             break;
     }

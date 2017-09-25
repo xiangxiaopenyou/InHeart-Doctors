@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="htL-TG-3QN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="htL-TG-3QN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -140,7 +140,7 @@
                                                 <constraint firstAttribute="height" constant="28" id="N9V-Mj-F5k"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的认证图片太模糊" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzp-OM-p7z">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzp-OM-p7z">
                                             <rect key="frame" x="50" y="14" width="310" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.88235294117647056" green="0.31372549019607843" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -271,10 +271,10 @@
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LBr-3I-dZC" secondAttribute="trailing" id="0Ec-C6-h3r"/>
-                            <constraint firstItem="Bvm-uM-Drn" firstAttribute="top" secondItem="unF-ai-5iN" secondAttribute="bottom" id="2gD-Js-2RP"/>
                             <constraint firstItem="Bvm-uM-Drn" firstAttribute="leading" secondItem="gM9-65-9dF" secondAttribute="leading" id="4lc-Le-52c"/>
                             <constraint firstAttribute="bottom" secondItem="LBr-3I-dZC" secondAttribute="bottom" id="Ct2-yH-sfD"/>
                             <constraint firstItem="LBr-3I-dZC" firstAttribute="top" secondItem="Bvm-uM-Drn" secondAttribute="bottom" id="KvC-Cy-S2v"/>
+                            <constraint firstItem="Bvm-uM-Drn" firstAttribute="top" secondItem="unF-ai-5iN" secondAttribute="bottom" id="Zkf-uS-Ib0"/>
                             <constraint firstItem="LBr-3I-dZC" firstAttribute="leading" secondItem="gM9-65-9dF" secondAttribute="leading" id="ZwO-rk-GWf"/>
                             <constraint firstAttribute="trailing" secondItem="Bvm-uM-Drn" secondAttribute="trailing" id="ml2-GK-g0z"/>
                         </constraints>
@@ -547,10 +547,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="c66-yT-t0B" firstAttribute="top" secondItem="drR-1r-PGD" secondAttribute="bottom" id="Cro-Iy-HcM"/>
+                            <constraint firstItem="drR-1r-PGD" firstAttribute="top" secondItem="mam-Qb-Y8p" secondAttribute="bottom" id="FtV-ze-yDk"/>
+                            <constraint firstItem="c66-yT-t0B" firstAttribute="top" secondItem="drR-1r-PGD" secondAttribute="bottom" id="STc-V3-PjN"/>
                             <constraint firstAttribute="trailing" secondItem="drR-1r-PGD" secondAttribute="trailing" id="Ta1-cA-iKe"/>
                             <constraint firstItem="drR-1r-PGD" firstAttribute="leading" secondItem="LZ9-5t-vac" secondAttribute="leading" id="ump-t3-lsZ"/>
-                            <constraint firstItem="drR-1r-PGD" firstAttribute="top" secondItem="mam-Qb-Y8p" secondAttribute="bottom" id="xEb-0g-Ndo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="认证信息" id="Sas-7G-Qz5">
@@ -568,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SuB-Iw-EIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="1648"/>
+            <point key="canvasLocation" x="1966" y="1504"/>
         </scene>
         <!--待收账单-->
         <scene sceneID="mCF-uI-nIi">

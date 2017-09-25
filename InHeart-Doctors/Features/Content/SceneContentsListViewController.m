@@ -276,7 +276,8 @@
     static NSString *identifier = @"SceneContentsCell";
     SceneContentCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     __block ContentModel *tempModel = self.contentsArray[indexPath.row];
-    [self.selectedContents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.selectedContents enumerateObjectsUsingBlock:
+     ^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ContentModel *model = (ContentModel *)obj;
         if ([model.id isEqualToString:tempModel.id]) {
             tempModel = model;
