@@ -30,11 +30,11 @@
 
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if ([viewController isKindOfClass:[HomepageViewController class]]) {
-        [navigationController setNavigationBarHidden:YES animated:YES];
-    } else {
-        [navigationController setNavigationBarHidden:NO animated:YES];
-    }
+//    if ([viewController isKindOfClass:[HomepageViewController class]]) {
+//        [navigationController setNavigationBarHidden:YES animated:YES];
+//    } else {
+//        [navigationController setNavigationBarHidden:NO animated:YES];
+//    }
 }
 /*
 #pragma mark - Navigation

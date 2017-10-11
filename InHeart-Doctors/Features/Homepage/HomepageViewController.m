@@ -32,8 +32,9 @@
 @property (weak, nonatomic) IBOutlet UIView *patientsView;
 @property (weak, nonatomic) IBOutlet UIView *evaluationsView;
 @property (weak, nonatomic) IBOutlet UIView *scoresView;
-@property (weak, nonatomic) IBOutlet UIButton *workStateButton;
+//@property (weak, nonatomic) IBOutlet UIButton *workStateButton;
 
+@property (strong, nonatomic) UIButton *workStateButton;
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 
 @property (strong, nonatomic) HomepageModel *model;
@@ -47,7 +48,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"";
     self.tableView.tableFooterView = [UIView new];
     [self createHeaderView];
     
@@ -69,6 +69,7 @@
 
 #pragma mark - private methods
 - (void)createHeaderView {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.workStateButton];
     self.cycleScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.4);
     [self.topView addSubview:self.cycleScrollView];
     self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.4 + 112);
@@ -177,7 +178,7 @@
 }
 - (IBAction)myEvaluationAction:(id)sender {
 }
-- (IBAction)workStateSetAction:(id)sender {
+- (void)workStateSetAction {
     UsersModel *model = [[UserInfo sharedUserInfo] userInfo];
     if (self.workStateButton.selected) {
         self.workStateButton.selected = NO;
@@ -305,6 +306,18 @@
         _cycleScrollView.delegate = self;
     }
     return _cycleScrollView;
+}
+- (UIButton *)workStateButton {
+    if (!_workStateButton) {
+        _workStateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_workStateButton setImage:[UIImage imageNamed:@"stop_work"] forState:UIControlStateNormal];
+        [_workStateButton setImage:[UIImage imageNamed:@"start_work"] forState:UIControlStateSelected];
+        [_workStateButton setTitle:@"停止出诊" forState:UIControlStateNormal];
+        [_workStateButton setTitle:@"开始出诊" forState:UIControlStateSelected];
+        _workStateButton.titleLabel.font = XJSystemFont(15);
+        [_workStateButton addTarget:self action:@selector(workStateSetAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _workStateButton;
 }
 
 @end

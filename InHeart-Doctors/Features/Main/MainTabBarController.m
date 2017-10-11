@@ -53,7 +53,7 @@ static CGFloat const kTipLabelHeight = 2.0;
 //    ContentViewController *contentViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentView"];
 //    [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
     HomepageViewController *homepageViewController = [[UIStoryboard storyboardWithName:@"Homepage" bundle:nil] instantiateViewControllerWithIdentifier:@"Homepage"];
-    [self setupChildControllerWith:homepageViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
+    [self setupChildControllerWith:homepageViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"首页" index:0];
     
     //问诊
     InterrogationListViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];

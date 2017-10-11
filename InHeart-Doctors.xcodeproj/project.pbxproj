@@ -40,6 +40,7 @@
 		3D2D77931F04FB4200A7E6DC /* XJConsultationChargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77921F04FB4200A7E6DC /* XJConsultationChargeViewController.m */; };
 		3D2D77961F05EBBA00A7E6DC /* XJConsultationChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */; };
 		3D2D77991F05F66300A7E6DC /* SendConsultationChargeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */; };
+		3D3201C51F8B69120031F721 /* XJSearchTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3201C41F8B69120031F721 /* XJSearchTitleView.m */; };
 		3D32F4271E8CD17F00353864 /* MyBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */; };
 		3D32F42A1E8CD65300353864 /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32F4291E8CD65300353864 /* AddBankCardViewController.m */; };
 		3D33E4B01E961B43003AA8C5 /* UploadImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D33E4AF1E961B43003AA8C5 /* UploadImageRequest.m */; };
@@ -422,6 +423,8 @@
 		3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJConsultationChargeCell.m; sourceTree = "<group>"; };
 		3D2D77971F05F66300A7E6DC /* SendConsultationChargeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendConsultationChargeRequest.h; sourceTree = "<group>"; };
 		3D2D77981F05F66300A7E6DC /* SendConsultationChargeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendConsultationChargeRequest.m; sourceTree = "<group>"; };
+		3D3201C31F8B69120031F721 /* XJSearchTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJSearchTitleView.h; sourceTree = "<group>"; };
+		3D3201C41F8B69120031F721 /* XJSearchTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJSearchTitleView.m; sourceTree = "<group>"; };
 		3D32F4251E8CD17F00353864 /* MyBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBankCardViewController.h; sourceTree = "<group>"; };
 		3D32F4261E8CD17F00353864 /* MyBankCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBankCardViewController.m; sourceTree = "<group>"; };
 		3D32F4281E8CD65300353864 /* AddBankCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
@@ -1460,6 +1463,8 @@
 				3D43269C1DBDB9600043008D /* AudioPlayerView.h */,
 				3D43269D1DBDB9600043008D /* AudioPlayerView.m */,
 				3D43269F1DBDB9C70043008D /* AudioPlayerview.xib */,
+				3D3201C31F8B69120031F721 /* XJSearchTitleView.h */,
+				3D3201C41F8B69120031F721 /* XJSearchTitleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2341,7 +2346,7 @@
 		3D6A8E641D98B07700C405DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "项小盆友";
 				TargetAttributes = {
 					3D6A8E6B1D98B07700C405DA = {
@@ -2543,6 +2548,7 @@
 				3DEEC8D51E76347C006A40D3 /* AuthenticationContentCell.m in Sources */,
 				3DEED9131E839BA700F96A5A /* MWCaptionView.m in Sources */,
 				3DEED95D1E839BA700F96A5A /* EaseBubbleView.m in Sources */,
+				3D3201C51F8B69120031F721 /* XJSearchTitleView.m in Sources */,
 				3D0048F21ED526050025EF4F /* HistoricalPrescriptionsTableViewController.m in Sources */,
 				3DEED9141E839BA700F96A5A /* MWGridCell.m in Sources */,
 				3DEED9641E839BA700F96A5A /* EaseChatBarMoreView.m in Sources */,
@@ -2813,7 +2819,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2821,7 +2829,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -2863,7 +2875,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2871,7 +2885,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -2904,6 +2922,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = "InHeart-Doctors/InHeart-Doctors.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -2938,6 +2957,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = "InHeart-Doctors/InHeart-Doctors.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";

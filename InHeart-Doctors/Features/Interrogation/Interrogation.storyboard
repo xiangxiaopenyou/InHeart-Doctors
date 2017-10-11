@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tui-6D-Ig0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tui-6D-Ig0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="tui-6D-Ig0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xgT-Dc-qWF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -28,7 +28,7 @@
         <!--问诊-->
         <scene sceneID="03k-9Q-VIF">
             <objects>
-                <viewController storyboardIdentifier="InterrogationView" automaticallyAdjustsScrollViewInsets="NO" id="wRC-Wg-j6E" customClass="InterrogationListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InterrogationView" id="wRC-Wg-j6E" customClass="InterrogationListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fhn-vU-3WG"/>
                         <viewControllerLayoutGuide type="bottom" id="9uJ-aE-Cmm"/>
@@ -47,7 +47,7 @@
         <!--开处方-->
         <scene sceneID="6pn-6C-zay">
             <objects>
-                <viewController storyboardIdentifier="WritePrescription" automaticallyAdjustsScrollViewInsets="NO" id="Szd-IS-HsT" customClass="WritePrescriptionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WritePrescription" id="Szd-IS-HsT" customClass="WritePrescriptionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xkl-Rr-fTi"/>
                         <viewControllerLayoutGuide type="bottom" id="7JE-5X-ORJ"/>
@@ -56,7 +56,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="215" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-8Q-E1f">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="215" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-8Q-E1f">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="kPj-3i-zrE">
@@ -376,7 +376,7 @@
         <!--我的患者-->
         <scene sceneID="bga-zl-3sr">
             <objects>
-                <viewController storyboardIdentifier="MyPatients" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="khW-0c-q4M" customClass="MyPatientsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPatients" hidesBottomBarWhenPushed="YES" id="khW-0c-q4M" customClass="MyPatientsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YKX-Na-Li8"/>
                         <viewControllerLayoutGuide type="bottom" id="k0H-GF-CgU"/>
@@ -385,7 +385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MWD-DU-Z5y">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MWD-DU-Z5y">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -415,7 +415,7 @@
         <!--详细资料-->
         <scene sceneID="wRs-My-HMw">
             <objects>
-                <viewController storyboardIdentifier="PatientInformations" automaticallyAdjustsScrollViewInsets="NO" id="hLm-0r-b6O" customClass="PatientInformationsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientInformations" id="hLm-0r-b6O" customClass="PatientInformationsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lTY-Ze-9HH"/>
                         <viewControllerLayoutGuide type="bottom" id="ZRe-Pp-3gR"/>
@@ -424,7 +424,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2sj-Y4-E76">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2sj-Y4-E76">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="ApV-3D-bYx">
@@ -556,7 +556,7 @@
         <!--咨询收费-->
         <scene sceneID="UQ5-sy-mKG">
             <objects>
-                <viewController storyboardIdentifier="ConsultationCharge" automaticallyAdjustsScrollViewInsets="NO" id="LUO-44-Hd6" customClass="XJConsultationChargeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsultationCharge" id="LUO-44-Hd6" customClass="XJConsultationChargeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rWv-J2-N6Z"/>
                         <viewControllerLayoutGuide type="bottom" id="mu8-qj-t8d"/>
@@ -565,7 +565,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-Ix-rM2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-Ix-rM2">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Y2V-B0-XCi">
