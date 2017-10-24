@@ -92,7 +92,7 @@
             number = 3;
             break;
         case 2:{
-            number = 2;
+            number = 1;
         }
             break;
         case 3:
@@ -145,8 +145,8 @@
             break;
         case 2:{
             CommonFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonFunction" forIndexPath:indexPath];
-            cell.imageView.image = indexPath.row == 0 ? [UIImage imageNamed:@"invite_doctor"] : [UIImage imageNamed:@"invite_patients"];
-            cell.textLabel.text = indexPath.row == 0 ? XJInviteDoctors : XJInvitePatients;
+            cell.imageView.image = [UIImage imageNamed:@"my_collections"];
+            cell.textLabel.text = @"我的收藏";
             cell.textLabel.font = XJSystemFont(15);
             cell.textLabel.textColor = MAIN_TEXT_COLOR;
             return cell;
@@ -183,29 +183,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
         case 0:{
-//            EditInformationViewController *editViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditInformation"];
-//            [self.navigationController pushViewController:editViewController animated:YES];
             AuthenticationInformationViewController *authenticationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthenticationInformation"];
             [self.navigationController pushViewController:authenticationViewController animated:YES];
         }
             break;
         case 1:{
             if (indexPath.row == 0) {
+                
+            } else if (indexPath.row == 1) {
                 MyWalletViewController *walletViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyWallet"];
                 [self.navigationController pushViewController:walletViewController animated:YES];
-            } else if (indexPath.row == 1) {
-                MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
-                [self.navigationController pushViewController:collectionViewController animated:YES];
-            } else if (indexPath.row == 2) {
+            } else{
                 MyBankCardViewController *cardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyBankCard"];
                 [self.navigationController pushViewController:cardViewController animated:YES];
-            } else {
-                
             }
         }
             break;
         case 2:{
-            
+            MyCollectionsTableViewController *collectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCollections"];
+            [self.navigationController pushViewController:collectionViewController animated:YES];
         }
             break;
         case 3:{
@@ -290,13 +286,13 @@
 #pragma mark - Getters
 - (NSArray *)iconArray {
     if (!_iconArray) {
-        _iconArray = @[@"my_wallet", @"my_collections", /*@"my_scores",*/ @"my_bankcard"];
+        _iconArray = @[@"", @"my_wallet", /*@"my_collections",*/ /*@"my_scores",*/ @"my_bankcard"];
     }
     return _iconArray;
 }
 - (NSArray *)itemTitleArray {
     if (!_itemTitleArray) {
-        _itemTitleArray = @[XJMyWallet, XJMyCollections, /*XJMyScores,*/ XJMyBandCard];
+        _itemTitleArray = @[XJMyOrders, XJMyWallet, /*XJMyCollections,*/ /*XJMyScores,*/ XJMyBandCard];
     }
     return _itemTitleArray;
 }

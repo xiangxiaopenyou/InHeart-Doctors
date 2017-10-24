@@ -70,9 +70,9 @@
 #pragma mark - private methods
 - (void)createHeaderView {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.workStateButton];
-    self.cycleScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.4);
+    self.cycleScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.5);
     [self.topView addSubview:self.cycleScrollView];
-    self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.4 + 112);
+    self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 0.5 + 70);
     self.tableView.tableHeaderView = self.headerView;
     [self addGestureRecognizer];
 }

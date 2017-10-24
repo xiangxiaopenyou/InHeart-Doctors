@@ -78,6 +78,7 @@ extern NSString * const XJIsFree;
 
 //个人中心
 extern NSString * const XJMyInterrogation;
+extern NSString * const XJMyOrders;
 extern NSString * const XJMyWallet;
 extern NSString * const XJMyDoctors;
 extern NSString * const XJMyCollections;

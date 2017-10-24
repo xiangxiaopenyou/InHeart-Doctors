@@ -43,6 +43,7 @@ NSString * const XJPleaseInputPrescriptionWords = @"请先写好医嘱";
 NSString * const XJIsFree = @"确定发送免费处方吗？";
 
 NSString * const XJMyInterrogation = @"我的问诊";
+NSString * const XJMyOrders = @"我的订单";
 NSString * const XJMyWallet = @"我的钱包";
 NSString * const XJMyDoctors = @"我的医生";
 NSString * const XJMyCollections = @"我的收藏";
