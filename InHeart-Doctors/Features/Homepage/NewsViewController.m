@@ -53,7 +53,7 @@
     [self.tableView setMj_footer:[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self request];
     }]];
-    self.tableView.mj_footer.hidden = YES;
+    self.tableView.mj_footer.automaticallyHidden = YES;
     
     _paging = 1;
     [self request];
@@ -85,10 +85,8 @@
                     [self.tableView reloadData];
                     if (resultArray.count < 10) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                        self.tableView.mj_footer.hidden = YES;
                     } else {
                         _paging += 1;
-                        self.tableView.mj_footer.hidden = NO;
                     }
                 });
             } else {

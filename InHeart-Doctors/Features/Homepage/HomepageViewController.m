@@ -8,7 +8,8 @@
 
 #import "HomepageViewController.h"
 #import "NewsViewController.h"
-#import "SceneContentsViewController.h"
+//#import "SceneContentsViewController.h"
+#import "XJScenesListViewController.h"
 #import "MyPatientsViewController.h"
 #import "AuthenticationInformationViewController.h"
 
@@ -167,7 +168,7 @@
 - (IBAction)invitePatientAction:(id)sender {
 }
 - (IBAction)mySceneAction:(id)sender {
-    SceneContentsViewController *sceneViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SceneContents"];
+    XJScenesListViewController *sceneViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ScenesList"];
     sceneViewController.viewType = 1;
     [self.navigationController pushViewController:sceneViewController animated:YES];
 }

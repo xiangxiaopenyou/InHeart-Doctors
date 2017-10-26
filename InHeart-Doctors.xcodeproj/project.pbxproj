@@ -227,6 +227,9 @@
 		3DE482521EDEAF5A004E1110 /* XMNShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE4824F1EDEAF5A004E1110 /* XMNShareView.m */; };
 		3DE482551EDEB96C004E1110 /* XLCommonPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE482541EDEB96C004E1110 /* XLCommonPickerView.m */; };
 		3DE482581EDEC3A5004E1110 /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE482571EDEC3A5004E1110 /* BankModel.m */; };
+		3DE757611F9F225900688C84 /* XJScenesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE757601F9F225800688C84 /* XJScenesListViewController.m */; };
+		3DE757641F9F227200688C84 /* XJTopTherapyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE757621F9F227200688C84 /* XJTopTherapyCell.m */; };
+		3DE757671F9F22A200688C84 /* XJTopDiseasesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE757651F9F22A100688C84 /* XJTopDiseasesCell.m */; };
 		3DEA69F41D9CED6700EA8236 /* AuthenticationInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */; };
 		3DEEC8CC1E72A62A006A40D3 /* HomepageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8CB1E72A62A006A40D3 /* HomepageNavigationController.m */; };
 		3DEEC8D51E76347C006A40D3 /* AuthenticationContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8D41E76347C006A40D3 /* AuthenticationContentCell.m */; };
@@ -746,6 +749,12 @@
 		3DE482541EDEB96C004E1110 /* XLCommonPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCommonPickerView.m; sourceTree = "<group>"; };
 		3DE482561EDEC3A5004E1110 /* BankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
 		3DE482571EDEC3A5004E1110 /* BankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
+		3DE7575F1F9F225800688C84 /* XJScenesListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJScenesListViewController.h; sourceTree = "<group>"; };
+		3DE757601F9F225800688C84 /* XJScenesListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJScenesListViewController.m; sourceTree = "<group>"; };
+		3DE757621F9F227200688C84 /* XJTopTherapyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJTopTherapyCell.m; sourceTree = "<group>"; };
+		3DE757631F9F227200688C84 /* XJTopTherapyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJTopTherapyCell.h; sourceTree = "<group>"; };
+		3DE757651F9F22A100688C84 /* XJTopDiseasesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJTopDiseasesCell.m; sourceTree = "<group>"; };
+		3DE757661F9F22A200688C84 /* XJTopDiseasesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJTopDiseasesCell.h; sourceTree = "<group>"; };
 		3DEA69F21D9CED6700EA8236 /* AuthenticationInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationCell.h; sourceTree = "<group>"; };
 		3DEA69F31D9CED6700EA8236 /* AuthenticationInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationCell.m; sourceTree = "<group>"; };
 		3DEEC8CA1E72A62A006A40D3 /* HomepageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageNavigationController.h; sourceTree = "<group>"; };
@@ -1443,6 +1452,8 @@
 				3D4326A51DBE0A730043008D /* DetailNavigationController.m */,
 				3D968DA41DB4A460005A1596 /* ContentDetailViewController.h */,
 				3D968DA51DB4A460005A1596 /* ContentDetailViewController.m */,
+				3DE7575F1F9F225800688C84 /* XJScenesListViewController.h */,
+				3DE757601F9F225800688C84 /* XJScenesListViewController.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -1465,6 +1476,10 @@
 				3D43269F1DBDB9C70043008D /* AudioPlayerview.xib */,
 				3D3201C31F8B69120031F721 /* XJSearchTitleView.h */,
 				3D3201C41F8B69120031F721 /* XJSearchTitleView.m */,
+				3DE757631F9F227200688C84 /* XJTopTherapyCell.h */,
+				3DE757621F9F227200688C84 /* XJTopTherapyCell.m */,
+				3DE757661F9F22A200688C84 /* XJTopDiseasesCell.h */,
+				3DE757651F9F22A100688C84 /* XJTopDiseasesCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2607,6 +2622,7 @@
 				3D6A8E711D98B07700C405DA /* main.m in Sources */,
 				3D6C1BC01DD2BC7400FAC75E /* SetCommonPriceRequest.m in Sources */,
 				3DEED95B1E839BA700F96A5A /* EaseBubbleView+Video.m in Sources */,
+				3DE757641F9F227200688C84 /* XJTopTherapyCell.m in Sources */,
 				3DEED9621E839BA700F96A5A /* EaseFaceView.m in Sources */,
 				3DEED92A1E839BA700F96A5A /* UIImageView+EMWebCache.m in Sources */,
 				3DEED9291E839BA700F96A5A /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -2625,6 +2641,7 @@
 				3D0048F51ED529130025EF4F /* HistoricalPrescriptionCell.m in Sources */,
 				3DB02F7C1DB602450014EAE9 /* FetchCollectionsListRequest.m in Sources */,
 				3DEED9251E839BA700F96A5A /* UIButton+EMWebCache.m in Sources */,
+				3DE757611F9F225900688C84 /* XJScenesListViewController.m in Sources */,
 				3DEED9481E839BA700F96A5A /* EaseEmotionEscape.m in Sources */,
 				3DEED95F1E839BA700F96A5A /* EaseChatToolbarItem.m in Sources */,
 				3D8F1C971DC72151000E3604 /* FetchBillsRequest.m in Sources */,
@@ -2754,6 +2771,7 @@
 				3D33E4D61E973F1B003AA8C5 /* FetchBanksListRequest.m in Sources */,
 				3DEED9151E839BA700F96A5A /* MWGridViewController.m in Sources */,
 				3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */,
+				3DE757671F9F22A200688C84 /* XJTopDiseasesCell.m in Sources */,
 				3D4FC1AA1E9DCD0900E9CE5E /* ChangePasswordTableViewController.m in Sources */,
 				3D6A8EFC1D9908E800C405DA /* UserInfo.m in Sources */,
 				3D206ADC1E9B20D000702559 /* HomepageModel.m in Sources */,
