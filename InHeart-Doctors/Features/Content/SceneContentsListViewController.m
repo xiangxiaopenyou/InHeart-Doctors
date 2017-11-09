@@ -298,9 +298,6 @@
                 [self.selectedContents removeObject:tempModel];
             }
             [self checkSelectedContents];
-//            if (self.selectedBlock) {
-//                self.selectedBlock(self.selectedContents);
-//            }
         }
     };
     return cell;

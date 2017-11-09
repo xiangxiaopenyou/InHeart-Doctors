@@ -74,8 +74,6 @@
     [DiseaseModel fetchDiseasesAndTherapies:^(id object, NSString *msg) {
         if (object) {
             self.diseasesArray = [object copy];
-//            DiseaseModel *tempModel = self.diseasesArray[0];
-//            self.selectedTherapiesArray = [tempModel.therapiesArray copy];
             GJCFAsyncMainQueue(^{
                 [self.departmentTableView reloadData];
                 [self.diseaseTableView reloadData];
@@ -281,7 +279,6 @@
         _searchTextField.font = XJSystemFont(14);
         _searchTextField.returnKeyType = UIReturnKeySearch;
         _searchTextField.delegate = self;
-        
     }
     return _searchTextField;
 }
