@@ -7,7 +7,6 @@
 //
 
 #import "ChatViewController.h"
-#import "WritePrescriptionViewController.h"
 #import "PrescriptionDetailViewController.h"
 #import "XJConsultationChargeViewController.h"
 #import "PatientInformationsViewController.h"
@@ -81,15 +80,15 @@
 }
 //present写处方页面
 - (void)presentWritePrescription {
-    WritePrescriptionViewController *prescriptionViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"WritePrescription"];
-    prescriptionViewController.conversationModel = self.model;
-    prescriptionViewController.block = ^(NSDictionary *informations){
-        if (informations) {
-            [self createPrescriptionMessage:informations];
-        }
-    };
-    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:prescriptionViewController];
-    [self presentViewController:navigationViewController animated:YES completion:nil];
+//    WritePrescriptionViewController *prescriptionViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"WritePrescription"];
+//    prescriptionViewController.conversationModel = self.model;
+//    prescriptionViewController.block = ^(NSDictionary *informations){
+//        if (informations) {
+//            [self createPrescriptionMessage:informations];
+//        }
+//    };
+//    UINavigationController *navigationViewController = [[UINavigationController alloc] initWithRootViewController:prescriptionViewController];
+//    [self presentViewController:navigationViewController animated:YES completion:nil];
 }
 //设置rightBarButtonItem
 - (void)resetRightItem:(NSInteger)videoCallStatus {

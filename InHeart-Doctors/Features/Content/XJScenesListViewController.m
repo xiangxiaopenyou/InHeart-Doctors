@@ -453,7 +453,7 @@
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         __block ContentModel *tempModel = self.contentsArray[indexPath.row];
-        ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"AddUser" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
+        ContentDetailViewController *detailViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentDetail"];
         detailViewController.viewType = self.viewType;
         detailViewController.contentModel = tempModel;
         detailViewController.collectBlock = ^(ContentModel *model) {

@@ -129,7 +129,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     }
     NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
     EMMessage *callMessage = [EaseSDKHelper sendTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];
-    callMessage.status = EMMessageStatusSuccessed;
+    callMessage.status = EMMessageStatusSucceed;
     [[EMClient sharedClient].chatManager importMessages:@[callMessage] completion:^(EMError *aError) {
         if (!aError) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"callMessageDidInserted" object:callMessage];
