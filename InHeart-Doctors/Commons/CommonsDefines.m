@@ -99,6 +99,7 @@ NSString * const XJSetupUnreadMessagesCount = @"SetupUnreadMessagesCount";
 NSString * const XJConversationsDidChange = @"ConversationsDidChange";
 
 NSString * const BASEAPIURL = @"http://test.med-vision.cn/api/v1/";
+//NSString * const BASEAPIURL = @"http://10.12.254.34:8080/api/v1/";
 NSString * const ADVICEBASEURL = @"http://test.med-vision.cn/h5/help/";
 
 NSString * const USER_LOGIN = @"doctor/login";

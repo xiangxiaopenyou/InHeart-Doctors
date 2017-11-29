@@ -10,5 +10,6 @@
 
 @interface FetchVerificationCodeRequest : BaseRequest
 @property (strong, nonatomic) NSString *phoneNumber;
+@property (strong, nonatomic) NSNumber *type;
 
 @end

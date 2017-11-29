@@ -18,7 +18,7 @@
 @property (copy, nonatomic) NSString *headPictureUrl;
 
 + (void)userLogin:(NSString *)username password:(NSString *)password handler:(RequestResultHandler)handler;
-+ (void)fetchCode:(NSString *)phoneNumber handler:(RequestResultHandler)handler;
++ (void)fetchCode:(NSString *)phoneNumber type:(NSNumber *)type handler:(RequestResultHandler)handler;
 + (void)userRegister:(NSString *)username password:(NSString *)password code:(NSString *)verificationCode handler:(RequestResultHandler)handler;
 + (void)userAuthentication:(NSString *)pictureId titlesPictureId:(NSString *)titlesPictureId name:(NSString *)realname card:(NSString *)cardNumber handler:(RequestResultHandler)handler;
 + (void)uploadAuthenticationPicture:(NSString *)fileName data:(NSData *)fileData handler:(RequestResultHandler)handler;

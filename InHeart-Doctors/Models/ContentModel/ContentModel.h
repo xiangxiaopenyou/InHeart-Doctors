@@ -38,6 +38,7 @@
               sortName:(NSString *)sortName
              sortOrder:(NSString *)sortOrder
                handler:(RequestResultHandler)handler;
++ (void)fetchCollectionsList:(NSNumber *)paging handler:(RequestResultHandler)handler;
 + (void)fetchContentDetail:(NSString *)contentId handler:(RequestResultHandler)handler;
 + (void)collectContent:(NSString *)contentId handler:(RequestResultHandler)handler;
 + (void)cancelCollectContent:(NSString *)contentId handler:(RequestResultHandler)handler;

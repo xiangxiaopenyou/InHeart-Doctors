@@ -39,6 +39,10 @@ typedef NS_ENUM(NSInteger, XJAdviceType) {
     XJAdviceTypeDisease,
     XJAdviceTypeTherapy
 };
+typedef NS_ENUM(NSInteger, XJPlanEditItem) {
+    XJPlanEditItemName = 0,
+    XJPlanEditItemInstruction
+};
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;

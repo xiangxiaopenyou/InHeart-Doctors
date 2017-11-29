@@ -148,7 +148,7 @@
  登录状态变化
  */
 - (void)checkUserState:(NSNotification *)notification {
-    if ([[UserInfo sharedUserInfo] isLogined]) {
+    if ([[UserInfo sharedUserInfo] isLogined] && [[EMClient sharedClient] isLoggedIn]) {
 //        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
 //        if (userCode == 0 || userCode == -7) {
         MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];

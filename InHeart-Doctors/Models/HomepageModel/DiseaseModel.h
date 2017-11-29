@@ -14,5 +14,5 @@
 @property (copy, nonatomic) NSArray *therapiesArray;
 
 + (void)fetchDiseasesAndTherapies:(RequestResultHandler)handler;
-
++ (void)fetchDiseasesList:(RequestResultHandler)handler;
 @end

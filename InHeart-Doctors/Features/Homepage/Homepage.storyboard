@@ -80,6 +80,9 @@
                                             <state key="normal" title="VR方案">
                                                 <color key="titleColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="vrPlanAction:" destination="T2J-9C-oEt" eventType="touchUpInside" id="lBE-9P-oeC"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4b-uW-uoD">
                                             <rect key="frame" x="253" y="192.5" width="122" height="60"/>
@@ -89,8 +92,8 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <inset key="titleEdgeInsets" minX="-26" minY="1" maxX="0.0" maxY="-28"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="-24" maxX="-54" maxY="0.0"/>
-                                            <state key="normal" title="我的场景" image="homepage_scene">
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="-24" maxX="-46" maxY="0.0"/>
+                                            <state key="normal" title="VR场景" image="homepage_scene">
                                                 <color key="titleColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
@@ -160,7 +163,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="326"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4j4-eg-n96" id="1PT-wp-Tbe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="325.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V4U-sy-QxT">
@@ -172,7 +175,7 @@
                                                             <rect key="frame" x="0.0" y="28" width="345" height="183"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dt1-bb-OR6" id="Ooj-C0-dBs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="182.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="183"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="vVm-vP-152">
@@ -217,7 +220,7 @@
                                                             <rect key="frame" x="0.0" y="211" width="345" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ofj-PU-v7F" id="mbb-do-1VJ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="49.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="爱迪生奶粉来得及范德萨链接发到手机案件都是浪费啦看电视剧爱看的设计费" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH8-g8-Ihz">
@@ -277,7 +280,7 @@
                                         <rect key="frame" x="0.0" y="354" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Egb-4S-PK6" id="rZ5-Pl-kYS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAD-08-85z">

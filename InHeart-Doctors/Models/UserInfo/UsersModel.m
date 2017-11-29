@@ -34,9 +34,10 @@
         }
     }];
 }
-+ (void)fetchCode:(NSString *)phoneNumber handler:(RequestResultHandler)handler {
++ (void)fetchCode:(NSString *)phoneNumber type:(NSNumber *)type handler:(RequestResultHandler)handler {
     [[FetchVerificationCodeRequest new] request:^BOOL(FetchVerificationCodeRequest *request) {
         request.phoneNumber = phoneNumber;
+        request.type = type;
         return YES;
     } result:handler];
 }

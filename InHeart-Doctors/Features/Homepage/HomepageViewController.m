@@ -8,10 +8,10 @@
 
 #import "HomepageViewController.h"
 #import "NewsViewController.h"
-//#import "SceneContentsViewController.h"
 #import "XJScenesListViewController.h"
 #import "MyPatientsViewController.h"
 #import "AuthenticationInformationViewController.h"
+#import "XJPlansListViewController.h"
 
 #import "XLBlockAlertView.h"
 
@@ -165,8 +165,6 @@
 }
 
 #pragma mark - IBAction
-- (IBAction)invitePatientAction:(id)sender {
-}
 - (IBAction)mySceneAction:(id)sender {
     XJScenesListViewController *sceneViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ScenesList"];
     sceneViewController.viewType = 1;
@@ -177,7 +175,10 @@
     [self.navigationController pushViewController:patientsViewController animated:YES];
     
 }
-- (IBAction)myEvaluationAction:(id)sender {
+- (IBAction)vrPlanAction:(id)sender {
+    XJPlansListViewController *planViewController = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"PlansList"];
+    planViewController.isView = YES;
+    [self.navigationController pushViewController:planViewController animated:YES];
 }
 - (void)workStateSetAction {
     UsersModel *model = [[UserInfo sharedUserInfo] userInfo];

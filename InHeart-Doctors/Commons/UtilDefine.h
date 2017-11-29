@@ -45,6 +45,11 @@
 #define XJSystemFont(x) [UIFont systemFontOfSize:x]
 #define XJBoldSystemFont(x) [UIFont boldSystemFontOfSize:x]
 
+//主窗口
+#define XJKeyWindow [UIApplication sharedApplication].keyWindow
+
+//主控制器
+#define ROOTCONTROLLER [UIApplication sharedApplication].keyWindow.rootViewController
 
 #pragma mark - System
 

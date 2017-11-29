@@ -266,15 +266,26 @@
         XLShowThenDismissHUD(NO, XJInputCorrectPhoneNumberTip, self.view);
         return;
     }
+    XLShowHUDWithMessage(nil, self.view);
     self.fetchCodeButton.enabled = NO;
-    self.countInt = 60;
-    [self.fetchCodeButton setTitle:[NSString stringWithFormat:@"%@", @(self.countInt)] forState:UIControlStateNormal];
-    [self.fetchCodeButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
-    if (!self.timer) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
-    }
-    [UsersModel fetchCode:self.phoneNumberTextField.text handler:^(id object, NSString *msg) {
-        
+    [UsersModel fetchCode:self.phoneNumberTextField.text type:@2 handler:^(id object, NSString *msg) {
+        if (msg) {
+            XLDismissHUD(self.view, YES, NO, msg);
+            [self.timer invalidate];
+            self.timer = nil;
+            self.fetchCodeButton.enabled = YES;
+            [self.fetchCodeButton setTitle:XJFetchVerificationCode forState:UIControlStateNormal];
+            [self.fetchCodeButton setTitleColor:NAVIGATIONBAR_COLOR forState:UIControlStateNormal];
+        } else {
+            XLDismissHUD(self.view, YES, YES, @"验证码已发送");
+            self.countInt = 60;
+            [self.fetchCodeButton setTitle:[NSString stringWithFormat:@"%@", @(self.countInt)] forState:UIControlStateNormal];
+            [self.fetchCodeButton setTitleColor:BREAK_LINE_COLOR forState:UIControlStateNormal];
+            if (!self.timer) {
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countNumber) userInfo:nil repeats:YES];
+                [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+            }
+        }
     }];
 }
 - (void)countNumber {

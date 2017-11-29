@@ -9,6 +9,7 @@
 #import "DiseaseModel.h"
 #import "TherapyModel.h"
 #import "FetchDiseaseAndTherapiesRequest.h"
+#import "XJFetchDiseasesRequest.h"
 
 @implementation DiseaseModel
 + (void)fetchDiseasesAndTherapies:(RequestResultHandler)handler {
@@ -33,6 +34,18 @@
             } else {
                 !handler ?: handler(nil, XJNetworkError);
             }
+        }
+    }];
+}
++ (void)fetchDiseasesList:(RequestResultHandler)handler {
+    [[XJFetchDiseasesRequest new] request:^BOOL(id request) {
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            NSArray *resultArray = [DiseaseModel setupWithArray:(NSArray *)object];
+            !handler ?: handler(resultArray, nil);
         }
     }];
 }
