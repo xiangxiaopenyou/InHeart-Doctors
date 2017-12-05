@@ -128,7 +128,7 @@ static CGFloat const kTipLabelHeight = 2.0;
         timeString = [NSString stringWithFormat:@"00:%02ld", (long)seconds];
     }
     NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
-    EMMessage *callMessage = [EaseSDKHelper sendTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];
+    EMMessage *callMessage = [EaseSDKHelper getTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];
     callMessage.status = EMMessageStatusSucceed;
     [[EMClient sharedClient].chatManager importMessages:@[callMessage] completion:^(EMError *aError) {
         if (!aError) {

@@ -119,11 +119,11 @@
     }
     
     NSDictionary *tempDictionary = [model.message.ext copy];
-    if (tempDictionary[@"imageUrl"]) {
-        [self.prescriptionImageView sd_setImageWithURL:XLURLFromString(tempDictionary[@"imageUrl"]) placeholderImage:[UIImage imageNamed:@"default_image"]];
-    } else {
-        self.prescriptionImageView.image = [UIImage imageNamed:@"default_image"];
-    }
+//    if (tempDictionary[@"imageUrl"]) {
+//        [self.prescriptionImageView sd_setImageWithURL:XLURLFromString(tempDictionary[@"imageUrl"]) placeholderImage:[UIImage imageNamed:@"default_image"]];
+//    } else {
+    self.prescriptionImageView.image = [UIImage imageNamed:@"default_image"];
+//    }
     NSString *priceString = nil;
     if ([tempDictionary[@"price"] integerValue] == [tempDictionary[@"price"] floatValue]) {
         priceString = [NSString stringWithFormat:@"%@", tempDictionary[@"price"]];
@@ -133,11 +133,11 @@
     if ([tempDictionary[@"status"] integerValue] == 1) {
         self.prescriptionStateLabel.textColor = XJHexRGBColorWithAlpha(0xec0202, 1);
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@", priceString];
-        self.prescriptionTitleLabel.text = @"处方内容";
+        self.prescriptionTitleLabel.text = @"方案订单";
     } else if ([tempDictionary[@"status"] integerValue] == 2) {
         self.prescriptionStateLabel.textColor = NAVIGATIONBAR_COLOR;
         self.prescriptionStateLabel.text = [NSString stringWithFormat:@"￥%@  已付款", priceString];
-        self.prescriptionTitleLabel.text = @"处方支付成功";
+        self.prescriptionTitleLabel.text = @"方案订单支付成功";
     }
 
 }

@@ -10,13 +10,16 @@
 #import "PrescriptionDetailViewController.h"
 #import "XJConsultationChargeViewController.h"
 #import "PatientInformationsViewController.h"
+#import "XJPlansListViewController.h"
+
 #import "XLBlockAlertView.h"
-//#import "CustomMessageCell.h"
 #import "PrescriptionMessageCell.h"
 #import "XJConsultationChargeCell.h"
 
 #import "ConversationModel.h"
 #import "UserMessagesModel.h"
+#import "XJPlanModel.h"
+#import "ContentModel.h"
 
 #import "DemoCallManager.h"
 
@@ -32,12 +35,18 @@
     
     self.title = XLIsNullObject(self.model.realname) ? self.model.conversation.conversationId : self.model.realname;
     [[EaseBaseMessageCell appearance] setMessageNameIsHidden:YES];
-    
     self.delegate = self;
     self.dataSource = self;
     
+    [self.chatBarMoreView removeItematIndex:1];
+    [self.chatBarMoreView removeItematIndex:1];
+    [self.chatBarMoreView removeItematIndex:1];
+    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"send_picture"] highlightedImage:nil title:@"图片" atIndex:0];
+    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"video_call"] highlightedImage:nil title:@"视频通话" atIndex:1];
+    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"prescribe"] highlightedImage:nil title:@"发送方案"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callMessageInsert:) name:@"callMessageDidInserted" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSendPlan:) name:XJPlanDidSend object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -51,29 +60,48 @@
         }];
     }
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"callMessageDidInserted" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:XJPlanDidSend object:nil];
+}
+
 #pragma mark - Notifications
 - (void)callMessageInsert:(NSNotification *)notification {
     EMMessage *tempMessage = (EMMessage *)notification.object;
     [self addMessageToDataSource:tempMessage progress:nil];
 }
+- (void)didSendPlan:(NSNotification *)notification {
+    XJPlanModel *tempModel = (XJPlanModel *)notification.object;
+    __block CGFloat price = 0;
+    NSArray *tempArray = tempModel.contents;
+    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (ContentModel *model in tempArray) {
+            price += model.price.floatValue;
+        }
+    });
+    NSDictionary *tempDictionary = @{
+                                        @"price" : @(price),
+                                        @"status" : @1
+                                     };
+    [self createPrescriptionMessage:tempDictionary];
+    
+}
 
 #pragma mark - private methods
-//创建处方消息
+//创建方案订单消息
 - (void)createPrescriptionMessage:(NSDictionary *)dictionary {
-    EMMessage *prescriptionMessage = [EaseSDKHelper sendTextMessage:@"[处方]" to:self.conversation.conversationId messageType:EMChatTypeChat messageExt:dictionary];
+    EMMessage *prescriptionMessage = [EaseSDKHelper getTextMessage:@"[方案订单]" to:self.conversation.conversationId messageType:EMChatTypeChat messageExt:dictionary];
     [self addMessageToDataSource:prescriptionMessage progress:nil];
     [self.conversation insertMessage:prescriptionMessage error:nil];
     [[EMClient sharedClient].chatManager sendMessage:prescriptionMessage progress:nil completion:nil];
 }
 //创建咨询收费消息
 - (void)createConsultationChargeMessage:(NSDictionary *)dictionary {
-    EMMessage *message = [EaseSDKHelper sendTextMessage:@"[咨询收费]" to:self.conversation.conversationId messageType:EMChatTypeChat messageExt:dictionary];
+    EMMessage *message = [EaseSDKHelper getTextMessage:@"[咨询收费]" to:self.conversation.conversationId messageType:EMChatTypeChat messageExt:dictionary];
     [self addMessageToDataSource:message progress:nil];
     [self.conversation insertMessage:message error:nil];
     [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:nil];
@@ -169,45 +197,46 @@
 }
 
 #pragma mark - EaseChatBarMoreViewDelegate
-- (void)moreViewPhoneCallAction:(EaseChatBarMoreView *)moreView {
-    [self.chatToolbar endEditing:YES];
-    NSString *tempString = [NSString stringWithFormat:@"tel://%@", self.conversation.conversationId];
-    [[UIApplication sharedApplication] openURL:XLURLFromString(tempString) options:@{} completionHandler:^(BOOL success) {
-        
-    }];
-}
-- (void)moreViewPrescribeAction:(EaseChatBarMoreView *)moreView {
-    [self.chatToolbar endEditing:YES];
-    if (!XLIsNullObject(self.model.userId)) {
-        [self presentWritePrescription];
-    } else {
-        [UserMessagesModel fetchUsersIdAndName:self.model.conversation.conversationId handler:^(id object, NSString *msg) {
-            if (object) {
-                UserMessagesModel *userModel = object;
-                self.model.userId = userModel.userId;
-                self.model.realname = userModel.realname;
-                [self presentWritePrescription];
-            } else {
-                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
-            }
-        }];
-    }
-}
-- (void)moreViewAdvisoryFeesAction:(EaseChatBarMoreView *)moreView {
-    XJConsultationChargeViewController *chargeViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"ConsultationCharge"];
-    chargeViewController.patientId = self.model.userId;
-    chargeViewController.block = ^(NSDictionary *informations) {
-        if (informations) {
-            [self createConsultationChargeMessage:informations];
-        }
-    };
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:chargeViewController];
-    [self presentViewController:navigation animated:YES completion:nil];
-}
+//- (void)moreViewPrescribeAction:(EaseChatBarMoreView *)moreView {
+//    [self.chatToolbar endEditing:YES];
+//    if (!XLIsNullObject(self.model.userId)) {
+//        [self presentWritePrescription];
+//    } else {
+//        [UserMessagesModel fetchUsersIdAndName:self.model.conversation.conversationId handler:^(id object, NSString *msg) {
+//            if (object) {
+//                UserMessagesModel *userModel = object;
+//                self.model.userId = userModel.userId;
+//                self.model.realname = userModel.realname;
+//                [self presentWritePrescription];
+//            } else {
+//                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
+//            }
+//        }];
+//    }
+//}
+//- (void)moreViewAdvisoryFeesAction:(EaseChatBarMoreView *)moreView {
+//    XJConsultationChargeViewController *chargeViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"ConsultationCharge"];
+//    chargeViewController.patientId = self.model.userId;
+//    chargeViewController.block = ^(NSDictionary *informations) {
+//        if (informations) {
+//            [self createConsultationChargeMessage:informations];
+//        }
+//    };
+//    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:chargeViewController];
+//    [self presentViewController:navigation animated:YES completion:nil];
+//}
 - (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView {
     [self.chatToolbar endEditing:YES];
-    //[[DemoCallManager sharedManager] setMainController:self.navigationController];
     [[DemoCallManager sharedManager] makeCallWithUsername:self.model.conversation.conversationId type:EMCallTypeVideo];
+}
+- (void)moreView:(EaseChatBarMoreView *)moreView didItemInMoreViewAtIndex:(NSInteger)index {
+    if (index == 2) {
+        XJPlansListViewController *plansListController = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"PlansList"];
+        plansListController.isView = NO;
+        plansListController.patientId = self.model.userId;
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:plansListController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
 }
 
 /*

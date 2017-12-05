@@ -73,13 +73,9 @@
     [XJPlanModel sendPlan:self.planModel patientId:self.patientId handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(XJKeyWindow, YES, YES, @"发送成功");
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-                NSArray *viewControllers = self.navigationController.viewControllers;
-                for (UIViewController *viewController in viewControllers) {
-//                    if ([viewController isKindOfClass:[XJPatientDetailViewController class]]) {
-//                        [self.navigationController popToViewController:viewController animated:YES];
-//                    }
-                }
+            [[NSNotificationCenter defaultCenter] postNotificationName:XJPlanDidSend object:self.planModel];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated:YES completion:nil];
             });
         } else {
             XLDismissHUD(XJKeyWindow, YES, NO, msg);
@@ -98,7 +94,7 @@
 */
 #pragma mark - Grid view delegate
 - (void)gridViewDidClickCell:(NSInteger)index {
-    XJScenesListViewController *contentsViewController = [[UIStoryboard storyboardWithName:@"AddUser" bundle:nil] instantiateViewControllerWithIdentifier:@"ScenesList"];
+    XJScenesListViewController *contentsViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ScenesList"];
     contentsViewController.viewType = 2;
     contentsViewController.chooseSceneBlock = ^(ContentModel *model) {
         NSMutableArray *tempArray = [self.planModel.contents mutableCopy];

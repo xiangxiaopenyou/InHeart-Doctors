@@ -119,34 +119,6 @@ typedef enum{
 
 /*!
  @method
- @brief 打电话
- @discussion
- @param moreView 功能view
- @result
- */
-- (void)moreViewPhoneCallAction:(EaseChatBarMoreView *)moreView;
-
-/*!
- @method
- @brief 开处方
- @discussion
- @param moreView 功能view
- @result
- */
-- (void)moreViewPrescribeAction:(EaseChatBarMoreView *)moreView;
-
-/*!
- @method
- @brief 咨询收费
- @discussion
- @param moreView 功能view
- @result
- */
-- (void)moreViewAdvisoryFeesAction:(EaseChatBarMoreView *)moreView;
-
-
-/*!
- @method
  @brief 自定义功能
  @discussion
  @param moreView    功能view

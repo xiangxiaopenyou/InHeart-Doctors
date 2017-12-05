@@ -232,6 +232,7 @@
 }
 */
 - (IBAction)registerClick:(id)sender {
+    [self resignTextField];
     if (!GJCFStringIsMobilePhone(self.phoneNumberTextField.text)) {
         XLShowThenDismissHUD(NO, XJInputCorrectPhoneNumberTip, self.view);
         return;

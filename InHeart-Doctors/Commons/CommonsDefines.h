@@ -138,6 +138,7 @@ extern NSString * const XJLoginSuccess;
 extern NSString * const XJApplicationBecomeActive;
 extern NSString * const XJSetupUnreadMessagesCount;
 extern NSString * const XJConversationsDidChange;
+extern NSString * const XJPlanDidSend;
 
 //接口
 //1.BaseURL

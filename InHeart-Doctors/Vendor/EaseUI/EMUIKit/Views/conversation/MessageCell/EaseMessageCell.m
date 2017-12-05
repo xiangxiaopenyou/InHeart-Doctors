@@ -76,6 +76,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     
     cell.messageVoiceDurationColor = [UIColor grayColor];
     cell.messageVoiceDurationFont = [UIFont systemFontOfSize:12];
+    cell.voiceCellWidth = 75.f;
     
     cell.messageFileNameColor = [UIColor blackColor];
     cell.messageFileNameFont = [UIFont systemFontOfSize:13];
@@ -346,7 +347,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
                 if (!image) {
                     image = _model.image;
                     if (!image) {
-                        [_bubbleView.imageView sd_setImageWithURL:[NSURL URLWithString:_model.fileURLPath] placeholderImage:[UIImage imageNamed:_model.failImageName]];
+                        [_bubbleView.imageView sd_setImageWithURL:[NSURL URLWithString:_model.thumbnailFileURLPath] placeholderImage:[UIImage imageNamed:_model.failImageName]];
                     } else {
                         _bubbleView.imageView.image = image;
                     }

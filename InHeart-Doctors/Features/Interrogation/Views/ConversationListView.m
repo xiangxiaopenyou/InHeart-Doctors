@@ -27,6 +27,11 @@
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.tableView];
         self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBARHEIGHT);
+        if (@available(iOS 11.0, *)) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            
+        }
         [self removeEmptyConversationsFromDB];
         [self fetchConversations];
     }

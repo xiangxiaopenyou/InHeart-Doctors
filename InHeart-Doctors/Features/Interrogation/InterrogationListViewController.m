@@ -42,7 +42,6 @@
         }
     };
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationsDidChange) name:XJConversationsDidChange object:nil];
-    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
