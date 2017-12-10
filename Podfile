@@ -13,5 +13,7 @@ pod 'GTSDK'
 pod 'YYModel'
 pod 'Reachability'
 pod 'YUChineseSorting'
+pod 'RongCloudIM/IMLib'
+pod 'RongCloudIM/IMKit'
 end 
 

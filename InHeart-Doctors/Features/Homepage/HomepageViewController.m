@@ -12,6 +12,9 @@
 #import "MyPatientsViewController.h"
 #import "AuthenticationInformationViewController.h"
 #import "XJPlansListViewController.h"
+#import "NewsDetailViewController.h"
+
+#import "XJNewsCell.h"
 
 #import "XLBlockAlertView.h"
 
@@ -19,6 +22,7 @@
 #import "UsersModel.h"
 #import "HomepageModel.h"
 #import "DoctorsModel.h"
+#import "NewsModel.h"
 
 #import <SDCycleScrollView.h>
 
@@ -40,6 +44,7 @@
 
 @property (strong, nonatomic) HomepageModel *model;
 @property (copy, nonatomic) NSArray *cycleArray;
+@property (copy, nonatomic) NSArray *newsArray;
 
 @end
 
@@ -54,6 +59,8 @@
     
     UsersModel *model = [[UserInfo sharedUserInfo] userInfo];
     [self checkWorkState:model.code.integerValue];
+    
+    [self newsListRequest];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [self.cycleScrollView adjustWhenControllerViewWillAppera];
@@ -163,6 +170,20 @@
         }
     }];
 }
+- (void)newsListRequest {
+    XLShowHUDWithMessage(nil, self.view);
+    [NewsModel fetchIndustryNews:@1 handler:^(id object, NSString *msg) {
+        if (object) {
+            XLDismissHUD(self.view, NO, YES, nil);
+            self.newsArray = [object copy];
+            GJCFAsyncMainQueue(^{
+                [self.tableView reloadData];
+            });
+        } else {
+            XLDismissHUD(self.view, YES, NO, msg);
+        }
+    }];
+}
 
 #pragma mark - IBAction
 - (IBAction)mySceneAction:(id)sender {
@@ -220,70 +241,129 @@
             break;
     }
 }
+//更多新闻
+- (void)moreNewsAction {
+    
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.newsArray.count;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 108.f;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *idenfitier = @"CommonCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:idenfitier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:idenfitier];
-        cell.textLabel.font = XJSystemFont(16);
-        cell.textLabel.textColor = XJHexRGBColorWithAlpha(0x323232, 1.0);
-        cell.detailTextLabel.font = XJSystemFont(14);
-        cell.detailTextLabel.textColor = XJHexRGBColorWithAlpha(0x909090, 1.0);
-    }
-    switch (indexPath.row) {
-        case 0:{
-            cell.imageView.image = [UIImage imageNamed:@"homepage_news"];
-            cell.textLabel.text = NSLocalizedString(@"homepage.news", nil);
-            cell.detailTextLabel.text = NSLocalizedString(@"homepage.newsContent", nil);
-        }
-            break;
-        case 1:{
-            cell.imageView.image = [UIImage imageNamed:@"homepage_school"];
-            cell.textLabel.text = NSLocalizedString(@"homepage.college", nil);
-            cell.detailTextLabel.text = NSLocalizedString(@"homepage.collegeContent", nil);
-        }
-            break;
-        case 2:{
-            cell.imageView.image = [UIImage imageNamed:@"homepage_message"];
-            cell.textLabel.text = NSLocalizedString(@"homepage.systemMessage", nil);
-            cell.detailTextLabel.text = NSLocalizedString(@"homepage.systemMessageContent", nil);
-        }
-            break;
-            
-        default:
-            break;
-    }
+//    static NSString *idenfitier = @"CommonCell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:idenfitier];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:idenfitier];
+//        cell.textLabel.font = XJSystemFont(16);
+//        cell.textLabel.textColor = XJHexRGBColorWithAlpha(0x323232, 1.0);
+//        cell.detailTextLabel.font = XJSystemFont(14);
+//        cell.detailTextLabel.textColor = XJHexRGBColorWithAlpha(0x909090, 1.0);
+//    }
+//    switch (indexPath.row) {
+//        case 0:{
+//            cell.imageView.image = [UIImage imageNamed:@"homepage_news"];
+//            cell.textLabel.text = NSLocalizedString(@"homepage.news", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"homepage.newsContent", nil);
+//        }
+//            break;
+//        case 1:{
+//            cell.imageView.image = [UIImage imageNamed:@"homepage_school"];
+//            cell.textLabel.text = NSLocalizedString(@"homepage.college", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"homepage.collegeContent", nil);
+//        }
+//            break;
+//        case 2:{
+//            cell.imageView.image = [UIImage imageNamed:@"homepage_message"];
+//            cell.textLabel.text = NSLocalizedString(@"homepage.systemMessage", nil);
+//            cell.detailTextLabel.text = NSLocalizedString(@"homepage.systemMessageContent", nil);
+//        }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//    return cell;
+    XJNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
+    NewsModel *model = self.newsArray[indexPath.row];
+    [cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:model.coverPic] placeholderImage:[UIImage imageNamed:@"default_image"]];
+    cell.newsThemeLabel.text = [NSString stringWithFormat:@"%@", model.themes];
+    cell.timeLabel.text = model.releaseTime;
+    cell.doctorInfoLabel.hidden = YES;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.f;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NewsViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"News"];
-    switch (indexPath.row) {
-        case 0:{
-            newsViewController.type = XJNewsTypesIndustry;
-        }
-            break;
-        case 1:{
-            newsViewController.type = XJNewsTypesCollege;
-        }
-            break;
-        case 2:{
-            newsViewController.type = XJNewsTypesSystem;
-        }
-        default:
-            break;
-    }
-    [self.navigationController pushViewController:newsViewController animated:YES];
+//    NewsViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"News"];
+//    switch (indexPath.row) {
+//        case 0:{
+//            newsViewController.type = XJNewsTypesIndustry;
+//        }
+//            break;
+//        case 1:{
+//            newsViewController.type = XJNewsTypesCollege;
+//        }
+//            break;
+//        case 2:{
+//            newsViewController.type = XJNewsTypesSystem;
+//        }
+//        default:
+//            break;
+//    }
+//    [self.navigationController pushViewController:newsViewController animated:YES];
+//    NewsModel *tempModel = self.newsArray[indexPath.row];
+//    NewsDetailViewController *newsDetailController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetail"];
+//    newsDetailController.urlString = tempModel.
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 38.f;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30.f)];
+    headerView.backgroundColor = MAIN_BACKGROUND_COLOR;
+    UILabel *headerLabel = [[UILabel alloc] init];
+    headerLabel.text = @"新闻资讯";
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = XJSystemFont(15);
+    [headerView addSubview:headerLabel];
+    [headerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(headerView.mas_leading).with.mas_offset(15);
+        make.centerY.equalTo(headerView);
+    }];
+    UIImageView *arrowImageView = [[UIImageView alloc] init];
+    arrowImageView.image = [UIImage imageNamed:@"more_news"];
+    [headerView addSubview:arrowImageView];
+    [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(headerView.mas_trailing).with.mas_offset(- 10);
+        make.size.mas_offset(CGSizeMake(18, 18));
+        make.centerY.equalTo(headerView);
+    }];
+    
+    UILabel *moreLabel = [[UILabel alloc] init];
+    moreLabel.font = XJSystemFont(15);
+    moreLabel.textColor = [UIColor blackColor];
+    moreLabel.text = @"更多";
+    [headerView addSubview:moreLabel];
+    [moreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(arrowImageView.mas_leading);
+        make.centerY.equalTo(headerView);
+    }];
+    
+    UIButton *moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [moreButton addTarget:self action:@selector(moreNewsAction) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:moreButton];
+    [moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(headerView.mas_trailing).with.mas_offset(- 15);
+        make.top.bottom.equalTo(headerView);
+        make.width.mas_offset(SCREEN_WIDTH / 2.0);
+    }];
+    
+    return headerView;
 }
 
 

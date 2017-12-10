@@ -14,6 +14,7 @@
 #import "MyBankCardViewController.h"
 #import "InterrogationSettingViewController.h"
 #import "SystemSettingTableViewController.h"
+#import "XJOrdersListViewController.h"
 
 #import "PersonalInformationCell.h"
 #import "CommonFunctionCell.h"
@@ -189,7 +190,8 @@
             break;
         case 1:{
             if (indexPath.row == 0) {
-                
+                XJOrdersListViewController *orderController = [[UIStoryboard storyboardWithName:@"Orders" bundle:nil] instantiateViewControllerWithIdentifier:@"OrdersList"];
+                [self.navigationController pushViewController:orderController animated:YES];
             } else if (indexPath.row == 1) {
                 MyWalletViewController *walletViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyWallet"];
                 [self.navigationController pushViewController:walletViewController animated:YES];

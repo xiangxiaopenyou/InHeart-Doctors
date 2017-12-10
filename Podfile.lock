@@ -21,6 +21,9 @@ PODS:
   - MJRefresh (3.1.12)
   - OpenShare (0.0.1)
   - Reachability (3.2)
+  - RongCloudIM/IMKit (2.8.6):
+    - RongCloudIM/IMLib
+  - RongCloudIM/IMLib (2.8.6)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.8.2):
@@ -39,6 +42,8 @@ DEPENDENCIES:
   - MJRefresh
   - OpenShare
   - Reachability
+  - RongCloudIM/IMKit
+  - RongCloudIM/IMLib
   - SDCycleScrollView
   - UIImage-Helpers
   - YUChineseSorting
@@ -53,12 +58,13 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RongCloudIM: f35630e60f7d393ea93b04d4cd6152c9191b8d05
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   UIImage-Helpers: 06b04a42bdd222844035602e87e936765c80f620
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 27309b6314f0fb1b067f72e414b309b8ad04f008
+PODFILE CHECKSUM: c2187f9714b62b276e5dde6c26c79b42f564dbd8
 
 COCOAPODS: 1.2.0

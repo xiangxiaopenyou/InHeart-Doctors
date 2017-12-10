@@ -16,7 +16,6 @@
 		3D0048FE1ED56DBB0025EF4F /* IndustryNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0048FD1ED56DBB0025EF4F /* IndustryNewsRequest.m */; };
 		3D0049011ED56ED80025EF4F /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0049001ED56ED80025EF4F /* NewsModel.m */; };
 		3D0877811E9499D300064FDD /* TitlesPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0877801E9499D300064FDD /* TitlesPickerView.m */; };
-		3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */; };
 		3D0A5C831E7A949A0017204D /* SortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C821E7A949A0017204D /* SortButton.m */; };
 		3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C851E7BA7970017204D /* NewsAndMessagesCell.m */; };
 		3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C881E7BAEF10017204D /* TopNewsCell.m */; };
@@ -82,8 +81,6 @@
 		3D4FC1AD1E9F17E800E9CE5E /* DiseaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1AC1E9F17E800E9CE5E /* DiseaseModel.m */; };
 		3D4FC1B01E9F181900E9CE5E /* TherapyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1AF1E9F181900E9CE5E /* TherapyModel.m */; };
 		3D4FC1B31E9F18D100E9CE5E /* FetchDiseaseAndTherapiesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1B21E9F18D100E9CE5E /* FetchDiseaseAndTherapiesRequest.m */; };
-		3D4FC1B61E9F210900E9CE5E /* TherapyItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1B51E9F210900E9CE5E /* TherapyItemCell.m */; };
-		3D4FC1B91E9F28BC00E9CE5E /* TherapyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1B81E9F28BC00E9CE5E /* TherapyCollectionCell.m */; };
 		3D4FC1BC1E9F4DB300E9CE5E /* PatientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1BB1E9F4DB300E9CE5E /* PatientModel.m */; };
 		3D4FC1BF1E9F4E2D00E9CE5E /* FetchMyPatientsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC1BE1E9F4E2D00E9CE5E /* FetchMyPatientsRequest.m */; };
 		3D4FC2561EA48E0300E9CE5E /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FC2551EA48E0300E9CE5E /* AccountModel.m */; };
@@ -189,6 +186,7 @@
 		3D71D6911FC2CF4300960D36 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D71D68F1FC2CD5800960D36 /* Hyphenate.framework */; };
 		3D71D6921FC2CF4300960D36 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D71D68F1FC2CD5800960D36 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D71D6951FC2D52F00960D36 /* ContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D71D6941FC2D52E00960D36 /* ContentDetailViewController.m */; };
+		3D81762F1FD789F500FC8965 /* XJNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D81762D1FD789F500FC8965 /* XJNewsCell.m */; };
 		3D85B42D1EB8686A00E72D3F /* AdjustCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */; };
 		3D85EEF91EC1518F00CD7ED2 /* Prescription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D85EEF81EC1518F00CD7ED2 /* Prescription.storyboard */; };
 		3D85EEFC1EC151B400CD7ED2 /* PrescriptionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85EEFB1EC151B400CD7ED2 /* PrescriptionDetailViewController.m */; };
@@ -394,8 +392,6 @@
 		3D0049001ED56ED80025EF4F /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		3D08777F1E9499D300064FDD /* TitlesPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitlesPickerView.h; sourceTree = "<group>"; };
 		3D0877801E9499D300064FDD /* TitlesPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlesPickerView.m; sourceTree = "<group>"; };
-		3D0A5C7B1E7A58E30017204D /* DepartmentSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentSelectCell.h; sourceTree = "<group>"; };
-		3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentSelectCell.m; sourceTree = "<group>"; };
 		3D0A5C811E7A949A0017204D /* SortButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortButton.h; sourceTree = "<group>"; };
 		3D0A5C821E7A949A0017204D /* SortButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortButton.m; sourceTree = "<group>"; };
 		3D0A5C841E7BA7970017204D /* NewsAndMessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsAndMessagesCell.h; sourceTree = "<group>"; };
@@ -525,10 +521,6 @@
 		3D4FC1AF1E9F181900E9CE5E /* TherapyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapyModel.m; sourceTree = "<group>"; };
 		3D4FC1B11E9F18D100E9CE5E /* FetchDiseaseAndTherapiesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchDiseaseAndTherapiesRequest.h; sourceTree = "<group>"; };
 		3D4FC1B21E9F18D100E9CE5E /* FetchDiseaseAndTherapiesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchDiseaseAndTherapiesRequest.m; sourceTree = "<group>"; };
-		3D4FC1B41E9F210900E9CE5E /* TherapyItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TherapyItemCell.h; sourceTree = "<group>"; };
-		3D4FC1B51E9F210900E9CE5E /* TherapyItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapyItemCell.m; sourceTree = "<group>"; };
-		3D4FC1B71E9F28BC00E9CE5E /* TherapyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TherapyCollectionCell.h; sourceTree = "<group>"; };
-		3D4FC1B81E9F28BC00E9CE5E /* TherapyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapyCollectionCell.m; sourceTree = "<group>"; };
 		3D4FC1BA1E9F4DB300E9CE5E /* PatientModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientModel.h; sourceTree = "<group>"; };
 		3D4FC1BB1E9F4DB300E9CE5E /* PatientModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientModel.m; sourceTree = "<group>"; };
 		3D4FC1BD1E9F4E2D00E9CE5E /* FetchMyPatientsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchMyPatientsRequest.h; sourceTree = "<group>"; };
@@ -681,6 +673,8 @@
 		3D71D68F1FC2CD5800960D36 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		3D71D6931FC2D52E00960D36 /* ContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDetailViewController.h; sourceTree = "<group>"; };
 		3D71D6941FC2D52E00960D36 /* ContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDetailViewController.m; sourceTree = "<group>"; };
+		3D81762D1FD789F500FC8965 /* XJNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJNewsCell.m; sourceTree = "<group>"; };
+		3D81762E1FD789F500FC8965 /* XJNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJNewsCell.h; sourceTree = "<group>"; };
 		3D85B42B1EB8686A00E72D3F /* AdjustCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustCycleView.h; sourceTree = "<group>"; };
 		3D85B42C1EB8686A00E72D3F /* AdjustCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustCycleView.m; sourceTree = "<group>"; };
 		3D85EEF81EC1518F00CD7ED2 /* Prescription.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Prescription.storyboard; sourceTree = "<group>"; };
@@ -1082,8 +1076,6 @@
 		3D0A5C7A1E7A58AC0017204D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3D0A5C7B1E7A58E30017204D /* DepartmentSelectCell.h */,
-				3D0A5C7C1E7A58E30017204D /* DepartmentSelectCell.m */,
 				3D0A5C811E7A949A0017204D /* SortButton.h */,
 				3D0A5C821E7A949A0017204D /* SortButton.m */,
 				3D0A5C841E7BA7970017204D /* NewsAndMessagesCell.h */,
@@ -1092,14 +1084,12 @@
 				3D0A5C881E7BAEF10017204D /* TopNewsCell.m */,
 				3D0A5C8A1E7BAEFF0017204D /* CommonNewsCell.h */,
 				3D0A5C8B1E7BAEFF0017204D /* CommonNewsCell.m */,
-				3D4FC1B41E9F210900E9CE5E /* TherapyItemCell.h */,
-				3D4FC1B51E9F210900E9CE5E /* TherapyItemCell.m */,
-				3D4FC1B71E9F28BC00E9CE5E /* TherapyCollectionCell.h */,
-				3D4FC1B81E9F28BC00E9CE5E /* TherapyCollectionCell.m */,
 				3DA8046B1EA5AED30087DF1F /* SceneContentCell.h */,
 				3DA8046C1EA5AED30087DF1F /* SceneContentCell.m */,
 				3D0048F91ED569A80025EF4F /* IndustryNewsCell.h */,
 				3D0048FA1ED569A80025EF4F /* IndustryNewsCell.m */,
+				3D81762E1FD789F500FC8965 /* XJNewsCell.h */,
+				3D81762D1FD789F500FC8965 /* XJNewsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2648,7 +2638,6 @@
 				3D10D2B51EA895FA00D8D669 /* ContentsItemCell.m in Sources */,
 				3DD904C51FCFB1B5001509D5 /* EaseFacialView.m in Sources */,
 				3D6A8ED51D98C69600C405DA /* XLBlockedButton.m in Sources */,
-				3D4FC1B61E9F210900E9CE5E /* TherapyItemCell.m in Sources */,
 				3D33E4C41E972D93003AA8C5 /* CardModel.m in Sources */,
 				3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */,
 				3DD904BD1FCFB1B5001509D5 /* EaseBubbleView+Video.m in Sources */,
@@ -2681,7 +2670,6 @@
 				3D3201C51F8B69120031F721 /* XJSearchTitleView.m in Sources */,
 				3D0048F21ED526050025EF4F /* HistoricalPrescriptionsTableViewController.m in Sources */,
 				3D4FC2561EA48E0300E9CE5E /* AccountModel.m in Sources */,
-				3D0A5C7D1E7A58E30017204D /* DepartmentSelectCell.m in Sources */,
 				3DD904A81FCFB1B5001509D5 /* EaseEmoji.m in Sources */,
 				3DD904761FCFB1B5001509D5 /* MWGridCell.m in Sources */,
 				3D0048FB1ED569A80025EF4F /* IndustryNewsCell.m in Sources */,
@@ -2752,6 +2740,7 @@
 				3D3529B91E14AFCA00C053FE /* ContentsMediaModel.m in Sources */,
 				3D4FC1BF1E9F4E2D00E9CE5E /* FetchMyPatientsRequest.m in Sources */,
 				3D6A8ED61D98C69600C405DA /* XLHyperLinkButton.m in Sources */,
+				3D81762F1FD789F500FC8965 /* XJNewsCell.m in Sources */,
 				3D3529C81E14E78E00C053FE /* UsersModel.m in Sources */,
 				3DB144411EB9C6600044FC0F /* PrescriptionModel.m in Sources */,
 				3DBFBA821F04E677007E611F /* VideoCallStatusRequest.m in Sources */,
@@ -2881,7 +2870,6 @@
 				3DD904851FCFB1B5001509D5 /* MKAnnotationView+EMWebCache.m in Sources */,
 				3DD904B91FCFB1B5001509D5 /* EaseBubbleView+Gif.m in Sources */,
 				3D2D77991F05F66300A7E6DC /* SendConsultationChargeRequest.m in Sources */,
-				3D4FC1B91E9F28BC00E9CE5E /* TherapyCollectionCell.m in Sources */,
 				3DD9046A1FCFB1B5001509D5 /* EMCDDeviceManager+Microphone.m in Sources */,
 				3D6A8ED31D98C69600C405DA /* XLBlockActionSheet.m in Sources */,
 				3DD4CCC51FCD3469003290BC /* XJPlansListRequest.m in Sources */,
