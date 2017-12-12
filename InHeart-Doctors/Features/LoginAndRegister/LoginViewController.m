@@ -118,21 +118,16 @@
             NSInteger code = [msg integerValue];
             userModel.code = @(code);
             if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
-                GJCFAsyncGlobalDefaultQueue(^{
-                    EMError *error = [[EMClient sharedClient] loginWithUsername:userModel.username password:userModel.encryptPw];
+                [[RCIM sharedRCIM] connectWithToken:userModel.rytoken success:^(NSString *userId) {
                     GJCFAsyncMainQueue(^{
-                        if (!error) {
-                            XLDismissHUD(self.view, NO, YES, nil);
-                            [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
-                            //设置环信自动登录
-                            [[EMClient sharedClient].options setIsAutoLogin:YES];
-                            //更新环信数据库
-                            [[EMClient sharedClient] migrateDatabaseToLatestSDK];
-                        } else {
-                            XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
-                        }
+                        XLDismissHUD(self.view, NO, YES, nil);
+                        [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
                     });
-                });
+                } error:^(RCConnectErrorCode status) {
+                    XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
+                } tokenIncorrect:^{
+                    XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
+                }];
             } else {
                 XLDismissHUD(self.view, YES, NO, NSLocalizedString(@"loginerror", nil));
             }

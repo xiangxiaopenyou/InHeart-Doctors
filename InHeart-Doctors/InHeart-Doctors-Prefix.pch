@@ -18,5 +18,7 @@
 #import <GJCFUitils.h>
 #import <Hyphenate/Hyphenate.h>
 #import <Masonry.h>
+#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
 #endif /* InHeart_Doctors_Prefix_pch */
 #endif

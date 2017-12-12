@@ -12,16 +12,16 @@ NSString * const EMChatKey = @"1109161016178876#xinjing";
 NSString * const APNSCertName = @"InHeart-Doctor-Dev";
 //NSString * const APNSCertName = @"InHeart-Doctor-Dis";
 
-NSString * const USERID = @"UserId";
-NSString * const USERTOKEN = @"UserToken";
-NSString * const USERCODE = @"UserCode";
-NSString * const USERREALNAME = @"Realname";
-NSString * const USERNAME = @"Username";
-NSString * const USERAVATARDATA = @"UserAvatarData";
-NSString * const USERAVATARSTRING = @"UserAvatarString";
-NSString * const USERENCRYPTEDPASSWORD = @"EncryptedPassword";
+NSString * const USERID = @"XJDoctorUserId";
+NSString * const USERTOKEN = @"XJDoctorUserToken";
+NSString * const USERCODE = @"XJDoctorUserCode";
+NSString * const USERREALNAME = @"XJDoctorRealname";
+NSString * const USERNAME = @"XJDoctorUsername";
+NSString * const USERAVATARDATA = @"XJDoctorUserAvatarData";
+NSString * const USERAVATARSTRING = @"XJDoctorUserAvatarString";
+NSString * const RYTOKEN = @"XJDoctorRyToken";
 NSString * const KEYCHAINSERVICE = @"com.midvision.vrdoctor";
-NSString * const FIRSTLOAD = @"FirstLoad";
+NSString * const FIRSTLOAD = @"XJDoctorFirstLoad";
 NSString * const LAST_RUN_VERSION = @"last_run_version";
 
 

@@ -12,6 +12,7 @@
 #import "GuidePageView.h"
 #import "UserInfo.h"
 #import "UsersModel.h"
+#import "AppDelegate+XJRongCloud.h"
 
 #import <UIImage-Helpers.h>
 #import <IQKeyboardManager.h>
@@ -27,13 +28,12 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //环信SDK
-    [[EaseSDKHelper shareHelper] hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:EMChatKey apnsCertName:APNSCertName otherConfig:@{@"httpsOnly":[NSNumber numberWithBool:YES], kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:NO],@"easeSandBox":[NSNumber numberWithBool:NO]}];
+    //融云SDK
+    [self initRongCloudService:application option:launchOptions];
     
-    IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
-    keyboardManager.enable = YES;
-    keyboardManager.enableAutoToolbar = NO;
-    keyboardManager.shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:XJLoginSuccess object:nil];
     [self initAppearance];
@@ -148,22 +148,14 @@
  登录状态变化
  */
 - (void)checkUserState:(NSNotification *)notification {
-    if ([[UserInfo sharedUserInfo] isLogined] && [[EMClient sharedClient] isLoggedIn]) {
-//        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
-//        if (userCode == 0 || userCode == -7) {
+    if ([[UserInfo sharedUserInfo] isLogined]) {
         MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
         self.window.rootViewController = tabBarController;
-//        } else if (userCode == -4) {
-//            AuthenticationViewController *authenticationViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationView"];
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:authenticationViewController];
-//            self.window.rootViewController = navigationController;
-//        } else {
-//            AuthenticationStepsViewController *stepsViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"AuthenticationSteps"];
-//            stepsViewController.isRejected = userCode == -6 ? YES : NO;
-//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:stepsViewController];
-//            self.window.rootViewController = navigationController;
-//        }
-        
+        NSString *tokenString = [[NSUserDefaults standardUserDefaults] stringForKey:RYTOKEN];
+        [[RCIM sharedRCIM] connectWithToken:tokenString success:^(NSString *userId) {
+        } error:^(RCConnectErrorCode status) {
+        } tokenIncorrect:^{
+        }];
     } else {
         LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"Login"];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];

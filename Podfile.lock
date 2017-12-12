@@ -18,6 +18,7 @@ PODS:
   - GTSDK (1.5.0)
   - IQKeyboardManager (4.0.7)
   - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - OpenShare (0.0.1)
   - Reachability (3.2)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - GTSDK
   - IQKeyboardManager
   - Masonry
+  - MBProgressHUD
   - MJRefresh
   - OpenShare
   - Reachability
@@ -55,6 +57,7 @@ SPEC CHECKSUMS:
   GTSDK: 4380de452178d8ba2a67189f10c6743d0f9536b9
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -65,6 +68,6 @@ SPEC CHECKSUMS:
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: c2187f9714b62b276e5dde6c26c79b42f564dbd8
+PODFILE CHECKSUM: c7fbbcd781541b14949f573c85a9f20db6197715
 
 COCOAPODS: 1.2.0

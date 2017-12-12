@@ -7,9 +7,8 @@
 //
 
 #import "MainTabBarController.h"
-//#import "ContentViewController.h"
 #import "HomepageViewController.h"
-#import "InterrogationListViewController.h"
+#import "XJConversationListViewController.h"
 #import "PersonalCenterTableViewController.h"
 #import "HomepageNavigationController.h"
 
@@ -49,14 +48,12 @@ static CGFloat const kTipLabelHeight = 2.0;
     UIImage *personalSelectedImage = [UIImage imageNamed:@"personal_selected"];
     personalSelectedImage = [personalSelectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    //内容
-//    ContentViewController *contentViewController = [[UIStoryboard storyboardWithName:@"Content" bundle:nil] instantiateViewControllerWithIdentifier:@"ContentView"];
-//    [self setupChildControllerWith:contentViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"内容" index:0];
+    //首页
     HomepageViewController *homepageViewController = [[UIStoryboard storyboardWithName:@"Homepage" bundle:nil] instantiateViewControllerWithIdentifier:@"Homepage"];
     [self setupChildControllerWith:homepageViewController normalImage:contentUnSelectedImage selectedImage:contentSelectedImage title:@"首页" index:0];
     
     //问诊
-    InterrogationListViewController *interrogationViewController = [[UIStoryboard storyboardWithName:@"Interrogation" bundle:nil] instantiateViewControllerWithIdentifier:@"InterrogationView"];
+    XJConversationListViewController *interrogationViewController = [[XJConversationListViewController alloc] init];
     [self setupChildControllerWith:interrogationViewController normalImage:askUnSelectedImage selectedImage:askSelectedImage title:@"问诊" index:1];
     
     
@@ -64,22 +61,6 @@ static CGFloat const kTipLabelHeight = 2.0;
     PersonalCenterTableViewController *personalViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     [self setupChildControllerWith:personalViewController normalImage:personalUnSelectedImage selectedImage:personalSelectedImage title:@"个人中心" index:2];
     
-    //环信
-    if (![[EMClient sharedClient] isLoggedIn]) {
-        UsersModel *user = [[UserInfo sharedUserInfo] userInfo];
-        [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
-            if (!aError) {
-                [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
-                [[DemoCallManager sharedManager] setMainController:self];
-                //[self setupUnreadMessagesCount];
-            } else {
-                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
-            }
-        }];
-    } else {
-        [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
-        [[DemoCallManager sharedManager] setMainController:self];
-    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:XJSetupUnreadMessagesCount object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
 

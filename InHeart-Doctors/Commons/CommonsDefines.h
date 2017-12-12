@@ -53,7 +53,7 @@ extern NSString * const USERTOKEN;
 extern NSString * const USERCODE;
 extern NSString * const USERREALNAME;
 extern NSString * const USERNAME;
-extern NSString * const USERENCRYPTEDPASSWORD;
+extern NSString * const RYTOKEN;
 extern NSString * const USERAVATARDATA;
 extern NSString * const USERAVATARSTRING;
 extern NSString * const KEYCHAINSERVICE;

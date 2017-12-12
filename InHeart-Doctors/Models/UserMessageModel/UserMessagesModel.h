@@ -19,5 +19,5 @@
 + (void)sendPrescription:(PrescriptionModel *)model handler:(RequestResultHandler)handler;
 + (void)sendConsultationCharge:(NSString *)patientId fees:(NSNumber *)fees remarks:(NSString *)remark handler:(RequestResultHandler)handler;
 + (void)fetchVideoCallStatus:(NSString *)patientId handler:(RequestResultHandler)handler;
-
++ (void)fetchUserInfoByUserId:(NSString *)userId handler:(RequestResultHandler)handler;
 @end

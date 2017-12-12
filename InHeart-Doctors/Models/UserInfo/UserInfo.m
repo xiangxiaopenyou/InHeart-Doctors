@@ -8,6 +8,8 @@
 
 #import "UserInfo.h"
 #import "UsersModel.h"
+#import "UserMessagesModel.h"
+#import "XJDataBase.h"
 
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {
@@ -44,8 +46,8 @@
     if (userModel.username) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.username forKey:USERNAME];
     }
-    if (userModel.encryptPw) {
-        [[NSUserDefaults standardUserDefaults] setObject:userModel.encryptPw forKey:USERENCRYPTEDPASSWORD];
+    if (userModel.rytoken) {
+        [[NSUserDefaults standardUserDefaults] setObject:userModel.rytoken forKey:RYTOKEN];
     }
     if (userModel.headPictureUrl) {
         [[NSUserDefaults standardUserDefaults] setObject:userModel.headPictureUrl forKey:USERAVATARSTRING];
@@ -70,8 +72,8 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERNAME]) {
         model.username = [[NSUserDefaults standardUserDefaults] objectForKey:USERNAME];
     }
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD]) {
-        model.encryptPw = [[NSUserDefaults standardUserDefaults] objectForKey:USERENCRYPTEDPASSWORD];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:RYTOKEN]) {
+        model.rytoken = [[NSUserDefaults standardUserDefaults] objectForKey:RYTOKEN];
     }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USERAVATARSTRING]) {
         model.headPictureUrl = [[NSUserDefaults standardUserDefaults] objectForKey:USERAVATARSTRING];
@@ -84,9 +86,46 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERTOKEN];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERREALNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERNAME];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERENCRYPTEDPASSWORD];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:RYTOKEN];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERAVATARSTRING];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+#pragma mark - RCIMUserInfo data source
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
+    RCUserInfo *userInfo = [[RCUserInfo alloc] init];
+    if (userId.length == 0) {
+        userInfo.userId = userId;
+        userInfo.portraitUri = nil;
+        userInfo.name = nil;
+        completion(userInfo);
+        return;
+    }
+    NSString *currentUserId = [RCIM sharedRCIM].currentUserInfo.userId;
+    userInfo.userId = userId;
+    if ([userId isEqualToString:currentUserId]) {
+        userInfo.portraitUri = [[NSUserDefaults standardUserDefaults] stringForKey:USERAVATARSTRING];
+        userInfo.name = [[NSUserDefaults standardUserDefaults] stringForKey:USERREALNAME];
+        completion(userInfo);
+    } else {
+        NSArray *tempArray = [[[XJDataBase sharedDataBase] selectUser:userId] copy];
+        if ([[XJDataBase sharedDataBase] selectUser:userId].count > 0) {
+            UserMessagesModel *model = tempArray[0];
+            userInfo.portraitUri = model.headpictureurl;
+            userInfo.name = model.realname;
+            completion(userInfo);
+        } else {
+            [UserMessagesModel fetchUserInfoByUserId:userId handler:^(id object, NSString *msg) {
+                if (object) {
+                    UserMessagesModel *userModel = object;
+                    userInfo.portraitUri = userModel.headpictureurl;
+                    userInfo.name = userModel.realname;
+                    [[XJDataBase sharedDataBase] insertUser:userModel];
+                    [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:userId];
+                    completion(userInfo);
+                }
+            }];
+        }
+    }
 }
 
 @end

@@ -228,14 +228,9 @@
                 XLShowHUDWithMessage(nil, self.view);
                 [UsersModel userLogout:^(id object, NSString *msg) {
                     if (object) {
-                        [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
-                            if (!aError) {
-                                [[UserInfo sharedUserInfo] removeUserInfo];
-                                [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
-                            } else {
-                                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
-                            }
-                        }];
+                        [[RCIM sharedRCIM] logout];
+                        [[UserInfo sharedUserInfo] removeUserInfo];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
                     } else {
                         XLShowThenDismissHUD(NO, msg, self.view);
                     }

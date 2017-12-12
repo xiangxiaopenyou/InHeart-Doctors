@@ -15,5 +15,6 @@ pod 'Reachability'
 pod 'YUChineseSorting'
 pod 'RongCloudIM/IMLib'
 pod 'RongCloudIM/IMKit'
+pod 'MBProgressHUD'
 end 
 

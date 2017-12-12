@@ -11,12 +11,9 @@
 #import "SendPrescriptionRequest.h"
 #import "VideoCallStatusRequest.h"
 #import "SendConsultationChargeRequest.h"
+#import "XJFetchUserInfoRequest.h"
 
 @implementation UserMessagesModel
-
-+ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
-    return @{@"userId" : @"id"};
-}
 
 + (void)fetchUsersIdAndName:(NSString *)phone handler:(RequestResultHandler)handler {
     [[UsersNameAndIdRequest new] request:^BOOL(UsersNameAndIdRequest *request) {
@@ -60,6 +57,19 @@
             !handler ?: handler(nil, msg);
         } else {
             !handler ?: handler (object, nil);
+        }
+    }];
+}
++ (void)fetchUserInfoByUserId:(NSString *)userId handler:(RequestResultHandler)handler {
+    [[XJFetchUserInfoRequest new] request:^BOOL(XJFetchUserInfoRequest *request) {
+        request.userId = userId;
+        return YES;
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            UserMessagesModel *tempModel = [UserMessagesModel yy_modelWithDictionary:object];
+            !handler ?: handler(tempModel, nil);
         }
     }];
 }
