@@ -7,7 +7,6 @@
 //
 
 #import "PatientInformationsViewController.h"
-#import "HistoricalPrescriptionsTableViewController.h"
 #import "AvatarInformationCell.h"
 
 #import "PatientModel.h"
@@ -95,9 +94,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HistoricalPrescriptionsTableViewController *prescriptionViewController = [[UIStoryboard storyboardWithName:@"Prescription" bundle:nil] instantiateViewControllerWithIdentifier:@"HistoricalPrescriptions"];
-    prescriptionViewController.patientId = self.patientId;
-    [self.navigationController pushViewController:prescriptionViewController animated:YES];
+//    HistoricalPrescriptionsTableViewController *prescriptionViewController = [[UIStoryboard storyboardWithName:@"Prescription" bundle:nil] instantiateViewControllerWithIdentifier:@"HistoricalPrescriptions"];
+//    prescriptionViewController.patientId = self.patientId;
+//    [self.navigationController pushViewController:prescriptionViewController animated:YES];
 }
 /*
 #pragma mark - Navigation

@@ -13,12 +13,11 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import "UtilDefine.h"
 #import "CommonsDefines.h"
-#import "EaseUI.h"
 #import "MBProgressHUD+Add.h"
 #import <GJCFUitils.h>
-#import <Hyphenate/Hyphenate.h>
 #import <Masonry.h>
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMLib/RongIMLib.h>
+#import <UIImageView+WebCache.h>
 #endif /* InHeart_Doctors_Prefix_pch */
 #endif

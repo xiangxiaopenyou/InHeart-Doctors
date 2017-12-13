@@ -160,12 +160,9 @@
         } else {
             XLDismissHUD(self.view, YES, NO, msg);
             if ([msg isEqualToString:@"登录已经失效"]) {
-                [[EMClient sharedClient] logout:YES completion:^(EMError *aError) {
-                    if (!aError) {
-                        [[UserInfo sharedUserInfo] removeUserInfo];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
-                    }
-                }];
+                [[RCIM sharedRCIM] logout];
+                [[UserInfo sharedUserInfo] removeUserInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
             }
         }
     }];

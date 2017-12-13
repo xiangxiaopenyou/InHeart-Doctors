@@ -15,13 +15,11 @@
 #import "UsersModel.h"
 #import "UserInfo.h"
 
-#import "DemoCallManager.h"
-
 static CGFloat const kTipLabelHeight = 2.0;
 #define kTipLabelWidth SCREEN_WIDTH / 3.0
 
 
-@interface MainTabBarController ()<EMChatManagerDelegate>
+@interface MainTabBarController ()
 @property (strong, nonatomic) UILabel *bottomTipLabel;
 
 @end
@@ -62,7 +60,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     [self setupChildControllerWith:personalViewController normalImage:personalUnSelectedImage selectedImage:personalSelectedImage title:@"个人中心" index:2];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:XJSetupUnreadMessagesCount object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
 
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -74,49 +72,47 @@ static CGFloat const kTipLabelHeight = 2.0;
     // Dispose of any resources that can be recreated.
 }
 - (void)dealloc {
-    [[EMClient sharedClient].chatManager removeDelegate:self];
+    //[[EMClient sharedClient].chatManager removeDelegate:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XJSetupUnreadMessagesCount object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoCallDidEnded" object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoCallDidEnded" object:nil];
 }
 
 #pragma mark - Notifications
 - (void)setupUnreadMessagesCount {
-    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+//    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
     NSInteger unreadCount = 0;
-    for (EMConversation *conversation in conversations) {
-        unreadCount += conversation.unreadMessagesCount;
-    }
+//    for (EMConversation *conversation in conversations) {
+//        unreadCount += conversation.unreadMessagesCount;
+//    }
     UITabBarItem *item = self.tabBar.items[1];
     item.badgeValue = unreadCount > 0 ? [NSString stringWithFormat:@"%@", @(unreadCount)] : nil;
     UIApplication *application = [UIApplication sharedApplication];
     [application setApplicationIconBadgeNumber:unreadCount];
 }
 //插入视频通话消息
-- (void)insertCallMessage:(NSNotification *)notification {
-    NSDictionary *tempDictionary = (NSDictionary *)notification.object;
-    NSString *toUser = [NSString stringWithFormat:@"%@", tempDictionary[@"username"]];
-    NSInteger time = [tempDictionary[@"callTime"] integerValue];
-    NSInteger hours = time / 3600;
-    NSInteger minites = (time - hours * 3600) / 60;
-    NSInteger seconds = time - hours * 3600 - minites * 60;
-    NSString *timeString;
-    if (hours > 0) {
-        timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minites, (long)seconds];
-    } else if(minites > 0){
-        timeString = [NSString stringWithFormat:@"%02ld:%02ld", (long)minites, (long)seconds];
-    }
-    else{
-        timeString = [NSString stringWithFormat:@"00:%02ld", (long)seconds];
-    }
-    NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
-    EMMessage *callMessage = [EaseSDKHelper getTextMessage:sendText to:toUser messageType:EMChatTypeChat messageExt:nil];
-    callMessage.status = EMMessageStatusSucceed;
-    [[EMClient sharedClient].chatManager importMessages:@[callMessage] completion:^(EMError *aError) {
-        if (!aError) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"callMessageDidInserted" object:callMessage];
-        }
-    }];
-}
+//- (void)insertCallMessage:(NSNotification *)notification {
+//    NSDictionary *tempDictionary = (NSDictionary *)notification.object;
+//    NSString *toUser = [NSString stringWithFormat:@"%@", tempDictionary[@"username"]];
+//    NSInteger time = [tempDictionary[@"callTime"] integerValue];
+//    NSInteger hours = time / 3600;
+//    NSInteger minites = (time - hours * 3600) / 60;
+//    NSInteger seconds = time - hours * 3600 - minites * 60;
+//    NSString *timeString;
+//    if (hours > 0) {
+//        timeString = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minites, (long)seconds];
+//    } else if(minites > 0){
+//        timeString = [NSString stringWithFormat:@"%02ld:%02ld", (long)minites, (long)seconds];
+//    }
+//    else{
+//        timeString = [NSString stringWithFormat:@"00:%02ld", (long)seconds];
+//    }
+//    NSString *sendText = [NSString stringWithFormat:@"通话结束 %@", timeString];
+////    [[EMClient sharedClient].chatManager importMessages:@[callMessage] completion:^(EMError *aError) {
+////        if (!aError) {
+////            [[NSNotificationCenter defaultCenter] postNotificationName:@"callMessageDidInserted" object:callMessage];
+////        }
+////    }];
+//}
 
 - (void)setupChildControllerWith:(UIViewController *)childViewController normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage title:(NSString *)title index:(NSInteger)index {
     if (index == 0) {
@@ -157,14 +153,14 @@ static CGFloat const kTipLabelHeight = 2.0;
         self.bottomTipLabel.frame = CGRectMake(positionX, 0, kTipLabelWidth, kTipLabelHeight);
     }];
 }
-- (void)showNotificationWithMessage:(EMMessage *)message {
-    //本地推送
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.fireDate = [NSDate date]; //触发通知的时间
-    notification.alertBody = NSEaseLocalizedString(@"receiveMessage", @"you have a new message");
-    //发送通知
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-}
+//- (void)showNotificationWithMessage:(EMMessage *)message {
+//    //本地推送
+//    UILocalNotification *notification = [[UILocalNotification alloc] init];
+//    notification.fireDate = [NSDate date]; //触发通知的时间
+//    notification.alertBody = NSEaseLocalizedString(@"receiveMessage", @"you have a new message");
+//    //发送通知
+//    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+//}
 
 #pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
@@ -174,22 +170,22 @@ static CGFloat const kTipLabelHeight = 2.0;
 }
 
 #pragma mark - EMChatManagerDelegate
-- (void)messagesDidReceive:(NSArray *)aMessages {
-    for (EMMessage *message in aMessages) {
-        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-        switch (state) {
-            case UIApplicationStateBackground:{
-                [self showNotificationWithMessage:message];
-            }
-                break;
-                
-            default:
-                break;
-        }
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
-    [self setupUnreadMessagesCount];
-}
+//- (void)messagesDidReceive:(NSArray *)aMessages {
+//    for (EMMessage *message in aMessages) {
+//        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+//        switch (state) {
+//            case UIApplicationStateBackground:{
+//                [self showNotificationWithMessage:message];
+//            }
+//                break;
+//
+//            default:
+//                break;
+//        }
+//    }
+//    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
+//    [self setupUnreadMessagesCount];
+//}
 - (void)conversationListDidUpdate:(NSArray *)aConversationList {
     [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
     [self setupUnreadMessagesCount];
