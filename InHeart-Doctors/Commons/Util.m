@@ -172,7 +172,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.square = YES;
     if (message) {
-        hud.labelText = message;
+        hud.label.text = message;
     }
 }
 + (void)dismissHUD:(UIView *)view showTip:(BOOL)isShow success:(BOOL)isSuccess message:(NSString *)message {

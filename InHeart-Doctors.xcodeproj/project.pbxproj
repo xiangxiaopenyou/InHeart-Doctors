@@ -207,6 +207,9 @@
 		3D968DB41DB5C02B005A1596 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB31DB5C02B005A1596 /* SearchResultCell.m */; };
 		3D968DB71DB5EB4A005A1596 /* SystemSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */; };
 		3DA076801FDFA057009580D7 /* XJFetchUserInfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA0767F1FDFA057009580D7 /* XJFetchUserInfoRequest.m */; };
+		3DA076861FE0CA73009580D7 /* XJPlanOrderMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA076851FE0CA73009580D7 /* XJPlanOrderMessage.m */; };
+		3DA076891FE0CF7D009580D7 /* XJPlanOrderMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA076881FE0CF7D009580D7 /* XJPlanOrderMessageCell.m */; };
+		3DA0768C1FE0FCF0009580D7 /* XJOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA0768B1FE0FCF0009580D7 /* XJOrderModel.m */; };
 		3DA3D9E61DAB3F380088E665 /* InterrogationSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */; };
 		3DA4D3B31DC3283D00CD47FF /* SelectCityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4D3B21DC3283D00CD47FF /* SelectCityView.m */; };
 		3DA4D3B61DC3297600CD47FF /* FetchCitiesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4D3B51DC3297600CD47FF /* FetchCitiesRequest.m */; };
@@ -715,6 +718,12 @@
 		3D968DB61DB5EB4A005A1596 /* SystemSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingTableViewController.m; sourceTree = "<group>"; };
 		3DA0767E1FDFA057009580D7 /* XJFetchUserInfoRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJFetchUserInfoRequest.h; sourceTree = "<group>"; };
 		3DA0767F1FDFA057009580D7 /* XJFetchUserInfoRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJFetchUserInfoRequest.m; sourceTree = "<group>"; };
+		3DA076841FE0CA73009580D7 /* XJPlanOrderMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJPlanOrderMessage.h; sourceTree = "<group>"; };
+		3DA076851FE0CA73009580D7 /* XJPlanOrderMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJPlanOrderMessage.m; sourceTree = "<group>"; };
+		3DA076871FE0CF7D009580D7 /* XJPlanOrderMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJPlanOrderMessageCell.h; sourceTree = "<group>"; };
+		3DA076881FE0CF7D009580D7 /* XJPlanOrderMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJPlanOrderMessageCell.m; sourceTree = "<group>"; };
+		3DA0768A1FE0FCF0009580D7 /* XJOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJOrderModel.h; sourceTree = "<group>"; };
+		3DA0768B1FE0FCF0009580D7 /* XJOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJOrderModel.m; sourceTree = "<group>"; };
 		3DA3D9E41DAB3F380088E665 /* InterrogationSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterrogationSettingViewController.h; sourceTree = "<group>"; };
 		3DA3D9E51DAB3F380088E665 /* InterrogationSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterrogationSettingViewController.m; sourceTree = "<group>"; };
 		3DA4D3B11DC3283D00CD47FF /* SelectCityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityView.h; sourceTree = "<group>"; };
@@ -1569,6 +1578,8 @@
 				3D0048EE1ED3C8940025EF4F /* AvatarInformationCell.m */,
 				3D2D77941F05EBBA00A7E6DC /* XJConsultationChargeCell.h */,
 				3D2D77951F05EBBA00A7E6DC /* XJConsultationChargeCell.m */,
+				3DA076871FE0CF7D009580D7 /* XJPlanOrderMessageCell.h */,
+				3DA076881FE0CF7D009580D7 /* XJPlanOrderMessageCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1861,6 +1872,8 @@
 			children = (
 				3DD4CCB61FCD3429003290BC /* XJPlanModel.h */,
 				3DD4CCB71FCD3429003290BC /* XJPlanModel.m */,
+				3DA0768A1FE0FCF0009580D7 /* XJOrderModel.h */,
+				3DA0768B1FE0FCF0009580D7 /* XJOrderModel.m */,
 			);
 			path = PlanModel;
 			sourceTree = "<group>";
@@ -2414,6 +2427,8 @@
 				3D3529C11E14E1AD00C053FE /* UserMessagesModel.m */,
 				3D4FC1BA1E9F4DB300E9CE5E /* PatientModel.h */,
 				3D4FC1BB1E9F4DB300E9CE5E /* PatientModel.m */,
+				3DA076841FE0CA73009580D7 /* XJPlanOrderMessage.h */,
+				3DA076851FE0CA73009580D7 /* XJPlanOrderMessage.m */,
 			);
 			path = UserMessageModel;
 			sourceTree = "<group>";
@@ -2648,6 +2663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D968D881DACD733005A1596 /* UploadImageManager.m in Sources */,
+				3DA076891FE0CF7D009580D7 /* XJPlanOrderMessageCell.m in Sources */,
 				3DE076901DD15F4F0008C1DF /* ConversationListView.m in Sources */,
 				3D0A5C831E7A949A0017204D /* SortButton.m in Sources */,
 				3D10D2B51EA895FA00D8D669 /* ContentsItemCell.m in Sources */,
@@ -2764,6 +2780,7 @@
 				3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */,
 				3DD904A91FCFB1B5001509D5 /* EaseEmojiEmoticons.m in Sources */,
 				3DD904BA1FCFB1B5001509D5 /* EaseBubbleView+Image.m in Sources */,
+				3DA076861FE0CA73009580D7 /* XJPlanOrderMessage.m in Sources */,
 				3D33E4BF1E9724D8003AA8C5 /* AuthenticationPicturesViewController.m in Sources */,
 				3DD904B51FCFB1B5001509D5 /* EaseCustomMessageCell.m in Sources */,
 				3D0048F51ED529130025EF4F /* HistoricalPrescriptionCell.m in Sources */,
@@ -2894,6 +2911,7 @@
 				3D33E4D61E973F1B003AA8C5 /* FetchBanksListRequest.m in Sources */,
 				3DD904691FCFB1B5001509D5 /* EMCDDeviceManager+Media.m in Sources */,
 				3DD9046E1FCFB1B5001509D5 /* amrFileCodec.mm in Sources */,
+				3DA0768C1FE0FCF0009580D7 /* XJOrderModel.m in Sources */,
 				3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */,
 				3DE757671F9F22A200688C84 /* XJTopDiseasesCell.m in Sources */,
 				3D4FC1AA1E9DCD0900E9CE5E /* ChangePasswordTableViewController.m in Sources */,

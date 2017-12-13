@@ -59,6 +59,10 @@
         }
     }];
     self.contentTableView.mj_footer.automaticallyHidden = YES;
+    
+    if (!self.isView) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -143,6 +147,11 @@
             XLDismissHUD(self.view, YES, NO, msg);
         }
     }];
+}
+
+#pragma mark - Action
+- (void)backAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source

@@ -16,6 +16,7 @@
 
 #import "XJPlanModel.h"
 #import "DiseaseModel.h"
+#import "XJOrderModel.h"
 
 @interface XJPlanEditViewController ()<UITableViewDelegate, UITableViewDataSource, XJPlanGridViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -73,7 +74,8 @@
     [XJPlanModel sendPlan:self.planModel patientId:self.patientId handler:^(id object, NSString *msg) {
         if (object) {
             XLDismissHUD(XJKeyWindow, YES, YES, @"发送成功");
-            [[NSNotificationCenter defaultCenter] postNotificationName:XJPlanDidSend object:self.planModel];
+            XJOrderModel *tempModel = (XJOrderModel *)object;
+            [[NSNotificationCenter defaultCenter] postNotificationName:XJPlanDidSend object:tempModel];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:YES completion:nil];
             });

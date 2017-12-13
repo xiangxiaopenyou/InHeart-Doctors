@@ -46,14 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![[EMClient sharedClient] isLoggedIn]) {
-        UsersModel *user = [[UserInfo sharedUserInfo] userInfo];
-//        [[EMClient sharedClient] loginWithUsername:user.username password:user.encryptPw completion:^(NSString *aUsername, EMError *aError) {
-//            if (!aError) {
-//                [self.conversationsView fetchConversations];
-//            } else {
-//                XLShowThenDismissHUD(NO, XJNetworkError, self.view);
-//            }
-//        }];
+        //UsersModel *user = [[UserInfo sharedUserInfo] userInfo];
     } else {
         [self.conversationsView fetchConversations];
     }

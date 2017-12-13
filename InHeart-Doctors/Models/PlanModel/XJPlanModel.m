@@ -9,6 +9,7 @@
 
 #import "XJPlanModel.h"
 #import "ContentModel.h"
+#import "XJOrderModel.h"
 #import "XJPlansListRequest.h"
 #import "XJFetchCollectPlansRequest.h"
 #import "XJCollectOparetionRequest.h"
@@ -69,7 +70,14 @@
         request.patientId = patientId;
         request.planModel = model;
         return YES;
-    } result:handler];
+    } result:^(id object, NSString *msg) {
+        if (msg) {
+            !handler ?: handler(nil, msg);
+        } else {
+            XJOrderModel *model = [XJOrderModel yy_modelWithDictionary:(NSDictionary *)object];
+            !handler ?: handler(model, nil);
+        }
+    }];
 }
 
 @end

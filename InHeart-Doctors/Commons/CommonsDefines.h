@@ -43,6 +43,14 @@ typedef NS_ENUM(NSInteger, XJPlanEditItem) {
     XJPlanEditItemName = 0,
     XJPlanEditItemInstruction
 };
+typedef NS_ENUM(NSInteger, XJPlanOrderStatus) {
+    XJPlanOrderStatusWaitingPay = 1,
+    XJPlanOrderStatusPaid,
+    XJPlanOrderStatusCanceled,
+    XJPlanOrderStatusFinished,
+    XJPlanOrderStatusOngoing
+};
+
 //key & secret
 extern NSString * const EMChatKey;
 extern NSString * const APNSCertName;

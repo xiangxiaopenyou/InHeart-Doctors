@@ -8,6 +8,7 @@
 
 #import "AppDelegate+XJRongCloud.h"
 #import "UserInfo.h"
+#import "XJPlanOrderMessage.h"
 static NSString *const kXJRongCloudAppKey = @"0vnjpoad0g5rz";
 
 @implementation AppDelegate (XJRongCloud)
@@ -15,6 +16,7 @@ static NSString *const kXJRongCloudAppKey = @"0vnjpoad0g5rz";
     [[RCIMClient sharedRCIMClient] initWithAppKey:kXJRongCloudAppKey];
     [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;
     [RCIM sharedRCIM].userInfoDataSource = [UserInfo sharedUserInfo];
+    [[RCIM sharedRCIM] registerMessageType:[XJPlanOrderMessage class]];
 }
 
 @end
