@@ -122,8 +122,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0;
     switch (indexPath.section) {
-        case 0:
-            height = 50.f;
+        case 0: {
+            CGSize size = XLSizeOfText(self.planModel.name, SCREEN_WIDTH - 115, XJSystemFont(14));
+            height = size.height + 40.f;
+        }
             break;
         case 1:
             height = 50.f;

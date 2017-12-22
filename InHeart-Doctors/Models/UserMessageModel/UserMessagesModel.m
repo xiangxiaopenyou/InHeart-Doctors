@@ -7,33 +7,11 @@
 //
 
 #import "UserMessagesModel.h"
-#import "UsersNameAndIdRequest.h"
-#import "SendPrescriptionRequest.h"
 #import "VideoCallStatusRequest.h"
 #import "SendConsultationChargeRequest.h"
 #import "XJFetchUserInfoRequest.h"
 
 @implementation UserMessagesModel
-
-+ (void)fetchUsersIdAndName:(NSString *)phone handler:(RequestResultHandler)handler {
-    [[UsersNameAndIdRequest new] request:^BOOL(UsersNameAndIdRequest *request) {
-        request.username = phone;
-        return YES;
-    } result:^(id object, NSString *msg) {
-        if (msg) {
-            !handler ?: handler(nil, msg);
-        } else {
-            UserMessagesModel *tempModel = [UserMessagesModel yy_modelWithDictionary:object];
-            !handler ?: handler(tempModel, nil);
-        }
-    }];
-}
-+ (void)sendPrescription:(PrescriptionModel *)model handler:(RequestResultHandler)handler {
-    [[SendPrescriptionRequest new] request:^BOOL(SendPrescriptionRequest *request) {
-        request.model = model;
-        return YES;
-    } result:handler];
-}
 + (void)sendConsultationCharge:(NSString *)patientId fees:(NSNumber *)fees remarks:(NSString *)remark handler:(RequestResultHandler)handler {
     [[SendConsultationChargeRequest new] request:^BOOL(SendConsultationChargeRequest *request) {
         request.patientId = patientId;

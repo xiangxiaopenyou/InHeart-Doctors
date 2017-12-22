@@ -112,6 +112,7 @@
                 [self.contentTableView reloadData];
                 if (resultArray.count < 10) {
                     [self.contentTableView.mj_footer endRefreshingWithNoMoreData];
+                    self.contentTableView.mj_footer.hidden = YES;
                 } else {
                     _paging += 1;
                 }
@@ -139,6 +140,7 @@
                 [self.contentTableView reloadData];
                 if (resultArray.count < 10) {
                     [self.contentTableView.mj_footer endRefreshingWithNoMoreData];
+                    self.contentTableView.mj_footer.hidden = YES;
                 } else {
                     _paging += 1;
                 }

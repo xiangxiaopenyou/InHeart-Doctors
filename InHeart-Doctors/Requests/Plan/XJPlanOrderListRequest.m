@@ -1,20 +1,23 @@
 //
-//  PrescriptionDetailRequest.m
+//  XJPlanOrderListRequest.m
 //  InHeart-Doctors
 //
-//  Created by 项小盆友 on 2017/5/15.
+//  Created by 项小盆友 on 2017/12/21.
 //  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "PrescriptionDetailRequest.h"
+#import "XJPlanOrderListRequest.h"
 
-@implementation PrescriptionDetailRequest
+@implementation XJPlanOrderListRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
     if (!paramsBlock(self)) {
         return;
     }
-    [self.params setObject:self.prescriptionId forKey:@"prescriptionId"];
-    [[RequestManager sharedInstance] POST:PRESCRIPTION_DETAIL parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.params setObject:self.paging forKey:@"paging"];
+    if (self.status) {
+        [self.params setObject:self.status forKey:@"orStatus"];
+    }
+    [[RequestManager sharedInstance] POST:@"doctor/myPlanOrderList" parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);
         } else {

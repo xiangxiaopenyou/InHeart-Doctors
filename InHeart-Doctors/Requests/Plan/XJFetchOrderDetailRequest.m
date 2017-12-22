@@ -1,21 +1,20 @@
-
 //
-//  UsersNameAndIdRequest.m
-//  InHeart
+//  XJFetchOrderDetailRequest.m
+//  InHeart-Doctors
 //
-//  Created by 项小盆友 on 16/11/14.
-//  Copyright © 2016年 项小盆友. All rights reserved.
+//  Created by 项小盆友 on 2017/12/18.
+//  Copyright © 2017年 项小盆友. All rights reserved.
 //
 
-#import "UsersNameAndIdRequest.h"
+#import "XJFetchOrderDetailRequest.h"
 
-@implementation UsersNameAndIdRequest
+@implementation XJFetchOrderDetailRequest
 - (void)request:(ParamsBlock)paramsBlock result:(RequestResultHandler)resultHandler {
     if (!paramsBlock(self)) {
         return;
     }
-    [self.params setObject:self.username forKey:@"phone"];
-    [[RequestManager sharedInstance] POST:FETCH_USERS_NAME parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.params setObject:self.orderId forKey:@"orderId"];
+    [[RequestManager sharedInstance] POST:@"doctor/orderDetail" parameters:self.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"success"] boolValue]) {
             !resultHandler ?: resultHandler(responseObject[@"data"], nil);
         } else {

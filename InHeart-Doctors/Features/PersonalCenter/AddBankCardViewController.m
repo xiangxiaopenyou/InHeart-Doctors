@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.tableFooterView = [UIView new];
-    
+    _selectedBankIndex = @0;
     [self fetchBanks];
     
     [self.view addSubview:self.pickerView];
@@ -63,10 +63,10 @@
         XLDismissHUD(self.view, YES, NO, @"请先输入银行卡号");
         return;
     }
-    if (![self checkCardNo:textField3.text]) {
-        XLDismissHUD(self.view, YES, NO, @"请输入正确的银行卡号");
-        return;
-    }
+//    if (![self checkCardNo:textField3.text]) {
+//        XLDismissHUD(self.view, YES, NO, @"请输入正确的银行卡号");
+//        return;
+//    }
     XLShowHUDWithMessage(@"添加中...", self.view);
     CardModel *tempModel = [[CardModel alloc] init];
     tempModel.cardholder = textField.text;
@@ -94,11 +94,19 @@
         if (object) {
             self.banksArray = [(NSArray *)object copy];
             NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-            for (BankModel *model in self.banksArray) {
-                [tempArray addObject:model.name];
-            }
-            [self.pickerView resetContents:tempArray selected:0];
-            
+            [self.banksArray enumerateObjectsUsingBlock:^(BankModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [tempArray addObject:obj.name];
+                if ([obj.id isEqualToString:self.model.bankId]) {
+                    _selectedBankIndex = @(idx);
+                    GJCFAsyncMainQueue(^{
+                        [self.tableView reloadData];
+                    });
+                }
+            }];
+//            for (BankModel *model in self.banksArray) {
+//                [tempArray addObject:model.name];
+//            }
+            [self.pickerView resetContents:tempArray selected:_selectedBankIndex.integerValue];
         }
     }];
 }
@@ -201,8 +209,8 @@
     int cardNoLength = (int)[cardNo length];
     int lastNum = [[cardNo substringFromIndex:cardNoLength - 1] intValue];
     cardNo = [cardNo substringToIndex:cardNoLength - 1];
-    for (int i = cardNoLength - 1; i>=1; i--) {
-        NSString *tmpString = [cardNo substringWithRange:NSMakeRange(i-1, 1)];
+    for (int i = cardNoLength - 1; i >= 1; i --) {
+        NSString *tmpString = [cardNo substringWithRange:NSMakeRange(i - 1, 1)];
         int tmpVal = [tmpString intValue];
         if (cardNoLength % 2 == 1) {
             if((i % 2) == 0) {

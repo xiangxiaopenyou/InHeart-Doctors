@@ -59,35 +59,30 @@ static CGFloat const kTipLabelHeight = 2.0;
     PersonalCenterTableViewController *personalViewController = [[UIStoryboard storyboardWithName:@"Personal" bundle:nil] instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     [self setupChildControllerWith:personalViewController normalImage:personalUnSelectedImage selectedImage:personalSelectedImage title:@"个人中心" index:2];
     
+    [self setupUnreadMessagesCount];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessagesCount) name:XJSetupUnreadMessagesCount object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"videoCallDidEnded" object:nil];
-
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setupUnreadMessagesCount];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (void)dealloc {
-    //[[EMClient sharedClient].chatManager removeDelegate:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:XJSetupUnreadMessagesCount object:nil];
-    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"videoCallDidEnded" object:nil];
 }
 
 #pragma mark - Notifications
 - (void)setupUnreadMessagesCount {
-//    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
-    NSInteger unreadCount = 0;
-//    for (EMConversation *conversation in conversations) {
-//        unreadCount += conversation.unreadMessagesCount;
-//    }
-    UITabBarItem *item = self.tabBar.items[1];
-    item.badgeValue = unreadCount > 0 ? [NSString stringWithFormat:@"%@", @(unreadCount)] : nil;
-    UIApplication *application = [UIApplication sharedApplication];
-    [application setApplicationIconBadgeNumber:unreadCount];
+    NSInteger unreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[ @(ConversationType_PRIVATE) ]];
+    NSString *unreadString = [NSString stringWithFormat:@"%@", @(unreadCount)];
+    GJCFAsyncMainQueue(^{
+        UITabBarItem *item = self.tabBar.items[1];
+        item.badgeValue = unreadCount > 0 ? unreadString : nil;
+        UIApplication *application = [UIApplication sharedApplication];
+        [application setApplicationIconBadgeNumber:unreadCount];
+    });
 }
 //插入视频通话消息
 //- (void)insertCallMessage:(NSNotification *)notification {
@@ -169,7 +164,7 @@ static CGFloat const kTipLabelHeight = 2.0;
     [self changeTipLabelPosition:positionX];
 }
 
-#pragma mark - EMChatManagerDelegate
+//#pragma mark - EMChatManagerDelegate
 //- (void)messagesDidReceive:(NSArray *)aMessages {
 //    for (EMMessage *message in aMessages) {
 //        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
@@ -186,10 +181,10 @@ static CGFloat const kTipLabelHeight = 2.0;
 //    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
 //    [self setupUnreadMessagesCount];
 //}
-- (void)conversationListDidUpdate:(NSArray *)aConversationList {
-    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
-    [self setupUnreadMessagesCount];
-}
+//- (void)conversationListDidUpdate:(NSArray *)aConversationList {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
+//    [self setupUnreadMessagesCount];
+//}
 
 /*
 #pragma mark - Navigation

@@ -11,6 +11,8 @@
 #import "UserMessagesModel.h"
 #import "XJDataBase.h"
 
+#import "MainTabBarController.h"
+
 @implementation UserInfo
 + (UserInfo *)sharedUserInfo {
     static UserInfo *instance = nil;
@@ -126,6 +128,18 @@
             }];
         }
     }
+}
+
+- (void)onRCIMReceiveMessage:(RCMessage *)message left:(int)left {
+    NSInteger unreadCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[ @(ConversationType_PRIVATE) ]];
+    NSString *unreadString = [NSString stringWithFormat:@"%@", @(unreadCount)];
+    GJCFAsyncMainQueue(^{
+        MainTabBarController *topController = (MainTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        UITabBarItem *item = topController.tabBar.items[1];
+        item.badgeValue = unreadCount > 0 ? unreadString : nil;
+        UIApplication *application = [UIApplication sharedApplication];
+        [application setApplicationIconBadgeNumber:unreadCount];
+    });
 }
 
 @end

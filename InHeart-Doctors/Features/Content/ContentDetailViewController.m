@@ -13,7 +13,8 @@
 
 #import <UIImageView+WebCache.h>
 #import <UIImage-Helpers.h>
-static NSString * const XJContentUrl = @"http://support.med-vision.cn/";
+//static NSString * const XJContentUrl = @"http://support.med-vision.cn/";
+static NSString * const XJContentUrl = @"http://test.med-vision.cn/";
 
 @interface ContentDetailViewController ()</*UVPlayerDelegate,UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate,*/ UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *collectButton;

@@ -17,9 +17,14 @@
 @property (copy, nonatomic) NSString *instruction;
 @property (copy, nonatomic) NSString *diseaseId;
 @property (copy, nonatomic) NSString *diseaseName;
+@property (copy, nonatomic) NSString *patientName;
+@property (copy, nonatomic) NSString *doctorName;
 @property (strong, nonatomic) NSNumber *times;
 @property (strong, nonatomic) NSNumber *scenes;
 @property (strong, nonatomic) NSNumber *totalPrice;
-@property (strong, nonatomic) NSNumber *status;
+@property (strong, nonatomic) NSNumber *orStatus;
+
++ (void)orderDetail:(NSString *)orderId handler:(RequestResultHandler)handler;
++ (void)myOrderList:(NSNumber *)status paging:(NSNumber *)paging handler:(RequestResultHandler)handler;
 
 @end

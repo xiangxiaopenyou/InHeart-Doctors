@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, XJPlanEditItem) {
     XJPlanEditItemInstruction
 };
 typedef NS_ENUM(NSInteger, XJPlanOrderStatus) {
+    XJPlanOrderStatusAll = 0,
     XJPlanOrderStatusWaitingPay = 1,
     XJPlanOrderStatusPaid,
     XJPlanOrderStatusCanceled,

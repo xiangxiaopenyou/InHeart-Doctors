@@ -27,28 +27,30 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     //融云SDK
     [self initRongCloudService:application option:launchOptions];
-    
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:XJLoginSuccess object:nil];
-    [self initAppearance];
-    
-    [self checkUserState:nil];
-    
-    if ([self isFirstLoad]) {
-        GuidePageView *guidePage = [[GuidePageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) array:@[ @"login_logo", @"default_image", @"add_contents" ]];
-        [[UIApplication sharedApplication].keyWindow addSubview:guidePage];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
+        [application registerUserNotificationSettings:settings];
     }
+    [self initAppearance];
+    [self checkUserState:nil];
+//    if ([self isFirstLoad]) {
+//        GuidePageView *guidePage = [[GuidePageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) array:@[ @"login_logo", @"default_image", @"add_contents" ]];
+//        [[UIApplication sharedApplication].keyWindow addSubview:guidePage];
+//    }
+    
     return YES;
 }
 
 //将deviceToken传给SDK
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(nonnull NSData *)deviceToken {
+    NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
 }
 //注册deviceToken失败
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(nonnull NSError *)error {
@@ -58,6 +60,9 @@
 //    
 //    
 //}
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
+}
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 //    NSError *error = nil;
 //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userInfo options:NSJSONWritingPrettyPrinted error:&error];
@@ -95,48 +100,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
-//用户状态判断
-//- (void)judgeUserCodeState {
-//    if ([[UserInfo sharedUserInfo] isLogined]) {
-//        
-//        NSInteger userCode = [[NSUserDefaults standardUserDefaults] integerForKey:USERCODE];
-//        if (userCode == 0 || userCode == -7) {
-//            MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabBar"];
-//            self.window.rootViewController = tabBarController;
-//        } else {
-//            UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BlankRootView"];
-//            self.window.rootViewController = viewController;
-//            PersonalInfo *tempInfo = [[UserInfo sharedUserInfo] personalInfo];
-//            if (tempInfo.username && tempInfo.password) {
-//                [UsersModel userLogin:tempInfo.username password:tempInfo.password handler:^(id object, NSString *msg) {
-//                    if (object) {
-//                        UsersModel *userModel = object;
-//                        NSInteger code = [msg integerValue];
-//                        userModel.code = @(code);
-//                        if ([[UserInfo sharedUserInfo] saveUserInfo:userModel]) {
-//                            PersonalInfo *tempInfo = [PersonalInfo new];
-//                            tempInfo.username = userModel.username;
-//                            tempInfo.password = tempInfo.password;
-//                            if ([[UserInfo sharedUserInfo] savePersonalInfo:tempInfo]) {
-//                                [self checkUserState:nil];
-//                            }
-//                        }
-//                    } else {
-//                        [self checkUserState:nil];
-//                    }
-//                    
-//                }];
-//            } else {
-//                [self checkUserState:nil];
-//            }
-//        }
-//    } else {
-//        [self checkUserState:nil];
-//    }
-//     [self.window makeKeyAndVisible];
-//
-//}
 
 
 /**
@@ -182,7 +145,6 @@
     }
     return NO;
 }
-
 
 
 @end

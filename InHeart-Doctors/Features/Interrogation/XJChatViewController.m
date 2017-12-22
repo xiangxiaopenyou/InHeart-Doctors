@@ -8,6 +8,7 @@
 
 #import "XJChatViewController.h"
 #import "XJPlansListViewController.h"
+#import "XJOrderDetailViewController.h"
 #import "XJOrderModel.h"
 #import "XJPlanOrderMessage.h"
 #import "XJPlanOrderMessageCell.h"
@@ -34,8 +35,8 @@
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
 }
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [IQKeyboardManager sharedManager].enable = YES;
 }
 - (void)dealloc {
@@ -44,6 +45,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didTapMessageCell:(RCMessageModel *)model {
+    [super didTapMessageCell:model];
+    if ([model.content isKindOfClass:[XJPlanOrderMessage class]]) {
+        XJPlanOrderMessage *message = (XJPlanOrderMessage *)model.content;
+        XJOrderDetailViewController *detailController = [[UIStoryboard storyboardWithName:@"Orders" bundle:nil] instantiateViewControllerWithIdentifier:@"OrderDetail"];
+        detailController.orderId = message.orderId;
+        [self.navigationController pushViewController:detailController animated:YES];
+    }
 }
 
 #pragma mark - plugin board view delegate
@@ -60,7 +71,7 @@
 #pragma mark - notification
 - (void)didSendPlan:(NSNotification *)notification {
     XJOrderModel *model = (XJOrderModel *)notification.object;
-    XJPlanOrderMessage *message = [XJPlanOrderMessage messageWithName:model.name orderId:model.id price:model.totalPrice status:model.status billNo:model.billno];
+    XJPlanOrderMessage *message = [XJPlanOrderMessage messageWithName:model.name orderId:model.id price:model.totalPrice status:model.orStatus billNo:model.billno];
     [self sendMessage:message pushContent:nil];
 }
 /*

@@ -807,7 +807,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lBE-2q-pwy">
-                                                    <rect key="frame" x="80" y="13.5" width="215" height="19"/>
+                                                    <rect key="frame" x="80" y="13.5" width="280" height="19"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -815,7 +815,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lBE-2q-pwy" firstAttribute="leading" secondItem="1ZQ-Al-E4z" secondAttribute="leading" constant="80" id="8a7-8w-d1b"/>
-                                                <constraint firstAttribute="trailing" secondItem="lBE-2q-pwy" secondAttribute="trailing" constant="80" id="ArA-UO-nj3"/>
+                                                <constraint firstAttribute="trailing" secondItem="lBE-2q-pwy" secondAttribute="trailing" constant="15" id="ArA-UO-nj3"/>
                                                 <constraint firstItem="gRW-J1-6Ir" firstAttribute="centerY" secondItem="1ZQ-Al-E4z" secondAttribute="centerY" id="Cjb-g3-fF3"/>
                                                 <constraint firstItem="lBE-2q-pwy" firstAttribute="centerY" secondItem="1ZQ-Al-E4z" secondAttribute="centerY" id="Omd-i7-do3"/>
                                                 <constraint firstItem="6nQ-0e-rHY" firstAttribute="centerY" secondItem="1ZQ-Al-E4z" secondAttribute="centerY" id="dbE-By-OYe"/>

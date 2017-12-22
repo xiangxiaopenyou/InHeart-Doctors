@@ -85,7 +85,7 @@
     NSManagedObjectContext *context = [self managedObjectContext];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"CommonUser" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"username = %@", username];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId = %@", username];
     request.predicate = predicate;
     request.entity = entity;
     NSError *error = nil;
