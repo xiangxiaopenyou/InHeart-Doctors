@@ -18,7 +18,6 @@
 		3D039A9B1FE2741700BADB71 /* XJChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D039A9A1FE2741700BADB71 /* XJChatListCell.m */; };
 		3D0877811E9499D300064FDD /* TitlesPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0877801E9499D300064FDD /* TitlesPickerView.m */; };
 		3D0A5C831E7A949A0017204D /* SortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C821E7A949A0017204D /* SortButton.m */; };
-		3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C851E7BA7970017204D /* NewsAndMessagesCell.m */; };
 		3D0A5C891E7BAEF10017204D /* TopNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C881E7BAEF10017204D /* TopNewsCell.m */; };
 		3D0A5C8C1E7BAEFF0017204D /* CommonNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8B1E7BAEFF0017204D /* CommonNewsCell.m */; };
 		3D0A5C8F1E7FB5270017204D /* MyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A5C8E1E7FB5270017204D /* MyPatientsViewController.m */; };
@@ -171,6 +170,7 @@
 		3DEEC8D81E766DF4006A40D3 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEC8D71E766DF4006A40D3 /* NewsViewController.m */; };
 		3DEFA4B81D9A3D9C00876E56 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */; };
 		3DF0259A1DD31D3B008F6467 /* PatientInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF025991DD31D3B008F6467 /* PatientInformationsViewController.m */; };
+		3DF390611FF22194001D7205 /* XJNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF390601FF22194001D7205 /* XJNewsListViewController.m */; };
 		3DFBD4251D9E04C400B93B03 /* ExpertAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */; };
 		3DFBD4281D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBD4271D9E45F100B93B03 /* UploadAuthenticationPictureRequest.m */; };
 		3DFC78951FE7A90800F269EF /* XJFetchOrderDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC78941FE7A90800F269EF /* XJFetchOrderDetailRequest.m */; };
@@ -216,8 +216,6 @@
 		3D0877801E9499D300064FDD /* TitlesPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitlesPickerView.m; sourceTree = "<group>"; };
 		3D0A5C811E7A949A0017204D /* SortButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortButton.h; sourceTree = "<group>"; };
 		3D0A5C821E7A949A0017204D /* SortButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortButton.m; sourceTree = "<group>"; };
-		3D0A5C841E7BA7970017204D /* NewsAndMessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsAndMessagesCell.h; sourceTree = "<group>"; };
-		3D0A5C851E7BA7970017204D /* NewsAndMessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsAndMessagesCell.m; sourceTree = "<group>"; };
 		3D0A5C871E7BAEF10017204D /* TopNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopNewsCell.h; sourceTree = "<group>"; };
 		3D0A5C881E7BAEF10017204D /* TopNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopNewsCell.m; sourceTree = "<group>"; };
 		3D0A5C8A1E7BAEFF0017204D /* CommonNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonNewsCell.h; sourceTree = "<group>"; };
@@ -527,6 +525,8 @@
 		3DEFA4B71D9A3D9C00876E56 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		3DF025981DD31D3B008F6467 /* PatientInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientInformationsViewController.h; sourceTree = "<group>"; };
 		3DF025991DD31D3B008F6467 /* PatientInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientInformationsViewController.m; sourceTree = "<group>"; };
+		3DF3905F1FF22194001D7205 /* XJNewsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XJNewsListViewController.h; sourceTree = "<group>"; };
+		3DF390601FF22194001D7205 /* XJNewsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XJNewsListViewController.m; sourceTree = "<group>"; };
 		3DFBD4231D9E04C400B93B03 /* ExpertAuthenticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertAuthenticationRequest.h; sourceTree = "<group>"; };
 		3DFBD4241D9E04C400B93B03 /* ExpertAuthenticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertAuthenticationRequest.m; sourceTree = "<group>"; };
 		3DFBD4261D9E45F100B93B03 /* UploadAuthenticationPictureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadAuthenticationPictureRequest.h; sourceTree = "<group>"; };
@@ -580,8 +580,6 @@
 			children = (
 				3D0A5C811E7A949A0017204D /* SortButton.h */,
 				3D0A5C821E7A949A0017204D /* SortButton.m */,
-				3D0A5C841E7BA7970017204D /* NewsAndMessagesCell.h */,
-				3D0A5C851E7BA7970017204D /* NewsAndMessagesCell.m */,
 				3D0A5C871E7BAEF10017204D /* TopNewsCell.h */,
 				3D0A5C881E7BAEF10017204D /* TopNewsCell.m */,
 				3D0A5C8A1E7BAEFF0017204D /* CommonNewsCell.h */,
@@ -756,6 +754,8 @@
 				3DC30CBA1E84ADA100AF48D6 /* NewsDetailViewController.m */,
 				3D0C8B241EBAF74200454541 /* AdviceWebViewController.h */,
 				3D0C8B251EBAF74200454541 /* AdviceWebViewController.m */,
+				3DF3905F1FF22194001D7205 /* XJNewsListViewController.h */,
+				3DF390601FF22194001D7205 /* XJNewsListViewController.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -1507,6 +1507,7 @@
 				3D186EFB1E9494E800FB8C0F /* FetchProfessionalTitlesRequest.m in Sources */,
 				3D6A8EE51D98C69600C405DA /* MainTabBarController.m in Sources */,
 				3D01744D1FDE705A00CCA36C /* XJConversationListViewController.m in Sources */,
+				3DF390611FF22194001D7205 /* XJNewsListViewController.m in Sources */,
 				3D6A8E711D98B07700C405DA /* main.m in Sources */,
 				3D6C1BC01DD2BC7400FAC75E /* SetCommonPriceRequest.m in Sources */,
 				3DE757641F9F227200688C84 /* XJTopTherapyCell.m in Sources */,
@@ -1588,7 +1589,6 @@
 				3DD4CCC51FCD3469003290BC /* XJPlansListRequest.m in Sources */,
 				3D33E4D61E973F1B003AA8C5 /* FetchBanksListRequest.m in Sources */,
 				3DA0768C1FE0FCF0009580D7 /* XJOrderModel.m in Sources */,
-				3D0A5C861E7BA7970017204D /* NewsAndMessagesCell.m in Sources */,
 				3DE757671F9F22A200688C84 /* XJTopDiseasesCell.m in Sources */,
 				3D4FC1AA1E9DCD0900E9CE5E /* ChangePasswordTableViewController.m in Sources */,
 				3D71D6951FC2D52F00960D36 /* ContentDetailViewController.m in Sources */,

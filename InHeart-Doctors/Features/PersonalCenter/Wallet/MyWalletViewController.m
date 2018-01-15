@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dueInLabel;
+@property (strong, nonatomic) UILabel *emptyLabel;
 @property (assign, nonatomic) CGFloat balanceValue;
 @property (assign, nonatomic) CGFloat dueInValue;
 @property (assign, nonatomic) NSInteger paging;
@@ -72,6 +73,11 @@
                     [self.tableView.mj_footer endRefreshingWithNoMoreData];
                 } else {
                     _paging += 1;
+                }
+                if (self.billsArray.count > 0) {
+                    self.tableView.tableFooterView = nil;
+                } else {
+                    self.tableView.tableFooterView = self.emptyLabel;
                 }
             });
         } else {
@@ -170,6 +176,17 @@
         _billsArray = [[NSMutableArray alloc] init];
     }
     return _billsArray;
+}
+#pragma mark - Getters
+- (UILabel *)emptyLabel {
+    if (!_emptyLabel) {
+        _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 300)];
+        _emptyLabel.text = @"暂无账单";
+        _emptyLabel.textColor = XJHexRGBColorWithAlpha(0x999999, 1);
+        _emptyLabel.font = XJBoldSystemFont(16);
+        _emptyLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _emptyLabel;
 }
 
 

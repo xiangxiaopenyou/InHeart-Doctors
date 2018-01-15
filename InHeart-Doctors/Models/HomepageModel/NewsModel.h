@@ -15,7 +15,7 @@
 @property (copy, nonatomic) NSString *releaseTime;
 @property (copy, nonatomic) NSString *themes;
 @property (copy, nonatomic) NSString *abstracts;
+@property (copy, nonatomic) NSString *linkurl;
 
 + (void)fetchIndustryNews:(NSNumber *)paging handler:(RequestResultHandler)handler;
-
 @end

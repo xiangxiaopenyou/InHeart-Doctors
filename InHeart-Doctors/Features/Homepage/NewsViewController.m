@@ -9,7 +9,7 @@
 #import "NewsViewController.h"
 #import "NewsDetailViewController.h"
 
-#import "NewsAndMessagesCell.h"
+//#import "NewsAndMessagesCell.h"
 #import "IndustryNewsCell.h"
 
 #import "NewsModel.h"

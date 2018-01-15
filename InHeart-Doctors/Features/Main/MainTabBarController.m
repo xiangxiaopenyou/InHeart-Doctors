@@ -125,13 +125,13 @@ static CGFloat const kTipLabelHeight = 2.0;
     }
 }
 
-#pragma mark - Orientations
-- (BOOL)shouldAutorotate {
-    return NO;
-}
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
+//#pragma mark - Orientations
+//- (BOOL)shouldAutorotate {
+//    return NO;
+//}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 - (UILabel *)bottomTipLabel {
     if (!_bottomTipLabel) {
@@ -164,27 +164,6 @@ static CGFloat const kTipLabelHeight = 2.0;
     [self changeTipLabelPosition:positionX];
 }
 
-//#pragma mark - EMChatManagerDelegate
-//- (void)messagesDidReceive:(NSArray *)aMessages {
-//    for (EMMessage *message in aMessages) {
-//        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-//        switch (state) {
-//            case UIApplicationStateBackground:{
-//                [self showNotificationWithMessage:message];
-//            }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }
-//    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
-//    [self setupUnreadMessagesCount];
-//}
-//- (void)conversationListDidUpdate:(NSArray *)aConversationList {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:XJConversationsDidChange object:nil];
-//    [self setupUnreadMessagesCount];
-//}
 
 /*
 #pragma mark - Navigation

@@ -32,13 +32,13 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:XJLoginSuccess object:nil];
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
         [application registerUserNotificationSettings:settings];
     }
     [self initAppearance];
     [self checkUserState:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkUserState:) name:XJLoginSuccess object:nil];
 //    if ([self isFirstLoad]) {
 //        GuidePageView *guidePage = [[GuidePageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) array:@[ @"login_logo", @"default_image", @"add_contents" ]];
 //        [[UIApplication sharedApplication].keyWindow addSubview:guidePage];

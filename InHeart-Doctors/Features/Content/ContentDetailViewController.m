@@ -29,6 +29,7 @@ static NSString * const XJContentUrl = @"http://test.med-vision.cn/";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = self.contentModel.name;
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_arrow"] style:UIBarButtonItemStyleDone target:self action:@selector(closeAction)]];
     XLShowHUDWithMessage(nil, self.view);
     [self.collectButton setBackgroundImage:[UIImage imageWithColor:NAVIGATIONBAR_COLOR] forState:UIControlStateSelected];

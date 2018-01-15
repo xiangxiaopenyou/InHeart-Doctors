@@ -76,6 +76,7 @@
             UserMessagesModel *tempUserModel = [[XJDataBase sharedDataBase] selectUser:model.targetId][0];
             cell.nameLabel.text = tempUserModel.realname;
             [cell.avatarImageView sd_setImageWithURL:XLURLFromString(tempUserModel.headpictureurl) placeholderImage:[UIImage imageNamed:@"default_patient_avatar"]];
+            model.conversationTitle = tempUserModel.realname;
         } else {
             [UserMessagesModel fetchUserInfoByUserId:model.targetId handler:^(id object, NSString *msg) {
                 if (object) {
@@ -85,6 +86,7 @@
                     userInfo.name = userModel.realname;
                     [[XJDataBase sharedDataBase] insertUser:userModel];
                     [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:model.targetId];
+                    model.conversationTitle = userModel.realname;
                     GJCFAsyncMainQueue(^{
                         cell.nameLabel.text = userModel.realname;
                         [cell.avatarImageView sd_setImageWithURL:XLURLFromString(userModel.headpictureurl) placeholderImage:[UIImage imageNamed:@"default_patient_avatar"]];

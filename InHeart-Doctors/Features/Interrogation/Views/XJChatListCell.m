@@ -13,6 +13,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
+        self.selectedBackgroundView.backgroundColor = MAIN_BACKGROUND_COLOR;
         [self.contentView addSubview:self.avatarImageView];
         CGSize avatarSize = [[RCIM sharedRCIM] globalConversationPortraitSize];
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {

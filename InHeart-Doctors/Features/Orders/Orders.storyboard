@@ -269,7 +269,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanItemCell" id="Ayc-xo-9qo" customClass="XJPlanItemCell">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ayc-xo-9qo" id="mEp-yG-LtY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -302,7 +302,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanGridCell" rowHeight="129" id="nRT-sY-MfK">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="129"/>
+                                        <rect key="frame" x="0.0" y="99" width="375" height="129"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nRT-sY-MfK" id="O6N-xd-cKJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
@@ -367,7 +367,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCreatedTimeCell" rowHeight="91" id="jNS-Mi-aLx" customClass="XJOrderCreatedTimeCell">
-                                        <rect key="frame" x="0.0" y="228.33333333333334" width="375" height="91"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jNS-Mi-aLx" id="EG8-mD-Je9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>

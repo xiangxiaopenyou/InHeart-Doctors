@@ -17,6 +17,7 @@
 #import "XJPlanModel.h"
 #import "DiseaseModel.h"
 #import "XJOrderModel.h"
+#import "ContentModel.h"
 
 @interface XJPlanEditViewController ()<UITableViewDelegate, UITableViewDataSource, XJPlanGridViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -83,6 +84,18 @@
             XLDismissHUD(XJKeyWindow, YES, NO, msg);
         }
     }];
+}
+
+#pragma mark - Private methods
+- (CGFloat)sumPrice:(NSArray *)contentsArray {
+    if (contentsArray.count > 0) {
+        __block CGFloat sum = 0;
+        [contentsArray enumerateObjectsUsingBlock:^(ContentModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            sum += obj.price.floatValue;
+        }];
+        return sum;
+    }
+    return 0;
 }
 
 /*
@@ -187,12 +200,33 @@
 
 #pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20.f;
+    return section == 0 ? 40.f : 20.f;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+        headerView.backgroundColor = [UIColor clearColor];
+        UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        priceLabel.textColor = [UIColor redColor];
+        priceLabel.font = [UIFont systemFontOfSize:14];
+        CGFloat planPrice = [self sumPrice:self.planModel.contents];
+        NSString *priceString = [NSString stringWithFormat:@"￥%.2f", planPrice];
+        NSMutableAttributedString *attributedPriceString = [[NSMutableAttributedString alloc] initWithString:priceString];
+        [attributedPriceString addAttribute:NSFontAttributeName value:XJBoldSystemFont(18) range:NSMakeRange(1, priceString.length - 1)];
+        priceLabel.attributedText = attributedPriceString;
+        [headerView addSubview:priceLabel];
+        [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.trailing.equalTo(headerView.mas_trailing).with.mas_offset(- 15);
+            make.centerY.equalTo(headerView);
+        }];
+        return headerView;
+    }
     UIView *headerView = [UIView new];
     headerView.backgroundColor = [UIColor clearColor];
     return headerView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -24,8 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:2];
-    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"video_call"] title:@"视频通话" tag:1000];
-    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"prescribe"] title:@"发送方案" tag:1001];
+    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"video_call"] title:@"视频通话" tag:10000];
+    [self.chatSessionInputBarControl.pluginBoardView insertItemWithImage:[UIImage imageNamed:@"prescribe"] title:@"发送方案" tag:10001];
     
     [self registerClass:[XJPlanOrderMessageCell class] forMessageClass:[XJPlanOrderMessage class]];
     
@@ -59,7 +59,7 @@
 
 #pragma mark - plugin board view delegate
 - (void)pluginBoardView:(RCPluginBoardView *)pluginBoardView clickedItemWithTag:(NSInteger)tag {
-    if (tag == 1001) {
+    if (tag == 10001) {
         XJPlansListViewController *planListController = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"PlansList"];
         planListController.isView = NO;
         planListController.patientId = self.targetId;

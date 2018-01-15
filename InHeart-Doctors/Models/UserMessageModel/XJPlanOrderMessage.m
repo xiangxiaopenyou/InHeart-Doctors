@@ -29,7 +29,7 @@
         self.name = [aDecoder decodeObjectForKey:@"name"];
         self.orderId = [aDecoder decodeObjectForKey:@"orderId"];
         self.price = [aDecoder decodeObjectForKey:@"price"];
-        self.status = [aDecoder decodeObjectForKey:@"type"];
+        self.status = [aDecoder decodeObjectForKey:@"status"];
         self.billNo = [aDecoder decodeObjectForKey:@"billNo"];
     }
     return self;
@@ -99,6 +99,9 @@
             [self decodeUserInfo:userinfoDic];
         }
     }
+}
++ (NSString *)getObjectName {
+    return kXJPlanOrderMessageIdentifier;
 }
 
 @end

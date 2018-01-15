@@ -42,7 +42,7 @@
     if (model.totalPrice.floatValue == 0) {
         priceString = @"￥0.00";
     } else {
-        priceString = [NSString stringWithFormat:@"￥%@", model.totalPrice];
+        priceString = [NSString stringWithFormat:@"￥%.2f", model.totalPrice.floatValue];
     }
     NSMutableAttributedString *attributedPriceString = [[NSMutableAttributedString alloc] initWithString:priceString];
     [attributedPriceString addAttribute:NSFontAttributeName value:XJBoldSystemFont(18) range:NSMakeRange(1, priceString.length - 1)];

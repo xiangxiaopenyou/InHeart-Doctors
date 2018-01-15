@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *orderSegment;
 
 @property (strong, nonatomic) UIButton *selectedButton;
+@property (strong, nonatomic) UILabel *emptyLabel;
 
 @property (strong, nonatomic) NSMutableArray *planOrdersArray;
 @property (assign, nonatomic) XJPlanOrderStatus planOrderStatus;
@@ -95,6 +96,11 @@
                 self.planOrdersArray = [tempArray mutableCopy];
             }
             GJCFAsyncMainQueue(^{
+                if (self.planOrdersArray.count == 0) {
+                    self.tableView.tableHeaderView = self.emptyLabel;
+                } else {
+                    self.tableView.tableHeaderView = nil;
+                }
                 [self.tableView reloadData];
                 if (resultArray.count < 10) {
                     [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -163,6 +169,16 @@
         _planOrdersArray = [[NSMutableArray alloc] init];
     }
     return _planOrdersArray;
+}
+- (UILabel *)emptyLabel {
+    if (!_emptyLabel) {
+        _emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 20)];
+        _emptyLabel.text = @"您还没有相关的订单";
+        _emptyLabel.textColor = XJHexRGBColorWithAlpha(0x999999, 1);
+        _emptyLabel.font = XJBoldSystemFont(16);
+        _emptyLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _emptyLabel;
 }
 
 @end

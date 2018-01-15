@@ -13,12 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.params = [[NSMutableDictionary alloc] init];
-        if ([[NSUserDefaults standardUserDefaults] stringForKey:USERTOKEN]) {
-            NSString *userToken = [[NSUserDefaults standardUserDefaults] stringForKey:USERTOKEN];
-            printf("token:%s\n", [[NSString stringWithFormat:@"%@", userToken] UTF8String]);
-            [self.params setObject:userToken forKey:@"token"];
-        }
+         
     }
     return self;
 }

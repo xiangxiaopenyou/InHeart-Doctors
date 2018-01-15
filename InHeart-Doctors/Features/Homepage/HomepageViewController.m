@@ -7,12 +7,12 @@
 //
 
 #import "HomepageViewController.h"
-#import "NewsViewController.h"
 #import "XJScenesListViewController.h"
 #import "MyPatientsViewController.h"
 #import "AuthenticationInformationViewController.h"
 #import "XJPlansListViewController.h"
 #import "NewsDetailViewController.h"
+#import "XJNewsListViewController.h"
 
 #import "XJNewsCell.h"
 
@@ -159,7 +159,7 @@
             [self checkWorkState:tempModel.code.integerValue];
         } else {
             XLDismissHUD(self.view, YES, NO, msg);
-            if ([msg isEqualToString:@"登录已经失效"]) {
+            if ([msg isEqualToString:@"登录已经失效"] || [msg isEqualToString:@"已经退出登录"]) {
                 [[RCIM sharedRCIM] logout];
                 [[UserInfo sharedUserInfo] removeUserInfo];
                 [[NSNotificationCenter defaultCenter] postNotificationName:XJLoginSuccess object:nil];
@@ -240,7 +240,8 @@
 }
 //更多新闻
 - (void)moreNewsAction {
-    
+    XJNewsListViewController *newsController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsList"];
+    [self.navigationController pushViewController:newsController animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -313,9 +314,11 @@
 //            break;
 //    }
 //    [self.navigationController pushViewController:newsViewController animated:YES];
-//    NewsModel *tempModel = self.newsArray[indexPath.row];
-//    NewsDetailViewController *newsDetailController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetail"];
-//    newsDetailController.urlString = tempModel.
+    NewsModel *tempModel = self.newsArray[indexPath.row];
+    NewsDetailViewController *newsDetailController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsDetail"];
+    newsDetailController.urlString = tempModel.linkurl;
+    newsDetailController.title = tempModel.themes;
+    [self.navigationController pushViewController:newsDetailController animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 38.f;
